@@ -14,6 +14,13 @@
       }
       .tense h2 {
         margin-bottom: 10px;
+        cursor: pointer;
+      }
+      .hint {
+        display: none;
+        margin-bottom: 10px;
+        font-style: italic;
+        color: #555;
       }
       .tense input {
         display: block;
@@ -22,20 +29,34 @@
         padding: 8px;
         box-sizing: border-box;
       }
+      #example {
+        display: none;
+        margin-bottom: 20px;
+        font-weight: bold;
+        color: #333;
+      }
     </style>
+    <script>
+      function toggleHint(id) {
+        const hint = document.getElementById(id);
+        hint.style.display = hint.style.display === "none" ? "block" : "none";
+      }
+
+      function toggleExample() {
+        const example = document.getElementById("example");
+        example.style.display =
+          example.style.display === "none" ? "block" : "none";
+      }
+    </script>
   </head>
   <body>
-    <div
-      class="tense"
-      title="For example BRUSH TEETH"
-    >
-    <h1>Practice English Tenses</h1>
-    </div>
-    <div
-      class="tense"
-      title="В этом времени мы сообщаем факт. Основной глагол в 1 форме."
-    >
-      <h2>Present Simple</h2>
+    <h1 onclick="toggleExample()">Practice English Tenses</h1>
+    <div id="example">For example BRUSH TEETH</div>
+    <div class="tense">
+      <h2 onclick="toggleHint('hint1')">Present Simple</h2>
+      <div id="hint1" class="hint">
+        В этом времени мы сообщаем факт. Основной глагол в 1 форме.
+      </div>
       <input
         type="text"
         placeholder="+ She brushes her teeth before breakfast."
@@ -49,29 +70,35 @@
         placeholder="? Does she brush her teeth before breakfast?"
       />
     </div>
-    <div
-      class="tense"
-      title="Это значит что действие происходит прямо сейчас. Местоимение + форма 'to be' + 'ing' для основного глагола. Сначала используется вспомогательный глагол 'Am / Is / Are'. Это форма глагола 'to be' в настоящем времени. К основному глаголу добавляется окончание 'ing'."
-    >
-      <h2>Present Continuous</h2>
+    <div class="tense">
+      <h2 onclick="toggleHint('hint2')">Present Continuous</h2>
+      <div id="hint2" class="hint">
+        Это значит что действие происходит прямо сейчас. Местоимение + форма 'to
+        be' + 'ing' для основного глагола. Сначала используется вспомогательный
+        глагол 'Am / Is / Are'. Это форма глагола 'to be' в настоящем времени. К
+        основному глаголу добавляется окончание 'ing'.
+      </div>
       <input type="text" placeholder="+ She is brushing her teeth now." />
       <input type="text" placeholder="- She isn't brushing her teeth now." />
       <input type="text" placeholder="? Is she brushing her teeth now?" />
     </div>
-    <div
-      class="tense"
-      title="Событие проходило в прошлом, но результат мы видим сейчас. Часто используются слова 'Just / Already / Yet'. Используется вспомогательный глагол 'Has / Have'. Который не переводится. Основной глагол в 3 форме."
-    >
-      <h2>Present Perfect</h2>
+    <div class="tense">
+      <h2 onclick="toggleHint('hint3')">Present Perfect</h2>
+      <div id="hint3" class="hint">
+        Событие проходило в прошлом, но результат мы видим сейчас. Часто
+        используются слова 'Just / Already / Yet'. Используется вспомогательный
+        глагол 'Has / Have'. Который не переводится. Основной глагол в 3 форме.
+      </div>
       <input type="text" placeholder="+ She has just brushed her teeth." />
       <input type="text" placeholder="- She hasn't brushed her teeth yet." />
       <input type="text" placeholder="? Has she brushed her teeth yet?" />
     </div>
-    <div
-      class="tense"
-      title="Это то что уже произошло и осталось в прошлом. Обычно используются слова 'Yesterday / Last week / Last month / Ago'. Основной глагол во 2 форме."
-    >
-      <h2>Past Simple</h2>
+    <div class="tense">
+      <h2 onclick="toggleHint('hint4')">Past Simple</h2>
+      <div id="hint4" class="hint">
+        Это то что уже произошло и осталось в прошлом. Обычно используются слова
+        'Yesterday / Last week / Last month / Ago'.
+      </div>
       <input type="text" placeholder="+ She brushed her teeth 2 hours ago." />
       <input
         type="text"
@@ -82,11 +109,13 @@
         placeholder="? Did she brush her teeth before breakfast yesterday?"
       />
     </div>
-    <div
-      class="tense"
-      title="Это значит что действие происходило в прошлом. Используется вспомогательный глагол 'Was / Were'. Это форма глагола 'to be' в прошедшем времени. К основному глаголу добавляется окончание 'ing'."
-    >
-      <h2>Past Continuous</h2>
+    <div class="tense">
+      <h2 onclick="toggleHint('hint5')">Past Continuous</h2>
+      <div id="hint5" class="hint">
+        Это значит что действие происходило в прошлом. Используется
+        вспомогательный глагол 'Was / Were'. Это форма глагола 'to be' в
+        прошедшем времени. К основному глаголу добавляется окончание 'ing'.
+      </div>
       <input
         type="text"
         placeholder="+ She was brushing her teeth 2 hours ago."
@@ -100,8 +129,11 @@
         placeholder="? Was she brushing her teeth before breakfast yesterday?"
       />
     </div>
-    <div class="tense" title="В этом времени основной глагол в 1 форме.">
-      <h2>Future Simple</h2>
+    <div class="tense">
+      <h2 onclick="toggleHint('hint6')">Future Simple</h2>
+      <div id="hint6" class="hint">
+        В этом времени основной глагол в 1 форме.
+      </div>
       <input
         type="text"
         placeholder="+ She will brush her teeth before breakfast tomorrow."
