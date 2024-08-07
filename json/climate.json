@@ -1,0 +1,222 @@
+{
+  "words": [
+    {
+      "word": "activist",
+      "transcription": "[ˈæktɪvɪst]",
+      "translation": "Активист"
+    },
+    {
+      "word": "pollution",
+      "transcription": "[pəˈluːʃən]",
+      "translation": "Загрязнение"
+    },
+    {
+      "word": "impurity",
+      "transcription": "[ɪmˈpjʊərɪti]",
+      "translation": "Примеси, загрязнение"
+    },
+    {
+      "word": "algae",
+      "transcription": "[ˈælʤiː]",
+      "translation": "Водоросли"
+    },
+    { "word": "Earth", "transcription": "[ɜːθ]", "translation": "Земля" },
+    {
+      "word": "atmosphere",
+      "transcription": "[ˈætməsfɪə]",
+      "translation": "Атмосфера"
+    },
+    {
+      "word": "environment",
+      "transcription": "[ɪnˈvaɪərənmənt]",
+      "translation": "Окружающий мир"
+    },
+    {
+      "word": "climate",
+      "transcription": "[ˈklaɪmɪt]",
+      "translation": "Климат"
+    },
+    { "word": "air", "transcription": "[eə]", "translation": "Воздух" },
+    {
+      "word": "water reserve",
+      "transcription": "[ˈwɔːtə rɪˈzɜːv]",
+      "translation": "Водные ресурсы"
+    },
+    {
+      "word": "greenhouse effect",
+      "transcription": "[ˈgriːnhaʊs ɪˈfɛkt]",
+      "translation": "Парниковый эффект"
+    },
+    {
+      "word": "oxygen",
+      "transcription": "[ˈɒksɪʤən]",
+      "translation": "Кислород"
+    },
+    {
+      "word": "explorer",
+      "transcription": "[ɪksˈplɔːrə]",
+      "translation": "Исследователь"
+    },
+    {
+      "word": "investigation",
+      "transcription": "[ɪnˌvɛstɪˈgeɪʃən]",
+      "translation": "Расследование"
+    },
+    {
+      "word": "future",
+      "transcription": "[ˈfjuːʧə]",
+      "translation": "Будущее"
+    },
+    {
+      "word": "tropic forest",
+      "transcription": "[ˈtrɒpɪk ˈfɒrɪst]",
+      "translation": "Тропический лес"
+    },
+    {
+      "word": "humidity",
+      "transcription": "[hju(ː)ˈmɪdɪti]",
+      "translation": "Влажность, влага"
+    },
+    { "word": "flora", "transcription": "[ˈflɔːrə]", "translation": "Флора" },
+    {
+      "word": "wildlife",
+      "transcription": "[ˈwaɪldlaɪf]",
+      "translation": "Дикая природа, животные"
+    },
+    {
+      "word": "plastic waste",
+      "transcription": "[ˈplæstɪk weɪst]",
+      "translation": "Пластиковые отходы"
+    },
+    {
+      "word": "recycling",
+      "transcription": "[riːˈsaɪklɪŋ]",
+      "translation": "Переработка"
+    },
+    {
+      "word": "hydrosphere",
+      "transcription": "[ˈhaɪdrəʊsfɪə]",
+      "translation": "Гидросфера"
+    },
+    {
+      "word": "meeting",
+      "transcription": "[ˈmiːtɪŋ]",
+      "translation": "Митинг"
+    },
+    {
+      "word": "background",
+      "transcription": "[ˈbækgraʊnd]",
+      "translation": "Происхождение, фон"
+    },
+    { "word": "bank", "transcription": "[bæŋk]", "translation": "Берег" },
+    {
+      "word": "banner",
+      "transcription": "[ˈbænə]",
+      "translation": "Баннер, реклама"
+    },
+    {
+      "word": "beast",
+      "transcription": "[biːst]",
+      "translation": "Зверь, животное"
+    },
+    {
+      "word": "cave",
+      "transcription": "[keɪv]",
+      "translation": "Пещера, грот"
+    },
+    { "word": "caviar", "transcription": "[ˈkævɪɑː]", "translation": "Икра" },
+    {
+      "word": "charity",
+      "transcription": "[ˈʧærɪti]",
+      "translation": "Благотворительность"
+    },
+    {
+      "word": "chemistry",
+      "transcription": "[ˈkɛmɪstri]",
+      "translation": "Химия"
+    },
+    {
+      "word": "economical use",
+      "transcription": "[iːkəˈnɒmɪkəl juːz]",
+      "translation": "Экономное потребление"
+    },
+    {
+      "word": "cohesion",
+      "transcription": "[kəʊˈhiːʒən]",
+      "translation": "Уголь"
+    },
+    {
+      "word": "commitment",
+      "transcription": "[kəˈmɪtmənt]",
+      "translation": "Обязательство"
+    },
+    {
+      "word": "concern",
+      "transcription": "[kənˈsɜːn]",
+      "translation": "Озабоченность"
+    },
+    {
+      "word": "conscience",
+      "transcription": "[ˈkɒnʃəns]",
+      "translation": "Совесть, сознание"
+    },
+    { "word": "court", "transcription": "[kɔːt]", "translation": "Суд" },
+    {
+      "word": "custody",
+      "transcription": "[ˈkʌstədi]",
+      "translation": "Опека, сохранение"
+    },
+    { "word": "desert", "transcription": "[ˈdɛzət]", "translation": "Пустыня" },
+    {
+      "word": "dimension",
+      "transcription": "[dɪˈmɛnʃən]",
+      "translation": "Разрушение"
+    },
+    {
+      "word": "disaster",
+      "transcription": "[dɪˈzɑːstə]",
+      "translation": "Катастрофа"
+    },
+    {
+      "word": "disease",
+      "transcription": "[dɪˈziːz]",
+      "translation": "Заболевание"
+    },
+    {
+      "word": "downturn",
+      "transcription": "[ˈdaʊntɜːn]",
+      "translation": "Убыток, спад"
+    },
+    {
+      "word": "drain",
+      "transcription": "[dreɪn]",
+      "translation": "Сток, слив"
+    },
+    {
+      "word": "emphasis",
+      "transcription": "[ˈɛmfəsɪs]",
+      "translation": "Акцент"
+    },
+    {
+      "word": "engine",
+      "transcription": "[ˈɛnʤɪn]",
+      "translation": "Двигатель"
+    },
+    {
+      "word": "evidence",
+      "transcription": "[ˈɛvɪdəns]",
+      "translation": "Доказательство"
+    },
+    {
+      "word": "excess",
+      "transcription": "[ɪkˈsɛs]",
+      "translation": "Превышение"
+    },
+    { "word": "famine", "transcription": "[ˈfæmɪn]", "translation": "Голод" },
+    {
+      "word": "detriment",
+      "transcription": "[ˈdɛtrɪmənt]",
+      "translation": "Ущерб"
+    }
+  ]
+}

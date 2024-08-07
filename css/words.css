@@ -1,0 +1,20 @@
+.random-words {
+  font-size: 1.2em;
+  margin-top: 20px;
+  color: #333;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+  width: 33.33%; /* Устанавливаем фиксированную ширину столбцов */
+}
+th {
+  background-color: #f2f2f2;
+}

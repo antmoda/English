@@ -1,0 +1,188 @@
+{
+  "words": [
+    {
+      "word": "activity",
+      "transcription": "[ækˈtɪvɪti]",
+      "translation": "Деятельность"
+    },
+    {
+      "word": "amount",
+      "transcription": "[əˈmaʊnt]",
+      "translation": "Сумма, количество"
+    },
+    { "word": "author", "transcription": "[ˈɔːθə]", "translation": "Автор" },
+    {
+      "word": "character",
+      "transcription": "[ˈkærɪktə]",
+      "translation": "Характер"
+    },
+    {
+      "word": "dictionary",
+      "transcription": "[ˈdɪkʃ(ə)n(ə)ri]",
+      "translation": "Словарь"
+    },
+    { "word": "event", "transcription": "[ɪˈvɛnt]", "translation": "Событие" },
+    {
+      "word": "guess",
+      "transcription": "[gɛs]",
+      "translation": "Предположение, догадка"
+    },
+    {
+      "word": "dashboard",
+      "transcription": "[ˈdæʃbɔːd]",
+      "translation": "Панель управления"
+    },
+    {
+      "word": "task manager",
+      "transcription": "[tɑːsk ˈmænɪʤə]",
+      "translation": "Планировщик задач"
+    },
+    {
+      "word": "sick day",
+      "transcription": "[sɪk deɪ]",
+      "translation": "Больничный"
+    },
+    {
+      "word": "trouble",
+      "transcription": "[ˈtrʌbl]",
+      "translation": "Проблема"
+    },
+    {
+      "word": "deadline",
+      "transcription": "[ˈdɛdlaɪn]",
+      "translation": "Дедлайн"
+    },
+    {
+      "word": "reason",
+      "transcription": "[ˈriːzn]",
+      "translation": "Причина, смысл"
+    },
+    {
+      "word": "to-do list",
+      "transcription": "[təˈduː lɪst]",
+      "translation": "Список дел"
+    },
+    {
+      "word": "remark",
+      "transcription": "[ˈrɪˈmɑːk]",
+      "translation": "Замечание, ремарка"
+    },
+    {
+      "word": "proofreading",
+      "transcription": "[ˈpruːfˌriːdɪŋ]",
+      "translation": "Редактирование, вычитка"
+    },
+    {
+      "word": "performance",
+      "transcription": "[pəˈfɔːməns]",
+      "translation": "Исполнение, выступление"
+    },
+    {
+      "word": "co-working space",
+      "transcription": "[kəʊ-ˈwɜːkɪŋ speɪs]",
+      "translation": "Ко-воркинг"
+    },
+    {
+      "word": "duty",
+      "transcription": "[ˈdjuːti]",
+      "translation": "Обязанность"
+    },
+    {
+      "word": "function",
+      "transcription": "[ˈfʌŋkʃən]",
+      "translation": "Функция"
+    },
+    {
+      "word": "burnout",
+      "transcription": "[ˈbɜːnˈaʊt]",
+      "translation": "Выгорание"
+    },
+    { "word": "goal", "transcription": "[gəʊl]", "translation": "Цель" },
+    {
+      "word": "timetable",
+      "transcription": "[ˈtaɪmˌteɪb(ə)l]",
+      "translation": "Расписание"
+    },
+    {
+      "word": "area",
+      "transcription": "[ˈeərɪə]",
+      "translation": "Сфера, область"
+    },
+    {
+      "word": "state",
+      "transcription": "[steɪt]",
+      "translation": "Состояние, положение"
+    },
+    {
+      "word": "mentoring",
+      "transcription": "[ˈmɛntɔːrɪŋ]",
+      "translation": "Менторство"
+    },
+    {
+      "word": "tiredness",
+      "transcription": "[ˈtaɪədnəs]",
+      "translation": "Усталость"
+    },
+    {
+      "word": "probation period",
+      "transcription": "[prəˈbeɪʃən ˈpɪərɪəd]",
+      "translation": "Испытательный срок"
+    },
+    {
+      "word": "expectation",
+      "transcription": "[ɛkspɛkˈteɪʃən]",
+      "translation": "Ожидание"
+    },
+    {
+      "word": "benefit",
+      "transcription": "[ˈbɛnɪfɪt]",
+      "translation": "Прибыль"
+    },
+    {
+      "word": "salary",
+      "transcription": "[ˈsæləri]",
+      "translation": "Зарплата"
+    },
+    {
+      "word": "outsource",
+      "transcription": "[aʊtˈsɔːs]",
+      "translation": "Аутсорс"
+    },
+    { "word": "team", "transcription": "[tiːm]", "translation": "Команда" },
+    {
+      "word": "lead",
+      "transcription": "[liːd]",
+      "translation": "Лидер, тимлидер"
+    },
+    {
+      "word": "project",
+      "transcription": "[ˈprɒʤɛkt]",
+      "translation": "Проект"
+    },
+    {
+      "word": "check out",
+      "transcription": "[ʧɛk aʊt]",
+      "translation": "Проверка"
+    },
+    {
+      "word": "research",
+      "transcription": "[rɪˈsɜːʧ]",
+      "translation": "Исследование"
+    },
+    {
+      "word": "routine",
+      "transcription": "[ruːˈtiːn]",
+      "translation": "Рутина"
+    },
+    {
+      "word": "planner",
+      "transcription": "[ˈplænə]",
+      "translation": "Планнер, блокнот"
+    },
+    {
+      "word": "schedule",
+      "transcription": "[ˈʃɛdjuːl]",
+      "translation": "Расписание"
+    }
+  ]
+}

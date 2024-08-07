@@ -1,0 +1,398 @@
+{
+  "words": [
+    {
+      "word": "unlucky",
+      "transcription": "[ʌnˈlʌki]",
+      "translation": "невезучий"
+    },
+    {
+      "word": "invisible",
+      "transcription": "[ɪnˈvɪzɪbəl]",
+      "translation": "невидимый"
+    },
+    {
+      "word": "dishonest",
+      "transcription": "[dɪsˈɒnɪst]",
+      "translation": "нечестный"
+    },
+    {
+      "word": "illegal",
+      "transcription": "[ɪˈliːɡəl]",
+      "translation": "незаконный"
+    },
+    {
+      "word": "irrational",
+      "transcription": "[ɪˈræʃənəl]",
+      "translation": "нерациональный"
+    },
+    {
+      "word": "immortal",
+      "transcription": "[ɪˈmɔːtəl]",
+      "translation": "бессмертный"
+    },
+    {
+      "word": "hyperactive",
+      "transcription": "[ˌhaɪpərˈæktɪv]",
+      "translation": "гиперактивный"
+    },
+    {
+      "word": "fruitful",
+      "transcription": "[ˈfruːtfəl]",
+      "translation": "плодородный, полезный"
+    },
+    {
+      "word": "hopeless",
+      "transcription": "[ˈhəʊpləs]",
+      "translation": "безнадежный"
+    },
+    {
+      "word": "iconic",
+      "transcription": "[aɪˈkɒnɪk]",
+      "translation": "культовый"
+    },
+    {
+      "word": "famous",
+      "transcription": "[ˈfeɪməs]",
+      "translation": "знаменитый"
+    },
+    {
+      "word": "hungry",
+      "transcription": "[ˈhʌŋɡri]",
+      "translation": "голодный"
+    },
+    {
+      "word": "British",
+      "transcription": "[ˈbrɪtɪʃ]",
+      "translation": "британский"
+    },
+    {
+      "word": "unlucky",
+      "transcription": "[ʌnˈlʌki]",
+      "translation": "невезучий"
+    },
+    {
+      "word": "invisible",
+      "transcription": "[ɪnˈvɪzɪbəl]",
+      "translation": "невидимый"
+    },
+    {
+      "word": "dishonest",
+      "transcription": "[dɪsˈɒnɪst]",
+      "translation": "нечестный"
+    },
+    {
+      "word": "illegal",
+      "transcription": "[ɪˈliːɡəl]",
+      "translation": "незаконный"
+    },
+    {
+      "word": "irrational",
+      "transcription": "[ɪˈræʃənəl]",
+      "translation": "нерациональный"
+    },
+    {
+      "word": "immortal",
+      "transcription": "[ɪˈmɔːtəl]",
+      "translation": "бессмертный"
+    },
+    {
+      "word": "hyperactive",
+      "transcription": "[ˌhaɪpərˈæktɪv]",
+      "translation": "гиперактивный"
+    },
+    {
+      "word": "fruitful",
+      "transcription": "[ˈfruːtfəl]",
+      "translation": "плодородный, полезный"
+    },
+    {
+      "word": "hopeless",
+      "transcription": "[ˈhəʊpləs]",
+      "translation": "безнадежный"
+    },
+    {
+      "word": "iconic",
+      "transcription": "[aɪˈkɒnɪk]",
+      "translation": "культовый"
+    },
+    {
+      "word": "famous",
+      "transcription": "[ˈfeɪməs]",
+      "translation": "знаменитый"
+    },
+    {
+      "word": "hungry",
+      "transcription": "[ˈhʌŋɡri]",
+      "translation": "голодный"
+    },
+    {
+      "word": "British",
+      "transcription": "[ˈbrɪtɪʃ]",
+      "translation": "британский"
+    },
+    { "word": "blind", "transcription": "[blaɪnd]", "translation": "слепой" },
+    {
+      "word": "catchy",
+      "transcription": "[ˈkæʧi]",
+      "translation": "броский, запоминающийся"
+    },
+    {
+      "word": "common",
+      "transcription": "[ˈkɒmən]",
+      "translation": "распространенный"
+    },
+    {
+      "word": "familiar",
+      "transcription": "[fəˈmɪliə]",
+      "translation": "знакомый"
+    },
+    {
+      "word": "frequent",
+      "transcription": "[ˈfriːkwənt]",
+      "translation": "частый"
+    },
+    {
+      "word": "recurrent",
+      "transcription": "[rɪˈkʌrənt]",
+      "translation": "повторяющийся"
+    },
+    {
+      "word": "enormous",
+      "transcription": "[ɪˈnɔːməs]",
+      "translation": "огромный"
+    },
+    {
+      "word": "expensive",
+      "transcription": "[ɪksˈpɛnsɪv]",
+      "translation": "дорогой"
+    },
+    {
+      "word": "valuable",
+      "transcription": "[ˈvæljʊəbl]",
+      "translation": "ценный"
+    },
+    {
+      "word": "Muslim",
+      "transcription": "[ˈmʊslɪm]",
+      "translation": "мусульманский"
+    },
+    { "word": "lucky", "transcription": "[ˈlʌki]", "translation": "удачный" },
+    {
+      "word": "clear",
+      "transcription": "[klɪə]",
+      "translation": "чистый, понятный"
+    },
+    {
+      "word": "scientific",
+      "transcription": "[saɪənˈtɪfɪk]",
+      "translation": "научный"
+    },
+    {
+      "word": "huge",
+      "transcription": "[hjuːʤ]",
+      "translation": "большой, огромный"
+    },
+    {
+      "word": "messy",
+      "transcription": "[ˈmɛsi]",
+      "translation": "беспорядочный"
+    },
+    {
+      "word": "unforgettable",
+      "transcription": "[ʌnfəˈgɛtəbl]",
+      "translation": "незабываемый"
+    },
+    {
+      "word": "false",
+      "transcription": "[fɔːls]",
+      "translation": "неверный, неправильный"
+    },
+    {
+      "word": "fierce",
+      "transcription": "[fɪəs]",
+      "translation": "свирепый, жестокий"
+    },
+    {
+      "word": "explicit",
+      "transcription": "[ɪksˈplɪsɪt]",
+      "translation": "ярко выраженный"
+    },
+    {
+      "word": "exterior",
+      "transcription": "[ɛksˈtɪərɪə]",
+      "translation": "внешний"
+    },
+    { "word": "hidden", "transcription": "[ˈhɪdn]", "translation": "скрытый" },
+    {
+      "word": "powerful",
+      "transcription": "[ˈpaʊəfʊl]",
+      "translation": "мощный"
+    },
+    {
+      "word": "internal",
+      "transcription": "[ɪnˈtɜːnl]",
+      "translation": "внутренний"
+    },
+    {
+      "word": "fabulous",
+      "transcription": "[ˈfæbjʊləs]",
+      "translation": "невероятный"
+    },
+    {
+      "word": "beautiful",
+      "transcription": "[ˈbjuːtəfʊl]",
+      "translation": "красивый"
+    },
+    {
+      "word": "gorgeous",
+      "transcription": "[ˈgɔːʤəs]",
+      "translation": "великолепный"
+    },
+    {
+      "word": "fruitful",
+      "transcription": "[ˈfruːtfʊl]",
+      "translation": "плодотворный"
+    },
+    {
+      "word": "formidable",
+      "transcription": "[ˈfɔːmɪdəbl]",
+      "translation": "замечательный"
+    },
+    {
+      "word": "fortunate",
+      "transcription": "[ˈfɔːʧnɪt]",
+      "translation": "удачливый, счастливый"
+    },
+    {
+      "word": "frail",
+      "transcription": "[freɪl]",
+      "translation": "хилый, хрупкий"
+    },
+    {
+      "word": "friendly",
+      "transcription": "[ˈfrɛndli]",
+      "translation": "дружелюбный"
+    },
+    { "word": "loyal", "transcription": "[ˈlɔɪəl]", "translation": "лояльный" },
+    {
+      "word": "general",
+      "transcription": "[ˈʤɛnərəl]",
+      "translation": "общий, генеральный"
+    },
+    {
+      "word": "generous",
+      "transcription": "[ˈʤɛnərəs]",
+      "translation": "щедрый"
+    },
+    {
+      "word": "gradual",
+      "transcription": "[ˈgrædjʊəl]",
+      "translation": "постепенный"
+    },
+    {
+      "word": "productive",
+      "transcription": "[prəˈdʌktɪv]",
+      "translation": "продуктивный"
+    },
+    {
+      "word": "protected",
+      "transcription": "[prəˈtɛktɪd]",
+      "translation": "защищенный"
+    },
+    {
+      "word": "hardy",
+      "transcription": "[ˈhɑːdi]",
+      "translation": "выносливый"
+    },
+    {
+      "word": "peaceful",
+      "transcription": "[ˈpiːsfʊl]",
+      "translation": "мирный, миролюбивый"
+    },
+    {
+      "word": "digital",
+      "transcription": "[ˈdɪʤɪtl]",
+      "translation": "цифровой"
+    },
+    {
+      "word": "social",
+      "transcription": "[ˈsəʊʃəl]",
+      "translation": "социальный"
+    },
+    {
+      "word": "hideous",
+      "transcription": "[hɪdɪə]",
+      "translation": "отвратительный"
+    },
+    { "word": "awful", "transcription": "[ˈɔːfʊl]", "translation": "ужасный" },
+    { "word": "awesome", "transcription": "[ˈɔːsəm]", "translation": "милый" },
+    {
+      "word": "high-quality",
+      "transcription": "[haɪ-ˈkwɒlɪti]",
+      "translation": "высококачественный"
+    },
+    {
+      "word": "helpless",
+      "transcription": "[ˈhɛlplɪs]",
+      "translation": "беспомощный"
+    },
+    {
+      "word": "hilarious",
+      "transcription": "[hɪˈleərɪəs]",
+      "translation": "уморительный"
+    },
+    {
+      "word": "idle",
+      "transcription": "[ˈaɪdl]",
+      "translation": "безработный"
+    },
+    {
+      "word": "immediate",
+      "transcription": "[ɪˈmiːdiət]",
+      "translation": "незамедлительный"
+    },
+    { "word": "main", "transcription": "[meɪn]", "translation": "главный" },
+    {
+      "word": "European",
+      "transcription": "[jʊərəˈpi(ː)ən]",
+      "translation": "Европейский"
+    },
+    {
+      "word": "Simultaneous",
+      "transcription": "[sɪməlˈteɪniəs]",
+      "translation": "Одновременный"
+    },
+    {
+      "word": "Special",
+      "transcription": "[ˈspɛʃəl]",
+      "translation": "Специальный"
+    },
+    {
+      "word": "Visible",
+      "transcription": "[ˈvɪzəbl]",
+      "translation": "Видимый"
+    },
+    { "word": "Honest", "transcription": "[ˈɒnɪst]", "translation": "Честный" },
+    {
+      "word": "Mortal",
+      "transcription": "[ˈmɔːtl]",
+      "translation": "Смертельный"
+    },
+    {
+      "word": "Hyperactive",
+      "transcription": "[ˈhaɪpə ˈæktɪv]",
+      "translation": "Гиперактивный"
+    },
+    {
+      "word": "Personal",
+      "transcription": "[ˈpɜːsnl]",
+      "translation": "Личный, персональный"
+    },
+    {
+      "word": "Foolish",
+      "transcription": "[ˈfuːlɪʃ]",
+      "translation": "Безумный, глупый"
+    },
+    { "word": "Sudden", "transcription": "[ˈsʌdn]", "translation": "Внезапный" }
+  ]
+}

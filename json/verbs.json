@@ -1,0 +1,796 @@
+{
+  "words": [
+    {
+      "word": "To appear",
+      "transcription": "[əˈpɪə]",
+      "translation": "Появляться"
+    },
+    {
+      "word": "To cancel",
+      "transcription": "[ˈkænsəl]",
+      "translation": "Отменять"
+    },
+    {
+      "word": "To bite",
+      "transcription": "[baɪt]",
+      "translation": "Кусать, укусить"
+    },
+    {
+      "word": "To regret",
+      "transcription": "[rɪˈgrɛt]",
+      "translation": "Сожалеть"
+    },
+    {
+      "word": "To blow",
+      "transcription": "[bləʊ]",
+      "translation": "Дуть (о ветре), развеять, раздувать"
+    },
+    {
+      "word": "To compose",
+      "transcription": "[kəmˈpəʊz]",
+      "translation": "Составлять"
+    },
+    {
+      "word": "To congratulate",
+      "transcription": "[kənˈgrætjʊleɪt]",
+      "translation": "Поздравлять"
+    },
+    {
+      "word": "To correct",
+      "transcription": "[kəˈrɛkt]",
+      "translation": "Исправлять"
+    },
+    {
+      "word": "To fall asleep",
+      "transcription": "[fɔːl əˈsliːp]",
+      "translation": "Засыпать"
+    },
+    { "word": "To burn", "transcription": "[bɜːn]", "translation": "Гореть" },
+    {
+      "word": "To invent",
+      "transcription": "[ɪnˈvɛnt]",
+      "translation": "Придумать, изобретать"
+    },
+    {
+      "word": "To mention",
+      "transcription": "[ˈmɛnʃən]",
+      "translation": "Упоминать, заметить, отметить"
+    },
+    {
+      "word": "To suppose",
+      "transcription": "[səˈpəʊz]",
+      "translation": "Предполагать"
+    },
+    {
+      "word": "To suggest",
+      "transcription": "[səˈʤɛst]",
+      "translation": "Предлагать, намекать"
+    },
+    {
+      "word": "To consider",
+      "transcription": "[kənˈsɪdə]",
+      "translation": "Размышлять, учитывать"
+    },
+    {
+      "word": "To escape",
+      "transcription": "[ɪsˈkeɪp]",
+      "translation": "Сбегать, убегать"
+    },
+    {
+      "word": "To publish",
+      "transcription": "[ˈpʌblɪʃ]",
+      "translation": "Публиковать"
+    },
+    {
+      "word": "To solve",
+      "transcription": "[sɒlv]",
+      "translation": "Решить, разгадать"
+    },
+    {
+      "word": "To tidy up",
+      "transcription": "[ˈtaɪdi ʌp]",
+      "translation": "Убираться, наводить порядок"
+    },
+    {
+      "word": "To win",
+      "transcription": "[‘taɪdi ʌp]",
+      "translation": "Выиграть"
+    },
+    {
+      "word": "To swallow",
+      "transcription": "[ˈswɒləʊ]",
+      "translation": "Глотать"
+    },
+    {
+      "word": "To follow",
+      "transcription": "[ˈfɒləʊ]",
+      "translation": "Следовать"
+    },
+    {
+      "word": "To abandon",
+      "transcription": "[əˈbændən]",
+      "translation": "Покидать, оставлять"
+    },
+    {
+      "word": "To be able",
+      "transcription": "[biː ˈeɪbl]",
+      "translation": "Быть в состоянии"
+    },
+    {
+      "word": "To abuse",
+      "transcription": "[əˈbjuːs]",
+      "translation": "Оскорблять"
+    },
+    {
+      "word": "To accelerate",
+      "transcription": "[əkˈsɛləreɪt]",
+      "translation": "Ускорять"
+    },
+    {
+      "word": "To reveal",
+      "transcription": "[rɪˈviːl]",
+      "translation": "Раскрывать"
+    },
+    {
+      "word": "To consist of",
+      "transcription": "[kənˈsɪst ɒv]",
+      "translation": "Состоять из"
+    },
+    {
+      "word": "To include",
+      "transcription": "[ɪnˈkluːd]",
+      "translation": "Включать"
+    },
+    {
+      "word": "To guess",
+      "transcription": "[gɛs]",
+      "translation": "Думать, предполагать"
+    },
+    {
+      "word": "To accept",
+      "transcription": "[əkˈsɛpt]",
+      "translation": "Одобрять, согласовать"
+    },
+    {
+      "word": "To formulate",
+      "transcription": "[ˈfɔːmjʊleɪt]",
+      "translation": "Формулировать"
+    },
+    {
+      "word": "To form",
+      "transcription": "[fɔːm]",
+      "translation": "Формировать"
+    },
+    {
+      "word": "To achieve",
+      "transcription": "[əˈʧiːv]",
+      "translation": "Достигать"
+    },
+    {
+      "word": "To acknowledge",
+      "transcription": "[əkˈnɒlɪʤ]",
+      "translation": "Подтверждать"
+    },
+    {
+      "word": "To act",
+      "transcription": "[ækt]",
+      "translation": "Действовать"
+    },
+    {
+      "word": "To adhere",
+      "transcription": "[ədˈhɪə]",
+      "translation": "Придерживаться"
+    },
+    {
+      "word": "To admire",
+      "transcription": "[ədˈmaɪə]",
+      "translation": "Восхищаться"
+    },
+    {
+      "word": "To adjust",
+      "transcription": "[əˈʤʌst]",
+      "translation": "Адаптировать, настроить"
+    },
+    {
+      "word": "To advise",
+      "transcription": "[ədˈvaɪz]",
+      "translation": "Советовать"
+    },
+    {
+      "word": "To allow",
+      "transcription": "[əˈlaʊ]",
+      "translation": "Позволять, разрешать"
+    },
+    {
+      "word": "To improve",
+      "transcription": "[ɪmˈpruːv]",
+      "translation": "Улучшать"
+    },
+    {
+      "word": "To edit",
+      "transcription": "[ˈɛdɪt]",
+      "translation": "Редактировать"
+    },
+    {
+      "word": "To conclude",
+      "transcription": "[kənˈkluːd]",
+      "translation": "Включать в себя"
+    },
+    {
+      "word": "To settle",
+      "transcription": "[ˈsɛtl]",
+      "translation": "Располагаться, поселиться"
+    },
+    {
+      "word": "To handle",
+      "transcription": "[ˈhændl]",
+      "translation": "Справиться"
+    },
+    {
+      "word": "To boost",
+      "transcription": "[buːst]",
+      "translation": "Увеличить, поддержать"
+    },
+    {
+      "word": "To amplify",
+      "transcription": "[ˈæmplɪfaɪ]",
+      "translation": "Усилить, расширить"
+    },
+    {
+      "word": "To appeal",
+      "transcription": "[əˈpiːl]",
+      "translation": "Просить, обращаться"
+    },
+    {
+      "word": "To assemble",
+      "transcription": "[əˈsɛmbl]",
+      "translation": "Собираться, созывать"
+    },
+    {
+      "word": "To assess",
+      "transcription": "[əˈsɛs]",
+      "translation": "Оценивать, рассматривать"
+    },
+    {
+      "word": "To assist",
+      "transcription": "[əˈsɪst]",
+      "translation": "Присутствовать, помогать"
+    },
+    {
+      "word": "To astonish",
+      "transcription": "[əsˈtɒnɪʃ]",
+      "translation": "Удивлять"
+    },
+    {
+      "word": "To assure",
+      "transcription": "[əˈʃʊə]",
+      "translation": "Убеждать, заверять"
+    },
+    {
+      "word": "To avoid",
+      "transcription": "[əˈvɔɪd]",
+      "translation": "Избегать"
+    },
+    {
+      "word": "To await",
+      "transcription": "[əˈweɪt]",
+      "translation": "Ожидать"
+    },
+    {
+      "word": "To pick up",
+      "transcription": "[pɪk ʌp]",
+      "translation": "Подбирать, забирать"
+    },
+    {
+      "word": "To cross off",
+      "transcription": "[krɒs ɒf]",
+      "translation": "Вычеркивать"
+    },
+    {
+      "word": "To claim",
+      "transcription": "[kleɪm]",
+      "translation": "Утверждать, заявлять"
+    },
+    {
+      "word": "To hurry up",
+      "transcription": "[ˈhʌri ʌp]",
+      "translation": "Торопиться"
+    },
+    {
+      "word": "To find out",
+      "transcription": "[faɪnd aʊt]",
+      "translation": "Находить"
+    },
+    {
+      "word": "To divide",
+      "transcription": "[dɪˈvaɪd]",
+      "translation": "Делить, разделять"
+    },
+    { "word": "To bark", "transcription": "[bɑːk]", "translation": "Лаять" },
+    {
+      "word": "To bathe",
+      "transcription": "[beɪð]",
+      "translation": "Купаться"
+    },
+    {
+      "word": "To beat",
+      "transcription": "[biːt]",
+      "translation": "Бить, превосходить"
+    },
+    {
+      "word": "To blackmail",
+      "transcription": "[ˈblækmeɪl]",
+      "translation": "Шантажировать"
+    },
+    {
+      "word": "To spend",
+      "transcription": "[spɛnt]",
+      "translation": "Тратить"
+    },
+    { "word": "To send", "transcription": "[sɛnd]", "translation": "Посылать" },
+    {
+      "word": "To laugh",
+      "transcription": "[lɑːf]",
+      "translation": "Смеяться"
+    },
+    {
+      "word": "To struggle",
+      "transcription": "[ˈstrʌgl]",
+      "translation": "Бороться"
+    },
+    {
+      "word": "To motivate",
+      "transcription": "[ˈməʊtɪveɪt]",
+      "translation": "Мотивировать"
+    },
+    {
+      "word": "To perceive",
+      "transcription": "[pəˈsiːv]",
+      "translation": "Воспринимать"
+    },
+    {
+      "word": "To receive",
+      "transcription": "[rɪˈsiːv]",
+      "translation": "Получать"
+    },
+    {
+      "word": "To recognize",
+      "transcription": "[ˈrɛkəgnaɪz]",
+      "translation": "Распознавать"
+    },
+    {
+      "word": "To remain",
+      "transcription": "[rɪˈmeɪn]",
+      "translation": "Напоминать"
+    },
+    {
+      "word": "To retain",
+      "transcription": "[rɪˈteɪn]",
+      "translation": "Удержать"
+    },
+    {
+      "word": "To remember",
+      "transcription": "[rɪˈmɛmbə]",
+      "translation": "Помнить, запоминать"
+    },
+    {
+      "word": "To observe",
+      "transcription": "[əbˈzɜːv]",
+      "translation": "Исследовать"
+    },
+    { "word": "To fight", "transcription": "[faɪt]", "translation": "Драться" },
+    {
+      "word": "To renew",
+      "transcription": "[rɪˈnju]",
+      "translation": "Обновлять"
+    },
+    {
+      "word": "To keep calm",
+      "transcription": "[kiːp kɑːm]",
+      "translation": "Успокаиваться"
+    },
+    {
+      "word": "To break up",
+      "transcription": "[breɪk ʌp]",
+      "translation": "Разрушать, расходиться"
+    },
+    {
+      "word": "To focus",
+      "transcription": "[ˈfəʊkəs]",
+      "translation": "Фокусироваться"
+    },
+    {
+      "word": "To perform",
+      "transcription": "[pəˈfɔːm]",
+      "translation": "Исполнять обязанности"
+    },
+    {
+      "word": "To offer",
+      "transcription": "[ˈɒfə]",
+      "translation": "Предлагать"
+    },
+    {
+      "word": "To display",
+      "transcription": "[dɪsˈpleɪ]",
+      "translation": "Отображать"
+    },
+    {
+      "word": "To behave",
+      "transcription": "[bɪˈheɪv]",
+      "translation": "Вести себя"
+    },
+    {
+      "word": "To get rid",
+      "transcription": "[gɛt rɪd]",
+      "translation": "Избавляться"
+    },
+    {
+      "word": "To squeeze",
+      "transcription": "[skwiːz]",
+      "translation": "Выжимать"
+    },
+    {
+      "word": "To release",
+      "transcription": "[rɪˈliːs]",
+      "translation": "Выпускать, публиковать"
+    },
+    { "word": "To push", "transcription": "[pʊʃ]", "translation": "Толкать" },
+    {
+      "word": "To foster",
+      "transcription": "[ˈfɒstə]",
+      "translation": "Поощрять"
+    },
+    {
+      "word": "To enhance",
+      "transcription": "[ɪnˈhɑːns]",
+      "translation": "Расширять, поощрять"
+    },
+    {
+      "word": "To develop",
+      "transcription": "[dɪˈvɛləp]",
+      "translation": "Развивать, разрабатывать"
+    },
+    {
+      "word": "To envelop",
+      "transcription": "[ɪnˈvɛləp]",
+      "translation": "Окутывать, обволакивать"
+    },
+    {
+      "word": "To obtain",
+      "transcription": "[əbˈteɪn]",
+      "translation": "Получить, добиться, приобрести"
+    },
+    {
+      "word": "To investigate",
+      "transcription": "[ɪnˈvɛstɪgeɪt]",
+      "translation": "Расследовать"
+    },
+    {
+      "word": "To adore",
+      "transcription": "[əˈdɔː]",
+      "translation": "Обожать"
+    },
+    {
+      "word": "To block out",
+      "transcription": "[blɒk aʊt]",
+      "translation": "Блокировать"
+    },
+    { "word": "To boil", "transcription": "[bɔɪl]", "translation": "Кипеть" },
+    {
+      "word": "To bother",
+      "transcription": "[ˈbɒðə]",
+      "translation": "Побеспокоить, заморачиваться"
+    },
+    {
+      "word": "To breathe",
+      "transcription": "[briːð]",
+      "translation": "Дышать"
+    },
+    {
+      "word": "To brew",
+      "transcription": "[bruː]",
+      "translation": "Варить, заваривать"
+    },
+    {
+      "word": "To celebrate",
+      "transcription": "[ˈsɛlɪbreɪt]",
+      "translation": "Отмечать"
+    },
+    {
+      "word": "To broadcast",
+      "transcription": "[ˈbrɔːdkɑːst]",
+      "translation": "Вещать, транслировать"
+    },
+    {
+      "word": "To modify",
+      "transcription": "[ˈmɒdɪfaɪ]",
+      "translation": "Изменять, модифицировать"
+    },
+    { "word": "To bump", "transcription": "[bʌmp]", "translation": "Ударять" },
+    { "word": "To buzz", "transcription": "[bʌz]", "translation": "Жужжать" },
+    {
+      "word": "To lead",
+      "transcription": "[liːd]",
+      "translation": "Вести, лидировать, быть лидером"
+    },
+    {
+      "word": "To call back",
+      "transcription": "[kɔːl bæk]",
+      "translation": "Перезвонить"
+    },
+    {
+      "word": "To waste",
+      "transcription": "[weɪst]",
+      "translation": "Тратить впустую, мусорить"
+    },
+    {
+      "word": "To take care",
+      "transcription": "[teɪk keə]",
+      "translation": "Заботиться"
+    },
+    {
+      "word": "To carry out",
+      "transcription": "[ˈkæri aʊt]",
+      "translation": "Выполнять, осуществлять"
+    },
+    {
+      "word": "To carve",
+      "transcription": "[kɑːv]",
+      "translation": "Вырезать"
+    },
+    {
+      "word": "To cease",
+      "transcription": "[siːs]",
+      "translation": "Прекратить"
+    },
+    {
+      "word": "To collaborate",
+      "transcription": "[kəˈlæbəreɪt]",
+      "translation": "Сотрудничать"
+    },
+    {
+      "word": "To reward",
+      "transcription": "[rɪˈwɔːd]",
+      "translation": "Награждать"
+    },
+    {
+      "word": "To come back",
+      "transcription": "[kʌm bæk]",
+      "translation": "Возвращаться"
+    },
+    {
+      "word": "To relate",
+      "transcription": "[rɪˈleɪt]",
+      "translation": "Относиться, касаться"
+    },
+    {
+      "word": "To upgrade",
+      "transcription": "[ʌpˈgreɪd]",
+      "translation": "Обновлять"
+    },
+    {
+      "word": "To restore",
+      "transcription": "[rɪsˈtɔː]",
+      "translation": "Восстановить"
+    },
+    {
+      "word": "To describe",
+      "transcription": "[dɪsˈkraɪb]",
+      "translation": "Описывать"
+    },
+    { "word": "To share", "transcription": "[ʃeə]", "translation": "Делиться" },
+    {
+      "word": "To increase",
+      "transcription": "[ˈɪnkriːs]",
+      "translation": "Увеличивать"
+    },
+    {
+      "word": "To automate",
+      "transcription": "[ˈɔːtəmeɪt]",
+      "translation": "Автоматизировать"
+    },
+    {
+      "word": "To manage",
+      "transcription": "[ˈmænɪʤ]",
+      "translation": "Управлять"
+    },
+    {
+      "word": "To provide",
+      "transcription": "[prəˈvaɪd]",
+      "translation": "Обеспечивать"
+    },
+    {
+      "word": "To integrate",
+      "transcription": "[ˈɪntɪgreɪt]",
+      "translation": "Соединять, интегрировать"
+    },
+    {
+      "word": "To realize",
+      "transcription": "[ˈrɪəlaɪz]",
+      "translation": "Реализовывать, осуществлять"
+    },
+    {
+      "word": "To remind",
+      "transcription": "[ˈrɪmaɪnd]",
+      "translation": "Напоминать"
+    },
+    {
+      "word": "To install",
+      "transcription": "[ɪnˈstɔːl]",
+      "translation": "Устанавливать"
+    },
+    {
+      "word": "To download",
+      "transcription": "[daʊnˈləʊd]",
+      "translation": "Загружать"
+    },
+    {
+      "word": "To unpack",
+      "transcription": "[ʌnˈpæk]",
+      "translation": "Распаковать"
+    },
+    {
+      "word": "To engage",
+      "transcription": "[ɪnˈgeɪʤ]",
+      "translation": "Увлечь, привлечь"
+    },
+    {
+      "word": "To create",
+      "transcription": "[kri(ː)ˈeɪt]",
+      "translation": "Создавать"
+    },
+    {
+      "word": "To prefer",
+      "transcription": "[priˈfɜː]",
+      "translation": "Предпочитать"
+    },
+    {
+      "word": "To inspire",
+      "transcription": "[ɪnˈspaɪə]",
+      "translation": "Вдохновлять"
+    },
+    {
+      "word": "To apply",
+      "transcription": "[əˈplaɪ]",
+      "translation": "Применять"
+    },
+    {
+      "word": "To explain",
+      "transcription": "[ɪksˈpleɪn]",
+      "translation": "Объяснять"
+    },
+    {
+      "word": "To simplify",
+      "transcription": "[ˈsɪmplɪfaɪ]",
+      "translation": "Упрощать"
+    },
+    {
+      "word": "To strive",
+      "transcription": "[straɪv]",
+      "translation": "Стремиться"
+    },
+    {
+      "word": "To arrive",
+      "transcription": "[əˈraɪv]",
+      "translation": "Прибывать"
+    },
+    {
+      "word": "To enable",
+      "transcription": "[ɪˈneɪbl]",
+      "translation": "Разрешить, включить"
+    },
+    {
+      "word": "To support",
+      "transcription": "[səˈpɔːt]",
+      "translation": "Поддерживать"
+    },
+    {
+      "word": "To allot",
+      "transcription": "[əˈlɒt]",
+      "translation": "Выделить"
+    },
+    {
+      "word": "To empower",
+      "transcription": "[ɪmˈpaʊə]",
+      "translation": "Разрешать, уполномочить"
+    },
+    {
+      "word": "To overwhelm",
+      "transcription": "[əʊvəˈwɛlm]",
+      "translation": "Переполнять"
+    },
+    {
+      "word": "To fulfill",
+      "transcription": "[fʊlˈfɪl]",
+      "translation": "Выполнять"
+    },
+    {
+      "word": "To take over",
+      "transcription": "[teɪk ˈəʊvə]",
+      "translation": "Принять на себя"
+    },
+    {
+      "word": "To encourage",
+      "transcription": "[ɪnˈkʌrɪʤ]",
+      "translation": "Поощрять"
+    },
+    {
+      "word": "To stimulate",
+      "transcription": "[ˈstɪmjʊleɪt]",
+      "translation": "Стимулировать"
+    },
+    {
+      "word": "To cause",
+      "transcription": "[kɔːz]",
+      "translation": "Вызывать"
+    },
+    {
+      "word": "To deal",
+      "transcription": "[diːl]",
+      "translation": "Справляться"
+    },
+    {
+      "word": "To reach",
+      "transcription": "[riːʧ]",
+      "translation": "Достигать"
+    },
+    {
+      "word": "To touch",
+      "transcription": "[tʌʧ]",
+      "translation": "Прикасаться"
+    },
+    {
+      "word": "To attain",
+      "transcription": "[əˈteɪn]",
+      "translation": "Достигать, получать"
+    },
+    {
+      "word": "To require",
+      "transcription": "[rɪˈkwaɪə]",
+      "translation": "Запрашивать, требовать"
+    },
+    {
+      "word": "To figure out",
+      "transcription": "[ˈfɪgər aʊt]",
+      "translation": "Разбираться"
+    },
+    {
+      "word": "To forgive",
+      "transcription": "[fəˈgɪv]",
+      "translation": "Прощать"
+    },
+    {
+      "word": "To light",
+      "transcription": "[laɪt]",
+      "translation": "Освещать, светить"
+    },
+    { "word": "To shine", "transcription": "[ʃaɪn]", "translation": "Сиять" },
+    {
+      "word": "To spread",
+      "transcription": "[sprɛd]",
+      "translation": "Распространять"
+    },
+    { "word": "To throw", "transcription": "[θrəʊ]", "translation": "Бросать" },
+    {
+      "word": "To spoil",
+      "transcription": "[spɔːɪl]",
+      "translation": "Испортить"
+    },
+    {
+      "word": "To split",
+      "transcription": "[splɪt]",
+      "translation": "Разбить, разделить"
+    },
+    {
+      "word": "To go mad",
+      "transcription": "[gəʊ mæd]",
+      "translation": "Сходить с ума"
+    },
+    {
+      "word": "To steal",
+      "transcription": "[stiːl]",
+      "translation": "Украсть"
+    },
+    { "word": "To smell", "transcription": "[smɛl]", "translation": "Пахнуть" }
+  ]
+}

@@ -1,0 +1,152 @@
+{
+  "words": [
+    {
+      "word": "cartoon",
+      "transcription": "[kɑːˈtuːn]",
+      "translation": "Мультфильм"
+    },
+    { "word": "movie", "transcription": "[ˈmuːvi]", "translation": "Фильм" },
+    { "word": "circus", "transcription": "[ˈsɜːkəs]", "translation": "Цирк" },
+    {
+      "word": "composer",
+      "transcription": "[kəmˈpəʊzə]",
+      "translation": "Композитор"
+    },
+    { "word": "dream", "transcription": "[driːm]", "translation": "Мечта" },
+    {
+      "word": "daily routine",
+      "transcription": "[ˈdeɪli ruːˈtiːn]",
+      "translation": "Ежедневная рутина"
+    },
+    { "word": "horror", "transcription": "[ˈhɒrə]", "translation": "Ужастик" },
+    { "word": "laughter", "transcription": "[ˈlɑːftə]", "translation": "Смех" },
+    { "word": "novel", "transcription": "[ˈnɒvəl]", "translation": "Роман" },
+    { "word": "story", "transcription": "[ˈstɔːri]", "translation": "История" },
+    {
+      "word": "weather forecast",
+      "transcription": "[ˈwɛðə ˈfɔːkɑːst]",
+      "translation": "Прогноз погоды"
+    },
+    { "word": "thought", "transcription": "[θɔːt]", "translation": "Мысль" },
+    {
+      "word": "writer",
+      "transcription": "[ˈraɪtə]",
+      "translation": "Писатель"
+    },
+    { "word": "access", "transcription": "[ˈæksɛs]", "translation": "Доступ" },
+    {
+      "word": "account",
+      "transcription": "[əˈkaʊnt]",
+      "translation": "Аккаунт"
+    },
+    {
+      "word": "adventure",
+      "transcription": "[ədˈvɛnʧə]",
+      "translation": "Приключение"
+    },
+    { "word": "affair", "transcription": "[əˈfeə]", "translation": "Страх" },
+    {
+      "word": "anniversary",
+      "transcription": "[ænɪˈvɜːsəri]",
+      "translation": "Дело, интрига"
+    },
+    {
+      "word": "entertainment",
+      "transcription": "[ɛntəˈteɪnmənt]",
+      "translation": "Развлечение"
+    },
+    {
+      "word": "amusement",
+      "transcription": "[əˈmjuːzmənt]",
+      "translation": "Веселье"
+    },
+    {
+      "word": "influence",
+      "transcription": "[ˈɪnflʊəns]",
+      "translation": "Влияние"
+    },
+    {
+      "word": "attraction",
+      "transcription": "[əˈtrækʃ(ə)n]",
+      "translation": "Достопримечательность, аттракцион"
+    },
+    {
+      "word": "rock-climbing",
+      "transcription": "[rɒk-ˈklaɪmɪŋ]",
+      "translation": "Скалолазание"
+    },
+    {
+      "word": "cycling",
+      "transcription": "[ˈsaɪklɪŋ]",
+      "translation": "Катание на велосипеде"
+    },
+    {
+      "word": "number painting",
+      "transcription": "[ˈnʌmbə ˈpeɪntɪŋ]",
+      "translation": "Живопись по номерам"
+    },
+    {
+      "word": "swimming pool",
+      "transcription": "[ˈswɪmɪŋ puːl]",
+      "translation": "Бассейн"
+    },
+    { "word": "yoga", "transcription": "[ˈjəʊgə]", "translation": "Йога" },
+    {
+      "word": "coffee shop",
+      "transcription": "[ˈkɒfi ʃɒp]",
+      "translation": "Кофейня"
+    },
+    {
+      "word": "central park",
+      "transcription": "[ˈsɛntrəl pɑːk]",
+      "translation": "Центральный парк"
+    },
+    {
+      "word": "inspiration",
+      "transcription": "[ɪnspəˈreɪʃən]",
+      "translation": "Вдохновение"
+    },
+    {
+      "word": "scenery",
+      "transcription": "[ˈsiːnəri]",
+      "translation": "Пейзаж"
+    },
+    {
+      "word": "landscape",
+      "transcription": "[ˈlænskeɪp]",
+      "translation": "Ландшафт, пейзаж"
+    },
+    {
+      "word": "computer game",
+      "transcription": "[kəmˈpjuːtə geɪm]",
+      "translation": "Компьютерная игра"
+    },
+    { "word": "mood", "transcription": "[muːd]", "translation": "Настроение" },
+    {
+      "word": "situation",
+      "transcription": "[sɪtjʊˈeɪʃən]",
+      "translation": "Ситуация"
+    },
+    {
+      "word": "movement",
+      "transcription": "[ˈmuːvmənt]",
+      "translation": "Движение"
+    },
+    {
+      "word": "arrangement",
+      "transcription": "[əˈreɪnʤmənt]",
+      "translation": "Договоренность"
+    },
+    {
+      "word": "accommodation",
+      "transcription": "[əˌkɒməˈdeɪʃ(ə)n]",
+      "translation": "Жилье"
+    },
+    {
+      "word": "beverage",
+      "transcription": "[ˈbɛvərɪʤ]",
+      "translation": "Напиток"
+    },
+    { "word": "binge", "transcription": "[bɪnʤ]", "translation": "Гулянка" }
+  ]
+}
