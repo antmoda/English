@@ -56,7 +56,6 @@ label,
 input,
 button {
   margin-bottom: 10px;
-  text-align: center; /* Центрируем текст внутри метки */
 }
 
 input {
