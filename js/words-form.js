@@ -21,7 +21,7 @@ document
     const blob = new Blob([newText], { type: "text/plain" });
     const link = document.createElement("a");
     link.href = URL.createObjectURL(blob);
-    link.download = "userText.txt";
+    link.download = "randomWords.txt";
     link.click();
 
     alert("Текст сохранен в файл!");

@@ -38,7 +38,7 @@ document
     const blob = new Blob([newText], { type: "text/plain" });
     const link = document.createElement("a");
     link.href = URL.createObjectURL(blob);
-    link.download = "words.txt";
+    link.download = "practiceTenses.txt";
     link.click();
 
     alert("Текст сохранен в файл!");
