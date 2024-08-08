@@ -33,3 +33,46 @@ body {
   margin-bottom: 20px;
   color: #333;
 }
+
+/* стили для формы отпрвки */
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+h1,
+h2 {
+  cursor: pointer;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+}
+
+label,
+input,
+button {
+  margin-bottom: 10px;
+}
+
+input {
+  width: calc(100% - 20px);
+  padding: 10px;
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+button {
+  padding: 10px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
