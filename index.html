@@ -4,203 +4,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>English Tenses Practice</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        margin: 20px;
-      }
-      .tense {
-        margin-bottom: 20px;
-      }
-      .tense h2 {
-        margin-bottom: 10px;
-        cursor: pointer;
-      }
-      .hint {
-        display: none;
-        margin-bottom: 10px;
-        font-style: italic;
-        color: #555;
-      }
-      .tense input {
-        display: block;
-        margin-bottom: 5px;
-        width: 100%;
-        padding: 8px;
-        box-sizing: border-box;
-      }
-      #example {
-        display: none;
-        margin-bottom: 20px;
-        font-weight: bold;
-        color: #333;
-      }
-      #randomVerb {
-        font-size: 1.2em;
-        margin-bottom: 20px;
-        color: #333;
-      }
-    </style>
-    <script>
-      function toggleHint(id) {
-        const hint = document.getElementById(id);
-        hint.style.display = hint.style.display === "none" ? "block" : "none";
-      }
-
-      function toggleExample() {
-        const example = document.getElementById("example");
-        example.style.display =
-          example.style.display === "none" ? "block" : "none";
-      }
-    </script>
-
-<script>
-      function getRandomVerb() {
-        const verbs = [
-          "be",
-          "beat",
-          "become",
-          "begin",
-          "bleed",
-          "blow",
-          "break",
-          "bring",
-          "build",
-          "burn",
-          "burst",
-          "buy",
-          "catch",
-          "choose",
-          "come",
-          "cost",
-          "creep",
-          "cut",
-          "do",
-          "draw",
-          "dream",
-          "drink",
-          "drive",
-          "eat",
-          "fall",
-          "feed",
-          "feel",
-          "fight",
-          "find",
-          "fit",
-          "fly",
-          "forget",
-          "forgive",
-          "freeze",
-          "get",
-          "give",
-          "go",
-          "grow",
-          "hang",
-          "have",
-          "hear",
-          "hide",
-          "hit",
-          "hold",
-          "hurt",
-          "keep",
-          "kneel",
-          "know",
-          "lay",
-          "lead",
-          "lean",
-          "learn",
-          "leave",
-          "lend",
-          "let",
-          "lie",
-          "light",
-          "lose",
-          "make",
-          "mean",
-          "meet",
-          "mistake",
-          "pay",
-          "prove",
-          "put",
-          "quit",
-          "read",
-          "ride",
-          "ring",
-          "rise",
-          "run",
-          "say",
-          "see",
-          "seek",
-          "sell",
-          "send",
-          "set",
-          "sew",
-          "shake",
-          "show",
-          "shrink",
-          "shut",
-          "sing",
-          "sink",
-          "sit",
-          "sleep",
-          "slide",
-          "sow",
-          "speak",
-          "spell",
-          "spend",
-          "spill",
-          "spoil",
-          "spread",
-          "spring",
-          "stand",
-          "steal",
-          "stick",
-          "sting",
-          "sweep",
-          "swell",
-          "swim",
-          "swing",
-          "take",
-          "teach",
-          "tear",
-          "tell",
-          "think",
-          "throw",
-          "understand",
-          "wake",
-          "wear",
-          "weep",
-          "wet",
-          "win",
-          "wind",
-          "write",
-        ];
-        const randomIndex = Math.floor(Math.random() * verbs.length);
-        return verbs[randomIndex];
-      }
-
-      function displayRandomVerb() {
-        const verb = getRandomVerb();
-        const verbElement = document.getElementById("randomVerb");
-        verbElement.textContent = `Example verb: ${verb}`;
-      }
-
-      window.onload = displayRandomVerb;
-    </script>
-    
+    <link rel="stylesheet" href="css/index.css" />
+    <script src="js/index.js" defer></script>
   </head>
   <body>
     <h1 onclick="toggleExample()">Practice English Tenses</h1>
     <div id="example">For example BRUSH TEETH</div>
+    <div id="randomVerb"></div>
 
-<div id="randomVerb"></div>
-    
     <div class="tense">
       <h2 onclick="toggleHint('hint7')">Verbs form</h2>
       <input type="text" placeholder="Input 1 verb form" />
       <input type="text" placeholder="Input 2 verb form" />
       <input type="text" placeholder="Input 3 verb form" />
     </div>
+
     <div class="tense">
       <h2 onclick="toggleHint('hint1')">Present Simple (настоящее простое)</h2>
       <div id="hint1" class="hint">
@@ -222,6 +40,7 @@
       />
       <input type="text" placeholder="Она чистит зубы перед завтраком?" />
     </div>
+
     <div class="tense">
       <h2 onclick="toggleHint('hint2')">
         Present Continuous (настоящее длительное)
@@ -239,6 +58,7 @@
       <input type="text" placeholder="? Is she brushing her teeth now?" />
       <input type="text" placeholder="Она чистит зубы сейчас?" />
     </div>
+
     <div class="tense">
       <h2 onclick="toggleHint('hint3')">
         Present Perfect (настоящее совершенное)
@@ -255,6 +75,7 @@
       <input type="text" placeholder="? Has she brushed her teeth yet?" />
       <input type="text" placeholder="Она уже почистила зубы?" />
     </div>
+
     <div class="tense">
       <h2 onclick="toggleHint('hint4')">Past Simple (прошедшее простое)</h2>
       <div id="hint4" class="hint">
@@ -277,6 +98,7 @@
         placeholder="Она вчера почистила зубы перед завтраком?"
       />
     </div>
+
     <div class="tense">
       <h2 onclick="toggleHint('hint5')">
         Past Continuous (прошедшее длительное)
@@ -284,9 +106,13 @@
       <div id="hint5" class="hint">
         Это значит что действие происходило в прошлом. Используется
         вспомогательный глагол 'Was / Were'. Это форма глагола 'to be' в
-        прошедшем времени. К основному глаголу добавляется окончание 'ing'. Таким образом, Past Simple используется для описания завершенных действий, а Past Continuous — для длительных действий, происходящих в определенный момент в прошлом. Примеры:
-I was reading when the doorbell rang. (Я читал, когда прозвенел дверной звонок.)
-They were playing in the park when it started to rain. (Они играли в парке, когда начался дождь.)
+        прошедшем времени. К основному глаголу добавляется окончание 'ing'.
+        Таким образом, Past Simple используется для описания завершенных
+        действий, а Past Continuous — для длительных действий, происходящих в
+        определенный момент в прошлом. Примеры: I was reading when the doorbell
+        rang. (Я читал, когда прозвенел дверной звонок.) They were playing in
+        the park when it started to rain. (Они играли в парке, когда начался
+        дождь.)
       </div>
       <input
         type="text"
@@ -307,6 +133,7 @@ They were playing in the park when it started to rain. (Они играли в �
         placeholder="Она вчера чистила зубы перед завтраком?"
       />
     </div>
+
     <div class="tense">
       <h2 onclick="toggleHint('hint6')">Future Simple (будущее простое)</h2>
       <div id="hint6" class="hint">
