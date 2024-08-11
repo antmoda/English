@@ -8,15 +8,15 @@ document
     // Получение существующего текста из файла (если есть)
     let existingText = localStorage.getItem("savedText") || "";
 
-    // Добавление даты сохранения
+    // Добавление даты сохранения перед новым текстом
     const currentDate = new Date().toLocaleString();
-    const textWithDate = `Дата сохранения: ${currentDate}\n${existingText}\n\n${userInput}`;
+    const newText = `${existingText}\n\nДата сохранения: ${currentDate}\n${userInput}`;
 
     // Сохранение текста в локальное хранилище
-    localStorage.setItem("savedText", textWithDate);
+    localStorage.setItem("savedText", newText);
 
     // Создание и скачивание файла
-    const blob = new Blob([textWithDate], { type: "text/plain" });
+    const blob = new Blob([newText], { type: "text/plain" });
     const link = document.createElement("a");
     link.href = URL.createObjectURL(blob);
     link.download = "randomWords.txt";

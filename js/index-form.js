@@ -25,9 +25,9 @@ document
     // Получение существующего текста из файла (если есть)
     let existingText = localStorage.getItem("savedText") || "";
 
-    // Добавление даты сохранения
+    // Добавление даты сохранения перед новым текстом
     const currentDate = new Date().toLocaleString();
-    const textWithDate = `Дата сохранения: ${currentDate}\n${existingText}\n${textToSave}`;
+    const textWithDate = `${existingText}\n\nДата сохранения: ${currentDate}\n${textToSave}`;
 
     // Сохранение текста в локальное хранилище
     localStorage.setItem("savedText", textWithDate);
