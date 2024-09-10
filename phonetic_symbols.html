@@ -4,69 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Phonetic Symbols</title>
-    <style>
-      table {
-        width: 100%;
-        border-collapse: collapse;
-      }
-      th,
-      td {
-        border: 1px solid #ddd;
-        padding: 8px;
-        text-align: center;
-        font-weight: bold; /* Make text bold */
-        cursor: pointer; /* Add cursor pointer */
-        transition: transform 0.3s, color 0.3s; /* Add transition for smooth effect */
-      }
-      th {
-        background-color: #f2f2f2;
-      }
-      td:hover {
-        color: red; /* Change color on hover */
-        transform: scale(1.5); /* Increase size on hover */
-      }
-      input {
-        width: 100%;
-        padding: 8px;
-        margin-top: 10px;
-      }
-      h1,
-      h2 {
-        text-align: center; /* Center align headers */
-      }
-      .buttons {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-        margin-top: 10px;
-      }
-      .buttons button {
-        padding: 10px 20px;
-        font-size: 16px;
-        cursor: pointer;
-      }
-    </style>
-    <script>
-      function insertSymbol(symbol) {
-        const inputField = document.getElementById("inputField");
-        inputField.value += symbol;
-      }
-
-      function addSpace() {
-        const inputField = document.getElementById("inputField");
-        inputField.value += " ";
-      }
-
-      function backspace() {
-        const inputField = document.getElementById("inputField");
-        inputField.value = inputField.value.slice(0, -1);
-      }
-
-      function clearInput() {
-        const inputField = document.getElementById("inputField");
-        inputField.value = "";
-      }
-    </script>
+    <link rel="icon" type="image/x-icon" href="img/united-kingdom.png" />
+    <link rel="stylesheet" href="css/phonetic_symbols.css" />
+    <script src="js/phonetic_symbols.js" defer></script>
   </head>
   <body>
     <h1>
