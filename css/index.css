@@ -5,26 +5,89 @@
     box-sizing: border-box;
 }
 
+:root {
+    --primary-bg: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    --container-bg: white;
+    --text-color: #333;
+    --text-secondary: #666;
+    --header-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --header-text: white;
+    --card-bg: white;
+    --card-border: #eee;
+    --card-shadow: rgba(0, 0, 0, 0.05);
+    --card-hover-shadow: rgba(0, 0, 0, 0.1);
+    --footer-bg: #f8f9fa;
+    --footer-border: #eee;
+    --accent-gradient: linear-gradient(to bottom, #667eea, #764ba2);
+}
+
+.dark-theme {
+    --primary-bg: linear-gradient(135deg, #232526 0%, #414345 100%);
+    --container-bg: #2c2c2c;
+    --text-color: #f0f0f0;
+    --text-secondary: #b0b0b0;
+    --header-bg: linear-gradient(135deg, #485563 0%, #29323c 100%);
+    --header-text: #f0f0f0;
+    --card-bg: #3c3c3c;
+    --card-border: #555;
+    --card-shadow: rgba(0, 0, 0, 0.2);
+    --card-hover-shadow: rgba(0, 0, 0, 0.3);
+    --footer-bg: #2a2a2a;
+    --footer-border: #444;
+    --accent-gradient: linear-gradient(to bottom, #485563, #29323c);
+}
+
 body {
     font-family: 'Roboto', sans-serif;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-    color: #333;
+    background: var(--primary-bg);
+    color: var(--text-color);
     line-height: 1.6;
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 20px;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.theme-switcher {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 100;
+}
+
+#theme-toggle {
+    background: var(--accent-gradient);
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+#theme-toggle:hover {
+    transform: scale(1.1);
+}
+
+.theme-icon {
+    font-size: 1.5rem;
 }
 
 .book-container {
-    background-color: white;
+    background-color: var(--container-bg);
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 1000px;
     overflow: hidden;
     position: relative;
+    transition: background-color 0.3s ease;
 }
 
 .book-container::before {
@@ -34,15 +97,17 @@ body {
     left: 0;
     right: 0;
     height: 5px;
-    background: linear-gradient(90deg, #ff7e5f, #feb47b);
+    background: var(--accent-gradient);
+    transition: background 0.3s ease;
 }
 
 /* Заголовок */
 .book-header {
     text-align: center;
     padding: 40px 20px 20px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
+    background: var(--header-bg);
+    color: var(--header-text);
+    transition: background 0.3s ease;
 }
 
 .book-header h1 {
@@ -69,16 +134,18 @@ body {
 
 .welcome-section h2 {
     font-family: 'Playfair Display', serif;
-    color: #333;
+    color: var(--text-color);
     margin-bottom: 15px;
     font-size: 1.8rem;
+    transition: color 0.3s ease;
 }
 
 .welcome-section p {
-    color: #666;
+    color: var(--text-secondary);
     max-width: 700px;
     margin: 0 auto;
     font-size: 1.1rem;
+    transition: color 0.3s ease;
 }
 
 /* Сітка розділів */
@@ -91,17 +158,18 @@ body {
 
 .chapter-card {
     display: block;
-    background: white;
+    background: var(--card-bg);
     border-radius: 10px;
     padding: 25px 20px;
     text-align: center;
     text-decoration: none;
     color: inherit;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 5px 15px var(--card-shadow);
     transition: all 0.3s ease;
-    border: 1px solid #eee;
+    border: 1px solid var(--card-border);
     position: relative;
     overflow: hidden;
+    transition: all 0.3s ease;
 }
 
 .chapter-card::before {
@@ -111,13 +179,13 @@ body {
     left: 0;
     width: 5px;
     height: 0;
-    background: linear-gradient(to bottom, #667eea, #764ba2);
+    background: var(--accent-gradient);
     transition: height 0.3s ease;
 }
 
 .chapter-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 25px var(--card-hover-shadow);
 }
 
 .chapter-card:hover::before {
@@ -132,26 +200,30 @@ body {
 .chapter-card h3 {
     font-family: 'Playfair Display', serif;
     margin-bottom: 10px;
-    color: #333;
+    color: var(--text-color);
     font-size: 1.3rem;
+    transition: color 0.3s ease;
 }
 
 .chapter-card p {
-    color: #666;
+    color: var(--text-secondary);
     font-size: 0.95rem;
+    transition: color 0.3s ease;
 }
 
 /* Футер */
 .book-footer {
     text-align: center;
     padding: 20px;
-    background-color: #f8f9fa;
-    border-top: 1px solid #eee;
+    background-color: var(--footer-bg);
+    border-top: 1px solid var(--footer-border);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .book-footer p {
     font-size: 1.1rem;
-    color: #666;
+    color: var(--text-secondary);
+    transition: color 0.3s ease;
 }
 
 /* Адаптивність */
@@ -166,6 +238,16 @@ body {
     
     .welcome-section h2 {
         font-size: 1.5rem;
+    }
+    
+    .theme-switcher {
+        top: 10px;
+        right: 10px;
+    }
+    
+    #theme-toggle {
+        width: 40px;
+        height: 40px;
     }
 }
 
