@@ -6,7 +6,230 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Таблиця англійських часів</title>
 	<link rel="icon" type="image/x-icon" href="../img/united-kingdom.png" />
-	<link rel="stylesheet" href="../css/english_tenses.css">
+	<style>
+		* {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+		}
+
+		body {
+			background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+			min-height: 100vh;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			padding: 20px;
+		}
+
+		.container {
+			width: 100%;
+			max-width: 1400px;
+			background: white;
+			border-radius: 15px;
+			box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+			overflow: hidden;
+			margin: 20px 0;
+			display: flex;
+			flex-direction: column;
+			height: calc(100vh - 40px);
+		}
+
+		header {
+			background: #4a6fa5;
+			color: white;
+			text-align: center;
+			padding: 20px;
+			border-bottom: 5px solid #6e9cd2;
+		}
+
+		h1 {
+			font-size: 2.5rem;
+			margin-bottom: 10px;
+		}
+
+		.subtitle {
+			font-size: 1.2rem;
+			opacity: 0.9;
+		}
+
+		.table-container {
+			flex: 1;
+			overflow: auto;
+			padding: 0;
+		}
+
+		table {
+			width: 100%;
+			border-collapse: collapse;
+			text-align: center;
+			font-size: 16px;
+			height: 100%;
+			min-width: 800px;
+		}
+
+		th,
+		td {
+			padding: 15px;
+			border: 2px solid #000;
+			vertical-align: middle;
+		}
+
+		th {
+			background-color: #4a6fa5;
+			color: white;
+			font-weight: 600;
+			font-size: 18px;
+			position: sticky;
+			top: 0;
+			z-index: 10;
+		}
+
+		.time-header {
+			background-color: #3a5a8a;
+			position: sticky;
+			left: 0;
+			z-index: 5;
+		}
+
+		.time-cell {
+			background-color: #6e9cd2;
+			color: white;
+			font-weight: bold;
+			width: 120px;
+			text-align: center;
+			vertical-align: middle;
+			position: sticky;
+			left: 0;
+		}
+
+		tr:nth-child(even) {
+			background-color: #f8f9fc;
+		}
+
+		tr:hover {
+			background-color: #e9ecf5;
+		}
+
+		.simple {
+			background-color: #ffd8cb;
+		}
+
+		.continuous {
+			background-color: #cbf0cb;
+		}
+
+		.perfect {
+			background-color: #cbd0f0;
+		}
+
+		.perfect-continuous {
+			background-color: #f0cbeb;
+		}
+
+		.formula {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			/* Вертикальне вирівнювання по центру */
+			align-items: center;
+			/* Горизонтальне вирівнювання по центру */
+			min-height: 60px;
+			/* Мінімальна висота для кращого вигляду */
+		}
+
+		.download-section {
+			text-align: center;
+			padding: 20px;
+			background: #f8f9fc;
+			border-top: 1px solid #d1d9e6;
+		}
+
+		.download-btn {
+			display: inline-block;
+			padding: 15px 40px;
+			background: #4a6fa5;
+			color: white;
+			text-decoration: none;
+			border-radius: 50px;
+			font-weight: 600;
+			font-size: 18px;
+			transition: all 0.3s ease;
+			box-shadow: 0 5px 15px rgba(74, 111, 165, 0.4);
+			border: none;
+			cursor: pointer;
+		}
+
+		.download-btn:hover {
+			background: #3a5a8a;
+			transform: translateY(-3px);
+			box-shadow: 0 8px 20px rgba(74, 111, 165, 0.6);
+		}
+
+		footer {
+			text-align: center;
+			margin-top: 20px;
+			color: #6c757d;
+			font-size: 14px;
+		}
+
+		@media (max-width: 992px) {
+
+			th,
+			td {
+				padding: 12px 10px;
+				font-size: 15px;
+			}
+
+			h1 {
+				font-size: 2.2rem;
+			}
+		}
+
+		@media (max-width: 768px) {
+
+			th,
+			td {
+				padding: 10px 8px;
+				font-size: 14px;
+			}
+
+			h1 {
+				font-size: 1.8rem;
+			}
+
+			.formula {
+				font-size: 13px;
+			}
+		}
+
+		@media (max-width: 576px) {
+			.container {
+				height: auto;
+				min-height: 100vh;
+			}
+
+			th,
+			td {
+				padding: 8px 6px;
+			}
+
+			h1 {
+				font-size: 1.6rem;
+			}
+
+			.formula {
+				font-size: 12px;
+				margin: 5px 0;
+			}
+
+			.download-btn {
+				padding: 12px 30px;
+				font-size: 16px;
+			}
+		}
+	</style>
 </head>
 
 <body>
@@ -112,3 +335,4 @@
 </body>
 
 </html>
+
