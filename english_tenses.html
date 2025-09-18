@@ -1,237 +1,113 @@
 <!DOCTYPE html>
 <html lang="uk">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Таблиця англійських часів</title>
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        body {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-        .container {
-            max-width: 1200px;
-            width: 100%;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-            overflow: hidden;
-            margin: 20px 0;
-        }
-        header {
-            background: #4a6fa5;
-            color: white;
-            text-align: center;
-            padding: 25px;
-            border-bottom: 5px solid #6e9cd2;
-        }
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
-        .subtitle {
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
-        .table-container {
-            overflow-x: auto;
-            padding: 20px;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            text-align: center;
-            font-size: 16px;
-        }
-        th, td {
-            padding: 15px;
-            border: 1px solid #d1d9e6;
-            vertical-align: top;
-        }
-        th {
-            background-color: #4a6fa5;
-            color: white;
-            font-weight: 600;
-            font-size: 18px;
-        }
-        tr:nth-child(even) {
-            background-color: #f8f9fc;
-        }
-        tr:hover {
-            background-color: #e9ecf5;
-        }
-        .time-column {
-            background-color: #6e9cd2;
-            color: white;
-            font-weight: bold;
-            width: 120px;
-        }
-        .simple {
-            background-color: #ffd8cb;
-        }
-        .continuous {
-            background-color: #cbf0cb;
-        }
-        .perfect {
-            background-color: #cbd0f0;
-        }
-        .perfect-continuous {
-            background-color: #f0cbeb;
-        }
-        .formula {
-            font-weight: 500;
-            margin: 8px 0;
-            line-height: 1.5;
-        }
-        .download-section {
-            text-align: center;
-            padding: 25px;
-            background: #f8f9fc;
-            border-top: 1px solid #d1d9e6;
-        }
-        .download-btn {
-            display: inline-block;
-            padding: 15px 40px;
-            background: #4a6fa5;
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 18px;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(74, 111, 165, 0.4);
-        }
-        .download-btn:hover {
-            background: #3a5a8a;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(74, 111, 165, 0.6);
-        }
-        footer {
-            text-align: center;
-            margin-top: 20px;
-            color: #6c757d;
-            font-size: 14px;
-        }
-        @media (max-width: 768px) {
-            th, td {
-                padding: 10px 8px;
-                font-size: 14px;
-            }
-            h1 {
-                font-size: 2rem;
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <header>
-            <h1>Таблиця англійських часів</h1>
-            <p class="subtitle">Повний огляд граматичних часів англійської мови</p>
-        </header>
-        
-        <div class="table-container">
-            <table>
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th>Simple</th>
-                        <th>Continuous</th>
-                        <th>Perfect</th>
-                        <th>Perfect Continuous</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="time-column">Present</td>
-                        <td class="simple">
-                            <div class="formula">I/You/We/They + V</div>
-                            <div class="formula">He/She/It + V + -s (-es)</div>
-                        </td>
-                        <td class="continuous">
-                            <div class="formula">I + am + V + -ing</div>
-                            <div class="formula">He/She/It + is + V + -ing</div>
-                        </td>
-                        <td class="perfect">
-                            <div class="formula">I/You/We/They + have + V3/V(-ed)</div>
-                            <div class="formula">He/She/It + has + V3/V(-ed)</div>
-                        </td>
-                        <td class="perfect-continuous">
-                            <div class="formula">I/You/We/They + have been + V + -ing</div>
-                            <div class="formula">He/She/It + has been + V + -ing</div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="time-column">Past</td>
-                        <td class="simple">
-                            <div class="formula">I/He/She/It/You/We/They + V2/(V(-ed))</div>
-                        </td>
-                        <td class="continuous">
-                            <div class="formula">I/He/She/It + was + V + -ing</div>
-                        </td>
-                        <td class="perfect">
-                            <div class="formula">I/He/She/It/You/We/They + had + V3/V(-ed)</div>
-                        </td>
-                        <td class="perfect-continuous">
-                            <div class="formula">I/He/She/It/You/We/They + had been + V + -ing</div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="time-column">Future</td>
-                        <td class="simple">
-                            <div class="formula">I/He/She/It/You/We/They + will + V</div>
-                        </td>
-                        <td class="continuous">
-                            <div class="formula">I/He/She/It/You/We/They + will be + V + -ing</div>
-                        </td>
-                        <td class="perfect">
-                            <div class="formula">I/He/She/It/You/We/They + will have + V3/V(-ed)</div>
-                        </td>
-                        <td class="perfect-continuous">
-                            <div class="formula">I/He/She/It/You/We/They + will have been + V + -ing</div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        
-        <div class="download-section">
-            <a href="#" class="download-btn" onclick="downloadPage()">Завантажити таблицю</a>
-        </div>
-    </div>
-    
-    <footer>
-        <p>Таблиця англійських часів &copy; 2023</p>
-    </footer>
 
-    <script>
-        function downloadPage() {
-            const sourceHTML = document.documentElement.outerHTML;
-            const blob = new Blob([sourceHTML], { type: 'text/html' });
-            const url = URL.createObjectURL(blob);
-            
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'english_tenses_table.html';
-            document.body.appendChild(a);
-            a.click();
-            
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
-            
-            alert('Таблицю завантажено! Відкрийте завантажений файл у браузері.');
-        }
-    </script>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Таблиця англійських часів</title>
+	<link rel="stylesheet" href="css/english_tenses.css">
+</head>
+
+<body>
+	<div class="container">
+		<header>
+			<h1>Таблиця англійських часів</h1>
+			<p class="subtitle">Повний огляд граматичних часів англійської мови</p>
+		</header>
+
+		<div class="table-container">
+			<table>
+				<thead>
+					<tr>
+						<th class="time-header"></th>
+						<th>Simple</th>
+						<th>Continuous</th>
+						<th>Perfect</th>
+						<th>Perfect Continuous</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="time-cell">Present</td>
+						<td class="simple">
+							<div class="formula">I/You/We/They + V</div>
+							<div class="formula">He/She/It + V + -s (-es)</div>
+						</td>
+						<td class="continuous">
+							<div class="formula">I + am + V + -ing</div>
+							<div class="formula">He/She/It + is + V + -ing</div>
+							<div class="formula">You/We/They + are + V + -ing</div>
+						</td>
+						<td class="perfect">
+							<div class="formula">I/You/We/They + have + V3/V(-ed)</div>
+							<div class="formula">He/She/It + has + V3/V(-ed)</div>
+						</td>
+						<td class="perfect-continuous">
+							<div class="formula">I/You/We/They + have been + V + -ing</div>
+							<div class="formula">He/She/It + has been + V + -ing</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="time-cell">Past</td>
+						<td class="simple">
+							<div class="formula">I/He/She/It/You/We/They + V2/V(-ed)</div>
+						</td>
+						<td class="continuous">
+							<div class="formula">I/He/She/It + was + V + -ing</div>
+							<div class="formula">You/We/They + were + V + -ing</div>
+						</td>
+						<td class="perfect">
+							<div class="formula">I/He/She/It/You/We/They + had + V3/V(-ed)</div>
+						</td>
+						<td class="perfect-continuous">
+							<div class="formula">I/He/She/It/You/We/They + had been + V + -ing</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="time-cell">Future</td>
+						<td class="simple">
+							<div class="formula">I/He/She/It/You/We/They + will + V</div>
+						</td>
+						<td class="continuous">
+							<div class="formula">I/He/She/It/You/We/They + will be + V + -ing</div>
+						</td>
+						<td class="perfect">
+							<div class="formula">I/He/She/It/You/We/They + will have + V3/V(-ed)</div>
+						</td>
+						<td class="perfect-continuous">
+							<div class="formula">I/He/She/It/You/We/They + will have been + V + -ing</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div class="download-section">
+			<button class="download-btn" onclick="downloadPage()">Завантажити таблицю</button>
+		</div>
+	</div>
+
+	<footer>
+	</footer>
+
+	<script>
+		function downloadPage() {
+			const sourceHTML = document.documentElement.outerHTML;
+			const blob = new Blob([sourceHTML], { type: 'text/html' });
+			const url = URL.createObjectURL(blob);
+
+			const a = document.createElement('a');
+			a.href = url;
+			a.download = 'english_tenses_table.html';
+			document.body.appendChild(a);
+			a.click();
+
+			document.body.removeChild(a);
+			URL.revokeObjectURL(url);
+
+			alert('Таблицю завантажено! Відкрийте завантажений файл у браузері.');
+		}
+	</script>
 </body>
+
 </html>
