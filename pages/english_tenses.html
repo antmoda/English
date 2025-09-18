@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Таблиця англійських часів</title>
+	<link rel="icon" type="image/x-icon" href="../img/united-kingdom.png" />
+	<link rel="stylesheet" href="../css/english_tenses.css">
+</head>
+
+<body>
+	<div class="container">
+		<header>
+			<h1>Таблиця англійських часів</h1>
+			<p class="subtitle">Повний огляд граматичних часів англійської мови</p>
+		</header>
+
+		<div class="table-container">
+			<table>
+				<thead>
+					<tr>
+						<th class="time-header"></th>
+						<th>Simple</th>
+						<th>Continuous</th>
+						<th>Perfect</th>
+						<th>Perfect Continuous</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="time-cell">Present</td>
+						<td class="simple">
+							<div class="formula">I/You/We/They + V</div>
+							<div class="formula">He/She/It + V + -s (-es)</div>
+						</td>
+						<td class="continuous">
+							<div class="formula">I + am + V + -ing</div>
+							<div class="formula">He/She/It + is + V + -ing</div>
+							<div class="formula">You/We/They + are + V + -ing</div>
+						</td>
+						<td class="perfect">
+							<div class="formula">I/You/We/They + have + V3/V(-ed)</div>
+							<div class="formula">He/She/It + has + V3/V(-ed)</div>
+						</td>
+						<td class="perfect-continuous">
+							<div class="formula">I/You/We/They + have been + V + -ing</div>
+							<div class="formula">He/She/It + has been + V + -ing</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="time-cell">Past</td>
+						<td class="simple">
+							<div class="formula">I/He/She/It/You/We/They + V2/V(-ed)</div>
+						</td>
+						<td class="continuous">
+							<div class="formula">I/He/She/It + was + V + -ing</div>
+							<div class="formula">You/We/They + were + V + -ing</div>
+						</td>
+						<td class="perfect">
+							<div class="formula">I/He/She/It/You/We/They + had + V3/V(-ed)</div>
+						</td>
+						<td class="perfect-continuous">
+							<div class="formula">I/He/She/It/You/We/They + had been + V + -ing</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="time-cell">Future</td>
+						<td class="simple">
+							<div class="formula">I/He/She/It/You/We/They + will + V</div>
+						</td>
+						<td class="continuous">
+							<div class="formula">I/He/She/It/You/We/They + will be + V + -ing</div>
+						</td>
+						<td class="perfect">
+							<div class="formula">I/He/She/It/You/We/They + will have + V3/V(-ed)</div>
+						</td>
+						<td class="perfect-continuous">
+							<div class="formula">I/He/She/It/You/We/They + will have been + V + -ing</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div class="download-section">
+			<button class="download-btn" onclick="downloadPage()">Завантажити таблицю</button>
+		</div>
+	</div>
+
+	<footer>
+	</footer>
+
+	<script>
+		function downloadPage() {
+			const sourceHTML = document.documentElement.outerHTML;
+			const blob = new Blob([sourceHTML], { type: 'text/html' });
+			const url = URL.createObjectURL(blob);
+
+			const a = document.createElement('a');
+			a.href = url;
+			a.download = 'english_tenses_table.html';
+			document.body.appendChild(a);
+			a.click();
+
+			document.body.removeChild(a);
+			URL.revokeObjectURL(url);
+
+			alert('Таблицю завантажено! Відкрийте завантажений файл у браузері.');
+		}
+	</script>
+</body>
+
+</html>
