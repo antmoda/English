@@ -9,12 +9,12 @@ async function fetchRandomWords() {
       adjectivesResponse,
       adverbsResponse,
     ] = await Promise.all([
-      fetch("json/verbs.json"),
-      fetch("json/nouns-carier.json"),
-      fetch("json/nouns-rest.json"),
-      fetch("json/climate.json"),
-      fetch("json/adjectives.json"),
-      fetch("json/adverbs.json"),
+      fetch("../json/verbs.json"),
+      fetch("../json/nouns-carier.json"),
+      fetch("../json/nouns-rest.json"),
+      fetch("../json/climate.json"),
+      fetch("../json/adjectives.json"),
+      fetch("../json/adverbs.json"),
     ]);
 
     // Парсинг JSON данных
