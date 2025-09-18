@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Phonetic Symbols</title>
+    <link rel="icon" type="image/x-icon" href="../img/united-kingdom.png" />
+    <link rel="stylesheet" href="../css/phonetic_symbols.css" />
+    <script src="../js/phonetic_symbols.js" defer></script>
+  </head>
+  <body>
+    <h1>
+      <a
+        href="https://grade.ua/uk/blog/transkripcziya-bukv-i-zvukov-anglijskogo-yazyka/"
+        target="_blank"
+        >Phonetic Symbols</a
+      >
+    </h1>
+    <h2>Consonant Sounds</h2>
+    <table>
+      <tr>
+        <td onclick="insertSymbol('p')">p</td>
+        <td onclick="insertSymbol('f')">f</td>
+        <td onclick="insertSymbol('t')">t</td>
+        <td onclick="insertSymbol('θ')">θ</td>
+        <td onclick="insertSymbol('tʃ')">tʃ</td>
+        <td onclick="insertSymbol('s')">s</td>
+        <td onclick="insertSymbol('ʃ')">ʃ</td>
+        <td onclick="insertSymbol('k')">k</td>
+      </tr>
+      <tr>
+        <td onclick="insertSymbol('b')">b</td>
+        <td onclick="insertSymbol('v')">v</td>
+        <td onclick="insertSymbol('d')">d</td>
+        <td onclick="insertSymbol('ð')">ð</td>
+        <td onclick="insertSymbol('ʤ')">ʤ</td>
+        <td onclick="insertSymbol('z')">z</td>
+        <td onclick="insertSymbol('ʒ')">ʒ</td>
+        <td onclick="insertSymbol('g')">g</td>
+      </tr>
+      <tr>
+        <td onclick="insertSymbol('h')">h</td>
+        <td onclick="insertSymbol('m')">m</td>
+        <td onclick="insertSymbol('n')">n</td>
+        <td onclick="insertSymbol('ŋ')">ŋ</td>
+        <td onclick="insertSymbol('r')">r</td>
+        <td onclick="insertSymbol('l')">l</td>
+        <td onclick="insertSymbol('w')">w</td>
+        <td onclick="insertSymbol('j')">j</td>
+      </tr>
+    </table>
+
+    <h2>Vowel Sounds</h2>
+    <table>
+      <tr>
+        <td onclick="insertSymbol('æ')">æ</td>
+        <td onclick="insertSymbol('ɑ:')">ɑ:</td>
+        <td onclick="insertSymbol('i:')">i:</td>
+        <td onclick="insertSymbol('ɪ')">ɪ</td>
+        <td onclick="insertSymbol('ɛ')">ɛ</td>
+        <td onclick="insertSymbol('ɒ')">ɒ</td>
+        <td onclick="insertSymbol('ɔː')">ɔː</td>
+        <td onclick="insertSymbol('ʊ')">ʊ</td>
+      </tr>
+      <tr>
+        <td onclick="insertSymbol('u:')">u:</td>
+        <td onclick="insertSymbol('ʌ')">ʌ</td>
+        <td onclick="insertSymbol('ɜː')">ɜː</td>
+        <td onclick="insertSymbol('ǝ')">ǝ</td>
+      </tr>
+    </table>
+
+    <h2>Diphthongs</h2>
+    <table>
+      <tr>
+        <td onclick="insertSymbol('eɪ')">eɪ</td>
+        <td onclick="insertSymbol('aɪ')">aɪ</td>
+        <td onclick="insertSymbol('aʊ')">aʊ</td>
+        <td onclick="insertSymbol('oʊ')">oʊ</td>
+        <td onclick="insertSymbol('ǝʊ')">ǝʊ</td>
+        <td onclick="insertSymbol('ɔɪ')">ɔɪ</td>
+        <td onclick="insertSymbol('ɪǝ')">ɪǝ</td>
+        <td onclick="insertSymbol('eǝ')">eǝ</td>
+        <td onclick="insertSymbol('ʊǝ')">ʊǝ</td>
+      </tr>
+    </table>
+
+    <h2>Other Symbols</h2>
+    <table>
+      <tr>
+        <td onclick="insertSymbol('ˈ')">ˈ</td>
+        <td onclick="insertSymbol('ˌ')">ˌ</td>
+        <td onclick="insertSymbol('ɑ')">ɑ</td>
+        <td onclick="insertSymbol('i')">i</td>
+        <td onclick="insertSymbol('ɔ')">ɔ</td>
+        <td onclick="insertSymbol('u')">u</td>
+        <td onclick="insertSymbol('ɜ')">ɜ</td>
+      </tr>
+    </table>
+
+    <div class="buttons">
+      <button onclick="addSpace()">Space</button>
+      <button onclick="backspace()">Backspace</button>
+      <button onclick="clearInput()">Clear</button>
+    </div>
+    <input
+      type="text"
+      id="inputField"
+      placeholder="Enter phonetic symbols here"
+    />
+  </body>
+</html>
