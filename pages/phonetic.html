@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Повний тренажер англійської транскрипції</title>
+	<style>
+		:root {
+			--primary: #4a6fa5;
+			--secondary: #6b8cae;
+			--accent: #ff6b6b;
+			--light: #f8f9fa;
+			--dark: #343a40;
+			--success: #28a745;
+			--warning: #ffc107;
+		}
+
+		body {
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			line-height: 1.6;
+			color: var(--dark);
+			background-color: var(--light);
+			margin: 0;
+			padding: 0;
+		}
+
+		.container {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 20px;
+		}
+
+		header {
+			background: linear-gradient(135deg, var(--primary), var(--secondary));
+			color: white;
+			padding: 30px 0;
+			text-align: center;
+			margin-bottom: 30px;
+			border-radius: 0 0 10px 10px;
+			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+		}
+
+		h1 {
+			color: white;
+		}
+
+		h2,
+		h3 {
+			color: var(--primary);
+		}
+
+		section {
+			background: white;
+			padding: 25px;
+			margin-bottom: 30px;
+			border-radius: 10px;
+			box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+			transition: transform 0.3s;
+		}
+
+		section:hover {
+			transform: translateY(-5px);
+		}
+
+		table {
+			width: 100%;
+			border-collapse: collapse;
+			margin: 20px 0;
+		}
+
+		th,
+		td {
+			border: 1px solid #ddd;
+			padding: 12px;
+			text-align: center;
+		}
+
+		th {
+			background-color: var(--secondary);
+			color: white;
+			position: sticky;
+			top: 0;
+		}
+
+		ul {
+			list-style: none;
+		}
+
+		tr:nth-child(even) {
+			background-color: #f9f9f9;
+		}
+
+		tr:hover {
+			background-color: #f0f7ff;
+		}
+
+		.phonetic {
+			font-family: 'Courier New', monospace;
+			font-weight: bold;
+			font-size: 1.2em;
+			color: var(--primary);
+		}
+
+		.example-word {
+			cursor: pointer;
+			color: var(--primary);
+			font-weight: bold;
+			transition: all 0.3s;
+			padding: 2px 5px;
+			border-radius: 3px;
+		}
+
+		.example-word:hover {
+			color: var(--accent);
+			background-color: #f0f7ff;
+			text-decoration: underline;
+		}
+
+		.sound-btn {
+			background: var(--primary);
+			color: white;
+			border: none;
+			padding: 10px 18px;
+			border-radius: 5px;
+			cursor: pointer;
+			margin: 5px;
+			transition: all 0.3s;
+			font-weight: bold;
+		}
+
+		.sound-btn:hover {
+			background: var(--secondary);
+			transform: translateY(-2px);
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+		}
+
+		.tab {
+			overflow: hidden;
+			border: 1px solid #ccc;
+			background-color: #f1f1f1;
+			border-radius: 5px 5px 0 0;
+			display: flex;
+			flex-wrap: wrap;
+		}
+
+		.tab button {
+			background-color: inherit;
+			border: none;
+			outline: none;
+			cursor: pointer;
+			padding: 14px 16px;
+			transition: 0.3s;
+			font-size: 16px;
+			flex-grow: 1;
+		}
+
+		.tab button:hover {
+			background-color: #ddd;
+		}
+
+		.tab button.active {
+			background-color: var(--primary);
+			color: white;
+		}
+
+		.tabcontent {
+			display: none;
+			padding: 20px;
+			border: 1px solid #ccc;
+			border-top: none;
+			border-radius: 0 0 5px 5px;
+			animation: fadeEffect 0.5s;
+		}
+
+		@keyframes fadeEffect {
+			from {
+				opacity: 0;
+			}
+
+			to {
+				opacity: 1;
+			}
+		}
+
+		.note {
+			background-color: #fff9e6;
+			border-left: 4px solid #ffcc00;
+			padding: 20px;
+			margin: 20px 0;
+			border-radius: 5px;
+		}
+
+		.warning {
+			background-color: #ffe6e6;
+			border-left: 4px solid #ff4d4d;
+			padding: 20px;
+			margin: 20px 0;
+			border-radius: 5px;
+		}
+
+		.success {
+			background-color: #e6ffe6;
+			border-left: 4px solid #28a745;
+			padding: 20px;
+			margin: 20px 0;
+			border-radius: 5px;
+		}
+
+		.interactive-demo {
+			background-color: #f5f8ff;
+			padding: 25px;
+			border-radius: 8px;
+			margin: 25px 0;
+			border-left: 4px solid var(--primary);
+		}
+
+		.ipa-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+			gap: 15px;
+			margin: 20px 0;
+		}
+
+		.ipa-card {
+			background: white;
+			padding: 15px;
+			border-radius: 8px;
+			box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+			text-align: center;
+			transition: transform 0.3s;
+		}
+
+		.ipa-card:hover {
+			transform: translateY(-5px);
+			box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+		}
+
+		.ipa-symbol {
+			font-size: 24px;
+			font-weight: bold;
+			color: var(--primary);
+			margin-bottom: 10px;
+		}
+
+		.ipa-example {
+			font-style: italic;
+			color: #666;
+		}
+
+		footer {
+			text-align: center;
+			padding: 30px;
+			margin-top: 40px;
+			background: var(--dark);
+			color: white;
+			border-radius: 10px 10px 0 0;
+		}
+
+		.progress-container {
+			width: 100%;
+			background-color: #f1f1f1;
+			border-radius: 5px;
+			margin: 20px 0;
+		}
+
+		.progress-bar {
+			height: 20px;
+			background-color: var(--success);
+			border-radius: 5px;
+			width: 0%;
+			transition: width 0.5s;
+		}
+
+		.input-field {
+			padding: 12px;
+			border: 1px solid #ddd;
+			border-radius: 5px;
+			width: 100%;
+			margin: 10px 0;
+			font-size: 16px;
+		}
+
+		@media (max-width: 768px) {
+			table {
+				font-size: 0.9em;
+			}
+
+			th,
+			td {
+				padding: 8px 5px;
+			}
+
+			.ipa-grid {
+				grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<header>
+		<div class="container">
+			<h1>Повний тренажер англійської транскрипції</h1>
+			<p>Інтерактивний посібник для вивчення Міжнародного фонетичного алфавіту (IPA) та правил читання</p>
+		</div>
+	</header>
+
+	<div class="container">
+		<section id="intro">
+			<h2>Що таке транскрипція англійських слів?</h2>
+			<p>Англійська транскрипція — це система запису звуків англійської мови через спеціальні фонетичні символи.
+				Вона дає можливість точно передати, як звучить слово, а не як воно пишеться.</p>
+
+			<div class="note">
+				<p>Наприклад, у словах <span class="example-word" onclick="playSound('through')">through</span> і <span
+						class="example-word" onclick="playSound('though')">though</span> написання схоже, але
+					вимовляються вони по-різному: /θruː/ і /ðəʊ/. Без транскрипції така різниця була б складною для
+					вивчення.</p>
+			</div>
+
+			<div class="interactive-demo">
+				<h3>Чому важливо вивчати транскрипцію?</h3>
+				<ul>
+					<li>Допомагає правильно вимовляти нові слова</li>
+					<li>Покращує розуміння мови на слух</li>
+					<li>Дозволяє уникнути помилок, пов'язаних з неправильним читанням</li>
+					<li>Є основою для впевненого спілкування</li>
+				</ul>
+			</div>
+		</section>
+
+		<section id="alphabet">
+			<h2>Англійський алфавіт та транскрипція</h2>
+			<p>Клацайте на слова-приклади, щоб почути вимову (у реальному застосунку буде підключено аудіо)</p>
+
+			<div class="tab">
+				<button class="tablinks active" onclick="openTab(event, 'consonants')">Приголосні</button>
+				<button class="tablinks" onclick="openTab(event, 'vowels')">Голосні</button>
+				<button class="tablinks" onclick="openTab(event, 'diphthongs')">Дифтонги</button>
+			</div>
+
+			<div id="consonants" class="tabcontent" style="display:block;">
+				<table>
+					<tr>
+						<th>Буква</th>
+						<th>Транскрипція</th>
+						<th>Звук</th>
+						<th>Приклади</th>
+					</tr>
+					<tr>
+						<td>Bb</td>
+						<td class="phonetic">[biː]</td>
+						<td class="phonetic">[b]</td>
+						<td><span class="example-word" onclick="playSound('bag')">bag</span> [bæg], <span
+								class="example-word" onclick="playSound('bake')">bake</span> [beɪk]</td>
+					</tr>
+					<tr>
+						<td>Cc</td>
+						<td class="phonetic">[siː]</td>
+						<td class="phonetic">[k], [s]</td>
+						<td><span class="example-word" onclick="playSound('cat')">cat</span> [kæt], <span
+								class="example-word" onclick="playSound('city')">city</span> ['sɪti]</td>
+					</tr>
+					<!-- Інші приголосні букви -->
+					<tr>
+						<td>Hh</td>
+						<td class="phonetic">[eɪtʃ]</td>
+						<td class="phonetic">[h]</td>
+						<td><span class="example-word" onclick="playSound('hand')">hand</span> [hænd]</td>
+					</tr>
+					<tr>
+						<td>Th</td>
+						<td class="phonetic">-</td>
+						<td class="phonetic">[θ], [ð]</td>
+						<td><span class="example-word" onclick="playSound('think')">think</span> [θɪŋk], <span
+								class="example-word" onclick="playSound('this')">this</span> [ðɪs]</td>
+					</tr>
+					<tr>
+						<td>Sh</td>
+						<td class="phonetic">-</td>
+						<td class="phonetic">[ʃ]</td>
+						<td><span class="example-word" onclick="playSound('ship')">ship</span> [ʃɪp], <span
+								class="example-word" onclick="playSound('wish')">wish</span> [wɪʃ]</td>
+					</tr>
+					<tr>
+						<td>Ch</td>
+						<td class="phonetic">-</td>
+						<td class="phonetic">[tʃ]</td>
+						<td><span class="example-word" onclick="playSound('chat')">chat</span> [tʃæt], <span
+								class="example-word" onclick="playSound('watch')">watch</span> [wɒtʃ]</td>
+					</tr>
+					<tr>
+						<td>Ng</td>
+						<td class="phonetic">-</td>
+						<td class="phonetic">[ŋ]</td>
+						<td><span class="example-word" onclick="playSound('song')">song</span> [sɒŋ], <span
+								class="example-word" onclick="playSound('ring')">ring</span> [rɪŋ]</td>
+					</tr>
+				</table>
+			</div>
+
+			<div id="vowels" class="tabcontent">
+				<table>
+					<tr>
+						<th>Буква</th>
+						<th>Транскрипція</th>
+						<th>Звук</th>
+						<th>Приклади</th>
+					</tr>
+					<tr>
+						<td>Aa</td>
+						<td class="phonetic">[eɪ]</td>
+						<td class="phonetic">[æ], [eɪ], [ɑː]</td>
+						<td><span class="example-word" onclick="playSound('cat')">cat</span> [kæt], <span
+								class="example-word" onclick="playSound('cake')">cake</span> [keɪk], <span
+								class="example-word" onclick="playSound('car')">car</span> [kɑː]</td>
+					</tr>
+					<tr>
+						<td>Ee</td>
+						<td class="phonetic">[iː]</td>
+						<td class="phonetic">[e], [iː], [ɜː]</td>
+						<td><span class="example-word" onclick="playSound('bed')">bed</span> [bed], <span
+								class="example-word" onclick="playSound('be')">be</span> [biː], <span
+								class="example-word" onclick="playSound('her')">her</span> [hɜː]</td>
+					</tr>
+					<tr>
+						<td>Ii</td>
+						<td class="phonetic">[aɪ]</td>
+						<td class="phonetic">[ɪ], [aɪ]</td>
+						<td><span class="example-word" onclick="playSound('sit')">sit</span> [sɪt], <span
+								class="example-word" onclick="playSound('like')">like</span> [laɪk]</td>
+					</tr>
+					<tr>
+						<td>Oo</td>
+						<td class="phonetic">[əʊ]</td>
+						<td class="phonetic">[ɒ], [əʊ], [ɔː]</td>
+						<td><span class="example-word" onclick="playSound('hot')">hot</span> [hɒt], <span
+								class="example-word" onclick="playSound('no')">no</span> [nəʊ], <span
+								class="example-word" onclick="playSound('law')">law</span> [lɔː]</td>
+					</tr>
+					<tr>
+						<td>Uu</td>
+						<td class="phonetic">[juː]</td>
+						<td class="phonetic">[ʌ], [juː], [uː]</td>
+						<td><span class="example-word" onclick="playSound('cup')">cup</span> [kʌp], <span
+								class="example-word" onclick="playSound('use')">use</span> [juːz], <span
+								class="example-word" onclick="playSound('blue')">blue</span> [bluː]</td>
+					</tr>
+				</table>
+			</div>
+
+			<div id="diphthongs" class="tabcontent">
+				<h3>Дифтонги - складені голосні звуки</h3>
+				<div class="ipa-grid">
+					<div class="ipa-card">
+						<div class="ipa-symbol">[eɪ]</div>
+						<div class="ipa-example">day [deɪ]</div>
+						<div><span class="example-word" onclick="playSound('day')">day</span>, <span
+								class="example-word" onclick="playSound('say')">say</span></div>
+					</div>
+					<div class="ipa-card">
+						<div class="ipa-symbol">[aɪ]</div>
+						<div class="ipa-example">my [maɪ]</div>
+						<div><span class="example-word" onclick="playSound('my')">my</span>, <span class="example-word"
+								onclick="playSound('time')">time</span></div>
+					</div>
+					<div class="ipa-card">
+						<div class="ipa-symbol">[ɔɪ]</div>
+						<div class="ipa-example">boy [bɔɪ]</div>
+						<div><span class="example-word" onclick="playSound('boy')">boy</span>, <span
+								class="example-word" onclick="playSound('toy')">toy</span></div>
+					</div>
+					<div class="ipa-card">
+						<div class="ipa-symbol">[əʊ]</div>
+						<div class="ipa-example">go [ɡəʊ]</div>
+						<div><span class="example-word" onclick="playSound('go')">go</span>, <span class="example-word"
+								onclick="playSound('home')">home</span></div>
+					</div>
+					<div class="ipa-card">
+						<div class="ipa-symbol">[aʊ]</div>
+						<div class="ipa-example">now [naʊ]</div>
+						<div><span class="example-word" onclick="playSound('now')">now</span>, <span
+								class="example-word" onclick="playSound('house')">house</span></div>
+					</div>
+					<div class="ipa-card">
+						<div class="ipa-symbol">[ɪə]</div>
+						<div class="ipa-example">here [hɪə]</div>
+						<div><span class="example-word" onclick="playSound('here')">here</span>, <span
+								class="example-word" onclick="playSound('beer')">beer</span></div>
+					</div>
+					<div class="ipa-card">
+						<div class="ipa-symbol">[eə]</div>
+						<div class="ipa-example">hair [heə]</div>
+						<div><span class="example-word" onclick="playSound('hair')">hair</span>, <span
+								class="example-word" onclick="playSound('care')">care</span></div>
+					</div>
+					<div class="ipa-card">
+						<div class="ipa-symbol">[ʊə]</div>
+						<div class="ipa-example">sure [ʃʊə]</div>
+						<div><span class="example-word" onclick="playSound('sure')">sure</span>, <span
+								class="example-word" onclick="playSound('tour')">tour</span></div>
+					</div>
+				</div>
+			</div>
+
+			<div class="note">
+				<h3>Важливі примітки:</h3>
+				<ul>
+					<li><strong>K, P, T</strong> - слова вимовляються з придиханням</li>
+					<li><strong>'</strong> - наголос ставиться перед наголошеним складом</li>
+					<li><strong>D, L, N, R, S, T, Z</strong> - ці букви вимовляються з піднятим до неба язиком</li>
+					<li><strong>:</strong> - означає довгий звук</li>
+					<li><strong>A, E, I, O, U, Y</strong> - голосні букви, читаються по-різному</li>
+					<li><strong>Y</strong> - може бути як голосною, так і приголосною</li>
+					<li><strong>θ, ð</strong> - унікальні англійські звуки (язик між зубами)</li>
+				</ul>
+			</div>
+		</section>
+
+		<section id="syllables">
+			<h2>Відкритий і закритий склади</h2>
+
+			<div class="interactive-demo">
+				<h3>Відкритий склад (закінчується на голосну)</h3>
+				<p>У відкритому складі голосні читаються так, ніби називають саму себе:</p>
+
+				<table>
+					<tr>
+						<th>Буква</th>
+						<th>Вимова</th>
+						<th>Приклад</th>
+						<th>Транскрипція</th>
+					</tr>
+					<tr>
+						<td>a</td>
+						<td class="phonetic">[eɪ]</td>
+						<td><span class="example-word" onclick="playSound('make')">make</span></td>
+						<td class="phonetic">[meɪk]</td>
+					</tr>
+					<tr>
+						<td>e</td>
+						<td class="phonetic">[iː]</td>
+						<td><span class="example-word" onclick="playSound('eve')">eve</span></td>
+						<td class="phonetic">[iːv]</td>
+					</tr>
+					<tr>
+						<td>i</td>
+						<td class="phonetic">[aɪ]</td>
+						<td><span class="example-word" onclick="playSound('time')">time</span></td>
+						<td class="phonetic">[taɪm]</td>
+					</tr>
+					<tr>
+						<td>o</td>
+						<td class="phonetic">[əʊ]</td>
+						<td><span class="example-word" onclick="playSound('home')">home</span></td>
+						<td class="phonetic">[həʊm]</td>
+					</tr>
+					<tr>
+						<td>u</td>
+						<td class="phonetic">[juː]</td>
+						<td><span class="example-word" onclick="playSound('tube')">tube</span></td>
+						<td class="phonetic">[tjuːb]</td>
+					</tr>
+					<tr>
+						<td>y</td>
+						<td class="phonetic">[aɪ]</td>
+						<td><span class="example-word" onclick="playSound('fly')">fly</span></td>
+						<td class="phonetic">[flaɪ]</td>
+					</tr>
+				</table>
+
+				<div class="note">
+					<p>Після звуків [dʒ], [r] також поєднання 'lue' букву 'u' ми читаємо як [uː]:</p>
+					<p><span class="example-word" onclick="playSound('June')">June</span> [dʒuːn] (червень), <span
+							class="example-word" onclick="playSound('rule')">rule</span> [ruːl] (правило)</p>
+				</div>
+			</div>
+
+			<div class="interactive-demo">
+				<h3>Закритий склад (закінчується на приголосну)</h3>
+				<p>У закритому складі голосні читаються коротко:</p>
+
+				<table>
+					<tr>
+						<th>Буква</th>
+						<th>Вимова</th>
+						<th>Приклад</th>
+						<th>Транскрипція</th>
+					</tr>
+					<tr>
+						<td>a</td>
+						<td class="phonetic">[æ]</td>
+						<td><span class="example-word" onclick="playSound('bad')">bad</span></td>
+						<td class="phonetic">[bæd]</td>
+					</tr>
+					<tr>
+						<td>e</td>
+						<td class="phonetic">[e]</td>
+						<td><span class="example-word" onclick="playSound('bed')">bed</span></td>
+						<td class="phonetic">[bed]</td>
+					</tr>
+					<tr>
+						<td>i</td>
+						<td class="phonetic">[ɪ]</td>
+						<td><span class="example-word" onclick="playSound('big')">big</span></td>
+						<td class="phonetic">[bɪɡ]</td>
+					</tr>
+					<tr>
+						<td>o</td>
+						<td class="phonetic">[ɒ]</td>
+						<td><span class="example-word" onclick="playSound('not')">not</span></td>
+						<td class="phonetic">[nɒt]</td>
+					</tr>
+					<tr>
+						<td>u</td>
+						<td class="phonetic">[ʌ]</td>
+						<td><span class="example-word" onclick="playSound('but')">but</span></td>
+						<td class="phonetic">[bʌt]</td>
+					</tr>
+					<tr>
+						<td>y</td>
+						<td class="phonetic">[ɪ]</td>
+						<td><span class="example-word" onclick="playSound('gym')">gym</span></td>
+						<td class="phonetic">[dʒɪm]</td>
+					</tr>
+				</table>
+			</div>
+		</section>
+
+		<section id="special-rules">
+			<h2>Спеціальні правила читання</h2>
+
+			<div class="interactive-demo">
+				<h3>Правила читання букв C та G</h3>
+
+				<p>Буква <strong>c</strong> читається як [s] перед i, e, y:</p>
+				<p><span class="example-word" onclick="playSound('city')">city</span> ['sɪti], <span
+						class="example-word" onclick="playSound('center')">center</span> ['sentər], <span
+						class="example-word" onclick="playSound('cycle')">cycle</span> ['saɪkl]</p>
+				<p>В інших випадках читається як [k]:</p>
+				<p><span class="example-word" onclick="playSound('cat')">cat</span> [kæt], <span class="example-word"
+						onclick="playSound('cake')">cake</span> [keɪk]</p>
+
+				<p>Буква <strong>g</strong> читається як [dʒ] перед i, e, y:</p>
+				<p><span class="example-word" onclick="playSound('gym')">gym</span> [dʒɪm], <span class="example-word"
+						onclick="playSound('page')">page</span> [peɪdʒ]</p>
+				<p>В інших випадках читається як [g]:</p>
+				<p><span class="example-word" onclick="playSound('game')">game</span> [ɡeɪm], <span class="example-word"
+						onclick="playSound('big')">big</span> [bɪɡ]</p>
+			</div>
+
+			<div class="interactive-demo">
+				<h3>Поширені буквосполучення</h3>
+
+				<table>
+					<tr>
+						<th>Сполучення</th>
+						<th>Вимова</th>
+						<th>Приклад</th>
+						<th>Транскрипція</th>
+					</tr>
+					<tr>
+						<td>sh</td>
+						<td class="phonetic">[ʃ]</td>
+						<td><span class="example-word" onclick="playSound('shake')">shake</span>, <span
+								class="example-word" onclick="playSound('she')">she</span></td>
+						<td class="phonetic">[ʃeɪk], [ʃiː]</td>
+					</tr>
+					<tr>
+						<td>ch</td>
+						<td class="phonetic">[tʃ]</td>
+						<td><span class="example-word" onclick="playSound('change')">change</span>, <span
+								class="example-word" onclick="playSound('child')">child</span></td>
+						<td class="phonetic">[tʃeɪndʒ], [tʃaɪld]</td>
+					</tr>
+					<tr>
+						<td>ph</td>
+						<td class="phonetic">[f]</td>
+						<td><span class="example-word" onclick="playSound('phone')">phone</span>, <span
+								class="example-word" onclick="playSound('phrase')">phrase</span></td>
+						<td class="phonetic">[fəʊn], [freɪz]</td>
+					</tr>
+					<tr>
+						<td>th</td>
+						<td class="phonetic">[ð] або [θ]</td>
+						<td><span class="example-word" onclick="playSound('this')">this</span> [ð], <span
+								class="example-word" onclick="playSound('think')">think</span> [θ]</td>
+						<td class="phonetic">[ðɪs], [θɪŋk]</td>
+					</tr>
+					<tr>
+						<td>ng</td>
+						<td class="phonetic">[ŋ]</td>
+						<td><span class="example-word" onclick="playSound('song')">song</span>, <span
+								class="example-word" onclick="playSound('long')">long</span></td>
+						<td class="phonetic">[sɒŋ], [lɒŋ]</td>
+					</tr>
+					<tr>
+						<td>gh</td>
+						<td class="phonetic">[f] або німа</td>
+						<td><span class="example-word" onclick="playSound('enough')">enough</span> [f], <span
+								class="example-word" onclick="playSound('high')">high</span> (німа)</td>
+						<td class="phonetic">[ɪ'nʌf], [haɪ]</td>
+					</tr>
+				</table>
+			</div>
+		</section>
+
+		<section id="practice">
+			<h2>Практика та закріплення</h2>
+			<div class="interactive-demo">
+				<h3>Визначте тип складу та вимову</h3>
+				<p>Спробуйте визначити, чи слово має відкритий чи закритий склад, і як читатиметься голосна:</p>
+
+				<div id="word-practice">
+					<p><strong>Слово:</strong> <span id="practice-word">cake</span></p>
+					<p><strong>Транскрипція:</strong> <input type="text" id="transcription-input" class="input-field"
+							placeholder="Введіть транскрипцію"></p>
+					<button class="sound-btn" onclick="checkAnswer()">Перевірити</button>
+					<button class="sound-btn" onclick="nextWord()">Наступне слово</button>
+					<p id="feedback"></p>
+
+					<div class="progress-container">
+						<div class="progress-bar" id="progress-bar"></div>
+					</div>
+					<p>Правильних відповідей: <span id="score">0</span>/<span id="total">0</span></p>
+				</div>
+			</div>
+
+			<div class="interactive-demo">
+				<h3>Транскрипційний диктант</h3>
+				<p>Прослухайте слово та спробуйте записати його транскрипцію:</p>
+
+				<button class="sound-btn" onclick="playDictationWord()">Відтворити слово</button>
+				<input type="text" id="dictation-input" class="input-field" placeholder="Запишіть транскрипцію">
+				<button class="sound-btn" onclick="checkDictation()">Перевірити</button>
+				<p id="dictation-feedback"></p>
+			</div>
+		</section>
+
+		<section id="resources">
+			<h2>Корисні поради та ресурси</h2>
+
+			<div class="note">
+				<h3>Як ефективно вивчати транскрипцію:</h3>
+				<ul>
+					<li>Вивчайте поступово, починаючи з найпростіших звуків</li>
+					<li>Слухайте вимову носіїв мови та повторюйте</li>
+					<li>Використовуйте міжнародний фонетичний алфавіт (IPA)</li>
+					<li>Практикуйтеся щодня, навіть по 10-15 хвилин</li>
+					<li>Зосередьтесь на звуках, які відсутні в українській мові (θ, ð, ŋ, etc.)</li>
+				</ul>
+			</div>
+
+			<div class="warning">
+				<h3>Поширені помилки:</h3>
+				<ul>
+					<li>Читання слів "як вони написані" без урахування транскрипції</li>
+					<li>Заміна англійських звуків українськими аналогами</li>
+					<li>Ігнорування наголосу в словах</li>
+					<li>Неправильна вимова дифтонгів</li>
+				</ul>
+			</div>
+		</section>
+	</div>
+
+	<footer>
+		<div class="container">
+			<p>Зроблено для ефективного вивчення Міжнародного фонетичного алфавіту (IPA)</p>
+		</div>
+	</footer>
+
+	<script>
+		// Функція для відкриття вкладок
+		function openTab(evt, tabName) {
+			var i, tabcontent, tablinks;
+			tabcontent = document.getElementsByClassName("tabcontent");
+			for (i = 0; i < tabcontent.length; i++) {
+				tabcontent[i].style.display = "none";
+			}
+			tablinks = document.getElementsByClassName("tablinks");
+			for (i = 0; i < tablinks.length; i++) {
+				tablinks[i].className = tablinks[i].className.replace(" active", "");
+			}
+			document.getElementById(tabName).style.display = "block";
+			evt.currentTarget.className += " active";
+		}
+
+		// Функція для відтворення звуку (в реальному застосунку буде підключено аудіо)
+		function playSound(word) {
+			alert("У реальному застосунку тут би відтворювався звук для слова: " + word);
+			// У реальному застосунку тут буде код для відтворення аудіо
+		}
+
+		// Масив слів для практики
+		const practiceWords = [
+			{ word: "cake", transcription: "[keɪk]" },
+			{ word: "bed", transcription: "[bed]" },
+			{ word: "time", transcription: "[taɪm]" },
+			{ word: "not", transcription: "[nɒt]" },
+			{ word: "tube", transcription: "[tjuːb]" },
+			{ word: "fly", transcription: "[flaɪ]" },
+			{ word: "make", transcription: "[meɪk]" },
+			{ word: "egg", transcription: "[eɡ]" },
+			{ word: "ship", transcription: "[ʃɪp]" },
+			{ word: "phone", transcription: "[fəʊn]" },
+			{ word: "think", transcription: "[θɪŋk]" },
+			{ word: "this", transcription: "[ðɪs]" },
+			{ word: "song", transcription: "[sɒŋ]" },
+			{ word: "chat", transcription: "[tʃæt]" }
+		];
+
+		// Масив слів для диктанту
+		const dictationWords = [
+			{ word: "cat", transcription: "[kæt]" },
+			{ word: "dog", transcription: "[dɒɡ]" },
+			{ word: "fish", transcription: "[fɪʃ]" },
+			{ word: "bird", transcription: "[bɜːd]" },
+			{ word: "house", transcription: "[haʊs]" }
+		];
+
+		let currentWordIndex = 0;
+		let currentDictationIndex = 0;
+		let score = 0;
+		let totalAttempts = 0;
+
+		// Функція для перевірки відповіді
+		function checkAnswer() {
+			const input = document.getElementById('transcription-input').value.trim();
+			const correctAnswer = practiceWords[currentWordIndex].transcription;
+			const feedback = document.getElementById('feedback');
+
+			totalAttempts++;
+			document.getElementById('total').textContent = totalAttempts;
+
+			if (input.toLowerCase() === correctAnswer) {
+				feedback.innerHTML = "Правильно! Молодець!";
+				feedback.style.color = "var(--success)";
+				score++;
+				document.getElementById('score').textContent = score;
+			} else {
+				feedback.innerHTML = "Неправильно. Правильна відповідь: " + correctAnswer;
+				feedback.style.color = "var(--accent)";
+			}
+
+			// Оновлення прогресу
+			const progressBar = document.getElementById('progress-bar');
+			progressBar.style.width = (score / totalAttempts * 100) + '%';
+		}
+
+		// Функція для наступного слова
+		function nextWord() {
+			currentWordIndex = (currentWordIndex + 1) % practiceWords.length;
+			document.getElementById('practice-word').textContent = practiceWords[currentWordIndex].word;
+			document.getElementById('transcription-input').value = "";
+			document.getElementById('feedback').innerHTML = "";
+		}
+
+		// Функції для диктанту
+		function playDictationWord() {
+			const word = dictationWords[currentDictationIndex].word;
+			alert("У реальному застосунку тут би відтворювався звук для слова: " + word);
+		}
+
+		function checkDictation() {
+			const input = document.getElementById('dictation-input').value.trim();
+			const correctAnswer = dictationWords[currentDictationIndex].transcription;
+			const feedback = document.getElementById('dictation-feedback');
+
+			if (input.toLowerCase() === correctAnswer) {
+				feedback.innerHTML = "Правильно! Відмінна робота!";
+				feedback.style.color = "var(--success)";
+			} else {
+				feedback.innerHTML = "Неправильно. Правильна відповідь: " + correctAnswer;
+				feedback.style.color = "var(--accent)";
+			}
+
+			currentDictationIndex = (currentDictationIndex + 1) % dictationWords.length;
+		}
+
+		// Ініціалізація
+		document.addEventListener('DOMContentLoaded', function () {
+			document.getElementById('practice-word').textContent = practiceWords[0].word;
+			document.getElementById('total').textContent = totalAttempts;
+			document.getElementById('score').textContent = score;
+		});
+	</script>
+</body>
+
+</html>
