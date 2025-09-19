@@ -1,0 +1,1374 @@
+{
+  "verbs": [
+    { "word": "To appear", "phonetic": "[əˈpɪə]", "translation": "Появлятися" },
+    {
+      "word": "To cancel",
+      "phonetic": "[ˈkænsəl]",
+      "translation": "Скасовувати"
+    },
+    {
+      "word": "To bite",
+      "phonetic": "[baɪt]",
+      "translation": "Кусати, укусити"
+    },
+    {
+      "word": "To regret",
+      "phonetic": "[rɪˈgrɛt]",
+      "translation": "Шкодувати"
+    },
+    {
+      "word": "To blow",
+      "phonetic": "[bloʊ]",
+      "translation": "Дути (про вітер), розвівати, роздувати"
+    },
+    {
+      "word": "To compose",
+      "phonetic": "[kəmˈpoʊz]",
+      "translation": "Складати, створювати"
+    },
+    {
+      "word": "To congratulate",
+      "phonetic": "[kənˈgrætjʊleɪt]",
+      "translation": "Вітати"
+    },
+    {
+      "word": "To correct",
+      "phonetic": "[kəˈrɛkt]",
+      "translation": "Виправляти"
+    },
+    {
+      "word": "To fall asleep",
+      "phonetic": "[fɔːl əˈsliːp]",
+      "translation": "Засинати"
+    },
+    { "word": "To burn", "phonetic": "[bɜːn]", "translation": "Горіти" },
+    {
+      "word": "To invent",
+      "phonetic": "[ɪnˈvɛnt]",
+      "translation": "Вигадувати, винаходити"
+    },
+    {
+      "word": "To mention",
+      "phonetic": "[ˈmɛnʃən]",
+      "translation": "Згадувати, помітити, відзначити"
+    },
+    {
+      "word": "To suppose",
+      "phonetic": "[səˈpoʊz]",
+      "translation": "Припускати"
+    },
+    {
+      "word": "To suggest",
+      "phonetic": "[səˈʤɛst]",
+      "translation": "Пропонувати, натякати"
+    },
+    {
+      "word": "To consider",
+      "phonetic": "[kənˈsɪdə]",
+      "translation": "Розмірковувати, враховувати"
+    },
+    {
+      "word": "To escape",
+      "phonetic": "[ɪsˈkeɪp]",
+      "translation": "Втікати, утікати"
+    },
+    {
+      "word": "To publish",
+      "phonetic": "[ˈpʌblɪʃ]",
+      "translation": "Публікувати"
+    },
+    {
+      "word": "To solve",
+      "phonetic": "[sɒlv]",
+      "translation": "Вирішити, розгадати"
+    },
+    {
+      "word": "To tidy up",
+      "phonetic": "[ˈtaɪdi ʌp]",
+      "translation": "Прибирати, наводити порядок"
+    },
+    { "word": "To win", "phonetic": "[wɪn]", "translation": "Вигравати" },
+    {
+      "word": "To swallow",
+      "phonetic": "[ˈswɑːloʊ]",
+      "translation": "Ковтати"
+    },
+    {
+      "word": "To follow",
+      "phonetic": "[ˈfɑːloʊ]",
+      "translation": "Слідувати"
+    },
+    {
+      "word": "To abandon",
+      "phonetic": "[əˈbændən]",
+      "translation": "Покидати, залишати"
+    },
+    {
+      "word": "To be able",
+      "phonetic": "[biː ˈeɪbl]",
+      "translation": "Бути в змозі"
+    },
+    { "word": "To abuse", "phonetic": "[əˈbjuːs]", "translation": "Ображати" },
+    {
+      "word": "To accelerate",
+      "phonetic": "[əkˈsɛləreɪt]",
+      "translation": "Прискорювати"
+    },
+    {
+      "word": "To reveal",
+      "phonetic": "[rɪˈviːl]",
+      "translation": "Розкривати"
+    },
+    {
+      "word": "To consist of",
+      "phonetic": "[kənˈsɪst ɒv]",
+      "translation": "Складатися з"
+    },
+    {
+      "word": "To include",
+      "phonetic": "[ɪnˈkluːd]",
+      "translation": "Включати"
+    },
+    {
+      "word": "To guess",
+      "phonetic": "[gɛs]",
+      "translation": "Думати, припускати"
+    },
+    {
+      "word": "To accept",
+      "phonetic": "[əkˈsept]",
+      "translation": "Схвалювати, узгодити"
+    },
+    {
+      "word": "To formulate",
+      "phonetic": "[ˈfɔːmjʊleɪt]",
+      "translation": "Формулювати"
+    },
+    { "word": "To form", "phonetic": "[fɔːm]", "translation": "Формувати" },
+    { "word": "To achieve", "phonetic": "[əˈʧiːv]", "translation": "Досягати" },
+    {
+      "word": "To acknowledge",
+      "phonetic": "[əkˈnɒlɪʤ]",
+      "translation": "Підтверджувати"
+    },
+    { "word": "To act", "phonetic": "[ækt]", "translation": "Діяти" },
+    {
+      "word": "To adhere",
+      "phonetic": "[ədˈhɪə]",
+      "translation": "Дотримуватися"
+    },
+    {
+      "word": "To admire",
+      "phonetic": "[ədˈmaɪə]",
+      "translation": "Захоплюватися"
+    },
+    {
+      "word": "To adjust",
+      "phonetic": "[əˈʤʌst]",
+      "translation": "Адаптувати, налаштовувати"
+    },
+    { "word": "To advise", "phonetic": "[ədˈvaɪz]", "translation": "Радити" },
+    {
+      "word": "To allow",
+      "phonetic": "[əˈlaʊ]",
+      "translation": "Дозволяти"
+    },
+    {
+      "word": "To improve",
+      "phonetic": "[ɪmˈpruːv]",
+      "translation": "Покращувати"
+    },
+    { "word": "To edit", "phonetic": "[ˈɛdɪt]", "translation": "Редагувати" },
+    {
+      "word": "To conclude",
+      "phonetic": "[kənˈkluːd]",
+      "translation": "Включати в себе"
+    },
+    {
+      "word": "To settle",
+      "phonetic": "[ˈsɛtl]",
+      "translation": "Розташовуватися, поселитися"
+    },
+    { "word": "To handle", "phonetic": "[ˈhændl]", "translation": "Впоратися" },
+    {
+      "word": "To boost",
+      "phonetic": "[buːst]",
+      "translation": "Збільшити, підтримати"
+    },
+    {
+      "word": "To amplify",
+      "phonetic": "[ˈæmplɪfaɪ]",
+      "translation": "Посилювати, розширювати"
+    },
+    {
+      "word": "To appeal",
+      "phonetic": "[əˈpiːl]",
+      "translation": "Просити, звертатися"
+    },
+    {
+      "word": "To assemble",
+      "phonetic": "[əˈsɛmbl]",
+      "translation": "Збиратися, скликати"
+    },
+    {
+      "word": "To assess",
+      "phonetic": "[əˈsɛs]",
+      "translation": "Оцінювати, розглядати"
+    },
+    {
+      "word": "To assist",
+      "phonetic": "[əˈsɪst]",
+      "translation": "Бути присутнім, допомагати"
+    },
+    {
+      "word": "To astonish",
+      "phonetic": "[əsˈtɒnɪʃ]",
+      "translation": "Дивувати"
+    },
+    {
+      "word": "To assure",
+      "phonetic": "[əˈʃʊr]",
+      "translation": "Переконувати, запевняти"
+    },
+    { "word": "To avoid", "phonetic": "[əˈvɔɪd]", "translation": "Уникати" },
+    { "word": "To await", "phonetic": "[əˈweɪt]", "translation": "Очікувати" },
+    {
+      "word": "To pick up",
+      "phonetic": "[pɪk ʌp]",
+      "translation": "Підбирати, забирати"
+    },
+    {
+      "word": "To cross off",
+      "phonetic": "[krɒs ɒf]",
+      "translation": "Викреслювати"
+    },
+    {
+      "word": "To claim",
+      "phonetic": "[kleɪm]",
+      "translation": "Твердити, заявляти"
+    },
+    {
+      "word": "To hurry up",
+      "phonetic": "[ˈhʌri ʌp]",
+      "translation": "Поспішати"
+    },
+    {
+      "word": "To find out",
+      "phonetic": "[faɪnd aʊt]",
+      "translation": "Знаходити"
+    },
+    {
+      "word": "To divide",
+      "phonetic": "[dɪˈvaɪd]",
+      "translation": "Ділити, розділяти"
+    },
+    { "word": "To bark", "phonetic": "[bɑːk]", "translation": "Гавкати" },
+    { "word": "To bathe", "phonetic": "[beɪð]", "translation": "Купатися" },
+    {
+      "word": "To beat",
+      "phonetic": "[biːt]",
+      "translation": "Бити, перевершувати"
+    },
+    {
+      "word": "To blackmail",
+      "phonetic": "[ˈblækmeɪl]",
+      "translation": "Шантажувати"
+    },
+    { "word": "To spend", "phonetic": "[spɛnd]", "translation": "Витрачати" },
+    { "word": "To send", "phonetic": "[sɛnd]", "translation": "Посилати" },
+    { "word": "To laugh", "phonetic": "[lɑːf]", "translation": "Сміятися" },
+    {
+      "word": "To struggle",
+      "phonetic": "[ˈstrʌgl]",
+      "translation": "Боротися"
+    },
+    {
+      "word": "To motivate",
+      "phonetic": "[ˈməʊtɪveɪt]",
+      "translation": "Мотивувати"
+    },
+    {
+      "word": "To perceive",
+      "phonetic": "[pəˈsiːv]",
+      "translation": "Сприймати"
+    },
+    {
+      "word": "To receive",
+      "phonetic": "[rɪˈsiːv]",
+      "translation": "Отримувати"
+    },
+    {
+      "word": "To recognize",
+      "phonetic": "[ˈrɛkəgnaɪz]",
+      "translation": "Розпізнавати"
+    },
+    {
+      "word": "To remain",
+      "phonetic": "[rɪˈmeɪn]",
+      "translation": "Нагадувати"
+    },
+    { "word": "To retain", "phonetic": "[rɪˈteɪn]", "translation": "Утримати" },
+    {
+      "word": "To remember",
+      "phonetic": "[rɪˈmɛmbə]",
+      "translation": "Пам'ятати, запам'ятовувати"
+    },
+    {
+      "word": "To observe",
+      "phonetic": "[əbˈzɜːrv]",
+      "translation": "Досліджувати"
+    },
+    { "word": "To fight", "phonetic": "[faɪt]", "translation": "Битися" },
+    {
+      "word": "To renew",
+      "phonetic": "[rɪˈnjuː]",
+      "translation": "Оновлювати"
+    },
+    {
+      "word": "To keep calm",
+      "phonetic": "[kiːp kɑːm]",
+      "translation": "Заспокоюватися"
+    },
+    {
+      "word": "To break up",
+      "phonetic": "[breɪk ʌp]",
+      "translation": "Руйнувати, розходитися"
+    },
+    {
+      "word": "To focus",
+      "phonetic": "[ˈfəʊkəs]",
+      "translation": "Фокусуватися"
+    },
+    {
+      "word": "To perform",
+      "phonetic": "[pəˈfɔːm]",
+      "translation": "Виконувати обов'язки"
+    },
+    { "word": "To offer", "phonetic": "[ˈɒfə]", "translation": "Пропонувати" },
+    {
+      "word": "To display",
+      "phonetic": "[dɪsˈpleɪ]",
+      "translation": "Відображати"
+    },
+    {
+      "word": "To behave",
+      "phonetic": "[bɪˈheɪv]",
+      "translation": "Поводити себе"
+    },
+    {
+      "word": "To get rid",
+      "phonetic": "[gɛt rɪd]",
+      "translation": "Позбуватися"
+    },
+    {
+      "word": "To squeeze",
+      "phonetic": "[skwiːz]",
+      "translation": "Віджимати"
+    },
+    {
+      "word": "To release",
+      "phonetic": "[rɪˈliːs]",
+      "translation": "Випускати, публікувати"
+    },
+    { "word": "To push", "phonetic": "[pʊʃ]", "translation": "Штовхати" },
+    {
+      "word": "To foster",
+      "phonetic": "[ˈfɑːstər]",
+      "translation": "Заохочувати"
+    },
+    {
+      "word": "To enhance",
+      "phonetic": "[ɪnˈhæns]",
+      "translation": "Розширювати, заохочувати"
+    },
+    {
+      "word": "To develop",
+      "phonetic": "[dɪˈvɛləp]",
+      "translation": "Розвивати, розробляти"
+    },
+    {
+      "word": "To envelop",
+      "phonetic": "[ɪnˈvɛləp]",
+      "translation": "Окутувати, обволікати"
+    },
+    {
+      "word": "To obtain",
+      "phonetic": "[əbˈteɪn]",
+      "translation": "Отримати, домогтися, придбати"
+    },
+    {
+      "word": "To investigate",
+      "phonetic": "[ɪnˈvɛstɪgeɪt]",
+      "translation": "Розслідувати"
+    },
+    { "word": "To adore", "phonetic": "[əˈdɔː]", "translation": "Обожнювати" },
+    {
+      "word": "To block out",
+      "phonetic": "[blɒk aʊt]",
+      "translation": "Блокувати"
+    },
+    { "word": "To boil", "phonetic": "[bɔɪl]", "translation": "Кипіти" },
+    {
+      "word": "To bother",
+      "phonetic": "[ˈbɒðə]",
+      "translation": "Турбувати, замислюватися"
+    },
+    { "word": "To breathe", "phonetic": "[briːð]", "translation": "Дихати" },
+    {
+      "word": "To brew",
+      "phonetic": "[bruː]",
+      "translation": "Варити, заварювати"
+    },
+    {
+      "word": "To celebrate",
+      "phonetic": "[ˈsɛlɪbreɪt]",
+      "translation": "Відзначати"
+    },
+    {
+      "word": "To broadcast",
+      "phonetic": "[ˈbrɔːdkɑːst]",
+      "translation": "Транслювати"
+    },
+    {
+      "word": "To modify",
+      "phonetic": "[ˈmɒdɪfaɪ]",
+      "translation": "Змінювати, модифікувати"
+    },
+    { "word": "To bump", "phonetic": "[bʌmp]", "translation": "Ударяти" },
+    { "word": "To buzz", "phonetic": "[bʌz]", "translation": "Дзижчати" },
+    {
+      "word": "To lead",
+      "phonetic": "[liːd]",
+      "translation": "Ведучи, лідирувати, бути лідером"
+    },
+    {
+      "word": "To call back",
+      "phonetic": "[kɔːl bæk]",
+      "translation": "Передзвонити"
+    },
+    {
+      "word": "To waste",
+      "phonetic": "[weɪst]",
+      "translation": "Витрачати даремно, смітити"
+    },
+    {
+      "word": "To take care",
+      "phonetic": "[teɪk keə]",
+      "translation": "Піклуватися"
+    },
+    {
+      "word": "To carry out",
+      "phonetic": "[ˈkæri aʊt]",
+      "translation": "Виконувати, здійснювати"
+    },
+    { "word": "To carve", "phonetic": "[kɑːv]", "translation": "Вирізати" },
+    { "word": "To cease", "phonetic": "[siːs]", "translation": "Припинити" },
+    {
+      "word": "To collaborate",
+      "phonetic": "[kəˈlæbəreɪt]",
+      "translation": "Співпрацювати"
+    },
+    {
+      "word": "To reward",
+      "phonetic": "[rɪˈwɔːd]",
+      "translation": "Нагороджувати"
+    },
+    {
+      "word": "To come back",
+      "phonetic": "[kʌm bæk]",
+      "translation": "Повертатися"
+    },
+    {
+      "word": "To relate",
+      "phonetic": "[rɪˈleɪt]",
+      "translation": "Ставитися, стосуватися"
+    },
+    {
+      "word": "To upgrade",
+      "phonetic": "[ʌpˈgreɪd]",
+      "translation": "Оновлювати"
+    },
+    {
+      "word": "To restore",
+      "phonetic": "[rɪsˈtɔː]",
+      "translation": "Відновити"
+    },
+    {
+      "word": "To describe",
+      "phonetic": "[dɪsˈkraɪb]",
+      "translation": "Описувати"
+    },
+    { "word": "To share", "phonetic": "[ʃeə]", "translation": "Ділитися" },
+    {
+      "word": "To increase",
+      "phonetic": "[ˈɪnkriːs]",
+      "translation": "Збільшувати"
+    },
+    {
+      "word": "To automate",
+      "phonetic": "[ˈɔːtəmeɪt]",
+      "translation": "Автоматизувати"
+    },
+    { "word": "To manage", "phonetic": "[ˈmænɪʤ]", "translation": "Керувати" },
+    {
+      "word": "To provide",
+      "phonetic": "[prəˈvaɪd]",
+      "translation": "Забезпечувати"
+    },
+    {
+      "word": "To integrate",
+      "phonetic": "[ˈɪntɪgreɪt]",
+      "translation": "З'єднувати, інтегрувати"
+    },
+    {
+      "word": "To realize",
+      "phonetic": "[ˈrɪəlaɪz]",
+      "translation": "Реалізовувати, здійснювати"
+    },
+    {
+      "word": "To remind",
+      "phonetic": "[ˈrɪmaɪnd]",
+      "translation": "Нагадувати"
+    },
+    {
+      "word": "To install",
+      "phonetic": "[ɪnˈstɔːl]",
+      "translation": "Встановлювати"
+    },
+    {
+      "word": "To download",
+      "phonetic": "[daʊnˈləʊd]",
+      "translation": "Завантажувати"
+    },
+    {
+      "word": "To unpack",
+      "phonetic": "[ʌnˈpæk]",
+      "translation": "Розпаковувати"
+    },
+    {
+      "word": "To engage",
+      "phonetic": "[ɪnˈgeɪʤ]",
+      "translation": "Захопити, залучити"
+    },
+    {
+      "word": "To create",
+      "phonetic": "[kri(ː)ˈeɪt]",
+      "translation": "Створювати"
+    },
+    {
+      "word": "To prefer",
+      "phonetic": "[priˈfɜː]",
+      "translation": "Віддавати перевагу"
+    },
+    {
+      "word": "To inspire",
+      "phonetic": "[ɪnˈspaɪə]",
+      "translation": "Надихати"
+    },
+    {
+      "word": "To apply",
+      "phonetic": "[əˈplaɪ]",
+      "translation": "Застосовувати"
+    },
+    {
+      "word": "To explain",
+      "phonetic": "[ɪksˈpleɪn]",
+      "translation": "Пояснювати"
+    },
+    {
+      "word": "To simplify",
+      "phonetic": "[ˈsɪmplɪfaɪ]",
+      "translation": "Спрощувати"
+    },
+    { "word": "To strive", "phonetic": "[straɪv]", "translation": "Прагнути" },
+    { "word": "To arrive", "phonetic": "[əˈraɪv]", "translation": "Прибувати" },
+    {
+      "word": "To enable",
+      "phonetic": "[ɪˈneɪbl]",
+      "translation": "Дозволити, включити"
+    },
+    {
+      "word": "To support",
+      "phonetic": "[səˈpɔːt]",
+      "translation": "Підтримувати"
+    },
+    {
+      "word": "To allot",
+      "phonetic": "[əˈlɑːt]",
+      "translation": "Виділити, призначати"
+    },
+    {
+      "word": "To empower",
+      "phonetic": "[ɪmˈpaʊə]",
+      "translation": "Дозволяти, уповноважувати"
+    },
+    {
+      "word": "To overwhelm",
+      "phonetic": "[əʊvəˈwɛlm]",
+      "translation": "Переповнювати"
+    },
+    {
+      "word": "To fulfill",
+      "phonetic": "[fʊlˈfɪl]",
+      "translation": "Виконувати"
+    },
+    {
+      "word": "To take over",
+      "phonetic": "[teɪk ˈəʊvə]",
+      "translation": "Прийняти на себе"
+    },
+    {
+      "word": "To encourage",
+      "phonetic": "[ɪnˈkʌrɪʤ]",
+      "translation": "Заохочувати"
+    },
+    {
+      "word": "To stimulate",
+      "phonetic": "[ˈstɪmjʊleɪt]",
+      "translation": "Стимулювати"
+    },
+    { "word": "To cause", "phonetic": "[kɔːz]", "translation": "Викликати" },
+    { "word": "To deal", "phonetic": "[diːl]", "translation": "Впоратися" },
+    { "word": "To reach", "phonetic": "[riːʧ]", "translation": "Досягати" },
+    { "word": "To touch", "phonetic": "[tʌʧ]", "translation": "Торкатися" },
+    {
+      "word": "To attain",
+      "phonetic": "[əˈteɪn]",
+      "translation": "Досягати, отримувати"
+    },
+    {
+      "word": "To require",
+      "phonetic": "[rɪˈkwaɪə]",
+      "translation": "Запитувати, вимагати"
+    },
+    {
+      "word": "To figure out",
+      "phonetic": "[ˈfɪgər aʊt]",
+      "translation": "Розбиратися"
+    },
+    { "word": "To forgive", "phonetic": "[fəˈgɪv]", "translation": "Прощати" },
+    {
+      "word": "To light",
+      "phonetic": "[laɪt]",
+      "translation": "Освітлювати, світити"
+    },
+    { "word": "To shine", "phonetic": "[ʃaɪn]", "translation": "Сяяти" },
+    { "word": "To spread", "phonetic": "[sprɛd]", "translation": "Поширювати" },
+    { "word": "To throw", "phonetic": "[θrəʊ]", "translation": "Кидати" },
+    { "word": "To spoil", "phonetic": "[spɔːɪl]", "translation": "Зіпсувати" },
+    {
+      "word": "To split",
+      "phonetic": "[splɪt]",
+      "translation": "Розбити, розділити"
+    },
+    {
+      "word": "To go mad",
+      "phonetic": "[gəʊ mæd]",
+      "translation": "З'їжджати з розуму"
+    },
+    { "word": "To steal", "phonetic": "[stiːl]", "translation": "Красти" },
+    { "word": "To smell", "phonetic": "[smɛl]", "translation": "Пахнути" }
+  ],
+  "nouns-career": [
+    {
+      "word": "Activity",
+      "phonetic": "[ækˈtɪvɪti]",
+      "translation": "Діяльність"
+    },
+    {
+      "word": "Amount",
+      "phonetic": "[əˈmaʊnt]",
+      "translation": "Сума, кількість"
+    },
+    { "word": "Author", "phonetic": "[ˈɔːθə]", "translation": "Автор" },
+    {
+      "word": "Character",
+      "phonetic": "[ˈkærɪktə]",
+      "translation": "Характер"
+    },
+    {
+      "word": "Dictionary",
+      "phonetic": "[ˈdɪkʃ(ə)n(ə)ri]",
+      "translation": "Словник"
+    },
+    { "word": "Event", "phonetic": "[ɪˈvɛnt]", "translation": "Подія" },
+    {
+      "word": "Guess",
+      "phonetic": "[gɛs]",
+      "translation": "Припущення, здогадка"
+    },
+    {
+      "word": "Dashboard",
+      "phonetic": "[ˈdæʃbɔːd]",
+      "translation": "Панель керування"
+    },
+    {
+      "word": "Task manager",
+      "phonetic": "[tɑːsk ˈmænɪʤə]",
+      "translation": "Планувальник завдань"
+    },
+    {
+      "word": "Sick day",
+      "phonetic": "[sɪk deɪ]",
+      "translation": "Лікарняний"
+    },
+    { "word": "Trouble", "phonetic": "[ˈtrʌbl]", "translation": "Проблема" },
+    {
+      "word": "Deadline",
+      "phonetic": "[ˈdɛdlaɪn]",
+      "translation": "Кінцевий термін"
+    },
+    {
+      "word": "Reason",
+      "phonetic": "[ˈriːzn]",
+      "translation": "Причина, сенс"
+    },
+    {
+      "word": "To-do list",
+      "phonetic": "[təˈduː lɪst]",
+      "translation": "Список справ"
+    },
+    {
+      "word": "Remark",
+      "phonetic": "[ˈrɪˈmɑːk]",
+      "translation": "Зауваження, ремарка"
+    },
+    {
+      "word": "Proofreading",
+      "phonetic": "[ˈpruːfˌriːdɪŋ]",
+      "translation": "Редагування, вичитка"
+    },
+    {
+      "word": "Performance",
+      "phonetic": "[pəˈfɔːməns]",
+      "translation": "Виступ, продуктивність"
+    },
+    {
+      "word": "Co-working space",
+      "phonetic": "[kəʊ-ˈwɜːkɪŋ speɪs]",
+      "translation": "Коворкінг"
+    },
+    { "word": "Duty", "phonetic": "[ˈdjuːti]", "translation": "Обов'язок" },
+    { "word": "Function", "phonetic": "[ˈfʌŋkʃən]", "translation": "Функція" },
+    {
+      "word": "Burnout",
+      "phonetic": "[ˈbɜːnˈaʊt]",
+      "translation": "Виснаження"
+    },
+    { "word": "Goal", "phonetic": "[gəʊl]", "translation": "Мета" },
+    {
+      "word": "Timetable",
+      "phonetic": "[ˈtaɪmˌteɪb(ə)l]",
+      "translation": "Розклад"
+    },
+    { "word": "Area", "phonetic": "[ˈeərɪə]", "translation": "Сфера, область" },
+    {
+      "word": "State",
+      "phonetic": "[steɪt]",
+      "translation": "Стан, положення"
+    },
+    {
+      "word": "Mentoring",
+      "phonetic": "[ˈmɛntɔːrɪŋ]",
+      "translation": "Менторство"
+    },
+    { "word": "Tiredness", "phonetic": "[ˈtaɪədnəs]", "translation": "Втома" },
+    {
+      "word": "Probation period",
+      "phonetic": "[prəˈbeɪʃən ˈpɪərɪəd]",
+      "translation": "Випробувальний термін"
+    },
+    {
+      "word": "Expectation",
+      "phonetic": "[ɛkspɛkˈteɪʃən]",
+      "translation": "Очікування"
+    },
+    { "word": "Benefit", "phonetic": "[ˈbɛnɪfɪt]", "translation": "Прибуток" },
+    { "word": "Salary", "phonetic": "[ˈsæləri]", "translation": "Зарплата" },
+    {
+      "word": "Outsource",
+      "phonetic": "[aʊtˈsɔːs]",
+      "translation": "Аутсорсинг"
+    },
+    { "word": "Team", "phonetic": "[tiːm]", "translation": "Команда" },
+    { "word": "Lead", "phonetic": "[liːd]", "translation": "Лідер, тімлід" },
+    { "word": "Project", "phonetic": "[ˈprɒʤɛkt]", "translation": "Проект" },
+    {
+      "word": "Check out",
+      "phonetic": "[ʧɛk aʊt]",
+      "translation": "Перевірка"
+    },
+    {
+      "word": "Research",
+      "phonetic": "[rɪˈsɜːʧ]",
+      "translation": "Дослідження"
+    },
+    { "word": "Routine", "phonetic": "[ruːˈtiːn]", "translation": "Рутина" },
+    {
+      "word": "Planner",
+      "phonetic": "[ˈplænə]",
+      "translation": "Планер, блокнот"
+    },
+    { "word": "Schedule", "phonetic": "[ˈʃɛdjuːl]", "translation": "Розклад" }
+  ],
+  "nouns-entertainment": [
+    {
+      "word": "Cartoon",
+      "phonetic": "[kɑːˈtuːn]",
+      "translation": "Мультфільм"
+    },
+    { "word": "Movie", "phonetic": "[ˈmuːvi]", "translation": "Фільм" },
+    { "word": "Circus", "phonetic": "[ˈsɜːkəs]", "translation": "Цирк" },
+    {
+      "word": "Composer",
+      "phonetic": "[kəmˈpəʊzə]",
+      "translation": "Композитор"
+    },
+    { "word": "Dream", "phonetic": "[driːm]", "translation": "Мрія" },
+    {
+      "word": "Daily routine",
+      "phonetic": "[ˈdeɪli ruːˈtiːn]",
+      "translation": "Щоденна рутина"
+    },
+    { "word": "Horror", "phonetic": "[ˈhɒrə]", "translation": "Жахи" },
+    { "word": "Laughter", "phonetic": "[ˈlɑːftə]", "translation": "Сміх" },
+    { "word": "Novel", "phonetic": "[ˈnɒvəl]", "translation": "Роман" },
+    { "word": "Story", "phonetic": "[ˈstɔːri]", "translation": "Історія" },
+    {
+      "word": "Weather forecast",
+      "phonetic": "[ˈwɛðə ˈfɔːkɑːst]",
+      "translation": "Прогноз погоди"
+    },
+    { "word": "Thought", "phonetic": "[θɔːt]", "translation": "Думка" },
+    { "word": "Writer", "phonetic": "[ˈraɪtə]", "translation": "Письменник" },
+    { "word": "Access", "phonetic": "[ˈæksɛs]", "translation": "Доступ" },
+    { "word": "Account", "phonetic": "[əˈkaʊnt]", "translation": "Акаунт" },
+    { "word": "Adventure", "phonetic": "[ədˈvɛnʧə]", "translation": "Пригода" },
+    {
+      "word": "Affair",
+      "phonetic": "[əˈfeə]",
+      "translation": "Справа, інтрига"
+    },
+    {
+      "word": "Anniversary",
+      "phonetic": "[ænɪˈvɜːsəri]",
+      "translation": "Річниця"
+    },
+    {
+      "word": "Entertainment",
+      "phonetic": "[ɛntəˈteɪnmənt]",
+      "translation": "Розвага"
+    },
+    {
+      "word": "Amusement",
+      "phonetic": "[əˈmjuːzmənt]",
+      "translation": "Веселоща"
+    },
+    { "word": "Influence", "phonetic": "[ˈɪnflʊəns]", "translation": "Вплив" },
+    {
+      "word": "Attraction",
+      "phonetic": "[əˈtrækʃ(ə)n]",
+      "translation": "Атракціон, визначна пам'ятка"
+    },
+    {
+      "word": "Rock-climbing",
+      "phonetic": "[rɒk-ˈklaɪmɪŋ]",
+      "translation": "Скелелазіння"
+    },
+    {
+      "word": "Cycling",
+      "phonetic": "[ˈsaɪklɪŋ]",
+      "translation": "Їзда на велосипеді"
+    },
+    {
+      "word": "Number painting",
+      "phonetic": "[ˈnʌmbə ˈpeɪntɪŋ]",
+      "translation": "Живопис за номерами"
+    },
+    {
+      "word": "Swimming pool",
+      "phonetic": "[ˈswɪmɪŋ puːl]",
+      "translation": "Басейн"
+    },
+    { "word": "Yoga", "phonetic": "[ˈjəʊgə]", "translation": "Йога" },
+    {
+      "word": "Coffee shop",
+      "phonetic": "[ˈkɒfi ʃɒp]",
+      "translation": "Кав'ярня"
+    },
+    {
+      "word": "Central park",
+      "phonetic": "[ˈsɛntrəl pɑːk]",
+      "translation": "Центральний парк"
+    },
+    {
+      "word": "Inspiration",
+      "phonetic": "[ɪnspəˈreɪʃən]",
+      "translation": "Натхнення"
+    },
+    { "word": "Scenery", "phonetic": "[ˈsiːnəri]", "translation": "Пейзаж" },
+    {
+      "word": "Landscape",
+      "phonetic": "[ˈlænskeɪp]",
+      "translation": "Ландшафт, пейзаж"
+    },
+    {
+      "word": "Computer game",
+      "phonetic": "[kəmˈpjuːtə geɪm]",
+      "translation": "Комп'ютерна гра"
+    },
+    { "word": "Mood", "phonetic": "[muːd]", "translation": "Настрій" },
+    {
+      "word": "Situation",
+      "phonetic": "[sɪtjʊˈeɪʃən]",
+      "translation": "Ситуація"
+    },
+    { "word": "Movement", "phonetic": "[ˈmuːvmənt]", "translation": "Рух" },
+    {
+      "word": "Arrangement",
+      "phonetic": "[əˈreɪnʤmənt]",
+      "translation": "Домовленість"
+    },
+    {
+      "word": "Accommodation",
+      "phonetic": "[əˌkɒməˈdeɪʃ(ə)n]",
+      "translation": "Жило"
+    },
+    { "word": "Beverage", "phonetic": "[ˈbɛvərɪʤ]", "translation": "Напій" },
+    { "word": "Binge", "phonetic": "[bɪnʤ]", "translation": "Гулянка" }
+  ],
+  "nouns-environment": [
+    {
+      "word": "Activist",
+      "phonetic": "[ˈæktɪvɪst]",
+      "translation": "Активіст"
+    },
+    {
+      "word": "Pollution",
+      "phonetic": "[pəˈluːʃən]",
+      "translation": "Забруднення"
+    },
+    {
+      "word": "Impurity",
+      "phonetic": "[ɪmˈpjʊərɪti]",
+      "translation": "Домішки, забруднення"
+    },
+    { "word": "Algae", "phonetic": "[ˈælʤiː]", "translation": "Водорості" },
+    { "word": "Earth", "phonetic": "[ɜːθ]", "translation": "Земля" },
+    {
+      "word": "Atmosphere",
+      "phonetic": "[ˈætməsfɪə]",
+      "translation": "Атмосфера"
+    },
+    {
+      "word": "Environment",
+      "phonetic": "[ɪnˈvaɪərənmənt]",
+      "translation": "Навколишнє середовище"
+    },
+    { "word": "Climate", "phonetic": "[ˈklaɪmɪt]", "translation": "Клімат" },
+    { "word": "Air", "phonetic": "[eə]", "translation": "Повітря" },
+    {
+      "word": "Water reserve",
+      "phonetic": "[ˈwɔːtə rɪˈzɜːv]",
+      "translation": "Водні ресурси"
+    },
+    {
+      "word": "Greenhouse effect",
+      "phonetic": "[ˈgriːnhaʊs ɪˈfɛkt]",
+      "translation": "Парниковий ефект"
+    },
+    { "word": "Oxygen", "phonetic": "[ˈɒksɪʤən]", "translation": "Кисень" },
+    {
+      "word": "Explorer",
+      "phonetic": "[ɪksˈplɔːrə]",
+      "translation": "Дослідник"
+    },
+    {
+      "word": "Investigation",
+      "phonetic": "[ɪnˌvɛstɪˈgeɪʃən]",
+      "translation": "Розслідування"
+    },
+    { "word": "Future", "phonetic": "[ˈfjuːʧə]", "translation": "Майбутнє" },
+    {
+      "word": "Tropic forest",
+      "phonetic": "[ˈtrɒpɪk ˈfɒrɪst]",
+      "translation": "Тропічний ліс"
+    },
+    {
+      "word": "Humidity",
+      "phonetic": "[hju(ː)ˈmɪdɪti]",
+      "translation": "Вологість, волога"
+    },
+    { "word": "Flora", "phonetic": "[ˈflɔːrə]", "translation": "Флора" },
+    {
+      "word": "Wildlife",
+      "phonetic": "[ˈwaɪldlaɪf]",
+      "translation": "Дика природа, тварини"
+    },
+    {
+      "word": "Plastic waste",
+      "phonetic": "[ˈplæstɪk weɪst]",
+      "translation": "Пластикові відходи"
+    },
+    {
+      "word": "Recycling",
+      "phonetic": "[riːˈsaɪklɪŋ]",
+      "translation": "Переробка"
+    },
+    {
+      "word": "Hydrosphere",
+      "phonetic": "[ˈhaɪdrəʊsfɪə]",
+      "translation": "Гідросфера"
+    },
+    { "word": "Meeting", "phonetic": "[ˈmiːtɪŋ]", "translation": "Мітинг" },
+    {
+      "word": "Background",
+      "phonetic": "[ˈbækgraʊnd]",
+      "translation": "Походження, фон"
+    },
+    { "word": "Bank", "phonetic": "[bæŋk]", "translation": "Берег" },
+    {
+      "word": "Banner",
+      "phonetic": "[ˈbænə]",
+      "translation": "Банер, реклама"
+    },
+    { "word": "Beast", "phonetic": "[biːst]", "translation": "Звір, тварина" },
+    { "word": "Cave", "phonetic": "[keɪv]", "translation": "Печера, грот" },
+    { "word": "Caviar", "phonetic": "[ˈkævɪɑː]", "translation": "Ікра" },
+    {
+      "word": "Charity",
+      "phonetic": "[ˈʧærɪti]",
+      "translation": "Благодійність"
+    },
+    { "word": "Chemistry", "phonetic": "[ˈkɛmɪstri]", "translation": "Хімія" },
+    {
+      "word": "Economical use",
+      "phonetic": "[iːkəˈnɒmɪkəl juːz]",
+      "translation": "Економне використання"
+    },
+    {
+      "word": "Cohesion",
+      "phonetic": "[kəʊˈhiːʒən]",
+      "translation": "Згуртованість"
+    },
+    {
+      "word": "Commitment",
+      "phonetic": "[kəˈmɪtmənt]",
+      "translation": "Зобов'язання"
+    },
+    {
+      "word": "Concern",
+      "phonetic": "[kənˈsɜːn]",
+      "translation": "Занепокоєння"
+    },
+    {
+      "word": "Conscience",
+      "phonetic": "[ˈkɒnʃəns]",
+      "translation": "Совість, свідомість"
+    },
+    { "word": "Court", "phonetic": "[kɔːt]", "translation": "Суд" },
+    {
+      "word": "Custody",
+      "phonetic": "[ˈkʌstədi]",
+      "translation": "Опіка, зберігання"
+    },
+    { "word": "Desert", "phonetic": "[ˈdɛzət]", "translation": "Пустеля" },
+    { "word": "Dimension", "phonetic": "[dɪˈmɛnʃən]", "translation": "Вимір" },
+    {
+      "word": "Disaster",
+      "phonetic": "[dɪˈzɑːstə]",
+      "translation": "Катастрофа"
+    },
+    {
+      "word": "Disease",
+      "phonetic": "[dɪˈziːz]",
+      "translation": "Захворювання"
+    },
+    {
+      "word": "Downturn",
+      "phonetic": "[ˈdaʊntɜːn]",
+      "translation": "Зниження, спад"
+    },
+    { "word": "Drain", "phonetic": "[dreɪn]", "translation": "Стік, злив" },
+    { "word": "Emphasis", "phonetic": "[ˈɛmfəsɪs]", "translation": "Акцент" },
+    { "word": "Engine", "phonetic": "[ˈɛnʤɪn]", "translation": "Двигун" },
+    { "word": "Evidence", "phonetic": "[ˈɛvɪdəns]", "translation": "Доказ" },
+    { "word": "Excess", "phonetic": "[ɪkˈsɛs]", "translation": "Надлишок" },
+    { "word": "Famine", "phonetic": "[ˈfæmɪn]", "translation": "Голод" },
+    { "word": "Detriment", "phonetic": "[ˈdɛtrɪmənt]", "translation": "Збиток" }
+  ],
+  "adjectives": [
+    { "word": "Blind", "phonetic": "[blaɪnd]", "translation": "Сліпий" },
+    {
+      "word": "Catchy",
+      "phonetic": "[ˈkæʧi]",
+      "translation": "В'їдливий, запам'ятовуючийся"
+    },
+    { "word": "Common", "phonetic": "[ˈkɒmən]", "translation": "Поширений" },
+    { "word": "Familiar", "phonetic": "[fəˈmɪliə]", "translation": "Знайомий" },
+    { "word": "Frequent", "phonetic": "[ˈfriːkwənt]", "translation": "Частий" },
+    {
+      "word": "Recurrent",
+      "phonetic": "[rɪˈkʌrənt]",
+      "translation": "Повторюваний"
+    },
+    {
+      "word": "Enormous",
+      "phonetic": "[ɪˈnɔːməs]",
+      "translation": "Величезний"
+    },
+    {
+      "word": "Expensive",
+      "phonetic": "[ɪksˈpɛnsɪv]",
+      "translation": "Дорогий"
+    },
+    { "word": "Valuable", "phonetic": "[ˈvæljʊəbl]", "translation": "Цінний" },
+    {
+      "word": "Muslim",
+      "phonetic": "[ˈmʊslɪm]",
+      "translation": "Мусульманський"
+    },
+    { "word": "Lucky", "phonetic": "[ˈlʌki]", "translation": "Вдалий" },
+    {
+      "word": "Clear",
+      "phonetic": "[klɪə]",
+      "translation": "Чистий, зрозумілий"
+    },
+    {
+      "word": "Scientific",
+      "phonetic": "[saɪənˈtɪfɪk]",
+      "translation": "Науковий"
+    },
+    { "word": "Huge", "phonetic": "[hjuːʤ]", "translation": "Величезний" },
+    { "word": "Messy", "phonetic": "[ˈmɛsi]", "translation": "Безладний" },
+    {
+      "word": "Unforgettable",
+      "phonetic": "[ʌnfəˈgɛtəbl]",
+      "translation": "Незабутній"
+    },
+    {
+      "word": "False",
+      "phonetic": "[fɔːls]",
+      "translation": "Хибний, неправильний"
+    },
+    {
+      "word": "Fierce",
+      "phonetic": "[fɪəs]",
+      "translation": "Лютий, жорстокий"
+    },
+    {
+      "word": "Explicit",
+      "phonetic": "[ɪksˈplɪsɪt]",
+      "translation": "Явно виражений"
+    },
+    {
+      "word": "Exterior",
+      "phonetic": "[ɛksˈtɪərɪə]",
+      "translation": "Зовнішній"
+    },
+    { "word": "Hidden", "phonetic": "[ˈhɪdn]", "translation": "Прихований" },
+    { "word": "Powerful", "phonetic": "[ˈpaʊəfʊl]", "translation": "Потужний" },
+    {
+      "word": "Internal",
+      "phonetic": "[ɪnˈtɜːnl]",
+      "translation": "Внутрішній"
+    },
+    {
+      "word": "Fabulous",
+      "phonetic": "[ˈfæbjʊləs]",
+      "translation": "Неймовірний"
+    },
+    {
+      "word": "Beautiful",
+      "phonetic": "[ˈbjuːtəfʊl]",
+      "translation": "Красивий"
+    },
+    { "word": "Gorgeous", "phonetic": "[ˈgɔːʤəs]", "translation": "Чудовий" },
+    { "word": "Fruitful", "phonetic": "[ˈfruːtfʊl]", "translation": "Плідний" },
+    {
+      "word": "Formidable",
+      "phonetic": "[ˈfɔːmɪdəbl]",
+      "translation": "Вражаючий"
+    },
+    {
+      "word": "Fortunate",
+      "phonetic": "[ˈfɔːʧnɪt]",
+      "translation": "Удачливий, щасливий"
+    },
+    {
+      "word": "Frail",
+      "phonetic": "[freɪl]",
+      "translation": "Кволий, тендітний"
+    },
+    { "word": "Friendly", "phonetic": "[ˈfrɛndli]", "translation": "Дружній" },
+    { "word": "Loyal", "phonetic": "[ˈlɔɪəl]", "translation": "Лояльний" },
+    {
+      "word": "General",
+      "phonetic": "[ˈʤɛnərəl]",
+      "translation": "Загальний, генеральний"
+    },
+    { "word": "Generous", "phonetic": "[ˈʤɛnərəs]", "translation": "Щедрий" },
+    {
+      "word": "Gradual",
+      "phonetic": "[ˈgrædjʊəl]",
+      "translation": "Поступовий"
+    },
+    {
+      "word": "Productive",
+      "phonetic": "[prəˈdʌktɪv]",
+      "translation": "Продуктивний"
+    },
+    {
+      "word": "Protected",
+      "phonetic": "[prəˈtɛktɪd]",
+      "translation": "Захищений"
+    },
+    { "word": "Hardy", "phonetic": "[ˈhɑːdi]", "translation": "Витривалий" },
+    {
+      "word": "Peaceful",
+      "phonetic": "[ˈpiːsfʊl]",
+      "translation": "Мирний, миролюбний"
+    },
+    { "word": "Digital", "phonetic": "[ˈdɪʤɪtl]", "translation": "Цифровий" },
+    { "word": "Social", "phonetic": "[ˈsəʊʃəl]", "translation": "Соціальний" },
+    { "word": "Hideous", "phonetic": "[hɪdɪə]", "translation": "Огидний" },
+    { "word": "Awful", "phonetic": "[ˈɔːfʊl]", "translation": "Жахливий" },
+    { "word": "Awesome", "phonetic": "[ˈɔːsəm]", "translation": "Дивовижний" },
+    {
+      "word": "High-quality",
+      "phonetic": "[haɪ-ˈkwɒlɪti]",
+      "translation": "Високоякісний"
+    },
+    {
+      "word": "Helpless",
+      "phonetic": "[ˈhɛlplɪs]",
+      "translation": "Безпорадний"
+    },
+    {
+      "word": "Hilarious",
+      "phonetic": "[hɪˈleərɪəs]",
+      "translation": "Кумедний"
+    },
+    { "word": "Idle", "phonetic": "[ˈaɪdl]", "translation": "Безробітний" },
+    {
+      "word": "Immediate",
+      "phonetic": "[ɪˈmiːdiət]",
+      "translation": "Негайний"
+    },
+    { "word": "Main", "phonetic": "[meɪn]", "translation": "Головний" },
+    {
+      "word": "European",
+      "phonetic": "[jʊərəˈpi(ː)ən]",
+      "translation": "Європейський"
+    },
+    {
+      "word": "Simultaneous",
+      "phonetic": "[sɪməlˈteɪniəs]",
+      "translation": "Одночасний"
+    },
+    {
+      "word": "Special",
+      "phonetic": "[ˈspɛʃəl]",
+      "translation": "Спеціальний"
+    },
+    { "word": "Visible", "phonetic": "[ˈvɪzəbl]", "translation": "Видимий" },
+    { "word": "Honest", "phonetic": "[ˈɒnɪst]", "translation": "Чесний" },
+    { "word": "Mortal", "phonetic": "[ˈmɔːtl]", "translation": "Смертельний" },
+    {
+      "word": "Hyperactive",
+      "phonetic": "[ˈhaɪpə ˈæktɪv]",
+      "translation": "Гіперактивний"
+    },
+    {
+      "word": "Personal",
+      "phonetic": "[ˈpɜːsnl]",
+      "translation": "Особистий, персональний"
+    },
+    {
+      "word": "Foolish",
+      "phonetic": "[ˈfuːlɪʃ]",
+      "translation": "Безглуздий, дурний"
+    },
+    { "word": "Sudden", "phonetic": "[ˈsʌdn]", "translation": "Раптовий" }
+  ],
+  "adverbs": [
+    {
+      "word": "Endlessly",
+      "phonetic": "[ˈɛndlɪsli]",
+      "translation": "Безкінечно"
+    },
+    {
+      "word": "Unselfishly",
+      "phonetic": "[ʌnˈsɛlfɪʃli]",
+      "translation": "Не егоїстично"
+    },
+    {
+      "word": "Generously",
+      "phonetic": "[ˈʤɛnərəsli]",
+      "translation": "Щедро"
+    },
+    { "word": "Along", "phonetic": "[əˈlɒŋ]", "translation": "Вздовж, по" },
+    {
+      "word": "Accordingly",
+      "phonetic": "[əˈkɔːdɪŋli]",
+      "translation": "Відповідно"
+    },
+    {
+      "word": "Subsequently",
+      "phonetic": "[ˈsʌbsɪkwəntli]",
+      "translation": "Згодом"
+    },
+    { "word": "Subtly", "phonetic": "[ˈsʌtli]", "translation": "Тонко" },
+    {
+      "word": "Precisely",
+      "phonetic": "[prɪˈsaɪsli]",
+      "translation": "Точно, чітко"
+    },
+    { "word": "Better", "phonetic": "[ˈbɛtə]", "translation": "Краще" },
+    { "word": "Everywhere", "phonetic": "[ˈɛvrɪweə]", "translation": "Скрізь" },
+    { "word": "Out", "phonetic": "[aʊt]", "translation": "За, з" },
+    { "word": "Fully", "phonetic": "[ˈfʊli]", "translation": "Повністю" },
+    { "word": "Partly", "phonetic": "[ˈpɑːtli]", "translation": "Частково" },
+    { "word": "Utterly", "phonetic": "[ˈʌtəli]", "translation": "Абсолютно" },
+    {
+      "word": "Entirely",
+      "phonetic": "[ɪnˈtaɪəli]",
+      "translation": "Цілком, повністю"
+    },
+    { "word": "Therefore", "phonetic": "[ˈðeəfɔː]", "translation": "Тому" },
+    { "word": "Hence", "phonetic": "[hɛns]", "translation": "Отже, звідси" },
+    {
+      "word": "Consequently",
+      "phonetic": "[ˈkɒnsɪkwəntli]",
+      "translation": "Отже, відповідно"
+    },
+    {
+      "word": "Bravely",
+      "phonetic": "[ˈbreɪvli]",
+      "translation": "Мужньо, хоробро"
+    },
+    {
+      "word": "Carefully",
+      "phonetic": "[ˈkeəfli]",
+      "translation": "Обережно, уважно"
+    },
+    { "word": "Seldom", "phonetic": "[ˈsɛldəm]", "translation": "Рідко" },
+    {
+      "word": "Frequently",
+      "phonetic": "[ˈfriːkwəntli]",
+      "translation": "Часто"
+    },
+    { "word": "Outside", "phonetic": "[aʊtˈsaɪd]", "translation": "Зовні" },
+    { "word": "Upstairs", "phonetic": "[ʌpˈsteəz]", "translation": "Нагорі" },
+    {
+      "word": "Downstairs",
+      "phonetic": "[daʊnˈsteəz]",
+      "translation": "Унизу"
+    },
+    { "word": "Quite", "phonetic": "[kwaɪt]", "translation": "Цілком" },
+    { "word": "Early", "phonetic": "[ˈɜːli]", "translation": "Рано" },
+    { "word": "Simply", "phonetic": "[ˈsɪmpli]", "translation": "Просто" },
+    { "word": "Hard", "phonetic": "[hɑːd]", "translation": "Важко" },
+    { "word": "Late", "phonetic": "[leɪt]", "translation": "Пізно" }
+  ]
+}
