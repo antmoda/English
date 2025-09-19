@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Слова англійської мови рівня А2</title>
+	<link rel="icon" type="image/x-icon" href="../img/united-kingdom.png">
+	<link rel="stylesheet" href="../css/words_A2.css">
+</head>
+
+<body>
+	<header>
+		<div class="container">
+			<h1>Слова англійської мови рівня А2</h1>
+			<p>Вивчайте та практикуйте лексику для рівня Pre-Intermediate</p>
+		</div>
+	</header>
+
+	<div class="container">
+		<section id="intro">
+			<h2>Що таке рівень А2 в англійської мові?</h2>
+			<p>На цьому рівні ви розумієте значення та контекст для 1500–2000 слів. Ви можете спілкуватися без труднощів
+				на всі теми початкового рівня, а також на такі теми:</p>
+
+			<div class="note">
+				<ul>
+					<li>Використання технологій у повсякденному житті, соціальні мережі, інтернет</li>
+					<li>Спілкування з іноземними друзями, дружба</li>
+					<li>Подорожі та нові реалії подорожей</li>
+					<li>Соціальні проблеми: гендерна нерівність, расова дискримінація</li>
+					<li>Екологія та зміна клімату, захист природи</li>
+					<li>Розваги та відпочинок, улюблені заняття, хобі</li>
+					<li>Кар'єра, проходження співбесід, взаємини з колегами</li>
+				</ul>
+			</div>
+		</section>
+
+		<section id="categories">
+			<h2>Тематичні категорії слів рівня А2</h2>
+
+			<div class="category-grid">
+				<div class="category-card" onclick="openTab(event, 'verbs')">
+					<h3>Дієслова</h3>
+					<p>170 найважливіших дієслів для рівня Pre-Intermediate</p>
+				</div>
+				<div class="category-card" onclick="openTab(event, 'nouns-career')">
+					<h3>Кар'єра та професійний розвиток</h3>
+					<p>Іменники, связанные с работой и профессиональной деятельностью</p>
+				</div>
+				<div class="category-card" onclick="openTab(event, 'nouns-entertainment')">
+					<h3>Розваги та відпочинок</h3>
+					<p>Слова, пов'язані з дозвіллям та хобі</p>
+				</div>
+				<div class="category-card" onclick="openTab(event, 'nouns-environment')">
+					<h3>Клімат та захист природи</h3>
+					<p>Екологічна лексика та слова про навколишнє середовище</p>
+				</div>
+				<div class="category-card" onclick="openTab(event, 'adjectives')">
+					<h3>Прикметники</h3>
+					<p>Прикметники для опису людей, явищ та предметів</p>
+				</div>
+				<div class="category-card" onclick="openTab(event, 'adverbs')">
+					<h3>Прислівники</h3>
+					<p>Прислівники для опису дій та якостей</p>
+				</div>
+			</div>
+
+			<div class="tab">
+				<button class="tablinks active" onclick="openTab(event, 'verbs')">Дієслова</button>
+				<button class="tablinks" onclick="openTab(event, 'nouns-career')">Кар'єра</button>
+				<button class="tablinks" onclick="openTab(event, 'nouns-entertainment')">Розваги</button>
+				<button class="tablinks" onclick="openTab(event, 'nouns-environment')">Екологія</button>
+				<button class="tablinks" onclick="openTab(event, 'adjectives')">Прикметники</button>
+				<button class="tablinks" onclick="openTab(event, 'adverbs')">Прислівники</button>
+			</div>
+
+			<div id="verbs" class="tabcontent" style="display:block;">
+				<h3>Дієслова рівня А2</h3>
+				<table id="verbs-table">
+					<tr>
+						<th>Дієслово</th>
+						<th>Транскрипція</th>
+						<th>Переклад</th>
+					</tr>
+					<!-- Дані будуть завантаженні через JavaScript -->
+				</table>
+				<div class="words-count" id="verbs-count"></div>
+				<div class="show-more-container">
+					<button class="sound-btn" onclick="showMore('verbs')">Показати більше</button>
+				</div>
+			</div>
+
+			<div id="nouns-career" class="tabcontent">
+				<h3>Іменники на тему "Кар'єра"</h3>
+				<table id="nouns-career-table">
+					<tr>
+						<th>Слово</th>
+						<th>Транскрипція</th>
+						<th>Переклад</th>
+					</tr>
+					<!-- Дані будуть завантаженні через JavaScript -->
+				</table>
+				<div class="words-count" id="nouns-career-count"></div>
+				<div class="show-more-container">
+					<button class="sound-btn" onclick="showMore('nouns-career')">Показати більше</button>
+				</div>
+			</div>
+
+			<div id="nouns-entertainment" class="tabcontent">
+				<h3>Іменники на тему "Розваги та відпочинок"</h3>
+				<table id="nouns-entertainment-table">
+					<tr>
+						<th>Слово</th>
+						<th>Транскрипція</th>
+						<th>Переклад</th>
+					</tr>
+					<!-- Дані будуть завантаженні через JavaScript -->
+				</table>
+				<div class="words-count" id="nouns-entertainment-count"></div>
+				<div class="show-more-container">
+					<button class="sound-btn" onclick="showMore('nouns-entertainment')">Показати більше</button>
+				</div>
+			</div>
+
+			<div id="nouns-environment" class="tabcontent">
+				<h3>Іменники на тему "Клімат та захист природи"</h3>
+				<table id="nouns-environment-table">
+					<tr>
+						<th>Слово</th>
+						<th>Транскрипція</th>
+						<th>Переклад</th>
+					</tr>
+					<!-- Дані будуть завантаженні через JavaScript -->
+				</table>
+				<div class="words-count" id="nouns-environment-count"></div>
+				<div class="show-more-container">
+					<button class="sound-btn" onclick="showMore('nouns-environment')">Показати більше</button>
+				</div>
+			</div>
+
+			<div id="adjectives" class="tabcontent">
+				<h3>Прикметники рівня А2</h3>
+				<table id="adjectives-table">
+					<tr>
+						<th>Слово</th>
+						<th>Транскрипція</th>
+						<th>Переклад</th>
+					</tr>
+					<!-- Дані будуть завантаженні через JavaScript -->
+				</table>
+				<div class="words-count" id="adjectives-count"></div>
+				<div class="show-more-container">
+					<button class="sound-btn" onclick="showMore('adjectives')">Показати більше</button>
+				</div>
+			</div>
+
+			<div id="adverbs" class="tabcontent">
+				<h3>Прислівники рівня А2</h3>
+				<table id="adverbs-table">
+					<tr>
+						<th>Слово</th>
+						<th>Транскрипція</th>
+						<th>Переклад</th>
+					</tr>
+					<!-- Дані будуть завантаженні через JavaScript -->
+				</table>
+				<div class="words-count" id="adverbs-count"></div>
+				<div class="show-more-container">
+					<button class="sound-btn" onclick="showMore('adverbs')">Показати більше</button>
+				</div>
+			</div>
+		</section>
+
+		<section id="practice">
+			<h2>Практика слів рівня А2</h2>
+
+			<div class="interactive-demo">
+				<h3>Перевір свої знання</h3>
+				<p>Введіть переклад слова:</p>
+
+				<div id="word-practice">
+					<p><strong>Слово:</strong> <span id="practice-word"></span> <span class="phonetic"
+							id="practice-phonetic"></span></p>
+					<p>Переклад: <input type="text" id="translation-input" class="input-field"
+							placeholder="Введіть переклад"></p>
+					<button class="sound-btn" onclick="checkWordAnswer()">Перевірити</button>
+					<button class="sound-btn" onclick="nextWord()">Наступне слово</button>
+					<p id="word-feedback"></p>
+
+					<div class="progress-container">
+						<div class="progress-bar" id="word-progress-bar"></div>
+					</div>
+					<p>Правильних відповідей: <span id="word-score">0</span>/<span id="word-total">0</span></p>
+				</div>
+			</div>
+		</section>
+
+		<section id="tips">
+			<h2>Корисні поради для вивчення</h2>
+
+			<div class="note">
+				<h3>Як ефективно вивчати слова:</h3>
+				<ul>
+					<li>Вивчайте поступово, починаючи з найважливіших слів</li>
+					<li>Слухайте вимову носіїв мови та повторюйте</li>
+					<li>Використовуйте слова в контексті</li>
+					<li>Практикуйтеся щодня, навіть по 10-15 хвилин</li>
+					<li>Створюйте асоціації для кращого запам'ятовування</li>
+				</ul>
+			</div>
+
+			<div class="interactive-demo">
+				<h3>Рекомендації для успішного вивчення:</h3>
+				<ul>
+					<li>Переглядайте відео та фільми англійською мовою</li>
+					<li>Читайте книги та статті відповідного рівня</li>
+					<li>Спілкуйтеся з носіями мови або такими самими студентами</li>
+					<li>Використовуйте мобільні додатки для вивчення слів</li>
+					<li>Ведіть словник та регулярно його переглядайте</li>
+				</ul>
+			</div>
+		</section>
+	</div>
+
+	<footer>
+		<div class="container">
+			<p>Тренажер слів англійської мови рівня А2 © 2023</p>
+		</div>
+	</footer>
+
+	<script src="../js/words_A2.js"></script>
+</body>
+
+</html>
