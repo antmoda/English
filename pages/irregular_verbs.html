@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Тренажер неправильних дієслів</title>
+  <link rel="icon" type="image/x-icon" href="../img/united-kingdom.png">
+	<style>
+		:root {
+			--primary: #4a6fa5;
+			--secondary: #6b8cae;
+			--accent: #ff6b6b;
+			--light: #f8f9fa;
+			--dark: #343a40;
+			--success: #28a745;
+			--warning: #ffc107;
+		}
+
+		body {
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			line-height: 1.6;
+			color: var(--dark);
+			background-color: var(--light);
+			margin: 0;
+			padding: 0;
+		}
+
+		.container {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 20px;
+		}
+
+		header {
+			background: linear-gradient(135deg, var(--primary), var(--secondary));
+			color: white;
+			padding: 30px 0;
+			text-align: center;
+			margin-bottom: 30px;
+			border-radius: 0 0 10px 10px;
+			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+		}
+
+		h1 {
+			color: whitesmoke;
+		}
+
+		h2,
+		h3 {
+			color: var(--primary);
+		}
+
+		section {
+			background: white;
+			padding: 25px;
+			margin-bottom: 30px;
+			border-radius: 10px;
+			box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+			transition: transform 0.3s;
+		}
+
+		section:hover {
+			transform: translateY(-5px);
+		}
+
+		table {
+			width: 100%;
+			border-collapse: collapse;
+			margin: 20px 0;
+		}
+
+		th,
+		td {
+			border: 1px solid #ddd;
+			padding: 12px;
+			text-align: left;
+		}
+
+		th {
+			background-color: var(--secondary);
+			color: white;
+			position: sticky;
+			top: 0;
+		}
+
+		tr:nth-child(even) {
+			background-color: #f9f9f9;
+		}
+
+		tr:hover {
+			background-color: #f0f7ff;
+		}
+
+		.verb-form {
+			font-weight: bold;
+			color: var(--primary);
+		}
+
+		.input-field {
+			padding: 12px;
+			border: 1px solid #ddd;
+			border-radius: 5px;
+			width: 100%;
+			margin: 10px 0;
+			font-size: 16px;
+		}
+
+		.sound-btn {
+			background: var(--primary);
+			color: white;
+			border: none;
+			padding: 10px 18px;
+			border-radius: 5px;
+			cursor: pointer;
+			margin: 5px;
+			transition: all 0.3s;
+			font-weight: bold;
+		}
+
+		.sound-btn:hover {
+			background: var(--secondary);
+			transform: translateY(-2px);
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+		}
+
+		.tab {
+			overflow: hidden;
+			border: 1px solid #ccc;
+			background-color: #f1f1f1;
+			border-radius: 5px 5px 0 0;
+			display: flex;
+			flex-wrap: wrap;
+		}
+
+		.tab button {
+			background-color: inherit;
+			border: none;
+			outline: none;
+			cursor: pointer;
+			padding: 14px 16px;
+			transition: 0.3s;
+			font-size: 16px;
+			flex-grow: 1;
+		}
+
+		.tab button:hover {
+			background-color: #ddd;
+		}
+
+		.tab button.active {
+			background-color: var(--primary);
+			color: white;
+		}
+
+		.tabcontent {
+			display: none;
+			padding: 20px;
+			border: 1px solid #ccc;
+			border-top: none;
+			border-radius: 0 0 5px 5px;
+			animation: fadeEffect 0.5s;
+		}
+
+		@keyframes fadeEffect {
+			from {
+				opacity: 0;
+			}
+
+			to {
+				opacity: 1;
+			}
+		}
+
+		.note {
+			background-color: #fff9e6;
+			border-left: 4px solid #ffcc00;
+			padding: 20px;
+			margin: 20px 0;
+			border-radius: 5px;
+		}
+
+		.interactive-demo {
+			background-color: #f5f8ff;
+			padding: 25px;
+			border-radius: 8px;
+			margin: 25px 0;
+			border-left: 4px solid var(--primary);
+		}
+
+		.progress-container {
+			width: 100%;
+			background-color: #f1f1f1;
+			border-radius: 5px;
+			margin: 20px 0;
+		}
+
+		.progress-bar {
+			height: 20px;
+			background-color: var(--success);
+			border-radius: 5px;
+			width: 0%;
+			transition: width 0.5s;
+		}
+
+		footer {
+			text-align: center;
+			padding: 30px;
+			margin-top: 40px;
+			background: var(--dark);
+			color: white;
+			border-radius: 10px 10px 0 0;
+		}
+
+		@media (max-width: 768px) {
+			table {
+				font-size: 0.9em;
+			}
+
+			th,
+			td {
+				padding: 8px 5px;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<header>
+		<div class="container">
+			<h1>Тренажер неправильних дієслів англійської мови</h1>
+			<p>Вивчайте та практикуйте форми неправильних дієслів</p>
+		</div>
+	</header>
+
+	<div class="container">
+		<section id="verbs-list">
+			<h2>Список неправильних дієслів</h2>
+
+			<div class="tab">
+				<button class="tablinks active" onclick="openTab(event, 'verbsA-C')">A-C</button>
+				<button class="tablinks" onclick="openTab(event, 'verbsD-H')">D-H</button>
+				<button class="tablinks" onclick="openTab(event, 'verbsK-S')">K-S</button>
+				<button class="tablinks" onclick="openTab(event, 'verbsT-W')">T-W</button>
+			</div>
+
+			<div id="verbsA-C" class="tabcontent" style="display:block;">
+				<table>
+					<tr>
+						<th>ГЛАГОЛ</th>
+						<th>II форма (PAST SIMPLE)</th>
+						<th>III форма (PAST PARTICIPLE)</th>
+						<th>ПЕРЕКЛАД</th>
+					</tr>
+					<tr>
+						<td class="verb-form">be</td>
+						<td>was, were</td>
+						<td>been</td>
+						<td>Бути</td>
+					</tr>
+					<tr>
+						<td class="verb-form">beat</td>
+						<td>beat</td>
+						<td>beaten</td>
+						<td>Бити</td>
+					</tr>
+					<tr>
+						<td class="verb-form">become</td>
+						<td>became</td>
+						<td>become</td>
+						<td>Ставати</td>
+					</tr>
+					<tr>
+						<td class="verb-form">begin</td>
+						<td>began</td>
+						<td>begun</td>
+						<td>Починати</td>
+					</tr>
+					<tr>
+						<td class="verb-form">bleed</td>
+						<td>bled</td>
+						<td>bled</td>
+						<td>Кровоточити</td>
+					</tr>
+					<tr>
+						<td class="verb-form">blow</td>
+						<td>blew</td>
+						<td>blown</td>
+						<td>Дути</td>
+					</tr>
+					<tr>
+						<td class="verb-form">break</td>
+						<td>broke</td>
+						<td>broken</td>
+						<td>Ламати</td>
+					</tr>
+					<tr>
+						<td class="verb-form">bring</td>
+						<td>brought</td>
+						<td>brought</td>
+						<td>Приносити</td>
+					</tr>
+					<tr>
+						<td class="verb-form">build</td>
+						<td>built</td>
+						<td>built</td>
+						<td>Будувати</td>
+					</tr>
+					<tr>
+						<td class="verb-form">burn</td>
+						<td>burnt</td>
+						<td>burnt</td>
+						<td>Горіти</td>
+					</tr>
+					<tr>
+						<td class="verb-form">burst</td>
+						<td>burst</td>
+						<td>burst</td>
+						<td>Вибухати</td>
+					</tr>
+					<tr>
+						<td class="verb-form">buy</td>
+						<td>bought</td>
+						<td>bought</td>
+						<td>Купувати</td>
+					</tr>
+					<tr>
+						<td class="verb-form">catch</td>
+						<td>caught</td>
+						<td>caught</td>
+						<td>Ловити</td>
+					</tr>
+					<tr>
+						<td class="verb-form">choose</td>
+						<td>chose</td>
+						<td>chosen</td>
+						<td>Вибирати</td>
+					</tr>
+					<tr>
+						<td class="verb-form">come</td>
+						<td>came</td>
+						<td>come</td>
+						<td>Приходити</td>
+					</tr>
+					<tr>
+						<td class="verb-form">cost</td>
+						<td>cost</td>
+						<td>cost</td>
+						<td>Коштувати</td>
+					</tr>
+					<tr>
+						<td class="verb-form">creep</td>
+						<td>crept</td>
+						<td>crept</td>
+						<td>Повзати</td>
+					</tr>
+					<tr>
+						<td class="verb-form">cut</td>
+						<td>cut</td>
+						<td>cut</td>
+						<td>Різати</td>
+					</tr>
+				</table>
+			</div>
+
+			<div id="verbsD-H" class="tabcontent">
+				<table>
+					<tr>
+						<th>ГЛАГОЛ</th>
+						<th>II форма (PAST SIMPLE)</th>
+						<th>III форма (PAST PARTICIPLE)</th>
+						<th>ПЕРЕКЛАД</th>
+					</tr>
+					<tr>
+						<td class="verb-form">do</td>
+						<td>did</td>
+						<td>done</td>
+						<td>Робити</td>
+					</tr>
+					<tr>
+						<td class="verb-form">draw</td>
+						<td>drew</td>
+						<td>drawn</td>
+						<td>Малювати</td>
+					</tr>
+					<tr>
+						<td class="verb-form">dream</td>
+						<td>dreamt</td>
+						<td>dreamt</td>
+						<td>Мріяти</td>
+					</tr>
+					<tr>
+						<td class="verb-form">drink</td>
+						<td>drank</td>
+						<td>drunk</td>
+						<td>Пити</td>
+					</tr>
+					<tr>
+						<td class="verb-form">drive</td>
+						<td>drove</td>
+						<td>driven</td>
+						<td>Їздити</td>
+					</tr>
+					<tr>
+						<td class="verb-form">eat</td>
+						<td>ate</td>
+						<td>eaten</td>
+						<td>Їсти</td>
+					</tr>
+					<tr>
+						<td class="verb-form">fall</td>
+						<td>fell</td>
+						<td>fallen</td>
+						<td>Падати</td>
+					</tr>
+					<tr>
+						<td class="verb-form">feed</td>
+						<td>fed</td>
+						<td>fed</td>
+						<td>Годувати</td>
+					</tr>
+					<tr>
+						<td class="verb-form">feel</td>
+						<td>felt</td>
+						<td>felt</td>
+						<td>Відчувати</td>
+					</tr>
+					<tr>
+						<td class="verb-form">fight</td>
+						<td>fought</td>
+						<td>fought</td>
+						<td>Боротися</td>
+					</tr>
+					<tr>
+						<td class="verb-form">find</td>
+						<td>found</td>
+						<td>found</td>
+						<td>Знаходити</td>
+					</tr>
+					<tr>
+						<td class="verb-form">fit</td>
+						<td>fit</td>
+						<td>fit</td>
+						<td>Підходити</td>
+					</tr>
+					<tr>
+						<td class="verb-form">fly</td>
+						<td>flew</td>
+						<td>flown</td>
+						<td>Літати</td>
+					</tr>
+					<tr>
+						<td class="verb-form">forget</td>
+						<td>forgot</td>
+						<td>forgotten</td>
+						<td>Забувати</td>
+					</tr>
+					<tr>
+						<td class="verb-form">forgive</td>
+						<td>forgave</td>
+						<td>forgiven</td>
+						<td>Прощати</td>
+					</tr>
+					<tr>
+						<td class="verb-form">freeze</td>
+						<td>froze</td>
+						<td>frozen</td>
+						<td>Замерзати</td>
+					</tr>
+					<tr>
+						<td class="verb-form">get</td>
+						<td>got</td>
+						<td>got</td>
+						<td>Отримувати</td>
+					</tr>
+					<tr>
+						<td class="verb-form">give</td>
+						<td>gave</td>
+						<td>given</td>
+						<td>Давати</td>
+					</tr>
+					<tr>
+						<td class="verb-form">go</td>
+						<td>went</td>
+						<td>gone</td>
+						<td>Іти</td>
+					</tr>
+					<tr>
+						<td class="verb-form">grow</td>
+						<td>grew</td>
+						<td>grown</td>
+						<td>Рости</td>
+					</tr>
+					<tr>
+						<td class="verb-form">hang</td>
+						<td>hung</td>
+						<td>hung</td>
+						<td>Вішати</td>
+					</tr>
+					<tr>
+						<td class="verb-form">have</td>
+						<td>had</td>
+						<td>had</td>
+						<td>Мати</td>
+					</tr>
+					<tr>
+						<td class="verb-form">hear</td>
+						<td>heard</td>
+						<td>heard</td>
+						<td>Чути</td>
+					</tr>
+					<tr>
+						<td class="verb-form">hide</td>
+						<td>hid</td>
+						<td>hidden</td>
+						<td>Ховати</td>
+					</tr>
+					<tr>
+						<td class="verb-form">hit</td>
+						<td>hit</td>
+						<td>hit</td>
+						<td>Вдаряти</td>
+					</tr>
+					<tr>
+						<td class="verb-form">hold</td>
+						<td>held</td>
+						<td>held</td>
+						<td>Тримати</td>
+					</tr>
+					<tr>
+						<td class="verb-form">hurt</td>
+						<td>hurt</td>
+						<td>hurt</td>
+						<td>Ранити</td>
+					</tr>
+				</table>
+			</div>
+
+			<div id="verbsK-S" class="tabcontent">
+				<table>
+					<tr>
+						<th>ГЛАГОЛ</th>
+						<th>II форма (PAST SIMPLE)</th>
+						<th>III форма (PAST PARTICIPLE)</th>
+						<th>ПЕРЕКЛАД</th>
+					</tr>
+					<tr>
+						<td class="verb-form">keep</td>
+						<td>kept</td>
+						<td>kept</td>
+						<td>Тримати</td>
+					</tr>
+					<tr>
+						<td class="verb-form">kneel</td>
+						<td>knelt</td>
+						<td>knelt</td>
+						<td>Стояти на колінах</td>
+					</tr>
+					<tr>
+						<td class="verb-form">know</td>
+						<td>knew</td>
+						<td>known</td>
+						<td>Знати</td>
+					</tr>
+					<tr>
+						<td class="verb-form">lay</td>
+						<td>laid</td>
+						<td>laid</td>
+						<td>Класти</td>
+					</tr>
+					<tr>
+						<td class="verb-form">lead</td>
+						<td>led</td>
+						<td>led</td>
+						<td>Ведучи</td>
+					</tr>
+					<tr>
+						<td class="verb-form">lean</td>
+						<td>leant</td>
+						<td>leant</td>
+						<td>Нахилятися</td>
+					</tr>
+					<tr>
+						<td class="verb-form">learn</td>
+						<td>learnt</td>
+						<td>learnt</td>
+						<td>Вчити</td>
+					</tr>
+					<tr>
+						<td class="verb-form">leave</td>
+						<td>left</td>
+						<td>left</td>
+						<td>Залишати</td>
+					</tr>
+					<tr>
+						<td class="verb-form">lend</td>
+						<td>lent</td>
+						<td>lent</td>
+						<td>Позичати</td>
+					</tr>
+					<tr>
+						<td class="verb-form">let</td>
+						<td>let</td>
+						<td>let</td>
+						<td>Дозволяти</td>
+					</tr>
+					<tr>
+						<td class="verb-form">lie</td>
+						<td>lay</td>
+						<td>lain</td>
+						<td>Лежати</td>
+					</tr>
+					<tr>
+						<td class="verb-form">light</td>
+						<td>lit</td>
+						<td>lit</td>
+						<td>Світити</td>
+					</tr>
+					<tr>
+						<td class="verb-form">lose</td>
+						<td>lost</td>
+						<td>lost</td>
+						<td>Губляти</td>
+					</tr>
+					<tr>
+						<td class="verb-form">make</td>
+						<td>made</td>
+						<td>made</td>
+						<td>Робити</td>
+					</tr>
+					<tr>
+						<td class="verb-form">mean</td>
+						<td>meant</td>
+						<td>meant</td>
+						<td>Значити</td>
+					</tr>
+					<tr>
+						<td class="verb-form">meet</td>
+						<td>met</td>
+						<td>met</td>
+						<td>Зустрічати</td>
+					</tr>
+					<tr>
+						<td class="verb-form">mistake</td>
+						<td>mistook</td>
+						<td>mistaken</td>
+						<td>Помилятися</td>
+					</tr>
+					<tr>
+						<td class="verb-form">pay</td>
+						<td>paid</td>
+						<td>paid</td>
+						<td>Платити</td>
+					</tr>
+					<tr>
+						<td class="verb-form">prove</td>
+						<td>proved</td>
+						<td>proven</td>
+						<td>Доводити</td>
+					</tr>
+					<tr>
+						<td class="verb-form">put</td>
+						<td>put</td>
+						<td>put</td>
+						<td>Класти</td>
+					</tr>
+					<tr>
+						<td class="verb-form">quit</td>
+						<td>quit</td>
+						<td>quit</td>
+						<td>Кидати</td>
+					</tr>
+					<tr>
+						<td class="verb-form">read</td>
+						<td>read</td>
+						<td>read</td>
+						<td>Читати</td>
+					</tr>
+					<tr>
+						<td class="verb-form">ride</td>
+						<td>rode</td>
+						<td>ridden</td>
+						<td>Їздити</td>
+					</tr>
+					<tr>
+						<td class="verb-form">ring</td>
+						<td>rang</td>
+						<td>rung</td>
+						<td>Дзвонити</td>
+					</tr>
+					<tr>
+						<td class="verb-form">rise</td>
+						<td>rose</td>
+						<td>risen</td>
+						<td>Підніматися</td>
+					</tr>
+					<tr>
+						<td class="verb-form">run</td>
+						<td>ran</td>
+						<td>run</td>
+						<td>Бігти</td>
+					</tr>
+					<tr>
+						<td class="verb-form">say</td>
+						<td>said</td>
+						<td>said</td>
+						<td>Говорити</td>
+					</tr>
+					<tr>
+						<td class="verb-form">see</td>
+						<td>saw</td>
+						<td>seen</td>
+						<td>Бачити</td>
+					</tr>
+					<tr>
+						<td class="verb-form">seek</td>
+						<td>sought</td>
+						<td>sought</td>
+						<td>Шукати</td>
+					</tr>
+					<tr>
+						<td class="verb-form">sell</td>
+						<td>sold</td>
+						<td>sold</td>
+						<td>Продавати</td>
+					</tr>
+					<tr>
+						<td class="verb-form">send</td>
+						<td>sent</td>
+						<td>sent</td>
+						<td>Відсилати</td>
+					</tr>
+					<tr>
+						<td class="verb-form">set</td>
+						<td>set</td>
+						<td>set</td>
+						<td>Встановлювати</td>
+					</tr>
+					<tr>
+						<td class="verb-form">sew</td>
+						<td>sewed</td>
+						<td>sewn</td>
+						<td>Шити</td>
+					</tr>
+					<tr>
+						<td class="verb-form">shake</td>
+						<td>shook</td>
+						<td>shaken</td>
+						<td>Трясти</td>
+					</tr>
+					<tr>
+						<td class="verb-form">show</td>
+						<td>showed</td>
+						<td>shown</td>
+						<td>Показувати</td>
+					</tr>
+					<tr>
+						<td class="verb-form">shrink</td>
+						<td>shrank</td>
+						<td>shrunk</td>
+						<td>Стискати</td>
+					</tr>
+					<tr>
+						<td class="verb-form">shut</td>
+						<td>shut</td>
+						<td>shut</td>
+						<td>Закривати</td>
+					</tr>
+					<tr>
+						<td class="verb-form">sing</td>
+						<td>sang</td>
+						<td>sung</td>
+						<td>Співати</td>
+					</tr>
+					<tr>
+						<td class="verb-form">sink</td>
+						<td>sank</td>
+						<td>sunk</td>
+						<td>Тонути</td>
+					</tr>
+					<tr>
+						<td class="verb-form">sit</td>
+						<td>sat</td>
+						<td>sat</td>
+						<td>Сидіти</td>
+					</tr>
+					<tr>
+						<td class="verb-form">sleep</td>
+						<td>slept</td>
+						<td>slept</td>
+						<td>Спати</td>
+					</tr>
+					<tr>
+						<td class="verb-form">slide</td>
+						<td>slid</td>
+						<td>slid</td>
+						<td>Ковзати</td>
+					</tr>
+					<tr>
+						<td class="verb-form">sow</td>
+						<td>sowed</td>
+						<td>sown</td>
+						<td>Сіяти</td>
+					</tr>
+					<tr>
+						<td class="verb-form">speak</td>
+						<td>spoke</td>
+						<td>spoken</td>
+						<td>Говорити</td>
+					</tr>
+					<tr>
+						<td class="verb-form">spell</td>
+						<td>spelt</td>
+						<td>spelt</td>
+						<td>Правопис</td>
+					</tr>
+					<tr>
+						<td class="verb-form">spend</td>
+						<td>spent</td>
+						<td>spent</td>
+						<td>Витрачати</td>
+					</tr>
+					<tr>
+						<td class="verb-form">spill</td>
+						<td>spilt</td>
+						<td>spilt</td>
+						<td>Розливати</td>
+					</tr>
+					<tr>
+						<td class="verb-form">spoil</td>
+						<td>spoilt</td>
+						<td>spoilt</td>
+						<td>Псувати</td>
+					</tr>
+					<tr>
+						<td class="verb-form">spread</td>
+						<td>spread</td>
+						<td>spread</td>
+						<td>Розповсюджувати</td>
+					</tr>
+					<tr>
+						<td class="verb-form">spring</td>
+						<td>sprang</td>
+						<td>sprung</td>
+						<td>Стрибати</td>
+					</tr>
+					<tr>
+						<td class="verb-form">stand</td>
+						<td>stood</td>
+						<td>stood</td>
+						<td>Стояти</td>
+					</tr>
+				</table>
+			</div>
+
+			<div id="verbsT-W" class="tabcontent">
+				<table>
+					<tr>
+						<th>ГЛАГОЛ</th>
+						<th>II форма (PAST SIMPLE)</th>
+						<th>III форма (PAST PARTICIPLE)</th>
+						<th>ПЕРЕКЛАД</th>
+					</tr>
+					<tr>
+						<td class="verb-form">steal</td>
+						<td>stole</td>
+						<td>stolen</td>
+						<td>Красти</td>
+					</tr>
+					<tr>
+						<td class="verb-form">stick</td>
+						<td>stuck</td>
+						<td>stuck</td>
+						<td>Приклеювати</td>
+					</tr>
+					<tr>
+						<td class="verb-form">sting</td>
+						<td>stung</td>
+						<td>stung</td>
+						<td>Жалити</td>
+					</tr>
+					<tr>
+						<td class="verb-form">sweep</td>
+						<td>swept</td>
+						<td>swept</td>
+						<td>Підмітати</td>
+					</tr>
+					<tr>
+						<td class="verb-form">swell</td>
+						<td>swelled</td>
+						<td>swollen</td>
+						<td>Набрякати</td>
+					</tr>
+					<tr>
+						<td class="verb-form">swim</td>
+						<td>swam</td>
+						<td>swum</td>
+						<td>Плавати</td>
+					</tr>
+					<tr>
+						<td class="verb-form">swing</td>
+						<td>swung</td>
+						<td>swung</td>
+						<td>Гойдатися</td>
+					</tr>
+					<tr>
+						<td class="verb-form">take</td>
+						<td>took</td>
+						<td>taken</td>
+						<td>Брати</td>
+					</tr>
+					<tr>
+						<td class="verb-form">teach</td>
+						<td>taught</td>
+						<td>taught</td>
+						<td>Вчити</td>
+					</tr>
+					<tr>
+						<td class="verb-form">tear</td>
+						<td>tore</td>
+						<td>torn</td>
+						<td>Рвати</td>
+					</tr>
+					<tr>
+						<td class="verb-form">tell</td>
+						<td>told</td>
+						<td>told</td>
+						<td>Розповідати</td>
+					</tr>
+					<tr>
+						<td class="verb-form">think</td>
+						<td>thought</td>
+						<td>thought</td>
+						<td>Думати</td>
+					</tr>
+					<tr>
+						<td class="verb-form">throw</td>
+						<td>threw</td>
+						<td>thrown</td>
+						<td>Кидати</td>
+					</tr>
+					<tr>
+						<td class="verb-form">understand</td>
+						<td>understood</td>
+						<td>understood</td>
+						<td>Розуміти</td>
+					</tr>
+					<tr>
+						<td class="verb-form">wake</td>
+						<td>woke</td>
+						<td>woken</td>
+						<td>Прокидатися</td>
+					</tr>
+					<tr>
+						<td class="verb-form">wear</td>
+						<td>wore</td>
+						<td>worn</td>
+						<td>Носити</td>
+					</tr>
+					<tr>
+						<td class="verb-form">weep</td>
+						<td>wept</td>
+						<td>wept</td>
+						<td>Плакати</td>
+					</tr>
+					<tr>
+						<td class="verb-form">wet</td>
+						<td>wet</td>
+						<td>wet</td>
+						<td>Мочити</td>
+					</tr>
+					<tr>
+						<td class="verb-form">win</td>
+						<td>won</td>
+						<td>won</td>
+						<td>Вигравати</td>
+					</tr>
+					<tr>
+						<td class="verb-form">wind</td>
+						<td>wound</td>
+						<td>wound</td>
+						<td>Звивати</td>
+					</tr>
+					<tr>
+						<td class="verb-form">write</td>
+						<td>wrote</td>
+						<td>written</td>
+						<td>Писати</td>
+					</tr>
+				</table>
+			</div>
+		</section>
+
+		<section id="practice">
+			<h2>Практика неправильних дієслів</h2>
+
+			<div class="interactive-demo">
+				<h3>Перевір свої знання</h3>
+				<p>Заповніть форми дієслів:</p>
+
+				<div id="verb-practice">
+					<p><strong>Дієслово:</strong> <span id="practice-verb">be</span> (<span
+							id="practice-translation">бути</span>)</p>
+					<p>II форма (Past Simple): <input type="text" id="past-simple-input" class="input-field"
+							placeholder="Введіть другу форму"></p>
+					<p>III форма (Past Participle): <input type="text" id="past-participle-input" class="input-field"
+							placeholder="Введіть третю форму"></p>
+					<button class="sound-btn" onclick="checkVerbAnswer()">Перевірити</button>
+					<button class="sound-btn" onclick="nextVerb()">Наступне дієслово</button>
+					<p id="verb-feedback"></p>
+
+					<div class="progress-container">
+						<div class="progress-bar" id="verb-progress-bar"></div>
+					</div>
+					<p>Правильних відповідей: <span id="verb-score">0</span>/<span id="verb-total">0</span></p>
+				</div>
+			</div>
+		</section>
+	</div>
+
+	<footer>
+		<div class="container">
+			<p>Тренажер неправильних дієслів англійської мови © 2023</p>
+		</div>
+	</footer>
+
+	<script>
+		// Функція для відкриття вкладок
+		function openTab(evt, tabName) {
+			var i, tabcontent, tablinks;
+			tabcontent = document.getElementsByClassName("tabcontent");
+			for (i = 0; i < tabcontent.length; i++) {
+				tabcontent[i].style.display = "none";
+			}
+			tablinks = document.getElementsByClassName("tablinks");
+			for (i = 0; i < tablinks.length; i++) {
+				tablinks[i].className = tablinks[i].className.replace(" active", "");
+			}
+			document.getElementById(tabName).style.display = "block";
+			evt.currentTarget.className += " active";
+		}
+
+		// Масив дієслів для практики
+		const practiceVerbs = [
+			{ verb: "be", pastSimple: "was, were", pastParticiple: "been", translation: "бути" },
+			{ verb: "begin", pastSimple: "began", pastParticiple: "begun", translation: "починати" },
+			{ verb: "break", pastSimple: "broke", pastParticiple: "broken", translation: "ламати" },
+			{ verb: "bring", pastSimple: "brought", pastParticiple: "brought", translation: "приносити" },
+			{ verb: "buy", pastSimple: "bought", pastParticiple: "bought", translation: "купувати" },
+			{ verb: "choose", pastSimple: "chose", pastParticiple: "chosen", translation: "вибирати" },
+			{ verb: "come", pastSimple: "came", pastParticiple: "come", translation: "приходити" },
+			{ verb: "do", pastSimple: "did", pastParticiple: "done", translation: "робити" },
+			{ verb: "drink", pastSimple: "drank", pastParticiple: "drunk", translation: "пити" },
+			{ verb: "eat", pastSimple: "ate", pastParticiple: "eaten", translation: "їсти" },
+			{ verb: "find", pastSimple: "found", pastParticiple: "found", translation: "знаходити" },
+			{ verb: "fly", pastSimple: "flew", pastParticiple: "flown", translation: "літати" },
+			{ verb: "forget", pastSimple: "forgot", pastParticiple: "forgotten", translation: "забувати" },
+			{ verb: "get", pastSimple: "got", pastParticiple: "got", translation: "отримувати" },
+			{ verb: "give", pastSimple: "gave", pastParticiple: "given", translation: "давати" },
+			{ verb: "go", pastSimple: "went", pastParticiple: "gone", translation: "іти" },
+			{ verb: "have", pastSimple: "had", pastParticiple: "had", translation: "мати" },
+			{ verb: "know", pastSimple: "knew", pastParticiple: "known", translation: "знати" },
+			{ verb: "make", pastSimple: "made", pastParticiple: "made", translation: "робити" },
+			{ verb: "meet", pastSimple: "met", pastParticiple: "met", translation: "зустрічати" },
+			{ verb: "read", pastSimple: "read", pastParticiple: "read", translation: "читати" },
+			{ verb: "run", pastSimple: "ran", pastParticiple: "run", translation: "бігти" },
+			{ verb: "see", pastSimple: "saw", pastParticiple: "seen", translation: "бачити" },
+			{ verb: "sing", pastSimple: "sang", pastParticiple: "sung", translation: "співати" },
+			{ verb: "speak", pastSimple: "spoke", pastParticiple: "spoken", translation: "говорити" },
+			{ verb: "take", pastSimple: "took", pastParticiple: "taken", translation: "брати" },
+			{ verb: "think", pastSimple: "thought", pastParticiple: "thought", translation: "думати" },
+			{ verb: "write", pastSimple: "wrote", pastParticiple: "written", translation: "писати" }
+		];
+
+		let currentVerbIndex = 0;
+		let verbScore = 0;
+		let verbTotalAttempts = 0;
+
+		// Функція для перевірки відповіді
+		function checkVerbAnswer() {
+			const pastSimpleInput = document.getElementById('past-simple-input').value.trim().toLowerCase();
+			const pastParticipleInput = document.getElementById('past-participle-input').value.trim().toLowerCase();
+			const correctPastSimple = practiceVerbs[currentVerbIndex].pastSimple.toLowerCase();
+			const correctPastParticiple = practiceVerbs[currentVerbIndex].pastParticiple.toLowerCase();
+			const feedback = document.getElementById('verb-feedback');
+
+			verbTotalAttempts++;
+			document.getElementById('verb-total').textContent = verbTotalAttempts;
+
+			// Перевірка для дієслів з декількома формами (наприклад, was/were)
+			const pastSimpleCorrect = correctPastSimple.includes(',')
+				? correctPastSimple.split(',').some(form => form.trim() === pastSimpleInput)
+				: pastSimpleInput === correctPastSimple;
+
+			const pastParticipleCorrect = correctPastParticiple.includes(',')
+				? correctPastParticiple.split(',').some(form => form.trim() === pastParticipleInput)
+				: pastParticipleInput === correctPastParticiple;
+
+			if (pastSimpleCorrect && pastParticipleCorrect) {
+				feedback.innerHTML = "Правильно! Відмінно!";
+				feedback.style.color = "var(--success)";
+				verbScore++;
+				document.getElementById('verb-score').textContent = verbScore;
+			} else {
+				let errorMessage = "Неправильно. Правильні форми: ";
+				errorMessage += practiceVerbs[currentVerbIndex].pastSimple + " (II), ";
+				errorMessage += practiceVerbs[currentVerbIndex].pastParticiple + " (III)";
+				feedback.innerHTML = errorMessage;
+				feedback.style.color = "var(--accent)";
+			}
+
+			// Оновлення прогресу
+			const progressBar = document.getElementById('verb-progress-bar');
+			progressBar.style.width = (verbScore / verbTotalAttempts * 100) + '%';
+		}
+
+		// Функція для наступного дієслова
+		function nextVerb() {
+			currentVerbIndex = (currentVerbIndex + 1) % practiceVerbs.length;
+			document.getElementById('practice-verb').textContent = practiceVerbs[currentVerbIndex].verb;
+			document.getElementById('practice-translation').textContent = practiceVerbs[currentVerbIndex].translation;
+			document.getElementById('past-simple-input').value = "";
+			document.getElementById('past-participle-input').value = "";
+			document.getElementById('verb-feedback').innerHTML = "";
+		}
+
+		// Ініціалізація
+		document.addEventListener('DOMContentLoaded', function () {
+			document.getElementById('practice-verb').textContent = practiceVerbs[0].verb;
+			document.getElementById('practice-translation').textContent = practiceVerbs[0].translation;
+			document.getElementById('verb-total').textContent = verbTotalAttempts;
+			document.getElementById('verb-score').textContent = verbScore;
+		});
+	</script>
+</body>
+
+</html>
