@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Розклад вивчення англійської мови</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+            color: #333;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+        
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .week-view {
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .week-title {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        
+        .days-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .day {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .day:hover {
+            transform: translateY(-5px);
+            background: #e9ecef;
+        }
+        
+        .day-title {
+            font-size: 1.2rem;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+        
+        .day-count {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #3498db;
+            color: white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        .day-view {
+            padding: 25px;
+        }
+        
+        .day-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e9ecef;
+        }
+        
+        .back-btn {
+            background: #95a5a6;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        
+        .back-btn:hover {
+            background: #7f8c8d;
+        }
+        
+        .day-view-title {
+            font-size: 1.8rem;
+            color: #2c3e50;
+        }
+        
+        .add-activity {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .add-activity input {
+            flex: 1;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+            min-width: 150px;
+        }
+        
+        .add-btn {
+            background: #27ae60;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 12px 20px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        
+        .add-btn:hover {
+            background: #219a52;
+        }
+        
+        .activity-list {
+            list-style: none;
+        }
+        
+        .activity-item {
+            background: white;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .activity-checkbox {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+        
+        .activity-content {
+            flex: 1;
+        }
+        
+        .activity-text {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+        
+        .activity-link {
+            font-size: 0.9rem;
+        }
+        
+        .activity-link a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        
+        .activity-link a:hover {
+            text-decoration: underline;
+        }
+        
+        .activity-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .edit-btn, .delete-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            padding: 5px;
+        }
+        
+        .edit-btn {
+            color: #3498db;
+        }
+        
+        .delete-btn {
+            color: #e74c3c;
+        }
+        
+        .completed .activity-text {
+            text-decoration: line-through;
+            color: #7f8c8d;
+        }
+        
+        .completed .activity-link a {
+            color: #7f8c8d;
+        }
+        
+        .no-activities {
+            color: #7f8c8d;
+            text-align: center;
+            padding: 40px 20px;
+            font-style: italic;
+        }
+        
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #eee;
+        }
+        
+        .modal-header h2 {
+            color: #2c3e50;
+            margin: 0;
+        }
+        
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: #7f8c8d;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .close-btn:hover {
+            color: #e74c3c;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+        
+        .modal-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 15px;
+            margin-top: 25px;
+        }
+        
+        .btn-primary {
+            padding: 12px 20px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-weight: 500;
+        }
+        
+        .btn-primary:hover {
+            background: #2980b9;
+        }
+        
+        .btn-secondary {
+            padding: 12px 20px;
+            background: #95a5a6;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-weight: 500;
+        }
+        
+        .btn-secondary:hover {
+            background: #7f8c8d;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        @media (max-width: 768px) {
+            .days-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .add-activity {
+                flex-direction: column;
+            }
+            
+            .modal-content {
+                padding: 20px;
+                width: 95%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Розклад вивчення англійської мови</h1>
+            <p>Плануйте свої заняття на тиждень</p>
+        </header>
+        
+        <div id="week-view" class="week-view">
+            <h2 class="week-title">Оберіть день тижня</h2>
+            <div class="days-container">
+                <div class="day" data-day="Monday">
+                    <div class="day-title">Понеділок</div>
+                    <div class="day-count" id="monday-count">0</div>
+                </div>
+                <div class="day" data-day="Tuesday">
+                    <div class="day-title">Вівторок</div>
+                    <div class="day-count" id="tuesday-count">0</div>
+                </div>
+                <div class="day" data-day="Wednesday">
+                    <div class="day-title">Середа</div>
+                    <div class="day-count" id="wednesday-count">0</div>
+                </div>
+                <div class="day" data-day="Thursday">
+                    <div class="day-title">Четвер</div>
+                    <div class="day-count" id="thursday-count">0</div>
+                </div>
+                <div class="day" data-day="Friday">
+                    <div class="day-title">П'ятниця</div>
+                    <div class="day-count" id="friday-count">0</div>
+                </div>
+                <div class="day" data-day="Saturday">
+                    <div class="day-title">Субота</div>
+                    <div class="day-count" id="saturday-count">0</div>
+                </div>
+                <div class="day" data-day="Sunday">
+                    <div class="day-title">Неділя</div>
+                    <div class="day-count" id="sunday-count">0</div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="day-view" class="day-view hidden">
+            <div class="day-header">
+                <button class="back-btn" id="back-btn">← Назад до тижня</button>
+                <h2 class="day-view-title" id="day-view-title">Понеділок</h2>
+                <div></div> <!-- Пустий елемент для вирівнювання -->
+            </div>
+            
+            <div class="add-activity">
+                <input type="text" id="new-activity-text" placeholder="Наприклад: Grammar 1 hour">
+                <input type="text" id="new-activity-link" placeholder="Посилання (необов'язково)">
+                <button class="add-btn" id="add-activity-btn">Додати</button>
+            </div>
+            
+            <ul class="activity-list" id="activity-list">
+                <li class="no-activities">Немає запланованих занять</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Модальне вікно для редагування заняття -->
+    <div id="activity-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title">Редагувати заняття</h2>
+                <button class="close-btn" id="close-modal">&times;</button>
+            </div>
+            <form id="activity-form">
+                <input type="hidden" id="edit-index">
+                
+                <div class="form-group">
+                    <label for="edit-activity-text">Заняття</label>
+                    <input type="text" id="edit-activity-text" placeholder="Наприклад: Grammar 1 hour" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="edit-activity-link">Посилання (необов'язково)</label>
+                    <input type="url" id="edit-activity-link" placeholder="https://example.com">
+                </div>
+                
+                <div class="modal-actions">
+                    <button type="button" class="btn-secondary" id="cancel-btn">Скасувати</button>
+                    <button type="submit" class="btn-primary">Зберегти</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+            const ukrainianDays = {
+                'Monday': 'Понеділок',
+                'Tuesday': 'Вівторок',
+                'Wednesday': 'Середа',
+                'Thursday': 'Четвер',
+                'Friday': 'П\'ятниця',
+                'Saturday': 'Субота',
+                'Sunday': 'Неділя'
+            };
+            
+            // Завантаження даних з локального сховища
+            let scheduleData = JSON.parse(localStorage.getItem('englishSchedule')) || {};
+            
+            // Ініціалізація пустих даних для днів, якщо їх немає
+            daysOfWeek.forEach(day => {
+                if (!scheduleData[day]) {
+                    scheduleData[day] = [];
+                }
+            });
+            
+            // Перевірка, чи потрібно додати прикладні дані (якщо всі дні порожні)
+            const allDaysEmpty = daysOfWeek.every(day => scheduleData[day].length === 0);
+            if (allDaysEmpty) {
+                scheduleData = {
+                    'Monday': [
+                        { text: 'Grammar 1-1.5 hours', link: 'https://poliglot16.ru/', completed: false }
+                    ],
+                    'Tuesday': [
+                        { text: 'Reading 1 hour', link: 'https://estudyme.com/', completed: false }
+                    ],
+                    'Wednesday': [
+                        { text: 'Writing 1 hour', link: 'https://writeandimprove.com/', completed: false }
+                    ],
+                    'Thursday': [
+                        { text: 'Listening 1 hour', link: null, completed: false }
+                    ],
+                    'Friday': [],
+                    'Saturday': [
+                        { text: 'Speaking 1 hour', link: null, completed: false }
+                    ],
+                    'Sunday': []
+                };
+                saveData();
+            }
+            
+            const weekView = document.getElementById('week-view');
+            const dayView = document.getElementById('day-view');
+            const dayViewTitle = document.getElementById('day-view-title');
+            const backBtn = document.getElementById('back-btn');
+            const activityList = document.getElementById('activity-list');
+            const newActivityText = document.getElementById('new-activity-text');
+            const newActivityLink = document.getElementById('new-activity-link');
+            const addActivityBtn = document.getElementById('add-activity-btn');
+            const activityModal = document.getElementById('activity-modal');
+            const activityForm = document.getElementById('activity-form');
+            const closeModal = document.getElementById('close-modal');
+            const cancelBtn = document.getElementById('cancel-btn');
+            
+            let currentDay = '';
+            
+            // Оновлення лічильників завдань для кожного дня
+            function updateDayCounts() {
+                daysOfWeek.forEach(day => {
+                    const countElement = document.getElementById(`${day.toLowerCase()}-count`);
+                    if (countElement) {
+                        countElement.textContent = scheduleData[day].length;
+                    }
+                });
+            }
+            
+            // Обробник кліку на день тижня
+            document.querySelectorAll('.day').forEach(dayElement => {
+                dayElement.addEventListener('click', function() {
+                    const day = this.getAttribute('data-day');
+                    currentDay = day;
+                    showDayView(day);
+                });
+            });
+            
+            // Показати вигляд дня
+            function showDayView(day) {
+                weekView.classList.add('hidden');
+                dayView.classList.remove('hidden');
+                dayViewTitle.textContent = ukrainianDays[day];
+                renderActivities(day);
+            }
+            
+            // Повернутися до вигляду тижня
+            backBtn.addEventListener('click', function() {
+                dayView.classList.add('hidden');
+                weekView.classList.remove('hidden');
+            });
+            
+            // Додати нове заняття
+            addActivityBtn.addEventListener('click', function() {
+                const text = newActivityText.value.trim();
+                const link = newActivityLink.value.trim();
+                
+                if (text) {
+                    scheduleData[currentDay].push({
+                        text: text,
+                        link: link || null,
+                        completed: false
+                    });
+                    
+                    saveData();
+                    renderActivities(currentDay);
+                    updateDayCounts();
+                    
+                    newActivityText.value = '';
+                    newActivityLink.value = '';
+                }
+            });
+            
+            // Відображення занять для вибраного дня
+            function renderActivities(day) {
+                activityList.innerHTML = '';
+                
+                if (scheduleData[day].length === 0) {
+                    const noActivities = document.createElement('li');
+                    noActivities.className = 'no-activities';
+                    noActivities.textContent = 'Немає запланованих занять';
+                    activityList.appendChild(noActivities);
+                    return;
+                }
+                
+                scheduleData[day].forEach((activity, index) => {
+                    const activityItem = document.createElement('li');
+                    activityItem.className = 'activity-item';
+                    if (activity.completed) {
+                        activityItem.classList.add('completed');
+                    }
+                    
+                    const checkbox = document.createElement('input');
+                    checkbox.type = 'checkbox';
+                    checkbox.className = 'activity-checkbox';
+                    checkbox.checked = activity.completed;
+                    checkbox.addEventListener('change', () => toggleCompleted(day, index));
+                    
+                    const activityContent = document.createElement('div');
+                    activityContent.className = 'activity-content';
+                    
+                    const activityText = document.createElement('div');
+                    activityText.className = 'activity-text';
+                    activityText.textContent = activity.text;
+                    
+                    activityContent.appendChild(activityText);
+                    
+                    if (activity.link) {
+                        const activityLink = document.createElement('div');
+                        activityLink.className = 'activity-link';
+                        
+                        const link = document.createElement('a');
+                        link.href = activity.link;
+                        link.target = '_blank';
+                        // Відображаємо "Перейти" замість довгого URL
+                        link.textContent = "Перейти";
+                        
+                        activityLink.appendChild(link);
+                        activityContent.appendChild(activityLink);
+                    }
+                    
+                    const activityActions = document.createElement('div');
+                    activityActions.className = 'activity-actions';
+                    
+                    const editButton = document.createElement('button');
+                    editButton.className = 'edit-btn';
+                    editButton.innerHTML = '✏️';
+                    editButton.title = 'Редагувати';
+                    editButton.addEventListener('click', () => openEditModal(day, index));
+                    
+                    const deleteButton = document.createElement('button');
+                    deleteButton.className = 'delete-btn';
+                    deleteButton.innerHTML = '❌';
+                    deleteButton.title = 'Видалити';
+                    deleteButton.addEventListener('click', () => deleteActivity(day, index));
+                    
+                    activityActions.appendChild(editButton);
+                    activityActions.appendChild(deleteButton);
+                    
+                    activityItem.appendChild(checkbox);
+                    activityItem.appendChild(activityContent);
+                    activityItem.appendChild(activityActions);
+                    
+                    activityList.appendChild(activityItem);
+                });
+            }
+            
+            // Перемикання стану "виконано"
+            function toggleCompleted(day, index) {
+                scheduleData[day][index].completed = !scheduleData[day][index].completed;
+                saveData();
+                renderActivities(day);
+            }
+            
+            // Відкриття модального вікна для редагування
+            function openEditModal(day, index) {
+                const activity = scheduleData[day][index];
+                
+                document.getElementById('edit-activity-text').value = activity.text;
+                document.getElementById('edit-activity-link').value = activity.link || '';
+                document.getElementById('edit-index').value = `${day},${index}`;
+                
+                activityModal.classList.remove('hidden');
+            }
+            
+            // Видалення заняття
+            function deleteActivity(day, index) {
+                if (confirm('Ви впевнені, що хочете видалити це заняття?')) {
+                    scheduleData[day].splice(index, 1);
+                    saveData();
+                    renderActivities(day);
+                    updateDayCounts();
+                }
+            }
+            
+            // Обробка форми редагування
+            activityForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const [day, indexStr] = document.getElementById('edit-index').value.split(',');
+                const index = parseInt(indexStr, 10);
+                const text = document.getElementById('edit-activity-text').value;
+                const link = document.getElementById('edit-activity-link').value;
+                
+                scheduleData[day][index].text = text;
+                scheduleData[day][index].link = link || null;
+                
+                saveData();
+                renderActivities(day);
+                closeModalHandler();
+            });
+            
+            // Закриття модального вікна
+            function closeModalHandler() {
+                activityModal.classList.add('hidden');
+            }
+            
+            closeModal.addEventListener('click', closeModalHandler);
+            
+            cancelBtn.addEventListener('click', closeModalHandler);
+            
+            // Закриття модального вікна при кліку поза ним
+            activityModal.addEventListener('click', function(e) {
+                if (e.target === activityModal) {
+                    closeModalHandler();
+                }
+            });
+            
+            // Збереження даних у локальне сховище
+            function saveData() {
+                localStorage.setItem('englishSchedule', JSON.stringify(scheduleData));
+            }
+            
+            // Ініціалізація при завантаженні сторінки
+            updateDayCounts();
+        });
+    </script>
+</body>
+</html>
