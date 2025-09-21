@@ -359,7 +359,7 @@ header p {
 }
 
 .category-input {
-  display: flex;
+  /* display: flex; */
   align-items: center;
   gap: 12px;
 }
@@ -671,3 +671,4 @@ header p {
   opacity: 0;
   cursor: pointer;
 }
+
