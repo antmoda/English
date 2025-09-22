@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Модальні дієслова в англійській мові</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            color: white;
+            padding: 40px 0;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .section-title {
+            color: #667eea;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #667eea;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .section-title i {
+            font-size: 1.5em;
+        }
+        .modalal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+        .modal-card {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 25px;
+            transition: transform 0.3s ease;
+            border-top: 5px solid #667eea;
+        }
+        .modal-card:hover {
+            transform: translateY(-5px);
+        }
+        .modal-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            gap: 15px;
+        }
+        .modal-icon {
+            width: 50px;
+            height: 50px;
+            background: #667eea;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        .modal-name {
+            font-size: 1.4em;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+        .modal-meaning {
+            color: #e74c3c;
+            font-weight: 500;
+            margin: 10px 0;
+        }
+        .example {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #667eea;
+        }
+        .example-ukr {
+            color: #666;
+            font-style: italic;
+        }
+        .usage-list {
+            margin-top: 15px;
+            padding-left: 20px;
+        }
+        .usage-list li {
+            margin-bottom: 10px;
+            color: #555;
+        }
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        .comparison-table th,
+        .comparison-table td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        .comparison-table th {
+            background-color: #667eea;
+            color: white;
+        }
+        .comparison-table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        .negative-example {
+            background: #fff5f5;
+            border-left: 4px solid #e74c3c;
+        }
+        .question-example {
+            background: #f0f9ff;
+            border-left: 4px solid #3498db;
+        }
+        .rule-box {
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #ffc107;
+        }
+        .quiz-container {
+            background-color: #e8f4fc;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 30px 0;
+        }
+        .quiz-question {
+            font-weight: bold;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+        .quiz-options {
+            margin-bottom: 20px;
+        }
+        .quiz-options label {
+            display: block;
+            margin-bottom: 10px;
+            padding: 10px;
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .quiz-options label:hover {
+            background: #e3f2fd;
+        }
+        .check-btn {
+            background: #667eea;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+        .check-btn:hover {
+            background: #5a67d8;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: 500;
+        }
+        .success {
+            background: #d4edda;
+            color: #155724;
+        }
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        footer {
+            text-align: center;
+            color: white;
+            padding: 40px 0;
+            margin-top: 50px;
+        }
+        @media (max-width: 768px) {
+            .modalal-grid {
+                grid-template-columns: 1fr;
+            }
+            .modal-header {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🧠 Модальні дієслова в англійській мові</h1>
+            <p class="subtitle">Простими словами про складну тему: як виражати можливість, необхідність та дозвіл</p>
+        </header>
+
+        <!-- Що таке модальні дієслова -->
+        <div class="section">
+            <h2 class="section-title">
+                <i class="fas fa-lightbulb"></i>
+                Що таке модальні дієслова?
+            </h2>
+            <p>Модальні дієслова - це особливі дієслова, які допомагають виразити ставлення до дії: можливість, необхідність, дозвіл, заборону або бажання.</p>
+            
+            <div class="rule-box">
+                <strong>🔍 Основні ознаки модальних дієслів:</strong>
+                <ul class="usage-list">
+                    <li>Не мають закінчень -s в 3-й особі однини (He <strong>can</strong> swim)</li>
+                    <li>Після них не ставиться частка <strong>to</strong> (I must <strong>go</strong>)</li>
+                    <li>Утворюють заперечення та питання без допоміжних дієслів</li>
+                    <li>Не мають форм інфінітива, герундія чи дієприкметника</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Основні модальні дієслова -->
+        <div class="section">
+            <h2 class="section-title">
+                <i class="fas fa-star"></i>
+                Основні модальні дієслова
+            </h2>
+            
+            <div class="modalal-grid">
+                <!-- Can -->
+                <div class="modal-card">
+                    <div class="modal-header">
+                        <div class="modal-icon">Can</div>
+                        <h3 class="modal-name">Can</h3>
+                    </div>
+                    <div class="modal-meaning">Можливість, вміння, дозвіл</div>
+                    <p>Використовується для вираження фізичної можливості, вміння чи неформального дозволу.</p>
+                    
+                    <div class="example">
+                        <strong>I can swim.</strong><br>
+                        <span class="example-ukr">Я вмію плавати.</span>
+                    </div>
+                    
+                    <div class="example">
+                        <strong>Can I use your phone?</strong><br>
+                        <span class="example-ukr">Можна мені використати ваш телефон?</span>
+                    </div>
+
+                    <ul class="usage-list">
+                        <li>⚡ Фізична можливість</li>
+                        <li>🎯 Вміння, навичка</li>
+                        <li>👍 Неформальний дозвіл</li>
+                    </ul>
+                </div>
+
+                <!-- Could -->
+                <div class="modal-card">
+                    <div class="modal-header">
+                        <div class="modal-icon">Could</div>
+                        <h3 class="modal-name">Could</h3>
+                    </div>
+                    <div class="modal-meaning">Минула форма can, вежливе прохання</div>
+                    <p>Виражає можливість у минулому або використовується для ввічливих прохань.</p>
+                    
+                    <div class="example">
+                        <strong>I could swim when I was 5.</strong><br>
+                        <span class="example-ukr">Я вмів плавати, коли мені було 5.</span>
+                    </div>
+                    
+                    <div class="example">
+                        <strong>Could you help me?</strong><br>
+                        <span class="example-ukr">Чи не могли б ви мені допомогти?</span>
+                    </ul>
+                </div>
+
+                <!-- Must -->
+                <div class="modal-card">
+                    <div class="modal-header">
+                        <div class="modal-icon">Must</div>
+                        <h3 class="modal-name">Must</h3>
+                    </div>
+                    <div class="modal-meaning">Обов'язок, необхідність, впевненість</div>
+                    <p>Виражає сильну необхідність, обов'язок або впевненість у чомусь.</p>
+                    
+                    <div class="example">
+                        <strong>I must finish my homework.</strong><br>
+                        <span class="example-ukr">Я повинен закінчити домашнє завдання.</span>
+                    </div>
+                    
+                    <div class="example">
+                        <strong>She must be tired.</strong><br>
+                        <span class="example-ukr">Вона, мабуть, втомлена.</span>
+                    </div>
+
+                    <ul class="usage-list">
+                        <li>❗ Сильний обов'язок</li>
+                        <li>🔮 Впевненість (припущення)</li>
+                        <li>📋 Правила та закони</li>
+                    </ul>
+                </div>
+
+                <!-- Should -->
+                <div class="modal-card">
+                    <div class="modal-header">
+                        <div class="modal-icon">Should</div>
+                        <h3 class="modal-name">Should</h3>
+                    </div>
+                    <div class="modal-meaning">Порада, рекомендація, слабкий обов'язок</div>
+                    <p>Виражає пораду, рекомендацію або те, що було б розумно зробити.</p>
+                    
+                    <div class="example">
+                        <strong>You should see a doctor.</strong><br>
+                        <span class="example-ukr">Тобі слід показатися лікарю.</span>
+                    </div>
+                    
+                    <div class="example">
+                        <strong>We should leave now.</strong><br>
+                        <span class="example-ukr">Нам варто піти зараз.</span>
+                    </div>
+
+                    <ul class="usage-list">
+                        <li>💡 Порада, рекомендація</li>
+                        <li>🤔 Те, що було б розумно</li>
+                        <li>⚖️ Слабкий обов'язок</li>
+                    </ul>
+                </div>
+
+                <!-- May -->
+                <div class="modal-card">
+                    <div class="modal-header">
+                        <div class="modal-icon">May</div>
+                        <h3 class="modal-name">May</h3>
+                    </div>
+                    <div class="modal-meaning">Формальний дозвіл, можливість</div>
+                    <p>Використовується для формального дозволу або вираження можливості.</p>
+                    
+                    <div class="example">
+                        <strong>May I come in?</strong><br>
+                        <span class="example-ukr">Чи можу я увійти?</span>
+                    </div>
+                    
+                    <div class="example">
+                        <strong>It may rain tomorrow.</strong><br>
+                        <span class="example-ukr">Завтра, можливо, буде дощ.</span>
+                    </div>
+
+                    <ul class="usage-list">
+                        <li>🎩 Формальний дозвіл</li>
+                        <li>🌤️ Можливість (50/50)</li>
+                        <li>📝 Офіційний стиль</li>
+                    </ul>
+                </div>
+
+                <!-- Might -->
+                <div class="modal-card">
+                    <div class="modal-header">
+                        <div class="modal-icon">Might</div>
+                        <h3 class="modal-name">Might</h3>
+                    </div>
+                    <div class="modal-meaning">Слабка можливість, непевність</div>
+                    <p>Виражає слабку можливість або непевність у чомусь.</p>
+                    
+                    <div class="example">
+                        <strong>I might go to the party.</strong><br>
+                        <span class="example-ukr">Я, можливо, піду на вечірку.</span>
+                    </div>
+                    
+                    <div class="example">
+                        <strong>She might be busy.</strong><br>
+                        <span class="example-ukr">Вона, мабуть, зайнята.</span>
+                    </div>
+
+                    <ul class="usage-list">
+                        <li>🎲 Слабка можливість</li>
+                        <li>❓ Непевність</li>
+                        <li>🤷 Гіпотетичні ситуації</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Заперечення та питання -->
+        <div class="section">
+            <h2 class="section-title">
+                <i class="fas fa-question-circle"></i>
+                Заперечення та питання
+            </h2>
+
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Дієслово</th>
+                        <th>Заперечення</th>
+                        <th>Питання</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Can</td>
+                        <td>I <strong>cannot</strong> (can't) swim</td>
+                        <td><strong>Can</strong> you swim?</td>
+                    </tr>
+                    <tr>
+                        <td>Could</td>
+                        <td>I <strong>could not</strong> (couldn't) swim</td>
+                        <td><strong>Could</strong> you help me?</td>
+                    </tr>
+                    <tr>
+                        <td>Must</td>
+                        <td>I <strong>must not</strong> (mustn't) smoke</td>
+                        <td><strong>Must</strong> I go?</td>
+                    </tr>
+                    <tr>
+                        <td>Should</td>
+                        <td>I <strong>should not</strong> (shouldn't) eat</td>
+                        <td><strong>Should</strong> I call him?</td>
+                    </tr>
+                    <tr>
+                        <td>May</td>
+                        <td>You <strong>may not</strong> enter</td>
+                        <td><strong>May</strong> I come in?</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="example negative-example">
+                <strong>You mustn't smoke here. </strong> (заборона)<br>
+                <span class="example-ukr">Тут не можна палити.</span>
+            </div>
+
+            <div class="example question-example">
+                <strong>Should I wear a coat? </strong> (порада)<br>
+                <span class="example-ukr">Чи варто мені одягнути пальто?</span>
+            </div>
+        </div>
+
+        <!-- Відмінності та порівняння -->
+        <div class="section">
+            <h2 class="section-title">
+                <i class="fas fa-balance-scale"></i>
+                Відмінності між дієсловами
+            </h2>
+
+            <div class="rule-box">
+                <strong>Can vs May:</strong><br>
+                <strong>Can</strong> - неформальний дозвіл ("Can I go?")<br>
+                <strong>May</strong> - формальний дозвіл ("May I be excused?")
+            </div>
+
+            <div class="rule-box">
+                <strong>Must vs Have to:</strong><br>
+                <strong>Must</strong> - особистий обов'язок ("I must study")<br>
+                <strong>Have to</strong> - зовнішній обов'язок ("I have to work")
+            </div>
+
+            <div class="rule-box">
+                <strong>Should vs Must:</strong><br>
+                <strong>Should</strong> - порада ("You should rest")<br>
+                <strong>Must</strong> - сильний обов'язок ("You must stop")
+            </div>
+        </div>
+
+        <!-- Практика -->
+        <div class="section">
+            <h2 class="section-title">
+                <i class="fas fa-pencil-alt"></i>
+                Практика
+            </h2>
+
+            <div class="quiz-container">
+                <div class="quiz-question">1. Яке дієслово використати для ввічливого прохання?</div>
+                <div class="quiz-options">
+                    <label><input type="radio" name="q1" value="a"> Can you help me?</label>
+                    <label><input type="radio" name="q1" value="b"> Could you help me?</label>
+                    <label><input type="radio" name="q1" value="c"> May you help me?</label>
+                </div>
+
+                <div class="quiz-question">2. Як сказати "Мені не можна їсти цукерки" (заборона)?</div>
+                <div class="quiz-options">
+                    <label><input type="radio" name="q2" value="a"> I can't eat candy</label>
+                    <label><input type="radio" name="q2" value="b"> I mustn't eat candy</label>
+                    <label><input type="radio" name="q2" value="c"> I shouldn't eat candy</label>
+                </div>
+
+                <div class="quiz-question">3. Яке дієслово виражає слабку можливість?</div>
+                <div class="quiz-options">
+                    <label><input type="radio" name="q3" value="a"> must</label>
+                    <label><input type="radio" name="q3" value="b"> may</label>
+                    <label><input type="radio" name="q3" value="c"> might</label>
+                </div>
+
+                <button class="check-btn" onclick="checkModalAnswers()">Перевірити відповіді</button>
+                <div id="quiz-result" class="result"></div>
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2024 Вивчення англійської мови</p>
+            <p>Модальні дієслова - це просто! 🎯</p>
+        </footer>
+    </div>
+
+    <script>
+        function checkModalAnswers() {
+            const correctAnswers = ['b', 'b', 'c'];
+            const userAnswers = [
+                document.querySelector('input[name="q1"]:checked')?.value,
+                document.querySelector('input[name="q2"]:checked')?.value,
+                document.querySelector('input[name="q3"]:checked')?.value
+            ];
+
+            let score = 0;
+            let resultHtml = "<strong>Результат:</strong><br>";
+
+            for (let i = 0; i < correctAnswers.length; i++) {
+                if (userAnswers[i] === correctAnswers[i]) {
+                    score++;
+                    resultHtml += `Питання ${i+1}: ✅ Правильно!<br>`;
+                } else {
+                    resultHtml += `Питання ${i+1}: ❌ Неправильно<br>`;
+                }
+            }
+
+            resultHtml += `<br><strong>Загалом: ${score} з ${correctAnswers.length}</strong>`;
+            
+            const resultDiv = document.getElementById('quiz-result');
+            resultDiv.innerHTML = resultHtml;
+            resultDiv.className = score === correctAnswers.length ? 'result success' : 'result error';
+        }
+    </script>
+</body>
+</html>

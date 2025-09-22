@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Англійська вимова для новачків</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1, h2, h3 {
+            color: #0056b3;
+        }
+        h1 {
+            text-align: center;
+            border-bottom: 2px solid #0056b3;
+            padding-bottom: 10px;
+        }
+        h2 {
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+            margin-top: 30px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f0f8ff;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .phonetic {
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            color: #E91E63;
+        }
+        .example-word {
+            font-weight: bold;
+            color: #00796B;
+        }
+        .note {
+            background-color: #fffde7;
+            padding: 10px;
+            border-left: 4px solid #ffd600;
+            margin: 10px 0;
+            font-size: 0.9em;
+        }
+        .symbol-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 10px;
+            margin: 15px 0;
+        }
+        .symbol-box {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+            border-radius: 4px;
+            background-color: #fafafa;
+        }
+        .symbol {
+            font-size: 24px;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .sound-example {
+            font-size: 0.9em;
+            color: #555;
+        }
+        .resources-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .resources-list li {
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #f0f8ff;
+            border-radius: 5px;
+            border-left: 5px solid #0056b3;
+        }
+        .resources-list a {
+            color: #0056b3;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .resources-list a:hover {
+            text-decoration: underline;
+        }
+        .quiz-container {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .quiz-question {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .quiz-options {
+            margin-bottom: 15px;
+        }
+        .articulation-img {
+            max-width: 150px;
+            display: block;
+            margin: 10px auto;
+        }
+        .audio-link {
+            display: inline-block;
+            margin-left: 5px;
+            font-size: 0.8em;
+            color: #00796B;
+            text-decoration: none;
+        }
+        .audio-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Основи англійської вимови для новачків</h1>
+
+        <section id="intro">
+            <h2>Вступ</h2>
+            <p>Англійські слова часто читаються не так, як пишуться. Транскрипція — це спеціальна система запису звуків мови, яка допомагає зрозуміти правильну вимову. Вона позначається у квадратних дужках <span class="phonetic">[ ]</span>.</p>
+            <p class="note">Наприклад, слово <span class="example-word">cat</span> (кіт) читається не "кат", а <span class="phonetic">[kæt]</span>. <a href="https://dictionary.cambridge.org/uk/dictionary/english/cat" target="_blank" class="audio-link">(🔊 слухати)</a></p>
+        </section>
+
+        <section id="alphabet">
+            <h2>Алфавіт та основні звуки</h2>
+            <p>Кожна літера англійського алфавіту має свою назву, але в словах вона може читатися по-різному. Нижче наведено таблицю з основними варіантами читання.</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Літера</th>
+                        <th>Назва (транскрипція)</th>
+                        <th>Звук/Приклад</th>
+                        <th>Транскрипція прикладу</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>A a</td><td>[eɪ]</td><td class="example-word">cat, cake</td><td class="phonetic">[kæt], [keɪk]</td></tr>
+                    <tr><td>B b</td><td>[biː]</td><td class="example-word">bag</td><td class="phonetic">[bæg]</td></tr>
+                    <!-- Інші літери алфавіту... -->
+                    <tr><td>Z z</td><td>[zed]</td><td class="example-word">zoo</td><td class="phonetic">[zuː]</td></tr>
+                </tbody>
+            </table>
+            <p class="note"><strong>Примітка:</strong> Літери <strong>H, K, W</strong> мають особливості вимови. Літера <strong>Y</strong> може бути як приголосною [j] (<span class="example-word">yet</span>), так і голосною [aɪ] (<span class="example-word">fly</span>).</p>
+        </section>
+
+        <section id="syllables">
+            <h2>Типи складів та читання голосних</h2>
+            <p>Вимова голосної літери сильно залежить від типу складу, в якому вона знаходиться.</p>
+
+            <h3>Відкритий склад</h3>
+            <p>Склад закінчується на голосну (наприклад, <span class="example-word">me</span>) або на голосну + мовчазну <strong>e</strong> (наприклад, <span class="example-word">name</span>). Голосна часто читається так само, як і в алфавіті (<em>довго</em>).</p>
+            <table>
+                <thead>
+                    <tr><th>Літера</th><th>Вимова</th><th>Приклад</th><th>Транскрипція</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>A a</td><td class="phonetic">[eɪ]</td><td class="example-word">name</td><td class="phonetic">[neɪm]</td></tr>
+                    <!-- Інші голосні... -->
+                </tbody>
+            </table>
+
+            <h3>Закритий склад</h3>
+            <p>Склад закінчується на одну або більше приголосних (наприклад, <span class="example-word">cat</span>, <span class="example-word">hand</span>). Голосна читається <em>коротко</em>.</p>
+            <table>
+                <thead>
+                    <tr><th>Літера</th><th>Вимова</th><th>Приклад</th><th>Транскрипція</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>A a</td><td class="phonetic">[æ]</td><td class="example-word">cat</td><td class="phonetic">[kæt]</td></tr>
+                    <!-- Інші голосні... -->
+                </tbody>
+            </table>
+        </section>
+
+        <section id="phonetics">
+            <h2>Фонетичні символи (звуки)</h2>
+            <p>Ось основні звуки англійської мови. Слухайте їхню вимову в словниках або онлайн-ресурсах.</p>
+
+            <h3>Приголосні звуки</h3>
+            <div class="symbol-list">
+                <div class="symbol-box"><span class="symbol">p</span> <span class="phonetic">[p]</span> <span class="sound-example">pen</span></div>
+                <!-- Інші приголосні... -->
+                <div class="symbol-box"><span class="symbol">θ</span> <span class="phonetic">[θ]</span> <span class="sound-example">think <a href="https://dictionary.cambridge.org/uk/dictionary/english/think" target="_blank" class="audio-link">(🔊)</a></span></div>
+                <div class="symbol-box"><span class="symbol">ð</span> <span class="phonetic">[ð]</span> <span class="sound-example">this <a href="https://dictionary.cambridge.org/uk/dictionary/english/this" target="_blank" class="audio-link">(🔊)</a></span></div>
+                <div class="symbol-box"><span class="symbol">ŋ</span> <span class="phonetic">[ŋ]</span> <span class="sound-example">song <a href="https://dictionary.cambridge.org/uk/dictionary/english/song" target="_blank" class="audio-link">(🔊)</a></span></div>
+                <!-- Інші приголосні... -->
+            </div>
+            <p class="note"><strong>Відео-пояснення артикуляції:</strong>
+                <br>- Звуки <span class="phonetic">[θ]</span> та <span class="phonetic">[ð]</span>: <a href="https://www.youtube.com/watch?v=YivTzS4sMog" target="_blank">How to say the TH sound</a>
+                <br>- Звук <span class="phonetic">[ŋ]</span>: <a href="https://www.youtube.com/watch?v=4P6F2fd1hHc" target="_blank">The NG Sound</a>
+            </p>
+
+            <h3>Голосні звуки (монофтонги)</h3>
+            <div class="symbol-list">
+                <div class="symbol-box"><span class="symbol">æ</span> <span class="phonetic">[æ]</span> <span class="sound-example">cat</span></div>
+                <!-- Інші голосні... -->
+            </div>
+
+            <h3>Дифтонги (подвійні голосні звуки)</h3>
+            <div class="symbol-list">
+                <div class="symbol-box"><span class="symbol">eɪ</span> <span class="phonetic">[eɪ]</span> <span class="sound-example">cake</span></div>
+                <!-- Інші дифтонги... -->
+            </div>
+        </section>
+
+        <section id="accents">
+            <h2>Акценти: британський vs американський</h2>
+            <p>Вимова може відрізнятися. Ось два ключові приклади:</p>
+            <table>
+                <thead>
+                    <tr><th>Звук / Слово</th><th>Британська вимова (RP)</th><th>Американська вимова (GenAm)</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="example-word">car</td>
+                        <td class="phonetic">[kɑː]</td>
+                        <td class="phonetic">[kɑːr]</td>
+                    </tr>
+                    <tr>
+                        <td class="example-word">her</td>
+                        <td class="phonetic">[hɜː]</td>
+                        <td class="phonetic">[hər]</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="note">У британській вимові голосна <strong>R</strong> (<span class="phonetic">[r]</span>) часто не вимовляється в кінці слова або перед приголосною. В американській вимові вона вимовляється завжди.</p>
+        </section>
+
+        <section id="stress">
+            <h2>Наголос та ритм мови</h2>
+            <p>Правильний наголос важливіший за ідеальну вимову окремих звуків.</p>
+            <ul>
+                <li><strong>Правило третього складу:</strong> У довгих словах наголос часто падає на третій склад з кінця.
+                    <br><span class="example-word">PHO-to-graph</span> <span class="phonetic">[ˈfəʊ.tə.grɑːf]</span>
+                    <br><span class="example-word">pho-TO-gra-phy</span> <span class="phonetic">[fəˈtɒɡ.rə.fi]</span>
+                    <br><span class="example-word">pho-to-GRA-phic</span> <span class="phonetic">[ˌfəʊ.təˈɡræf.ɪk]</span>
+                </li>
+                <li><strong>Слабкі форми:</strong> Багато common words у реченні вимовляються слабко (шва [ə]).
+                    <br><span class="example-word">to</span> -> <span class="phonetic">[tə]</span>: "I go <span class="phonetic">[tə]</span> school"
+                    <br><span class="example-word">for</span> -> <span class="phonetic">[fə(r)]</span>: "This is <span class="phonetic">[fə]</span> you"
+                </li>
+            </ul>
+        </section>
+
+        <section id="connected-speech">
+            <h2>Зв'язне мовлення (Connected Speech)</h2>
+            <p>У природній мові звуки змінюються, коли слова стикаються.</p>
+            <ul>
+                <li><strong>Втрата приголосного:</strong> "nex(t) day"</li>
+                <li><strong>Злиття:</strong> "Would you..." -> "Ву́джу..." (<span class="phonetic">[ˈwʊdʒə]</span>)</li>
+                <li><strong>Асиміляція:</strong> "ten boys" -> "tem boys" (<span class="phonetic">[tem bɔɪz]</span>)</li>
+            </ul>
+            <p class="note"><strong>Порада:</strong> Найкращий спосіб навчитися зв'язному мовленню — активно слухати носіїв мови (підкасти, фільми, музика).</p>
+        </section>
+
+        <section id="practice">
+            <h2>Практичні приклади</h2>
+            <p>Ось кілька слів для практики, згрупованих за правилами читання голосної <strong>A</strong>.</p>
+            <table>
+                <thead>
+                    <tr><th>Правило</th><th>Приклади слів</th><th>Транскрипція</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>A в закритому складі [æ]</td><td class="example-word">cat, bat, man, hand, stand</td><td class="phonetic">[kæt], [bæt], [mæn], [hænd], [stænd]</td></tr>
+                    <tr><td>A в відкритому складі [eɪ]</td><td class="example-word">name, face, cake, make, table</td><td class="phonetic">[neɪm], [feɪs], [keɪk], [meɪk], ['teɪbl]</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="quiz">
+            <h2>Міні-тест для самоперевірки</h2>
+            <div class="quiz-container">
+                <div class="quiz-question">1. Як читається виділена літера у слові <span class="example-word">th</span>in?</div>
+                <div class="quiz-options">
+                    <label><input type="radio" name="q1" value="a"> [ð]</label><br>
+                    <label><input type="radio" name="q1" value="b"> [θ]</label><br>
+                    <label><input type="radio" name="q1" value="c"> [t]</label>
+                </div>
+                <div class="quiz-question">2. Скільки звуків у слові <span class="example-word">house</span>?</div>
+                <div class="quiz-options">
+                    <label><input type="radio" name="q2" value="a"> 3</label><br>
+                    <label><input type="radio" name="q2" value="b"> 4</label><br>
+                    <label><input type="radio" name="q2" value="c"> 5</label>
+                </div>
+                <div class="quiz-question">3. На який склад падає наголос у слові <span class="example-word">photographic</span>?</div>
+                <div class="quiz-options">
+                    <label><input type="radio" name="q3" value="a"> 1-ий (PHO-)</label><br>
+                    <label><input type="radio" name="q3" value="b"> 2-ий (-TO-)</label><br>
+                    <label><input type="radio" name="q3" value="c"> 3-ій (-GRA-)</label>
+                </div>
+                <button onclick="checkAnswers()">Перевірити відповіді</button>
+                <p id="quiz-result"></p>
+            </div>
+        </section>
+
+        <section id="resources">
+            <h2>🎧 Корисні ресурси для прослуховування вимови</h2>
+            <ul class="resources-list">
+                <li><a href="https://dictionary.cambridge.org/uk/dictionary/english/" target="_blank">Cambridge Dictionary</a> - Найкращий ресурс. Містить британську та американську вимову для кожної словарної статті.</li>
+                <li><a href="https://www.youtube.com/playlist?list=PL6BDo90oiwpS4_AM1c0s0ozpROeE2A9fw" target="_blank">BBC Learning English (Pronunciation)</a> - Відмінна серія відео від BBC.</li>
+                <li><a href="https://www.youtube.com/user/rachelsenglish" target="_blank">Rachel's English</a> - Канал, присвячений американській вимові та зв'язному мовленню.</li>
+                <li><a href="https://www.youtube.com/user/EnglishPronunciationPod" target="_blank">English Pronunciation Pod</a> - Ще один хороший YouTube-канал для вивчення нюансів вимови.</li>
+            </ul>
+        </section>
+
+    </div>
+
+    <script>
+        function checkAnswers() {
+            let correctAnswers = ['b', 'c', 'c']; // Правильні відповіді
+            let userAnswers = [
+                document.querySelector('input[name="q1"]:checked')?.value,
+                document.querySelector('input[name="q2"]:checked')?.value,
+                document.querySelector('input[name="q3"]:checked')?.value
+            ];
+
+            let score = 0;
+            let resultHtml = "<strong>Результат:</strong><br>";
+
+            for (let i = 0; i < correctAnswers.length; i++) {
+                if (userAnswers[i] === correctAnswers[i]) {
+                    score++;
+                    resultHtml += `Питання ${i+1}: Правильно!<br>`;
+                } else {
+                    resultHtml += `Питання ${i+1}: Неправильно. Правильна відповідь: ${correctAnswers[i]}<br>`;
+                }
+            }
+
+            resultHtml += `<br><strong>Загалом: ${score} з ${correctAnswers.length}</strong>`;
+            document.getElementById('quiz-result').innerHTML = resultHtml;
+        }
+    </script>
+</body>
+</html>

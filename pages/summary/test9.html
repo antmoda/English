@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Артиклі в англійській мові</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            color: white;
+            padding: 40px 0;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .section-title {
+            color: #667eea;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #667eea;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .section-title i {
+            font-size: 1.5em;
+        }
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+        .article-card {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 25px;
+            transition: transform 0.3s ease;
+            border-top: 5px solid;
+        }
+        .article-card:hover {
+            transform: translateY(-5px);
+        }
+        .article-a {
+            border-top-color: #4CAF50;
+        }
+        .article-the {
+            border-top-color: #2196F3;
+        }
+        .article-zero {
+            border-top-color: #FF9800;
+        }
+        .article-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            gap: 15px;
+        }
+        .article-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        .icon-a {
+            background: #4CAF50;
+        }
+        .icon-the {
+            background: #2196F3;
+        }
+        .icon-zero {
+            background: #FF9800;
+        }
+        .article-name {
+            font-size: 1.4em;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+        .article-meaning {
+            color: #e74c3c;
+            font-weight: 500;
+            margin: 10px 0;
+        }
+        .example {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid;
+        }
+        .example-a {
+            border-left-color: #4CAF50;
+        }
+        .example-the {
+            border-left-color: #2196F3;
+        }
+        .example-zero {
+            border-left-color: #FF9800;
+        }
+        .example-ukr {
+            color: #666;
+            font-style: italic;
+            margin-top: 5px;
+        }
+        .usage-list {
+            margin-top: 15px;
+            padding-left: 20px;
+        }
+        .usage-list li {
+            margin-bottom: 10px;
+            color: #555;
+            position: relative;
+        }
+        .usage-list li:before {
+            content: "•";
+            color: #667eea;
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+        .rule-box {
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #ffc107;
+        }
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        .comparison-table th,
+        .comparison-table td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        .comparison-table th {
+            background-color: #667eea;
+            color: white;
+        }
+        .comparison-table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        .visual-guide {
+            display: flex;
+            justify-content: space-around;
+            margin: 30px 0;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .visual-item {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            flex: 1;
+            min-width: 250px;
+        }
+        .visual-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+        .quiz-container {
+            background-color: #e8f4fc;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 30px 0;
+        }
+        .quiz-question {
+            font-weight: bold;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+        .quiz-options {
+            margin-bottom: 20px;
+        }
+        .quiz-options label {
+            display: block;
+            margin-bottom: 10px;
+            padding: 10px;
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .quiz-options label:hover {
+            background: #e3f2fd;
+        }
+        .check-btn {
+            background: #667eea;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+        .check-btn:hover {
+            background: #5a67d8;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: 500;
+        }
+        .success {
+            background: #d4edda;
+            color: #155724;
+        }
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        footer {
+            text-align: center;
+            color: white;
+            padding: 40px 0;
+            margin-top: 50px;
+        }
+        @media (max-width: 768px) {
+            .articles-grid {
+                grid-template-columns: 1fr;
+            }
+            .article-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            .visual-guide {
+                flex-direction: column;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📚 Артиклі в англійській мові</h1>
+            <p class="subtitle">Просте пояснення для новачків: коли використовувати a, an, the і коли нічого не ставити</p>
+        </header>
+
+        <!-- Що таке артиклі -->
+        <div class="section">
+            <h2 class="section-title">
+                <i class="fas fa-lightbulb"></i>
+                Що таке артиклі?
+            </h2>
+            <p>Артиклі - це службові слова, які вказують на визначеність чи невизначеність іменника. У російській мові артиклів немає, тому ця тема може здаватися складною, але насправді все просто!</p>
+            
+            <div class="visual-guide">
+                <div class="visual-item">
+                    <div class="visual-icon">🍎</div>
+                    <h3>a / an</h3>
+                    <p>Невизначений артикль</p>
+                    <p>"якийсь", "один"</p>
+                </div>
+                <div class="visual-item">
+                    <div class="visual-icon">🎯</div>
+                    <h3>the</h3>
+                    <p>Визначений артикль</p>
+                    <p>"цей", "той самий"</p>
+                </div>
+                <div class="visual-item">
+                    <div class="visual-icon">🚫</div>
+                    <h3>—</h3>
+                    <p>Нульовий артикль</p>
+                    <p>артикль не ставиться</p>
+                </div>
+            </div>
+
+            <div class="example">
+                <strong>I like the coffee.</strong> (цей конкретний кофе)<br>
+                <strong>I like coffee.</strong> (кофе взагалі)<br>
+                <span class="example-ukr">Мені подобається цей кофе. vs Мені подобається кофе.</span>
+            </div>
+        </div>
+
+        <!-- Невизначений артикль a/an -->
+        <div class="section">
+            <h2 class="section-title">
+                <i class="fas fa-question"></i>
+                Невизначений артикль A/An
+            </h2>
+            
+            <div class="articles-grid">
+                <div class="article-card article-a">
+                    <div class="article-header">
+                        <div class="article-icon icon-a">A</div>
+                        <h3 class="article-name">Артикль A</h3>
+                    </div>
+                    <div class="article-meaning">Перед приголосними звуками</div>
+                    <p>Використовується, коли наступне слово починається з приголосного звуку:</p>
+                    
+                    <div class="example example-a">
+                        <strong>a book</strong> - книга<br>
+                        <strong>a table</strong> - стіл<br>
+                        <strong>a university</strong> - університет<br>
+                        <span class="example-ukr">(звук /j/ вважається приголосним)</span>
+                    </div>
+                </div>
+
+                <div class="article-card article-a">
+                    <div class="article-header">
+                        <div class="article-icon icon-a">An</div>
+                        <h3 class="article-name">Артикль An</h3>
+                    </div>
+                    <div class="article-meaning">Перед голосними звуками</div>
+                    <p>Використовується, коли наступне слово починається з голосного звуку:</p>
+                    
+                    <div class="example example-a">
+                        <strong>an apple</strong> - яблуко<br>
+                        <strong>an hour</strong> - година<br>
+                        <strong>an honest person</strong> - чесна людина<br>
+                        <span class="example-ukr">(буква h не вимовляється)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rule-box">
+                <strong>🎯 Коли використовувати A/An:</strong>
+                <ul class="usage-list">
+                    <li>Коли говоримо про щось вперше</li>
+                    <li>Коли предмет один з багатьох подібних</li>
+                    <li>З професіями: <em>I'm a teacher</em></li>
+                    <li>З одиницями виміру: <em>twice a week</em></li>
+                    <li>У значенні "один": <em>a hundred</em></li>
+                </ul>
+            </div>
+
+            <div class="example example-a">
+                <strong>I need a pen.</strong> (будь-яку ручку)<br>
+                <strong>She is a doctor.</strong> (одна з багатьох лікарів)<br>
+                <strong>Can I have an orange?</strong> (будь-який апельсин)<br>
+            </div>
+        </div>
+
+        <!-- Визначений артикль the -->
+        <div class="section">
+            <h2 class="section-title">
+                <i class="fas fa-check-circle"></i>
+                Визначений артикль The
+            </h2>
+            
+            <div class="article-card article-the">
+                <div class="article-header">
+                    <div class="article-icon icon-the">The</div>
+                    <h3 class="article-name">Артикль The</h3>
+                </div>
+                <div class="article-meaning">"цей", "той самий", "конкретний"</div>
+                
+                <div class="rule-box">
+                    <strong>🎯 Коли використовувати The:</strong>
+                    <ul class="usage-list">
+                        <li>Коли говоримо про щось вже згадане раніше</li>
+                        <li>Коли предмет унікальний (сонце, місяць)</li>
+                        <li>З найвищими ступенями порівняння: <em>the best</em></li>
+                        <li>З музичними інструментами: <em>play the piano</em></li>
+                        <li>З географічними назвами: океани, річки, гори</li>
+                        <li>З прикметниками у значенні груп людей: <em>the rich</em></li>
+                    </ul>
+                </div>
+
+                <div class="example example-the">
+                    <strong>I bought a book. The book is interesting.</strong><br>
+                    <span class="example-ukr">Я купив книгу. Ця книга цікава.</span>
+                </div>
+
+                <div class="example example-the">
+                    <strong>The sun is shining.</strong> (сонце одне)<br>
+                    <strong>She is the best student.</strong> (найкраща)<br>
+                    <strong>We visited the United States.</strong> (конкретна країна)<br>
+                </div>
+            </div>
+        </div>
+
+        <!-- Нульовий артикль -->
+        <div class="section">
+            <h2 class="section-title">
+                <i class="fas fa-ban"></i>
+                Нульовий артикль (без артикля)
+            </h2>
+            
+            <div class="article-card article-zero">
+                <div class="article-header">
+                    <div class="article-icon icon-zero">—</div>
+                    <h3 class="article-name">Без артикля</h3>
+                </div>
+                <div class="article-meaning">Коли артикль не потрібен</div>
+                
+                <div class="rule-box">
+                    <strong>🎯 Коли НЕ використовувати артикль:</strong>
+                    <ul class="usage-list">
+                        <li>З незліченними іменниками: <em>water, love, information</em></li>
+                        <li>З іменами власними: <em>John, Paris</em></li>
+                        <li>З прийомом їжі: <em>have breakfast</em></li>
+                        <li>З видами спорту: <em>play football</em></li>
+                        <li>З мовами: <em>speak English</em></li>
+                        <li>З загальними поняттями: <em>Life is beautiful</em></li>
+                        <li>З транспортом: <em>by car, by bus</em></li>
+                    </ul>
+                </div>
+
+                <div class="example example-zero">
+                    <strong>I love music.</strong> (музику взагалі)<br>
+                    <strong>We have dinner at 7 PM.</strong><br>
+                    <strong>She speaks Chinese.</strong><br>
+                    <strong>They go to school by bus.</strong><br>
+                </div>
+            </div>
+        </div>
+
+        <!-- Порівняльна таблиця -->
+        <div class="section">
+            <h2 class="section-title">
+                <i class="fas fa-table"></i>
+                Порівняльна таблиця
+            </h2>
+
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Ситуація</th>
+                        <th>A/An</th>
+                        <th>The</th>
+                        <th>Без артикля</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Перша згадка</td>
+                        <td>✅ a book</td>
+                        <td>❌</td>
+                        <td>❌</td>
+                    </tr>
+                    <tr>
+                        <td>Друга згадка</td>
+                        <td>❌</td>
+                        <td>✅ the book</td>
+                        <td>❌</td>
+                    </tr>
+                    <tr>
+                        <td>Унікальні об'єкти</td>
+                        <td>❌</td>
+                        <td>✅ the sun</td>
+                        <td>❌</td>
+                    </tr>
+                    <tr>
+                        <td>Загальні поняття</td>
+                        <td>❌</td>
+                        <td>❌</td>
+                        <td>✅ love</td>
+                    </tr>
+                    <tr>
+                        <td>Професії</td>
+                        <td>✅ a doctor</td>
+                        <td>❌</td>
+                        <td>❌</td>
+                    </tr>
+                    <tr>
+                        <td>Країни (більшість)</td>
+                        <td>❌</td>
+                        <td>❌</td>
+                        <td>✅ Ukraine</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Практика -->
+        <div class="section">
+            <h2 class="section-title">
+                <i class="fas fa-pencil-alt"></i>
+                Практика
+            </h2>
+
+            <div class="quiz-container">
+                <div class="quiz-question">1. I bought ___ new car yesterday. ___ car is red.</div>
+                <div class="quiz-options">
+                    <label><input type="radio" name="q1" value="a"> a, A</label>
+                    <label><input type="radio" name="q1" value="b"> a, The</label>
+                    <label><input type="radio" name="q1" value="c"> the, The</label>
+                </div>
+
+                <div class="quiz-question">2. She is ___ honest person.</div>
+                <div class="quiz-options">
+                    <label><input type="radio" name="q2" value="a"> a</label>
+                    <label><input type="radio" name="q2" value="b"> an</label>
+                    <label><input type="radio" name="q2" value="c"> the</label>
+                </div>
+
+                <div class="quiz-question">3. ___ love is more important than ___ money.</div>
+                <div class="quiz-options">
+                    <label><input type="radio" name="q3" value="a"> The, the</label>
+                    <label><input type="radio" name="q3" value="b"> A, a</label>
+                    <label><input type="radio" name="q3" value="c"> —, —</label>
+                </div>
+
+                <div class="quiz-question">4. He plays ___ guitar very well.</div>
+                <div class="quiz-options">
+                    <label><input type="radio" name="q4" value="a"> a</label>
+                    <label><input type="radio" name="q4" value="b"> an</label>
+                    <label><input type="radio" name="q4" value="c"> the</label>
+                </div>
+
+                <button class="check-btn" onclick="checkArticleAnswers()">Перевірити відповіді</button>
+                <div id="quiz-result" class="result"></div>
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2024 Вивчення англійської мови</p>
+            <p>Артиклі - це просто! 📚</p>
+        </footer>
+    </div>
+
+    <script>
+        function checkArticleAnswers() {
+            const correctAnswers = ['b', 'b', 'c', 'c'];
+            const userAnswers = [
+                document.querySelector('input[name="q1"]:checked')?.value,
+                document.querySelector('input[name="q2"]:checked')?.value,
+                document.querySelector('input[name="q3"]:checked')?.value,
+                document.querySelector('input[name="q4"]:checked')?.value
+            ];
+
+            let score = 0;
+            let resultHtml = "<strong>Результат:</strong><br>";
+
+            for (let i = 0; i < correctAnswers.length; i++) {
+                if (userAnswers[i] === correctAnswers[i]) {
+                    score++;
+                    resultHtml += `Питання ${i+1}: ✅ Правильно!<br>`;
+                } else {
+                    resultHtml += `Питання ${i+1}: ❌ Неправильно<br>`;
+                }
+            }
+
+            resultHtml += `<br><strong>Загалом: ${score} з ${correctAnswers.length}</strong>`;
+            
+            const resultDiv = document.getElementById('quiz-result');
+            resultDiv.innerHTML = resultHtml;
+            resultDiv.className = score === correctAnswers.length ? 'result success' : 'result error';
+        }
+    </script>
+</body>
+</html>

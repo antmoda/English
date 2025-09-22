@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Англійська граматика: порядок слів</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1, h2, h3 {
+            color: #0056b3;
+        }
+        h1 {
+            text-align: center;
+            border-bottom: 2px solid #0056b3;
+            padding-bottom: 10px;
+        }
+        h2 {
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+            margin-top: 30px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f0f8ff;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .phonetic {
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            color: #E91E63;
+        }
+        .example-word {
+            font-weight: bold;
+            color: #00796B;
+        }
+        .note {
+            background-color: #fffde7;
+            padding: 10px;
+            border-left: 4px solid #ffd600;
+            margin: 10px 0;
+            font-size: 0.9em;
+        }
+        .sentence-structure {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+        }
+        .sentence-part {
+            text-align: center;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 0 5px;
+            flex: 1;
+        }
+        .subject {
+            background-color: #ffcccc;
+        }
+        .predicate {
+            background-color: #cce5ff;
+        }
+        .object {
+            background-color: #d4edda;
+        }
+        .adverbial {
+            background-color: #fff3cd;
+        }
+        .arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: #6c757d;
+        }
+        .adjective-order {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .adjective-box {
+            padding: 10px;
+            border-radius: 5px;
+            background: #e9ecef;
+            text-align: center;
+        }
+        .adjective-box:nth-child(1) {background: #ffadad;}
+        .adjective-box:nth-child(2) {background: #ffd6a5;}
+        .adjective-box:nth-child(3) {background: #fdffb6;}
+        .adjective-box:nth-child(4) {background: #caffbf;}
+        .adjective-box:nth-child(5) {background: #9bf6ff;}
+        .adjective-box:nth-child(6) {background: #a0c4ff;}
+        .adjective-box:nth-child(7) {background: #bdb2ff;}
+        .sentence-example {
+            padding: 15px;
+            margin: 10px 0;
+            background: #f8f9fa;
+            border-left: 4px solid #007bff;
+            border-radius: 4px;
+        }
+        .special-words {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 10px;
+            margin: 15px 0;
+        }
+        .special-word {
+            padding: 10px;
+            text-align: center;
+            background: #e9ecef;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .sentence-type {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .type-box {
+            flex: 1;
+            min-width: 300px;
+            padding: 15px;
+            border-radius: 8px;
+            background: #f8f9fa;
+        }
+        .affirmative {border-left: 4px solid #28a745;}
+        .negative {border-left: 4px solid #dc3545;}
+        .interrogative {border-left: 4px solid #17a2b8;}
+        .resources-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .resources-list li {
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #f0f8ff;
+            border-radius: 5px;
+            border-left: 5px solid #0056b3;
+        }
+        .resources-list a {
+            color: #0056b3;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .resources-list a:hover {
+            text-decoration: underline;
+        }
+        .quiz-container {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .quiz-question {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .quiz-options {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Порядок слів в англійському реченні</h1>
+
+        <section id="word-order">
+            <h2>🔤 Основна схема побудови речення</h2>
+            <p>Англійська мова має строгий порядок слів, на відміну від української. Стандартне англійське речення будується за схемою:</p>
+            
+            <div class="sentence-structure">
+                <div class="sentence-part subject">
+                    <strong>Підмет</strong><br>
+                    (Хто?)
+                </div>
+                <div class="arrow">→</div>
+                <div class="sentence-part predicate">
+                    <strong>Присудок</strong><br>
+                    (Що робить?)
+                </div>
+                <div class="arrow">→</div>
+                <div class="sentence-part object">
+                    <strong>Додаток</strong><br>
+                    (Що? Кого?)
+                </div>
+                <div class="arrow">→</div>
+                <div class="sentence-part adverbial">
+                    <strong>Обставина</strong><br>
+                    (Де? Коли?)
+                </div>
+            </div>
+
+            <div class="sentence-example">
+                <strong>Приклад:</strong><br>
+                <span class="subject">My little sister</span> 
+                <span class="predicate">will visit</span> 
+                <span class="object">me</span> 
+                <span class="adverbial">in three days</span>.
+            </div>
+
+            <h3>Компоненти речення детально:</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Компонент</th>
+                        <th>Опис</th>
+                        <th>Приклади</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Підмет</strong></td>
+                        <td>Той, хто виконує дію (іменник або займенник)</td>
+                        <td>I, she, the cat, my friend</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Присудок</strong></td>
+                        <td>Дія (дієслово)</td>
+                        <td>play, learn, will visit</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Додаток</strong></td>
+                        <td>Об'єкт дії (іменник або займенник)</td>
+                        <td>me, English, the ball</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Обставина</strong></td>
+                        <td>Місце, час або спосіб дії</td>
+                        <td>in the park, every day, quickly</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="adjective-order">
+            <h2>🎨 Порядок прикметників</h2>
+            <p>Коли ви використовуєте кілька прикметників разом, вони мають слідувати певному порядку:</p>
+            
+            <div class="adjective-order">
+                <div class="adjective-box">
+                    <strong>1. Думка/Оцінка</strong><br>
+                    beautiful, nice, terrible
+                </div>
+                <div class="adjective-box">
+                    <strong>2. Розмір</strong><br>
+                    big, small, long
+                </div>
+                <div class="adjective-box">
+                    <strong>3. Вік</strong><br>
+                    new, old, ancient
+                </div>
+                <div class="adjective-box">
+                    <strong>4. Форма</strong><br>
+                    round, square, rectangular
+                </div>
+                <div class="adjective-box">
+                    <strong>5. Колір</strong><br>
+                    red, blue, green
+                </div>
+                <div class="adjective-box">
+                    <strong>6. Походження</strong><br>
+                    Italian, Chinese, American
+                </div>
+                <div class="adjective-box">
+                    <strong>7. Матеріал</strong><br>
+                    wooden, metal, plastic
+                </div>
+            </div>
+
+            <div class="sentence-example">
+                <strong>Приклад:</strong><br>
+                She bought a <span class="example-word">beautiful small old round brown Italian wooden</span> table.
+            </div>
+        </section>
+
+        <section id="special-words">
+            <h2>⭐ Слова з особливим становищем</h2>
+            <p>Деякі слова завжди стоять перед основним дієсловом або після дієслова-зв'язки to be:</p>
+            
+            <div class="special-words">
+                <div class="special-word">often</div>
+                <div class="special-word">never</div>
+                <div class="special-word">always</div>
+                <div class="special-word">sometimes</div>
+                <div class="special-word">usually</div>
+                <div class="special-word">rarely</div>
+                <div class="special-word">also</div>
+                <div class="special-word">almost</div>
+                <div class="special-word">hardly</div>
+                <div class="special-word">definitely</div>
+                <div class="special-word">probably</div>
+            </div>
+
+            <div class="sentence-example">
+                <strong>Правильний порядок:</strong><br>
+                He <span class="example-word">often</span> goes to the gym.<br>
+                She is <span class="example-word">always</span> happy.<br>
+                They have <span class="example-word">never</span> been to Paris.
+            </div>
+        </section>
+
+        <section id="sentence-types">
+            <h2>📝 Типи речень</h2>
+            
+            <div class="sentence-type">
+                <div class="type-box affirmative">
+                    <h3>➖ Стверджувальні речення</h3>
+                    <p>Стандартний порядок: Підмет → Присудок → Додаток</p>
+                    <div class="sentence-example">
+                        I learn English every day.<br>
+                        She reads books in the evening.
+                    </div>
+                </div>
+                
+                <div class="type-box negative">
+                    <h3>✖️ Заперечні речення</h3>
+                    <p>Додається заперечна частка not після допоміжного дієслова</p>
+                    <div class="sentence-example">
+                        I do <span class="example-word">not</span> like coffee.<br>
+                        She is <span class="example-word">not</span> reading now.
+                    </div>
+                </div>
+                
+                <div class="type-box interrogative">
+                    <h3>❓ Питальні речення</h3>
+                    <p>Змінюється порядок слів: Допоміжне дієслово → Підмет → Основне дієслово</p>
+                    <div class="sentence-example">
+                        <span class="example-word">Do</span> you speak English?<br>
+                        <span class="example-word">Where are</span> you going?
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="verb-to-be">
+            <h2>🔗 Дієслово "to be"</h2>
+            <p>В англійській мові речення завжди має містити дієслово. Коли в українському реченні немає дії, використовуємо дієслово-зв'язку "to be":</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Українська</th>
+                        <th>Англійська</th>
+                        <th>Пояснення</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Вони студенти</td>
+                        <td>They <span class="example-word">are</span> students</td>
+                        <td>Додаємо "are" (форма to be)</td>
+                    </tr>
+                    <tr>
+                        <td>Це дерево</td>
+                        <td>It <span class="example-word">is</span> a tree</td>
+                        <td>Додаємо "is" (форма to be)</td>
+                    </tr>
+                    <tr>
+                        <td>Холодно</td>
+                        <td><span class="example-word">It is</span> cold</td>
+                        <td>Додаємо "It is" на початок</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="practice">
+            <h2>💪 Практика</h2>
+            
+            <div class="quiz-container">
+                <div class="quiz-question">1. Виберіть правильний порядок слів:</div>
+                <div class="quiz-options">
+                    <label><input type="radio" name="q1" value="a"> often / she / the park / visits</label><br>
+                    <label><input type="radio" name="q1" value="b"> She often visits the park</label><br>
+                    <label><input type="radio" name="q1" value="c"> Visits she often the park</label>
+                </div>
+                
+                <div class="quiz-question">2. Де має стояти слово "always"?</div>
+                <div class="quiz-options">
+                    <label><input type="radio" name="q2" value="a"> He is happy always</label><br>
+                    <label><input type="radio" name="q2" value="b"> He always is happy</label><br>
+                    <label><input type="radio" name="q2" value="c"> He is always happy</label>
+                </div>
+                
+                <div class="quiz-question">3. Який правильний порядок прикметників?</div>
+                <div class="quiz-options">
+                    <label><input type="radio" name="q3" value="a"> Italian beautiful small table</label><br>
+                    <label><input type="radio" name="q3" value="b"> beautiful small Italian table</label><br>
+                    <label><input type="radio" name="q3" value="c"> small beautiful Italian table</label>
+                </div>
+                
+                <button onclick="checkGrammarAnswers()">Перевірити відповіді</button>
+                <p id="grammar-quiz-result"></p>
+            </div>
+        </section>
+
+        <section id="resources">
+            <h2>📚 Корисні ресурси</h2>
+            <ul class="resources-list">
+                <li><a href="https://learnenglish.britishcouncil.org/grammar" target="_blank">British Council Grammar</a> - Відмінні пояснення граматики від British Council</li>
+                <li><a href="https://www.grammarly.com/blog/" target="_blank">Grammarly Blog</a> - Корисні статті про англійську граматику</li>
+                <li><a href="https://www.englishpage.com/grammar/grammar.html" target="_blank">English Page Grammar</a> - Детальні пояснення граматичних правил</li>
+            </ul>
+        </section>
+
+    </div>
+
+    <script>
+        function checkGrammarAnswers() {
+            const correctAnswers = ['b', 'c', 'b'];
+            const userAnswers = [
+                document.querySelector('input[name="q1"]:checked')?.value,
+                document.querySelector('input[name="q2"]:checked')?.value,
+                document.querySelector('input[name="q3"]:checked')?.value
+            ];
+
+            let score = 0;
+            let resultHtml = "<strong>Результат:</strong><br>";
+
+            for (let i = 0; i < correctAnswers.length; i++) {
+                if (userAnswers[i] === correctAnswers[i]) {
+                    score++;
+                    resultHtml += `Питання ${i+1}: Правильно!<br>`;
+                } else {
+                    resultHtml += `Питання ${i+1}: Неправильно. Правильна відповідь: ${String.fromCharCode(97 + correctAnswers[i].charCodeAt(0) - 97)}<br>`;
+                }
+            }
+
+            resultHtml += `<br><strong>Загалом: ${score} з ${correctAnswers.length}</strong>`;
+            document.getElementById('grammar-quiz-result').innerHTML = resultHtml;
+        }
+    </script>
+</body>
+</html>

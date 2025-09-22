@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Корисні ресурси для вивчення англійської</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            color: white;
+            padding: 40px 0;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        .category {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .category-title {
+            color: #667eea;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #667eea;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .category-title i {
+            font-size: 1.5em;
+        }
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+        }
+        .resource-card {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 25px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 5px solid #667eea;
+        }
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+        .resource-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            gap: 15px;
+        }
+        .resource-icon {
+            width: 50px;
+            height: 50px;
+            background: #667eea;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        .resource-name {
+            font-size: 1.3em;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+        .resource-link {
+            display: inline-block;
+            padding: 8px 20px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            margin-top: 15px;
+            font-weight: 500;
+            transition: background 0.3s ease;
+        }
+        .resource-link:hover {
+            background: #5a67d8;
+        }
+        .resource-description {
+            color: #666;
+            line-height: 1.6;
+        }
+        .resource-features {
+            margin-top: 15px;
+            padding-left: 20px;
+        }
+        .resource-features li {
+            margin-bottom: 8px;
+            color: #555;
+        }
+        .free-badge {
+            background: #10b981;
+            color: white;
+            padding: 3px 12px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            margin-left: 10px;
+        }
+        .paid-badge {
+            background: #f59e0b;
+            color: white;
+            padding: 3px 12px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            margin-left: 10px;
+        }
+        footer {
+            text-align: center;
+            color: white;
+            padding: 40px 0;
+            margin-top: 50px;
+        }
+        .link-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+        @media (max-width: 768px) {
+            .resources-grid {
+                grid-template-columns: 1fr;
+            }
+            .resource-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            .link-group {
+                flex-direction: column;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎓 Корисні ресурси для вивчення англійської</h1>
+            <p class="subtitle">Підбірка найкращих інструментів та матеріалів для ефективного навчання</p>
+        </header>
+
+        <!-- Словники та перекладачі -->
+        <div class="category">
+            <h2 class="category-title">
+                <i class="fas fa-book"></i>
+                Словники та перекладачі
+            </h2>
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <div class="resource-header">
+                        <div class="resource-icon">CD</div>
+                        <h3 class="resource-name">Collins Dictionary</h3>
+                    </div>
+                    <p class="resource-description">Один з найкращих англійських словників з прикладами використання слів та аудіовимовою.</p>
+                    <ul class="resource-features">
+                        <li>Аудіовимова британською та американською</li>
+                        <li>Приклади використання слів</li>
+                        <li>Граматичні пояснення</li>
+                    </ul>
+                    <a href="https://www.collinsdictionary.com/" target="_blank" class="resource-link">Перейти до ресурсу</a>
+                </div>
+
+                <div class="resource-card">
+                    <div class="resource-header">
+                        <div class="resource-icon">DL</div>
+                        <h3 class="resource-name">DeepL <span class="free-badge">Безкоштовно</span></h3>
+                    </div>
+                    <p class="resource-description">Найточніший перекладач на ринку. Ідеально підходить для перекладу складних текстів.</p>
+                    <ul class="resource-features">
+                        <li>Високоякісний переклад</li>
+                        <li>Альтернативні варіанти перекладу</li>
+                        <li>DeepL Write - перевірка текстів</li>
+                    </ul>
+                    <div class="link-group">
+                        <a href="https://www.deepl.com/" target="_blank" class="resource-link">Перекладач</a>
+                        <a href="https://www.deepl.com/write" target="_blank" class="resource-link">DeepL Write</a>
+                    </div>
+                </div>
+
+                <div class="resource-card">
+                    <div class="resource-header">
+                        <div class="resource-icon">CE</div>
+                        <h3 class="resource-name">Cambridge Dictionary <span class="free-badge">Безкоштовно</span></h3>
+                    </div>
+                    <p class="resource-description">Авторитетний словник від Cambridge University Press з аудіовимовою та прикладами.</p>
+                    <ul class="resource-features">
+                        <li>Британська та американська вимова</li>
+                        <li>Приклади з реальних текстів</li>
+                        <li>Граматичні поради</li>
+                    </ul>
+                    <a href="https://dictionary.cambridge.org/" target="_blank" class="resource-link">Перейти до ресурсу</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Вимова та аудіювання -->
+        <div class="category">
+            <h2 class="category-title">
+                <i class="fas fa-volume-up"></i>
+                Вимова та аудіювання
+            </h2>
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <div class="resource-header">
+                        <div class="resource-icon">HTP</div>
+                        <h3 class="resource-name">HowToPronounce <span class="free-badge">Безкоштовно</span></h3>
+                    </div>
+                    <p class="resource-description">База даних вимов слів від носіїв мови. Ідеально для складних слів та імен.</p>
+                    <ul class="resource-features">
+                        <li>Аудіозаписи від носіїв мови</li>
+                        <li>Кілька варіантів вимови</li>
+                        <li>Можливість записати власну вимову</li>
+                    </ul>
+                    <a href="https://www.howtopronounce.com/" target="_blank" class="resource-link">Перейти до ресурсу</a>
+                </div>
+
+                <div class="resource-card">
+                    <div class="resource-header">
+                        <div class="resource-icon">IPA</div>
+                        <h3 class="resource-name">IPA TypeIt <span class="free-badge">Безкоштовно</span></h3>
+                    </div>
+                    <p class="resource-description">Онлайн-клавіатура для введення фонетичних символів IPA. Незамінний інструмент для вивчення вимови.</p>
+                    <ul class="resource-features">
+                        <li>Всі символи IPA</li>
+                        <li>Зручний інтерфейс</li>
+                        <li>Копіювання символів</li>
+                    </ul>
+                    <a href="https://ipa.typeit.org/" target="_blank" class="resource-link">Перейти до ресурсу</a>
+                </div>
+
+                <div class="resource-card">
+                    <div class="resource-header">
+                        <div class="resource-icon">I2S</div>
+                        <h3 class="resource-name">i2Speak <span class="free-badge">Безкоштовно</span></h3>
+                    </div>
+                    <p class="resource-description">Інтерактивна IPA клавіатура з можливістю прослуховування звуків.</p>
+                    <ul class="resource-features">
+                        <li>Аудіовідтворення звуків</li>
+                        <li>Групування за категоріями</li>
+                        <li>Мобільна версія</li>
+                    </ul>
+                    <a href="https://i2speak.com/" target="_blank" class="resource-link">Перейти до ресурсу</a>
+                </div>
+
+                <div class="resource-card">
+                    <div class="resource-header">
+                        <div class="resource-icon">EL</div>
+                        <h3 class="resource-name">e-lang <span class="free-badge">Безкоштовно</span></h3>
+                    </div>
+                    <p class="resource-description">Ресурс для вивчення фонетики та вдосконалення вимови через практичні вправи.</p>
+                    <ul class="resource-features">
+                        <li>Фонетичні вправи</li>
+                        <li>Аудіотренування</li>
+                        <li>Інтерактивні тести</li>
+                    </ul>
+                    <a href="https://e-lang.co.uk/" target="_blank" class="resource-link">Перейти до ресурсу</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- YouTube канали -->
+        <div class="category">
+            <h2 class="category-title">
+                <i class="fab fa-youtube"></i>
+                YouTube канали
+            </h2>
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <div class="resource-header">
+                        <div class="resource-icon">OK</div>
+                        <h3 class="resource-name">OK English <span class="free-badge">Безкоштовно</span></h3>
+                    </div>
+                    <p class="resource-description">Чудовий канал з уроками англійської для різних рівнів. Зрозумілі пояснення та практичні вправи.</p>
+                    <ul class="resource-features">
+                        <li>Граматика для всіх рівнів</li>
+                        <li>Розмовна практика</li>
+                        <li>Спеціальні курси</li>
+                    </ul>
+                    <a href="https://www.youtube.com/c/okenglish/playlists" target="_blank" class="resource-link">Переглянути плейлисти</a>
+                </div>
+
+                <div class="resource-card">
+                    <div class="resource-header">
+                        <div class="resource-icon">GB</div>
+                        <h3 class="resource-name">Galaxy English <span class="free-badge">Безкоштовно</span></h3>
+                    </div>
+                    <p class="resource-description">Сучасний підхід до вивчення англійської з акцентом на розмовну практику.</p>
+                    <ul class="resource-features">
+                        <li>Щоденні розмовні фрази</li>
+                        <li>Живі уроки</li>
+                        <li>Інтерактивні завдання</li>
+                    </ul>
+                    <a href="https://www.youtube.com/c/GalaxyEnglish" target="_blank" class="resource-link">Перейти на канал</a>
+                </div>
+
+                <div class="resource-card">
+                    <div class="resource-header">
+                        <div class="resource-icon">EC</div>
+                        <h3 class="resource-name">EnglishClass101 <span class="free-badge">Безкоштовно</span></h3>
+                    </div>
+                    <p class="resource-description">Один з найпопулярніших каналів для вивчення англійської з великою кількістю безкоштовного контенту.</p>
+                    <ul class="resource-features">
+                        <li>Уроки для всіх рівнів</li>
+                        <li>Культурні особливості</li>
+                        <li>Аудіо-уроки</li>
+                    </ul>
+                    <a href="https://www.youtube.com/c/EnglishClass101" target="_blank" class="resource-link">Перейти на канал</a>
+                </div>
+
+                <div class="resource-card">
+                    <div class="resource-header">
+                        <div class="resource-icon">YB</div>
+                        <h3 class="resource-name">Youtube Book <span class="free-badge">Безкоштовно</span></h3>
+                    </div>
+                    <p class="resource-description">Канал з аудіокнигами та літературою англійською мовою для покращення аудіювання.</p>
+                    <ul class="resource-features">
+                        <li>Аудіокниги різних рівнів</li>
+                        <li>Література з субтитрами</li>
+                        <li>Класичні твори</li>
+                    </ul>
+                    <a href="https://www.youtube.com/@EnglishAudioBooksHub" target="_blank" class="resource-link">Перейти на канал</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Інтерактивні платформи -->
+        <div class="category">
+            <h2 class="category-title">
+                <i class="fas fa-laptop"></i>
+                Інтерактивні платформи
+            </h2>
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <div class="resource-header">
+                        <div class="resource-icon">PE</div>
+                        <h3 class="resource-name">Puzzle English</h3>
+                    </div>
+                    <p class="resource-description">Інтерактивна платформа для вивчення англійської через ігри та вправи.</p>
+                    <ul class="resource-features">
+                        <li>Ігровий формат навчання</li>
+                        <li>Адаптивні вправи</li>
+                        <li>Відео-уроки</li>
+                    </ul>
+                    <a href="https://puzzle-english.com/" target="_blank" class="resource-link">Перейти до ресурсу</a>
+                </div>
+
+                <div class="resource-card">
+                    <div class="resource-header">
+                        <div class="resource-icon">QZ</div>
+                        <h3 class="resource-name">Quizlet <span class="free-badge">Безкоштовно</span></h3>
+                    </div>
+                    <p class="resource-description">Платформа для створення та вивчення флеш-карток. Ідеально для запам'ятовування слів.</p>
+                    <ul class="resource-features">
+                        <li>Створення власних наборів</li>
+                        <li>Ігрові режими навчання</li>
+                        <li>Готові набори слів</li>
+                    </ul>
+                    <a href="https://quizlet.com/" target="_blank" class="resource-link">Перейти до ресурсу</a>
+                </div>
+
+                <div class="resource-card">
+                    <div class="resource-header">
+                        <div class="resource-icon">SY</div>
+                        <h3 class="resource-name">SpeechYard <span class="free-badge">Безкоштовно</span></h3>
+                    </div>
+                    <p class="resource-description">Вивчення англійської через фільми та серіали. Інтерактивні субтитри та вправи.</p>
+                    <ul class="resource-features">
+                        <li>Інтерактивні субтитри</li>
+                        <li>Персоналізовані вправи</li>
+                        <li>Велика база відео</li>
+                    </ul>
+                    <a href="https://speechyard.com/" target="_blank" class="resource-link">Перейти до ресурсу</a>
+                </div>
+
+                <div class="resource-card">
+                    <div class="resource-header">
+                        <div class="resource-icon">DK</div>
+                        <h3 class="resource-name">dkefe.com <span class="free-badge">Безкоштовно</span></h3>
+                    </div>
+                    <p class="resource-description">Інтерактивна платформа для вивчення англійської з акцентом на практику спілкування.</p>
+                    <ul class="resource-features">
+                        <li>Розмовні клуби</li>
+                        <li>Інтерактивні вправи</li>
+                        <li>Особистий кабінет</li>
+                    </ul>
+                    <a href="https://dkefe.com/" target="_blank" class="resource-link">Перейти до ресурсу</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Спеціалізовані ресурси -->
+        <div class="category">
+            <h2 class="category-title">
+                <i class="fas fa-star"></i>
+                Спеціалізовані ресурси
+            </h2>
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <div class="resource-header">
+                        <div class="resource-icon">O3</div>
+                        <h3 class="resource-name">Oxford 3000 <span class="free-badge">Безкоштовно</span></h3>
+                    </div>
+                    <p class="resource-description">Список 3000 найважливіших слів англійської мови за версією Oxford University Press.</p>
+                    <ul class="resource-features">
+                        <li>Найважливіші слова</li>
+                        <li>Приклади використання</li>
+                        <li>Аудіовимова</li>
+                    </ul>
+                    <a href="https://www.oxfordlearnersdictionaries.com/wordlists/oxford3000-5000" target="_blank" class="resource-link">Перейти до ресурсу</a>
+                </div>
+
+                <div class="resource-card">
+                    <div class="resource-header">
+                        <div class="resource-icon">EP</div>
+                        <h3 class="resource-name">English Polyglot</h3>
+                    </div>
+                    <p class="resource-description">Ресурс для вивчення англійської через порівняння з іншими мовами.</p>
+                    <ul class="resource-features">
+                        <li>Порівняльний метод</li>
+                        <li>Багатомовні матеріали</li>
+                        <li>Граматичні пояснення</li>
+                    </ul>
+                    <a href="https://english-polyglot.com/" target="_blank" class="resource-link">Перейти до ресурсу</a>
+                </div>
+
+                <div class="resource-card">
+                    <div class="resource-header">
+                        <div class="resource-icon">FT</div>
+                        <h3 class="resource-name">FluentU <span class="paid-badge">Платний</span></h3>
+                    </div>
+                    <p class="resource-description">Інтерактивна платформа для вивчення англійської через реальні відео з субтитрами.</p>
+                    <ul class="resource-features">
+                        <li>Реальні відеоматеріали</li>
+                        <li>Інтерактивні субтитри</li>
+                        <li>Персоналізовані уроки</li>
+                    </ul>
+                    <a href="https://www.fluentu.com/" target="_blank" class="resource-link">Перейти до ресурсу</a>
+                </div>
+
+                <div class="resource-card">
+                    <div class="resource-header">
+                        <div class="resource-icon">OKR</div>
+                        <h3 class="resource-name">OK-english.ru <span class="free-badge">Безкоштовно</span></h3>
+                    </div>
+                    <p class="resource-description">Російськомовний ресурс з великою кількістю безкоштовних матеріалів та уроків.</p>
+                    <ul class="resource-features">
+                        <li>Граматичні уроки</li>
+                        <li>Розмовні фрази</li>
+                        <li>Тести та вправи</li>
+                    </ul>
+                    <a href="https://ok-english.ru/" target="_blank" class="resource-link">Перейти до ресурсу</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Додаткові матеріали -->
+        <div class="category">
+            <h2 class="category-title">
+                <i class="fas fa-graduation-cap"></i>
+                Додаткові матеріали
+            </h2>
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <div class="resource-header">
+                        <div class="resource-icon">OR</div>
+                        <h3 class="resource-name">Ororo TV</h3>
+                    </div>
+                    <p class="resource-description">Стрімінг-платформа з фільмами та серіалами з інтерактивними субтитрами.</p>
+                    <ul class="resource-features">
+                        <li>Велика бібліотека контенту</li>
+                        <li>Субтитри з перекладом</li>
+                        <li>Можливість уповільнення</li>
+                    </ul>
+                    <a href="https://ororo.tv/" target="_blank" class="resource-link">Перейти до ресурсу</a>
+                </div>
+
+                <div class="resource-card">
+                    <div class="resource-header">
+                        <div class="resource-icon">AM</div>
+                        <h3 class="resource-name">Arealme Tests <span class="free-badge">Безкоштовно</span></h3>
+                    </div>
+                    <p class="resource-description">Цікаві тести для перевірки рівня англійської та словникового запасу.</p>
+                    <ul class="resource-features">
+                        <li>Тести словникового запасу</li>
+                        <li>Граматичні тести</li>
+                        <li>Інтерактивний формат</li>
+                    </ul>
+                    <a href="https://www.arealme.com/" target="_blank" class="resource-link">Перейти до ресурсу</a>
+                </div>
+
+                <div class="resource-card">
+                    <div class="resource-header">
+                        <div class="resource-icon">TC</div>
+                        <h3 class="resource-name">The Campster <span class="free-badge">Безкоштовно</span></h3>
+                    </div>
+                    <p class="resource-description">Онлайн-курси та матеріали для вивчення англійської в ігровій формі.</p>
+                    <ul class="resource-features">
+                        <li>Ігрові курси</li>
+                        <li>Інтерактивні завдання</li>
+                        <li>Прогрес трекінг</li>
+                    </ul>
+                    <a href="https://thecampster.com/" target="_blank" class="resource-link">Перейти до ресурсу</a>
+                </div>
+
+                <div class="resource-card">
+                    <div class="resource-header">
+                        <div class="resource-icon">ED</div>
+                        <h3 class="resource-name">EnglishDom <span class="paid-badge">Платний</span></h3>
+                    </div>
+                    <p class="resource-description">Онлайн-школа англійської мови з персональними уроками та курсами.</p>
+                    <ul class="resource-features">
+                        <li>Персональні уроки</li>
+                        <li>Онлайн-курси</li>
+                        <li>Цифровий підручник</li>
+                    </ul>
+                    <a href="https://www.englishdom.com/" target="_blank" class="resource-link">Перейти до ресурсу</a>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2024 Ресурси для вивчення англійської мови</p>
+            <p>Приємного навчання! 🚀</p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Англійська мова - Навчальні матеріали</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+		}
+
+		/* ДОДАНО: прибираємо смугу прокрутки для всієї сторінки */
+		html {
+			overflow-y: scroll;
+			/* запобігає зсуву контенту при появі/зникненні прокрутки */
+			scrollbar-width: none;
+			/* для Firefox */
+		}
+
+		html::-webkit-scrollbar {
+			display: none;
+			/* для Chrome, Safari, Edge */
+		}
+
+		body {
+			background: linear-gradient(135deg, #6e8efb, #a777e3);
+			color: #333;
+			min-height: 100vh;
+			padding: 20px;
+			/* ДОДАНО: прибираємо смугу прокрутки для body */
+			overflow-y: auto;
+			scrollbar-width: none;
+			/* для Firefox */
+		}
+
+		body::-webkit-scrollbar {
+			display: none;
+			/* для Chrome, Safari, Edge */
+		}
+
+		.container {
+			max-width: 800px;
+			margin: 0 auto;
+			background: white;
+			border-radius: 15px;
+			box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+			overflow: hidden;
+		}
+
+		/* Решта стилів залишається без змін */
+		header {
+			text-align: center;
+			padding: 30px 20px;
+			background: linear-gradient(135deg, #3498db, #2c3e50);
+			color: white;
+		}
+
+		header h1 {
+			font-size: 2.2rem;
+			margin-bottom: 10px;
+		}
+
+		header p {
+			font-size: 1.1rem;
+			opacity: 0.9;
+		}
+
+		.links-section {
+			padding: 20px;
+		}
+
+		.links-section h2 {
+			text-align: center;
+			margin-bottom: 25px;
+			color: #2c3e50;
+			font-size: 1.8rem;
+		}
+
+		.category {
+			margin-bottom: 15px;
+		}
+
+		.category-header {
+			padding: 15px 20px;
+			background: #3498db;
+			color: white;
+			border-radius: 8px;
+			cursor: pointer;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			font-weight: 600;
+			transition: background 0.3s;
+		}
+
+		.category-header:hover {
+			background: #2980b9;
+		}
+
+		.category-header i {
+			transition: transform 0.3s;
+		}
+
+		.category-header.collapsed i {
+			transform: rotate(180deg);
+		}
+
+		.links-list {
+			list-style: none;
+			padding: 10px 0;
+			max-height: 500px;
+			overflow: hidden;
+			transition: max-height 0.3s ease, padding 0.3s ease;
+		}
+
+		/* ЗМІНЕНО: за замовчуванням всі списки згорнуті */
+		.links-list.collapsed {
+			max-height: 0;
+			padding: 0;
+		}
+
+		.links-list li {
+			margin-bottom: 10px;
+		}
+
+		.links-list a {
+			display: block;
+			padding: 12px 20px;
+			background: #f8f9fa;
+			border-radius: 6px;
+			text-decoration: none;
+			color: #2c3e50;
+			font-weight: 500;
+			transition: all 0.3s;
+			border-left: 3px solid #3498db;
+		}
+
+		.links-list a:hover {
+			background: #e9ecef;
+			transform: translateX(5px);
+			border-left-color: #e74c3c;
+		}
+
+		footer {
+			text-align: center;
+			padding: 20px;
+			background: #f8f9fa;
+		}
+
+		@media (max-width: 600px) {
+			header h1 {
+				font-size: 1.8rem;
+			}
+
+			.links-section {
+				padding: 15px;
+			}
+
+			.links-list a {
+				padding: 10px 15px;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<header>
+			<h1>Англійська мова</h1>
+			<p>Навчальні матеріали та ресурси</p>
+		</header>
+
+		<div class="links-section">
+			<h2>Граматика</h2>
+
+			<div class="category">
+				<div class="category-header" onclick="toggleCategory('parts-of-speech')">
+					<span>Частини мови</span>
+					<i>▼</i>
+				</div>
+				<ul id="parts-of-speech" class="links-list collapsed">
+					<li><a href="test3.html">Основи англійської вимови</a></li>
+					<li><a href="test4.html">Основи англійської вимови (додатково)</a></li>
+					<li><a href="test5.html">Порядок слів</a></li>
+					<li><a href="test7.html">Корисні ресурси</a></li>
+					<li><a href="test8.html">Модальні дієслова</a></li>
+					<li><a href="test9.html">Артиклі в англійській мові</a></li>
+					<li><a href="test10.html">Тестова</a></li>
+					<li><a href="articles.html">Вивчення артиклів</a></li>
+					<li><a href="verbs.html">Модальні дієслова</a></li>
+					<li><a href="tenses.html">Часів англійської мови</a></li>
+					<li><a href="prepositions.html">Прийменники</a></li>
+					<li><a href="adjectives.html">Прикметники та прислівники</a></li>
+				</ul>
+			</div>
+
+			<div class="category">
+				<div class="category-header" onclick="toggleCategory('sentence-structure')">
+					<span>Будова речення</span>
+					<i>▼</i>
+				</div>
+				<ul id="sentence-structure" class="links-list collapsed">
+					<li><a href="sentence-structure.html">Як створюються речення</a></li>
+					<li><a href="word-order.html">Порядок слів у реченні</a></li>
+					<li><a href="questions.html">Питальні речення</a></li>
+					<li><a href="negation.html">Заперечення</a></li>
+					<li><a href="conditionals.html">Умовні речення</a></li>
+				</ul>
+			</div>
+
+			<div class="category">
+				<div class="category-header" onclick="toggleCategory('usage')">
+					<span>Вживання</span>
+					<i>▼</i>
+				</div>
+				<ul id="usage" class="links-list collapsed">
+					<li><a href="passive-voice.html">Пасивний стан</a></li>
+					<li><a href="reported-speech.html">Непряма мова</a></li>
+					<li><a href="gerunds-infinitives.html">Герундій та інфінітиви</a></li>
+					<li><a href="phrasal-verbs.html">Фразові дієслова</a></li>
+					<li><a href="idioms.html">Ідіоми та вирази</a></li>
+				</ul>
+			</div>
+
+			<h2 style="margin-top: 30px;">Навички</h2>
+
+			<div class="category">
+				<div class="category-header" onclick="toggleCategory('practice')">
+					<span>Практика</span>
+					<i>▼</i>
+				</div>
+				<ul id="practice" class="links-list collapsed">
+					<li><a href="reading.html">Читання</a></li>
+					<li><a href="listening.html">Аудіювання</a></li>
+					<li><a href="speaking.html">Говоріння</a></li>
+					<li><a href="writing.html">Письмо</a></li>
+					<li><a href="vocabulary.html">Словниковий запас</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<footer>
+			<!-- Текст видалено -->
+		</footer>
+	</div>
+
+	<script>
+		// Функція для перемикання стану категорії
+		function toggleCategory(id) {
+			const categoryList = document.getElementById(id);
+			const categoryHeader = categoryList.previousElementSibling;
+
+			categoryList.classList.toggle('collapsed');
+			categoryHeader.classList.toggle('collapsed');
+
+			// Зберігаємо стан категорії в sessionStorage
+			saveCategoryState(id, !categoryList.classList.contains('collapsed'));
+		}
+
+		// Функція для збереження стану категорії
+		function saveCategoryState(categoryId, isOpen) {
+			const categoryStates = JSON.parse(sessionStorage.getItem('categoryStates') || '{}');
+			categoryStates[categoryId] = isOpen;
+			sessionStorage.setItem('categoryStates', JSON.stringify(categoryStates));
+		}
+
+		// Функція для завантаження стану категорій
+		function loadCategoryStates() {
+			const categoryStates = JSON.parse(sessionStorage.getItem('categoryStates') || '{}');
+
+			// Якщо це перше завантаження (немає збережених станів), залишаємо всі категорії згорнутими
+			if (Object.keys(categoryStates).length === 0) {
+				// Всі категорії вже мають клас 'collapsed' за замовчуванням
+				return;
+			}
+
+			Object.keys(categoryStates).forEach(categoryId => {
+				const categoryList = document.getElementById(categoryId);
+				const categoryHeader = categoryList?.previousElementSibling;
+
+				if (categoryList && categoryHeader) {
+					if (categoryStates[categoryId]) {
+						// Категорія має бути відкритою
+						categoryList.classList.remove('collapsed');
+						categoryHeader.classList.remove('collapsed');
+					} else {
+						// Категорія має бути закритою
+						categoryList.classList.add('collapsed');
+						categoryHeader.classList.add('collapsed');
+					}
+				}
+			});
+		}
+
+		// Додаємо ефект послідовного з'явлення посилань
+		document.addEventListener('DOMContentLoaded', function () {
+			// Завантажуємо збережений стан категорій з sessionStorage
+			loadCategoryStates();
+
+			const links = document.querySelectorAll('.links-list a');
+			links.forEach((link, index) => {
+				link.style.opacity = '0';
+				link.style.transform = 'translateX(-20px)';
+				link.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+
+				setTimeout(() => {
+					link.style.opacity = '1';
+					link.style.transform = 'translateX(0)';
+				}, 100 + (index * 50));
+			});
+		});
+	</script>
+</body>
+
+</html>
