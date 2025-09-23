@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Word Learning App - Anki/Quizlet style</title>
+	<link rel="icon" type="image/x-icon" href="../img/united-kingdom.png">
+	<link rel="stylesheet" href="../css/flashcards-test.css">
+</head>
+
+<body>
+	<div class="container">
+		<!-- Заголовок -->
+		<header>
+			<h1>Word Learning App</h1>
+			<p>Вивчайте слова з задоволенням!</p>
+			<div id="export-import-buttons">
+				<button onclick="exportData()" class="btn-secondary">📥 Експорт даних</button>
+				<label class="btn-secondary">
+					📤 Імпорт даних
+					<input type="file" id="import-file" accept=".json" style="display: none;"
+						onchange="importData(event)">
+				</label>
+			</div>
+		</header>
+
+		<!-- Основна навігація -->
+		<nav class="main-nav">
+			<button id="btn-study" class="nav-btn active">Вчити слова</button>
+			<button id="btn-create" class="nav-btn">Створити картку</button>
+			<button id="btn-categories" class="nav-btn">Категорії</button>
+			<button id="btn-stats" class="nav-btn">Статистика</button>
+		</nav>
+
+		<!-- Секція для вивчення -->
+		<section id="study-section" class="section active">
+			<div class="category-selector">
+				<select id="category-select">
+					<option value="all">Всі категорії</option>
+				</select>
+				<button id="start-study" class="btn-primary">Почати вивчення</button>
+				<button id="start-review" class="btn-primary">Повторити слова</button>
+				<button id="start-difficult" class="btn-primary">Складні слова</button>
+			</div>
+
+			<div id="flashcard-container" class="hidden">
+				<div class="flashcard">
+					<div class="flashcard-front">
+						<h2 id="card-word"></h2>
+						<p id="card-transcription-text"></p>
+
+						<!-- Аудіо плеєр для слова -->
+						<div class="audio-player" id="word-audio-player">
+							<button class="play-audio-btn" id="play-word-audio">▶️ Вимова</button>
+							<!-- <span id="word-audio-status" class="audio-status">Готово (2 спроби)</span> -->
+						</div>
+
+						<button class="btn-flip more">Показати переклад</button>
+					</div>
+					<div class="flashcard-back">
+						<h3 id="card-translation"></h3>
+						<div class="examples">
+							<div class="example-item">
+								<p class="example" id="card-example1"></p>
+								<button class="play-example-btn" data-example="1">▶️</button>
+								<!-- <span class="example-audio-status">(2 спроб)</span> -->
+							</div>
+							<div class="example-item">
+								<p class="example" id="card-example2"></p>
+								<button class="play-example-btn" data-example="2">▶️</button>
+								<!-- <span class="example-audio-status">(2 спроб)</span> -->
+							</div>
+						</div>
+						<button class="btn-flip">Показати слово</button>
+					</div>
+				</div>
+
+				<div class="card-controls">
+					<button id="btn-prev" class="btn-secondary">← Попередня</button>
+					<button id="btn-next" class="btn-secondary">Наступна →</button>
+					<button id="btn-remembered" class="btn-success">Знаю</button>
+					<button id="btn-forgot" class="btn-danger">Не пам'ятаю</button>
+					<button id="btn-edit" class="btn-secondary">Редагувати</button>
+					<button id="btn-restart" class="btn-secondary">Перезапустити</button>
+				</div>
+
+				<div class="progress">
+					<span id="current-position">0</span>/<span id="total-cards">0</span>
+					<div class="progress-bar">
+						<div class="progress-fill"></div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Секція для створення карток -->
+		<section id="create-section" class="section">
+			<h2>Створити нову картку</h2>
+
+			<div class="create-card-tabs">
+				<button type="button" class="tab-btn active" data-tab="front">Фронтальна сторона</button>
+				<button type="button" class="tab-btn" data-tab="back">Задня сторона</button>
+			</div>
+
+			<form id="create-card-form">
+				<div class="tab-content active" id="front-tab">
+					<div class="form-group">
+						<label for="card-english">Слово (англійською)*</label>
+						<div class="input-with-tts">
+							<input type="text" id="card-english" required>
+							<button type="button" class="tts-preview-btn" id="preview-word-tts">▶️</button>
+						</div>
+						<small id="word-tts-status">Готово до прослуховування (2 спроби)</small>
+					</div>
+
+					<div class="form-group">
+						<label for="card-transcription-input">Транскрипція</label>
+						<input type="text" id="card-transcription-input" placeholder="/ˈwɜːd/">
+					</div>
+
+					<div class="form-group">
+						<label for="card-audio-url">URL аудіо (необов'язково)</label>
+						<input type="url" id="card-audio-url" placeholder="https://example.com/audio.mp3">
+						<small>Посилання на зовнішній аудіофайл</small>
+					</div>
+
+					<div class="form-group">
+						<label for="card-category">Категорія</label>
+						<div class="category-input">
+							<select id="card-category-select">
+								<option value="">-- Оберіть категорію --</option>
+							</select>
+							<span>або</span>
+							<input type="text" id="card-category-new" placeholder="Нова категорія">
+						</div>
+					</div>
+				</div>
+
+				<div class="tab-content" id="back-tab">
+					<div class="form-group">
+						<label for="card-translation-input">Переклад (українською)*</label>
+						<input type="text" id="card-translation-input" required>
+					</div>
+
+					<div class="form-group">
+						<label for="card-example1-input">Приклад речення 1*</label>
+						<div class="input-with-tts">
+							<textarea id="card-example1-input" rows="2" required></textarea>
+							<button type="button" class="tts-preview-btn" id="preview-example1-tts">▶️</button>
+						</div>
+						<small class="example-tts-status">Готово до прослуховування (2 спроби)</small>
+					</div>
+
+					<div class="form-group">
+						<label for="card-example2-input">Приклад речення 2*</label>
+						<div class="input-with-tts">
+							<textarea id="card-example2-input" rows="2" required></textarea>
+							<button type="button" class="tts-preview-btn" id="preview-example2-tts">▶️</button>
+						</div>
+						<small class="example-tts-status">Готово до прослуховування (2 спроби)</small>
+					</div>
+
+					<div class="form-group">
+						<label for="card-image-url">URL зображення (необов'язково)</label>
+						<input type="url" id="card-image-url" placeholder="https://example.com/image.jpg">
+						<small>Посилання на зовнішнє зображення (буде показано на задній стороні)</small>
+					</div>
+				</div>
+
+				<button type="submit" class="btn-primary">Створити картку</button>
+			</form>
+		</section>
+
+		<!-- Секція категорій -->
+		<section id="categories-section" class="section">
+			<h2>Категорії</h2>
+			<div id="categories-list">
+				<!-- Категорії будуть додані динамічно -->
+			</div>
+		</section>
+
+		<!-- Секція статистики -->
+		<section id="stats-section" class="section">
+			<h2>Статистика вивчення</h2>
+			<div class="stats-container">
+				<div class="stat-card">
+					<h3 id="stat-total-cards">0</h3>
+					<p>Всього карток</p>
+				</div>
+				<div class="stat-card">
+					<h3 id="stat-due-cards">0</h3>
+					<p>Карток для повторення</p>
+				</div>
+				<div class="stat-card">
+					<h3 id="stat-success-rate">0%</h3>
+					<p>Успішність</p>
+				</div>
+				<div class="stat-card">
+					<h3 id="stat-total-studied">0</h3>
+					<p>Всього вивчено</p>
+				</div>
+			</div>
+
+			<h3>Прогрес по категоріях</h3>
+			<div id="category-progress">
+				<!-- Прогрес буде доданий динамічно -->
+			</div>
+
+			<div class="stats-actions">
+				<button onclick="resetAllProgress()" class="btn-danger">Скинути весь прогрес</button>
+				<button onclick="resetCardIntervals()" class="btn-secondary">Скинути інтервали повторень</button>
+			</div>
+		</section>
+
+	</div>
+
+	<!-- Модальне вікно редагування -->
+	<div id="edit-modal" class="modal hidden">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h2>Редагувати картку</h2>
+				<button class="close-btn" id="close-edit-modal">&times;</button>
+			</div>
+			<form id="edit-card-form">
+				<input type="hidden" id="edit-card-id">
+
+				<div class="form-group">
+					<label for="edit-card-english">Слово (англійською)*</label>
+					<div class="input-with-tts">
+						<input type="text" id="edit-card-english" required>
+						<button type="button" class="tts-preview-btn" id="edit-preview-word-tts">▶️</button>
+					</div>
+					<small id="edit-word-tts-status">Готово до прослуховування (2 спроби)</small>
+				</div>
+
+				<div class="form-group">
+					<label for="edit-card-transcription">Транскрипція</label>
+					<input type="text" id="edit-card-transcription" placeholder="/ˈwɜːd/">
+				</div>
+
+				<div class="form-group">
+					<label for="edit-card-translation">Переклад (українською)*</label>
+					<input type="text" id="edit-card-translation" required>
+				</div>
+
+				<div class="form-group">
+					<label for="edit-card-example1">Приклад речення 1*</label>
+					<div class="input-with-tts">
+						<textarea id="edit-card-example1" rows="2" required></textarea>
+						<button type="button" class="tts-preview-btn" id="edit-preview-example1-tts">▶️</button>
+					</div>
+					<small class="example-tts-status">Готово до прослуховування (2 спроби)</small>
+				</div>
+
+				<div class="form-group">
+					<label for="edit-card-example2">Приклад речення 2*</label>
+					<div class="input-with-tts">
+						<textarea id="edit-card-example2" rows="2" required></textarea>
+						<button type="button" class="tts-preview-btn" id="edit-preview-example2-tts">▶️</button>
+					</div>
+					<small class="example-tts-status">Готово до прослуховування (2 спроби)</small>
+				</div>
+
+				<!-- Нові поля для редагування -->
+				<div class="form-group">
+					<label for="edit-card-audio-url">URL аудіо (необов'язково)</label>
+					<input type="url" id="edit-card-audio-url" placeholder="https://example.com/audio.mp3">
+				</div>
+
+				<div class="form-group">
+					<label for="edit-card-image-url">URL зображення (необов'язково)</label>
+					<input type="url" id="edit-card-image-url" placeholder="https://example.com/image.jpg">
+				</div>
+
+				<div class="form-group">
+					<label for="edit-card-category">Категорія</label>
+					<select id="edit-card-category">
+						<option value="">-- Оберіть категорію --</option>
+					</select>
+				</div>
+
+				<div class="modal-actions">
+					<button type="button" class="btn-danger" id="delete-card-btn">Видалити</button>
+					<button type="submit" class="btn-primary">Зберегти зміни</button>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<script src="../js/flashcards-data-test.js"></script>
+	<script src="../js/flashcards-app-test.js"></script>
+</body>
+
+</html>
