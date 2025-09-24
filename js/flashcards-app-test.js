@@ -167,6 +167,74 @@ window.ttsManager = new TTSManager();
 
 // Головний клас додатка
 class WordLearningApp {
+  updateStorageStats(storageStats, recommendations) {
+    // Оновлення основних показників
+    if (document.getElementById("storage-usage-percent")) {
+      document.getElementById(
+        "storage-usage-percent"
+      ).textContent = `${storageStats.usagePercentage}%`;
+    }
+
+    if (document.getElementById("storage-used")) {
+      document.getElementById(
+        "storage-used"
+      ).textContent = `${storageStats.currentSizeMB} MB використано`;
+    }
+
+    if (document.getElementById("storage-total")) {
+      document.getElementById(
+        "storage-total"
+      ).textContent = `Ліміт: ${storageStats.limitMB} MB`;
+    }
+
+    if (document.getElementById("storage-remaining")) {
+      document.getElementById(
+        "storage-remaining"
+      ).textContent = `Залишилось: ${storageStats.remainingMB} MB`;
+    }
+
+    if (document.getElementById("storage-cards-count")) {
+      document.getElementById("storage-cards-count").textContent =
+        storageStats.cardsCount;
+    }
+
+    if (document.getElementById("storage-categories-count")) {
+      document.getElementById("storage-categories-count").textContent =
+        storageStats.categoriesCount;
+    }
+
+    // Оновлення рекомендацій
+    const recommendationElement = document.getElementById(
+      "storage-recommendation"
+    );
+    if (recommendationElement) {
+      recommendationElement.textContent = recommendations.message;
+      recommendationElement.className = "storage-recommendation";
+
+      // Додаємо клас в залежності від типу рекомендації
+      if (recommendations.type === "warning") {
+        recommendationElement.classList.add("warning");
+      } else if (recommendations.type === "error") {
+        recommendationElement.classList.add("critical");
+      } else {
+        recommendationElement.classList.add("success");
+      }
+    }
+
+    // Зміна кольору картки використання сховища в залежності від заповненості
+    const usageCard = document.querySelector(
+      "#storage-stats-container .stat-card:first-child"
+    );
+    if (usageCard) {
+      usageCard.classList.remove("stat-card-warning", "stat-card-error");
+
+      if (storageStats.isCritical) {
+        usageCard.classList.add("stat-card-error");
+      } else if (storageStats.isNearLimit) {
+        usageCard.classList.add("stat-card-warning");
+      }
+    }
+  }
   constructor() {
     this.currentCardIndex = 0;
     this.currentCards = [];
@@ -528,9 +596,11 @@ class WordLearningApp {
       this.updateCategoriesList();
     }
   }
-
   updateStatistics() {
     const stats = DataManager.getStatistics();
+    const storageStats = DataManager.getStorageStats();
+    const recommendations = DataManager.getStorageRecommendations();
+
     const progress = DataManager.getCategoryProgress();
 
     if (document.getElementById("stat-total-cards"))
@@ -546,22 +616,62 @@ class WordLearningApp {
       document.getElementById("stat-total-studied").textContent =
         stats.totalStudied;
 
+    // 🔹 Категорії
     const progressContainer = document.getElementById("category-progress");
     if (progressContainer) {
       progressContainer.innerHTML = Object.entries(progress)
         .map(
           ([category, data]) => `
-          <div class="category-progress-item">
-            <span class="category-name">${category}</span>
-            <div class="progress-bar">
-              <div class="progress-fill" style="width: ${data.percentage}%"></div>
-            </div>
-            <span class="progress-text">${data.learned}/${data.total} (${data.percentage}%)</span>
+        <div class="category-progress-item">
+          <span class="category-name">${category}</span>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: ${data.percentage}%"></div>
           </div>
-        `
+          <span class="progress-text">${data.learned}/${data.total} (${data.percentage}%)</span>
+        </div>
+      `
         )
         .join("");
     }
+
+    // 🔹 Інформація про сховище - ОНОВЛЕНА ВЕРСІЯ
+    let statusClass = "";
+    let statusIcon = "✅";
+
+    if (storageStats.isCritical) {
+      statusClass = "stat-card-error";
+      statusIcon = "⚡️";
+    } else if (storageStats.isNearLimit) {
+      statusClass = "stat-card-warning";
+      statusIcon = "⚠️";
+    }
+
+    const storageHTML = `
+        <div class="stat-card ${statusClass}">
+            <h3>${statusIcon} ${storageStats.usagePercentage}%</h3>
+            <p>Використано сховища</p>
+            <div class="storage-details">
+                <small>${storageStats.currentSizeMB} MB / ${storageStats.limitMB} MB</small>
+                <small>Залишилось: ${storageStats.remainingMB} MB</small>
+                <small>Карток: ${storageStats.cardsCount}</small>
+            </div>
+        </div>
+    `;
+
+    // Додати до контейнера статистики
+    const statsContainer = document.getElementById("statistics-container");
+    if (statsContainer) {
+      // Знайти існуючу картку сховища або додати нову
+      let storageCard = statsContainer.querySelector(".storage-stat-card");
+      if (!storageCard) {
+        storageCard = document.createElement("div");
+        storageCard.className = "storage-stat-card";
+        statsContainer.appendChild(storageCard);
+      }
+      storageCard.innerHTML = storageHTML;
+    }
+    // 🔹 Інформація про сховище
+    this.updateStorageStats(storageStats, recommendations);
   }
 
   loadCategories() {
@@ -957,54 +1067,61 @@ class WordLearningApp {
   async handleCreateCard(e) {
     e.preventDefault();
 
-    // ВИПРАВЛЕННЯ 1: Правильне отримання категорії
-    let category = this.cardCategorySelect.value;
-    if (!category || category === "" || category === "all") {
-      category = this.cardCategoryNew.value.trim();
+    try {
+      // ВИПРАВЛЕННЯ 1: Правильне отримання категорії
+      let category = this.cardCategorySelect.value;
+      if (!category || category === "" || category === "all") {
+        category = this.cardCategoryNew.value.trim();
+      }
+
+      if (!category) {
+        category = "Загальні";
+      }
+
+      const cardData = {
+        english: this.cardEnglish.value.trim(),
+        transcription: this.cardTranscriptionInput.value.trim(),
+        ukrainian: this.cardTranslationInput.value.trim(),
+        example1: this.cardExample1Input.value.trim(),
+        example2: this.cardExample2Input.value.trim(),
+        audioUrl: this.cardAudioUrl.value.trim(),
+        imageUrl: this.cardImageUrl.value.trim(),
+        category: category,
+      };
+
+      if (!cardData.english || !cardData.ukrainian) {
+        alert("Будь ласка, заповніть обов'язкові поля");
+        return;
+      }
+
+      // Викликаємо створення картки з обробкою помилок
+      DataManager.createCard(cardData);
+
+      this.createForm.reset();
+
+      // Скидання до першої вкладки
+      document
+        .querySelectorAll(".tab-btn")
+        .forEach((btn) => btn.classList.remove("active"));
+      document
+        .querySelectorAll(".tab-content")
+        .forEach((content) => content.classList.remove("active"));
+      document.querySelector('[data-tab="front"]').classList.add("active");
+      document.getElementById("front-tab").classList.add("active");
+
+      // Скидання TTS лічильників
+      ttsManager.resetCounter("create-word");
+      ttsManager.resetCounter("create-example1");
+      ttsManager.resetCounter("create-example2");
+
+      this.updateTTSStatuses();
+
+      alert("Картку успішно створено!");
+      this.loadCategories();
+    } catch (error) {
+      console.error("Помилка при створенні картки:", error);
+      alert(`Помилка при створенні картки: ${error.message}`);
     }
-
-    if (!category) {
-      category = "Загальні";
-    }
-
-    const cardData = {
-      english: this.cardEnglish.value.trim(),
-      transcription: this.cardTranscriptionInput.value.trim(),
-      ukrainian: this.cardTranslationInput.value.trim(),
-      example1: this.cardExample1Input.value.trim(),
-      example2: this.cardExample2Input.value.trim(),
-      audioUrl: this.cardAudioUrl.value.trim(),
-      imageUrl: this.cardImageUrl.value.trim(),
-      category: category, // ВИПРАВЛЕНА КАТЕГОРІЯ
-    };
-
-    if (!cardData.english || !cardData.ukrainian) {
-      alert("Будь ласка, заповніть обов'язкові поля");
-      return;
-    }
-
-    DataManager.createCard(cardData);
-    this.createForm.reset();
-
-    // Скидання до першої вкладки
-    document
-      .querySelectorAll(".tab-btn")
-      .forEach((btn) => btn.classList.remove("active"));
-    document
-      .querySelectorAll(".tab-content")
-      .forEach((content) => content.classList.remove("active"));
-    document.querySelector('[data-tab="front"]').classList.add("active");
-    document.getElementById("front-tab").classList.add("active");
-
-    // Скидання TTS лічильників
-    ttsManager.resetCounter("create-word");
-    ttsManager.resetCounter("create-example1");
-    ttsManager.resetCounter("create-example2");
-
-    this.updateTTSStatuses();
-
-    alert("Картку успішно створено!");
-    this.loadCategories();
   }
 
   // TTS методи

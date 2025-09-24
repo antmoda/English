@@ -1,5 +1,6 @@
 class DataManager {
   static STORAGE_KEY = "wordLearningAppData";
+  static storageLimit = null; // Буде визначено динамічно
 
   static defaultData = {
     cards: [],
@@ -18,10 +19,45 @@ class DataManager {
     },
   };
 
+  // Спрощений метод визначення ліміту (без асинхронності)
+  static getStorageLimit() {
+    if (this.storageLimit !== null) return this.storageLimit;
+
+    try {
+      // Спрощене визначення - перевірка різних браузерних лімітів
+      const userAgent = navigator.userAgent.toLowerCase();
+
+      if (userAgent.includes("chrome") || userAgent.includes("chromium")) {
+        this.storageLimit = 10 * 1024 * 1024; // 10MB для Chrome
+      } else if (userAgent.includes("firefox")) {
+        this.storageLimit = 10 * 1024 * 1024; // 10MB для Firefox
+      } else if (
+        userAgent.includes("safari") &&
+        !userAgent.includes("chrome")
+      ) {
+        this.storageLimit = 5 * 1024 * 1024; // 5MB для Safari
+      } else if (userAgent.includes("edge")) {
+        this.storageLimit = 10 * 1024 * 1024; // 10MB для Edge
+      } else {
+        this.storageLimit = 5 * 1024 * 1024; // 5MB за замовчуванням
+      }
+
+      console.log(
+        `Встановлено ліміт сховища: ${this.storageLimit} байт для браузера ${userAgent}`
+      );
+      return this.storageLimit;
+    } catch (error) {
+      this.storageLimit = 2 * 1024 * 1024; // Мінімальний ліміт
+      return this.storageLimit;
+    }
+  }
+
   static initialize() {
     if (!localStorage.getItem(this.STORAGE_KEY)) {
       this.saveData(this.defaultData);
     }
+    // Ініціалізувати ліміт сховища при завантаженні
+    this.getStorageLimit();
     return this.loadData();
   }
 
@@ -104,7 +140,25 @@ class DataManager {
       return true;
     } catch (error) {
       console.error("Помилка збереження даних:", error);
-      return false;
+
+      // Спроба зберегти без проблемних даних
+      try {
+        const simplifiedData = {
+          ...data,
+          cards: data.cards.map((card) => ({
+            id: card.id,
+            english: card.english,
+            ukrainian: card.ukrainian,
+            transcription: card.transcription,
+            category: card.category,
+            // Лише основні поля
+          })),
+        };
+        localStorage.setItem(this.STORAGE_KEY, JSON.stringify(simplifiedData));
+        return true;
+      } catch (e) {
+        return false;
+      }
     }
   }
 
@@ -112,66 +166,176 @@ class DataManager {
     return Date.now().toString(36) + Math.random().toString(36).substr(2);
   }
 
+  // Перевірити, чи можна додати ще картки
+  static canAddMoreCards(estimatedNewCards = 1) {
+    try {
+      const limit = this.getStorageLimit();
+      const currentSize = this.getCurrentStorageSize();
+      const estimatedSize = estimatedNewCards * 800; // ~800 байт на картку
+
+      const willExceedLimit = currentSize + estimatedSize > limit;
+      const safeThreshold = limit * 0.95; // 95% від ліміту - безпечна межа
+
+      return {
+        canAdd: !willExceedLimit && currentSize + estimatedSize < safeThreshold,
+        currentSize: currentSize,
+        limit: limit,
+        remaining: limit - currentSize,
+        estimatedNewSize: estimatedSize,
+        willExceed: willExceedLimit,
+        safeToAdd: currentSize + estimatedSize < safeThreshold,
+      };
+    } catch (error) {
+      console.error("Помилка перевірки ліміту:", error);
+      return {
+        canAdd: true,
+        currentSize: 0,
+        limit: 0,
+        remaining: 0,
+        estimatedNewSize: 0,
+        willExceed: false,
+        safeToAdd: true,
+      };
+    }
+  }
+
+  // Отримати поточний розмір даних
+  static getCurrentStorageSize() {
+    try {
+      const data = localStorage.getItem(this.STORAGE_KEY);
+      return data ? new Blob([data]).size : 0;
+    } catch (error) {
+      return 0;
+    }
+  }
+
+  // Отримати статистику використання сховища
+  static getStorageStats() {
+    try {
+      const currentSize = this.getCurrentStorageSize();
+      const limit = this.getStorageLimit();
+      const percentage = limit > 0 ? (currentSize / limit) * 100 : 0;
+      const data = this.loadData();
+
+      return {
+        currentSize: currentSize,
+        currentSizeKB: Math.round(currentSize / 1024),
+        currentSizeMB: (currentSize / (1024 * 1024)).toFixed(2),
+        limit: limit,
+        limitMB: (limit / (1024 * 1024)).toFixed(2),
+        usagePercentage: Math.round(percentage),
+        cardsCount: data.cards.length,
+        categoriesCount: data.categories.length,
+        isNearLimit: percentage > 80,
+        isCritical: percentage > 95,
+        remaining: limit - currentSize,
+        remainingKB: Math.round((limit - currentSize) / 1024),
+        remainingMB: ((limit - currentSize) / (1024 * 1024)).toFixed(2),
+      };
+    } catch (error) {
+      return this.getFallbackStats();
+    }
+  }
+
+  // Резервна статистика при помилці
+  static getFallbackStats() {
+    const data = this.loadData();
+    return {
+      currentSize: 0,
+      currentSizeKB: 0,
+      currentSizeMB: "0",
+      limit: 0,
+      limitMB: "0",
+      usagePercentage: 0,
+      cardsCount: data.cards.length,
+      categoriesCount: data.categories.length,
+      isNearLimit: false,
+      isCritical: false,
+      remainingKB: 0,
+      remainingMB: "0",
+    };
+  }
+
   // Робота з картками
   static createCard(cardData) {
-    const data = this.loadData();
+    try {
+      const limitCheck = this.canAddMoreCards();
 
-    const newCard = {
-      id: this.generateId(),
-      english: cardData.english,
-      transcription: cardData.transcription || "",
-      ukrainian: cardData.ukrainian,
-      example1: cardData.example1 || "",
-      example2: cardData.example2 || "",
-      imageUrl: cardData.imageUrl || "",
-      category: cardData.category || "Загальні",
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
+      if (!limitCheck.safeToAdd) {
+        const stats = this.getStorageStats();
+        throw new Error(
+          `Не вдається додати картку. Сховище заповнено на ${stats.usagePercentage}%.\n` +
+            `Використано: ${stats.currentSizeMB} MB / Ліміт: ${stats.limitMB} MB\n` +
+            `Залишилось місця: ${stats.remainingMB} MB`
+        );
+      }
 
-      // Аудіо конфігурація - TTS тільки якщо немає зовнішнього аудіо
-      audioConfig: {
-        ttsEnabled: !cardData.audioUrl,
-        source: cardData.audioUrl ? "external" : "tts",
-        url: cardData.audioUrl || null,
-      },
+      const data = this.loadData();
 
-      // Прогрес вивчення
-      progress: {
-        level: 0,
-        nextReview: new Date().toISOString(),
-        lastReviewed: null,
-        correctAnswers: 0,
-        totalAnswers: 0,
-        successRate: 0,
-      },
+      const newCard = {
+        id: this.generateId(),
+        english: cardData.english,
+        transcription: cardData.transcription || "",
+        ukrainian: cardData.ukrainian,
+        example1: cardData.example1 || "",
+        example2: cardData.example2 || "",
+        imageUrl: cardData.imageUrl || "",
+        category: cardData.category || "Загальні",
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
 
-      // Система інтервальних повторень
-      spacedRepetition: {
-        interval: 1,
-        easeFactor: 2.5,
-        repetition: 0,
-        nextReview: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(),
-        lastInterval: 0,
-        stability: 0,
-      },
+        // Аудіо конфігурація - TTS тільки якщо немає зовнішнього аудіо
+        audioConfig: {
+          ttsEnabled: !cardData.audioUrl,
+          source: cardData.audioUrl ? "external" : "tts",
+          url: cardData.audioUrl || null,
+        },
 
-      // Метадані
-      metadata: {
-        createdWithTTS: !cardData.audioUrl,
-        lastModified: new Date().toISOString(),
-      },
-    };
+        // Прогрес вивчення
+        progress: {
+          level: 0,
+          nextReview: new Date().toISOString(),
+          lastReviewed: null,
+          correctAnswers: 0,
+          totalAnswers: 0,
+          successRate: 0,
+        },
 
-    data.cards.push(newCard);
+        // Система інтервальних повторень
+        spacedRepetition: {
+          interval: 1,
+          easeFactor: 2.5,
+          repetition: 0,
+          nextReview: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(),
+          lastInterval: 0,
+          stability: 0,
+        },
 
-    // Додаємо нову категорію, якщо потрібно
-    if (!data.categories.includes(newCard.category)) {
-      data.categories.push(newCard.category);
-      data.categories.sort();
+        // Метадані
+        metadata: {
+          createdWithTTS: !cardData.audioUrl,
+          lastModified: new Date().toISOString(),
+        },
+      };
+
+      data.cards.push(newCard);
+
+      // Додаємо нову категорію, якщо потрібно
+      if (!data.categories.includes(newCard.category)) {
+        data.categories.push(newCard.category);
+        data.categories.sort();
+      }
+
+      const saved = this.saveData(data);
+      if (!saved) {
+        throw new Error("Помилка збереження картки в сховищі");
+      }
+
+      return newCard;
+    } catch (error) {
+      console.error("Помилка створення картки:", error);
+      throw error; // Передаємо помилку далі
     }
-
-    this.saveData(data);
-    return newCard;
   }
 
   static updateCard(updatedCard) {
@@ -530,7 +694,7 @@ class DataManager {
     return JSON.stringify(data, null, 2);
   }
 
-  static importData(jsonData, options = {}) {
+  static importData(jsonData) {
     try {
       const importedData = JSON.parse(jsonData);
       const currentData = this.loadData();
@@ -544,16 +708,13 @@ class DataManager {
 
           if (existingIndex !== -1) {
             // Оновлення існуючої картки
-            currentData.cards[existingIndex] = this.mergeCards(
-              currentData.cards[existingIndex],
-              importedCard,
-              options
-            );
+            currentData.cards[existingIndex] = {
+              ...currentData.cards[existingIndex],
+              ...importedCard,
+            };
           } else {
             // Додавання нової картки
-            currentData.cards.push(
-              this.prepareImportedCard(importedCard, options)
-            );
+            currentData.cards.push(this.migrateCard(importedCard));
           }
         });
       }
@@ -569,85 +730,11 @@ class DataManager {
       }
 
       // Збереження
-      this.saveData(currentData);
-      return true;
+      return this.saveData(currentData);
     } catch (error) {
       console.error("Помилка імпорту даних:", error);
       return false;
     }
-  }
-
-  static mergeCards(currentCard, importedCard, options) {
-    // Пріоритет новішим даним
-    const currentDate = new Date(
-      currentCard.updatedAt || currentCard.createdAt
-    );
-    const importedDate = new Date(
-      importedCard.updatedAt || importedCard.createdAt
-    );
-
-    if (importedDate > currentDate) {
-      return this.prepareImportedCard(importedCard, options);
-    }
-    return currentCard;
-  }
-
-  static prepareImportedCard(card, options) {
-    const preparedCard = { ...card };
-
-    // Обробка аудіо налаштувань при імпорті
-    if (options.convertAllToTTS) {
-      preparedCard.audioConfig = {
-        ttsEnabled: true,
-        source: "tts",
-        url: null,
-      };
-    } else if (options.keepExternalAudio && card.audioConfig?.url) {
-      preparedCard.audioConfig = {
-        ttsEnabled: false,
-        source: "external",
-        url: card.audioConfig.url,
-      };
-    } else if (!card.audioConfig) {
-      // Міграція старих карток
-      preparedCard.audioConfig = {
-        ttsEnabled: !card.audioUrl,
-        source: card.audioUrl ? "external" : "tts",
-        url: card.audioUrl || null,
-      };
-    }
-
-    // Забезпечення наявності всіх необхідних полів
-    if (!preparedCard.progress) {
-      preparedCard.progress = {
-        level: 0,
-        nextReview: new Date().toISOString(),
-        lastReviewed: null,
-        correctAnswers: 0,
-        totalAnswers: 0,
-        successRate: 0,
-      };
-    }
-
-    if (!preparedCard.spacedRepetition) {
-      preparedCard.spacedRepetition = {
-        interval: 1,
-        easeFactor: 2.5,
-        repetition: 0,
-        nextReview: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(),
-        lastInterval: 0,
-        stability: 0,
-      };
-    }
-
-    if (!preparedCard.metadata) {
-      preparedCard.metadata = {
-        createdWithTTS: preparedCard.audioConfig.ttsEnabled,
-        lastModified: new Date().toISOString(),
-      };
-    }
-
-    return preparedCard;
   }
 
   // Допоміжні методи
@@ -679,6 +766,32 @@ class DataManager {
         return aRate - bRate;
       })
       .slice(0, limit);
+  }
+
+  // Отримати рекомендації
+  static getStorageRecommendations() {
+    const stats = this.getStorageStats();
+    const remainingCards = Math.floor(stats.remaining / 800);
+
+    let message = "";
+    let type = "info";
+
+    if (stats.isCritical) {
+      message = `⚡️ УВАГА! Сховище заповнено на ${stats.usagePercentage}%. Можна додати лише ${remainingCards} карток. Рекомендуємо експортувати та очистити дані.`;
+      type = "error";
+    } else if (stats.isNearLimit) {
+      message = `⚠️ Сховище заповнено на ${stats.usagePercentage}%. Залишилось місця для ~${remainingCards} карток.`;
+      type = "warning";
+    } else {
+      message = `✅ Сховище використано на ${stats.usagePercentage}%. Можна додати ще ~${remainingCards} карток.`;
+      type = "success";
+    }
+
+    return {
+      message: message,
+      type: type,
+      remainingCards: remainingCards,
+    };
   }
 }
 
