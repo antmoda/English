@@ -6,9 +6,7 @@
 
 html {
   overflow-y: scroll;
-  /* запобігає зсуву контенту при появі/зникненні прокрутки */
   scrollbar-width: none;
-  /* для Firefox */
 }
 
 body {
@@ -185,6 +183,12 @@ header p {
   perspective: 1000px;
   margin-bottom: 30px;
   height: 400px;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.flashcard:hover {
+  transform: translateY(-5px);
 }
 
 .flashcard > div {
@@ -194,13 +198,14 @@ header p {
   backface-visibility: hidden;
   transition: transform 0.6s ease;
   border-radius: 20px;
-  padding: 40px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   text-align: center;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
 }
 
 .flashcard-front {
@@ -223,51 +228,130 @@ header p {
   transform: rotateY(0deg);
 }
 
-.flashcard h2 {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
+/* Контейнери для вмісту картки */
+.flashcard-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.flashcard h3 {
+.flashcard-main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-height: calc(100% - 60px);
+  padding: 10px 0;
+}
+
+.flashcard-footer {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+/* Текст на картках */
+.flashcard h2 {
   font-size: 2rem;
-  margin-bottom: 20px;
+  margin-bottom: 8px;
+  word-break: break-word;
+  max-width: 100%;
+  line-height: 1.2;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 #card-transcription-text {
-  font-size: 1.2rem;
-  margin-bottom: 20px;
+  font-size: 1.1rem;
+  margin-bottom: 12px;
   opacity: 0.9;
+  max-width: 100%;
+  font-style: italic;
 }
 
-/* .examples {
+/* Стилі для зображення на фронтальній стороні */
+#card-front-image-container {
+  text-align: center;
+  margin: 8px 0;
+  max-width: 100%;
+  max-height: 120px;
+}
+
+#card-front-image-container img {
+  max-width: 180px;
+  max-height: 120px;
+  border-radius: 8px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+  object-fit: contain;
+}
+
+/* Стилі для зображення на задній стороні */
+#card-image-container {
+  text-align: center;
+  margin: 8px 0;
+  max-width: 100%;
+  max-height: 120px;
+}
+
+#card-image-container img {
+  max-width: 200px;
+  max-height: 120px;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+  object-fit: contain;
+}
+
+/* Приклади */
+.examples {
   width: 100%;
-  margin-top: 20px;
-} */
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
 
 .example-item {
   background: rgba(255, 255, 255, 0.2);
-  padding: 0 15px;
-  border-radius: 10px;
-  margin-bottom: 10px;
+  padding: 8px 12px;
+  border-radius: 8px;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
+  max-width: 100%;
+  width: auto;
+  margin: 0 auto;
 }
 
 .example {
   flex: 1;
-  text-align: left;
+  text-align: center;
   font-style: italic;
+  word-break: break-word;
+  font-size: 0.9rem;
+  line-height: 1.3;
+  margin: 0;
 }
 
 .play-example-btn {
   background: rgba(255, 255, 255, 0.3);
   border: none;
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   cursor: pointer;
   transition: all 0.3s ease;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
 }
 
 .play-example-btn:hover {
@@ -276,26 +360,26 @@ header p {
 }
 
 .audio-status {
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   opacity: 0.8;
 }
 
 /* Аудіо плеєр */
 .audio-player {
-  margin: 20px 0;
+  margin: 8px 0;
   text-align: center;
 }
 
 .play-audio-btn {
   background: rgba(255, 255, 255, 0.3);
   border: none;
-  padding: 12px 24px;
-  border-radius: 25px;
+  padding: 8px 16px;
+  border-radius: 20px;
   color: white;
-  font-size: 1rem;
+  font-size: 0.85rem;
   cursor: pointer;
   transition: all 0.3s ease;
-  margin-bottom: 10px;
+  margin-bottom: 4px;
 }
 
 .play-audio-btn:hover:not(:disabled) {
@@ -366,16 +450,14 @@ header p {
 .btn-flip {
   background: rgba(255, 255, 255, 0.3);
   border: none;
-  padding: 10px 20px;
-  border-radius: 20px;
+  padding: 8px 16px;
+  border-radius: 15px;
   color: white;
-  margin-top: 5px;
   cursor: pointer;
   transition: all 0.3s ease;
+  font-size: 1rem;
 }
-.more {
-  margin-top: 125px;
-}
+
 .btn-flip:hover {
   background: rgba(255, 255, 255, 0.5);
   transform: translateY(-2px);
@@ -522,11 +604,12 @@ header p {
 .category-progress-item {
   display: flex;
   align-items: center;
-  gap: 15px;
-  margin-bottom: 15px;
-  padding: 15px;
+  justify-content: space-between;
+  padding: 10px 15px;
+  margin-bottom: 10px;
   background: #f8f9fa;
   border-radius: 10px;
+  border-left: 4px solid #667eea;
 }
 
 .category-name {
@@ -555,6 +638,7 @@ header p {
   padding: 20px;
   text-align: center;
   transition: all 0.3s ease;
+  position: relative;
 }
 
 .category-card:hover {
@@ -571,6 +655,36 @@ header p {
 .category-card p {
   color: #666;
   margin-bottom: 15px;
+}
+
+.category-card.deletable {
+  border-left: 4px solid #ff6b6b;
+}
+
+.category-card.deletable::after {
+  content: "Можна видалити";
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #ff6b6b;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 0.7rem;
+}
+
+.category-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 15px;
+  flex-wrap: wrap;
+}
+
+.category-actions button {
+  min-width: 100px;
+  padding: 8px 16px;
+  font-size: 0.9rem;
 }
 
 /* Модальні вікна */
@@ -600,10 +714,7 @@ header p {
   max-height: 90vh;
   overflow-y: auto;
   position: relative;
-  overflow-y: scroll;
-  /* запобігає зсуву контенту при появі/зникненні прокрутки */
   scrollbar-width: none;
-  /* для Firefox */
 }
 
 .modal-header {
@@ -654,20 +765,6 @@ small {
   font-size: 0.8rem;
 }
 
-/* Стилі для контейнера зображення */
-#card-image-container {
-  text-align: center;
-  margin-bottom: 10px;
-}
-
-#card-image-container img {
-  max-width: 200px;
-  max-height: 150px;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  object-fit: contain;
-}
-
 /* Покращені статуси аудіо */
 .audio-status.tts-available {
   color: #28a745;
@@ -684,15 +781,6 @@ small {
   font-style: italic;
 }
 
-/* Анімація для карток */
-.flashcard {
-  transition: transform 0.3s ease;
-}
-
-.flashcard:hover {
-  transform: translateY(-5px);
-}
-
 /* Покращений вигляд прогресу */
 .progress-text {
   font-size: 0.9rem;
@@ -701,15 +789,52 @@ small {
   text-align: right;
 }
 
-.category-progress-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 15px;
-  margin-bottom: 10px;
-  background: #f8f9fa;
+.stat-card-error {
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%) !important;
+}
+
+.stat-card-warning {
+  background: linear-gradient(135deg, #ffa726 0%, #f57c00 100%) !important;
+}
+
+.storage-recommendation {
+  margin-top: 10px;
+  padding: 10px;
   border-radius: 10px;
+  font-size: 0.8rem;
+  background: #f8f9fa;
   border-left: 4px solid #667eea;
+}
+
+.storage-recommendation.warning {
+  background: #fff3cd;
+  border-left-color: #ffc107;
+  color: #856404;
+}
+
+.storage-recommendation.critical {
+  background: #f8d7da;
+  border-left-color: #dc3545;
+  color: #721c24;
+}
+
+.storage-recommendation.success {
+  background: #d1edff;
+  border-left-color: #007bff;
+  color: #004085;
+}
+
+.storage-details {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.storage-details small {
+  color: white;
+  font-size: 0.8rem;
+  opacity: 0.8;
 }
 
 /* Адаптивність */
@@ -742,15 +867,21 @@ small {
   }
 
   .flashcard > div {
-    padding: 20px;
+    padding: 15px;
   }
 
   .flashcard h2 {
-    font-size: 2rem;
+    font-size: 1.7rem;
   }
 
-  .flashcard h3 {
-    font-size: 1.5rem;
+  #card-front-image-container img {
+    max-width: 150px;
+    max-height: 100px;
+  }
+
+  #card-image-container img {
+    max-width: 170px;
+    max-height: 110px;
   }
 
   .card-controls {
@@ -800,20 +931,62 @@ small {
   .create-card-tabs {
     flex-direction: column;
   }
+
+  .example-item {
+    max-width: 95%;
+    padding: 6px 10px;
+  }
+
+  .example {
+    font-size: 0.85rem;
+  }
 }
 
 @media (max-width: 480px) {
   .flashcard {
-    height: 300px;
+    height: 320px;
+  }
+
+  .flashcard > div {
+    padding: 12px;
   }
 
   .flashcard h2 {
     font-size: 1.5rem;
   }
 
+  #card-transcription-text {
+    font-size: 1rem;
+  }
+
+  #card-front-image-container img {
+    max-width: 130px;
+    max-height: 90px;
+  }
+
+  #card-image-container img {
+    max-width: 140px;
+    max-height: 95px;
+  }
+
   .example-item {
     flex-direction: column;
     text-align: center;
+    gap: 5px;
+    padding: 5px 8px;
+    max-width: 98%;
+  }
+
+  .example {
+    text-align: center;
+    margin-bottom: 5px;
+    font-size: 0.85rem;
+  }
+
+  .play-example-btn {
+    width: 25px;
+    height: 25px;
+    font-size: 0.7rem;
   }
 
   .category-progress-item {
@@ -826,172 +999,32 @@ small {
     text-align: center;
   }
 
-  #card-image-container img {
-    max-width: 150px;
-    max-height: 100px;
+  .btn-flip {
+    padding: 5px 10px;
+    font-size: 0.75rem;
+  }
+
+  .play-audio-btn {
+    padding: 6px 12px;
+    font-size: 0.75rem;
   }
 }
 
-/* ВИПРАВЛЕННЯ 4: Вирівнювання контенту на картках */
-.flashcard-front,
-.flashcard-back {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 30px !important; /* Збільшуємо відступи */
+/* Приховати скроллбар для прикладів */
+.examples::-webkit-scrollbar {
+  width: 4px;
 }
 
-.flashcard h2 {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
-  word-break: break-word;
-  max-width: 100%;
+.examples::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
 }
 
-.flashcard h3 {
-  font-size: 2rem;
-  margin-bottom: 20px;
-  word-break: break-word;
-  max-width: 100%;
+.examples::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 2px;
 }
 
-#card-transcription-text {
-  font-size: 1.2rem;
-  margin-bottom: 20px;
-  opacity: 0.9;
-  max-width: 100%;
-}
-
-/* ВИПРАВЛЕННЯ: Кращий вигляд для прикладів */
-.example {
-  flex: 1;
-  text-align: left;
-  font-style: italic;
-  word-break: break-word;
-  max-width: 100%;
-}
-
-/* ВИПРАВЛЕННЯ: Адаптивність для малих екранів */
-@media (max-width: 480px) {
-  .flashcard {
-    height: 350px;
-  }
-
-  .flashcard h2 {
-    font-size: 1.8rem;
-  }
-
-  .flashcard h3 {
-    font-size: 1.6rem;
-  }
-
-  .example-item {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .example {
-    text-align: center;
-    margin-bottom: 10px;
-  }
-}
-
-.category-actions {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-  margin-top: 15px;
-  flex-wrap: wrap;
-}
-
-.category-actions button {
-  min-width: 100px;
-  padding: 8px 16px;
-  font-size: 0.9rem;
-}
-
-.category-card {
-  position: relative;
-}
-
-/* Стиль для категорій, які можна видалити */
-.category-card.deletable {
-  border-left: 4px solid #ff6b6b;
-}
-
-.category-card.deletable::after {
-  content: "Можна видалити";
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: #ff6b6b;
-  color: white;
-  padding: 2px 8px;
-  border-radius: 10px;
-  font-size: 0.7rem;
-}
-
-.stat-card-error {
-  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%) !important;
-}
-
-.stat-card-warning {
-  background: linear-gradient(135deg, #ffa726 0%, #f57c00 100%) !important;
-}
-
-.storage-recommendation {
-  margin-top: 10px;
-  padding: 10px;
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 8px;
-  font-size: 0.8rem;
-}
-
-/* Стилі для інформації про сховище */
-.storage-details {
-  margin-top: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.storage-details small {
-  color: white;
-  font-size: 0.8rem;
-  opacity: 0.8;
-}
-
-.storage-recommendation {
-  /* margin-top: 15px;
-  padding: 15px; */
-  border-radius: 10px;
-  background: #f8f9fa;
-  border-left: 4px solid #667eea;
-}
-
-.storage-recommendation.warning {
-  background: #fff3cd;
-  border-left-color: #ffc107;
-  color: #856404;
-}
-
-.storage-recommendation.critical {
-  background: #f8d7da;
-  border-left-color: #dc3545;
-  color: #721c24;
-}
-
-.storage-recommendation.success {
-  background: #d1edff;
-  border-left-color: #007bff;
-  color: #004085;
-}
-
-/* Адаптивність для малих екранів */
-@media (max-width: 768px) {
-  .storage-details {
-    text-align: center;
-  }
+.examples::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
 }

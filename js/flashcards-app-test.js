@@ -356,6 +356,7 @@ class WordLearningApp {
     this.cardExample1Input = document.getElementById("card-example1-input");
     this.cardExample2Input = document.getElementById("card-example2-input");
     this.cardAudioUrl = document.getElementById("card-audio-url");
+    this.cardFrontImageUrl = document.getElementById("card-front-image-url");
     this.cardImageUrl = document.getElementById("card-image-url");
     this.cardCategorySelect = document.getElementById("card-category-select");
     this.cardCategoryNew = document.getElementById("card-category-new");
@@ -374,6 +375,9 @@ class WordLearningApp {
     this.editCardExample1 = document.getElementById("edit-card-example1");
     this.editCardExample2 = document.getElementById("edit-card-example2");
     this.editCardAudioUrl = document.getElementById("edit-card-audio-url");
+    this.editCardFrontImageUrl = document.getElementById(
+      "edit-card-front-image-url"
+    );
     this.editCardImageUrl = document.getElementById("edit-card-image-url");
     this.editCardCategory = document.getElementById("edit-card-category");
 
@@ -839,24 +843,25 @@ class WordLearningApp {
     // Оновлення даних картки
     this.cardWord.textContent = card.english;
     this.cardTranscription.textContent = card.transcription || "";
-    this.cardTranslation.textContent = card.ukrainian;
+    this.cardTranslation.textContent = card.ukrainian; // Тепер це h2
     this.cardExample1.textContent = card.example1 || "";
     this.cardExample2.textContent = card.example2 || "";
 
-    // ВИПРАВЛЕННЯ 2 та 3: Правильне оновлення зображення на задній стороні
+    // Оновлення зображення на задній стороні
     this.updateCardImage(card);
 
-    // ВИПРАВЛЕННЯ 2: Оновлення стану TTS кнопок з урахуванням зовнішнього аудіо
+    // Оновлення зображення на фронтальній стороні
+    this.updateFrontCardImage(card);
+
+    // Решта коду залишається без змін...
     ttsManager.resetCounter("current-word");
     ttsManager.resetCounter("current-example1");
     ttsManager.resetCounter("current-example2");
 
-    // ВИПРАВЛЕННЯ: Правильна перевірка можливості використання TTS
     ttsManager.updateButtonState("play-word-audio", "current-word", card);
     ttsManager.updateButtonState("play-example1", "current-example1", card);
     ttsManager.updateButtonState("play-example2", "current-example2", card);
 
-    // Оновлення статусів аудіо
     this.updateAudioStatuses();
   }
 
@@ -867,31 +872,76 @@ class WordLearningApp {
     if (card.imageUrl) {
       const imageContainer = document.createElement("div");
       imageContainer.id = "card-image-container";
-      imageContainer.style.marginBottom = "20px";
-      imageContainer.style.textAlign = "center";
 
       const img = document.createElement("img");
       img.src = card.imageUrl;
       img.alt = card.english;
-      img.style.maxWidth = "200px";
-      img.style.maxHeight = "150px";
-      img.style.borderRadius = "10px";
-      img.style.boxShadow = "0 5px 15px rgba(0,0,0,0.2)";
       img.onerror = function () {
         this.style.display = "none";
       };
 
       imageContainer.appendChild(img);
 
-      // ВИПРАВЛЕННЯ 3: Зображення додається на задню сторону
+      // Додаємо зображення на задню сторону
       const backSide = document.querySelector(".flashcard-back");
       if (backSide) {
-        // Додаємо зображення після перекладу
-        const translationElement = backSide.querySelector("h3");
-        if (translationElement) {
-          backSide.insertBefore(imageContainer, translationElement.nextSibling);
-        } else {
-          backSide.insertBefore(imageContainer, backSide.firstChild);
+        // Знаходимо основний контент
+        const mainContent = backSide.querySelector(".flashcard-main-content");
+        if (mainContent) {
+          // Додаємо зображення після перекладу (тепер h2)
+          const translationElement = mainContent.querySelector("h2");
+          if (translationElement) {
+            mainContent.insertBefore(
+              imageContainer,
+              translationElement.nextSibling
+            );
+          }
+        }
+      }
+    }
+  }
+
+  updateFrontCardImage(card) {
+    const existingContainer = document.getElementById(
+      "card-front-image-container"
+    );
+    if (existingContainer) existingContainer.remove();
+
+    if (card.frontImageUrl) {
+      const imageContainer = document.createElement("div");
+      imageContainer.id = "card-front-image-container";
+
+      const img = document.createElement("img");
+      img.src = card.frontImageUrl;
+      img.alt = card.english;
+      img.onerror = function () {
+        this.style.display = "none";
+      };
+
+      imageContainer.appendChild(img);
+
+      // Додаємо зображення на фронтальну сторону
+      const frontSide = document.querySelector(".flashcard-front");
+      if (frontSide) {
+        // Знаходимо основний контент
+        const mainContent = frontSide.querySelector(".flashcard-main-content");
+        if (mainContent) {
+          // Додаємо зображення після транскрипції
+          const transcriptionElement = mainContent.querySelector(
+            "#card-transcription-text"
+          );
+          if (transcriptionElement) {
+            mainContent.insertBefore(
+              imageContainer,
+              transcriptionElement.nextSibling
+            );
+          } else {
+            // Якщо немає транскрипції, додаємо після слова
+            const wordElement = mainContent.querySelector("h2");
+            if (wordElement) {
+              mainContent.insertBefore(imageContainer, wordElement.nextSibling);
+            }
+          }
         }
       }
     }
@@ -994,6 +1044,7 @@ class WordLearningApp {
 
     // ВИПРАВЛЕННЯ: Правильне отримання URL аудіо
     this.editCardAudioUrl.value = card.audioConfig?.url || "";
+    this.editCardFrontImageUrl.value = card.frontImageUrl || "";
     this.editCardImageUrl.value = card.imageUrl || "";
 
     if (this.editCardCategory) {
@@ -1023,6 +1074,7 @@ class WordLearningApp {
       example1: this.editCardExample1.value.trim(),
       example2: this.editCardExample2.value.trim(),
       audioUrl: this.editCardAudioUrl.value.trim(),
+      frontImageUrl: this.editCardFrontImageUrl.value.trim(),
       imageUrl: this.editCardImageUrl.value.trim(),
       category: this.editCardCategory.value || "Загальні",
     };
@@ -1085,6 +1137,7 @@ class WordLearningApp {
         example1: this.cardExample1Input.value.trim(),
         example2: this.cardExample2Input.value.trim(),
         audioUrl: this.cardAudioUrl.value.trim(),
+        frontImageUrl: this.cardFrontImageUrl.value.trim(),
         imageUrl: this.cardImageUrl.value.trim(),
         category: category,
       };

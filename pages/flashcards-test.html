@@ -45,34 +45,42 @@
 			</div>
 
 			<div id="flashcard-container" class="hidden">
+
 				<div class="flashcard">
 					<div class="flashcard-front">
-						<h2 id="card-word"></h2>
-						<p id="card-transcription-text"></p>
-
-						<!-- Аудіо плеєр для слова -->
-						<div class="audio-player" id="word-audio-player">
-							<button class="play-audio-btn" id="play-word-audio">▶️ Вимова</button>
-							<!-- <span id="word-audio-status" class="audio-status">Готово (2 спроби)</span> -->
+						<div class="flashcard-content">
+							<div class="flashcard-main-content">
+								<h2 id="card-word"></h2>
+								<p id="card-transcription-text"></p>
+								<!-- Аудіо плеєр для слова -->
+								<div class="audio-player" id="word-audio-player">
+									<button class="play-audio-btn" id="play-word-audio">▶️ Вимова</button>
+								</div>
+							</div>
+							<div class="flashcard-footer">
+								<button class="btn-flip">Показати переклад</button>
+							</div>
 						</div>
-
-						<button class="btn-flip more">Показати переклад</button>
 					</div>
 					<div class="flashcard-back">
-						<h3 id="card-translation"></h3>
-						<div class="examples">
-							<div class="example-item">
-								<p class="example" id="card-example1"></p>
-								<button class="play-example-btn" data-example="1">▶️</button>
-								<!-- <span class="example-audio-status">(2 спроб)</span> -->
+						<div class="flashcard-content">
+							<div class="flashcard-main-content">
+								<h2 id="card-translation"></h2> <!-- Змінено з h3 на h2 -->
+								<div class="examples">
+									<div class="example-item">
+										<p class="example" id="card-example1"></p>
+										<button class="play-example-btn" data-example="1">▶️</button>
+									</div>
+									<div class="example-item">
+										<p class="example" id="card-example2"></p>
+										<button class="play-example-btn" data-example="2">▶️</button>
+									</div>
+								</div>
 							</div>
-							<div class="example-item">
-								<p class="example" id="card-example2"></p>
-								<button class="play-example-btn" data-example="2">▶️</button>
-								<!-- <span class="example-audio-status">(2 спроб)</span> -->
+							<div class="flashcard-footer">
+								<button class="btn-flip">Показати слово</button>
 							</div>
 						</div>
-						<button class="btn-flip">Показати слово</button>
 					</div>
 				</div>
 
@@ -123,6 +131,12 @@
 						<label for="card-audio-url">URL аудіо (необов'язково)</label>
 						<input type="url" id="card-audio-url" placeholder="https://example.com/audio.mp3">
 						<small>Посилання на зовнішній аудіофайл</small>
+					</div>
+
+					<div class="form-group">
+						<label for="card-front-image-url">URL зображення для фронтальної сторони (необов'язково)</label>
+						<input type="url" id="card-front-image-url" placeholder="https://example.com/front-image.jpg">
+						<small>Зображення буде показано на фронтальній стороні картки</small>
 					</div>
 
 					<div class="form-group">
@@ -292,6 +306,12 @@
 				<div class="form-group">
 					<label for="edit-card-audio-url">URL аудіо (необов'язково)</label>
 					<input type="url" id="edit-card-audio-url" placeholder="https://example.com/audio.mp3">
+				</div>
+
+				<div class="form-group">
+					<label for="edit-card-front-image-url">URL зображення для фронтальної сторони
+						(необов'язково)</label>
+					<input type="url" id="edit-card-front-image-url" placeholder="https://example.com/front-image.jpg">
 				</div>
 
 				<div class="form-group">

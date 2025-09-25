@@ -280,6 +280,7 @@ class DataManager {
         example1: cardData.example1 || "",
         example2: cardData.example2 || "",
         imageUrl: cardData.imageUrl || "",
+        frontImageUrl: cardData.frontImageUrl || "",
         category: cardData.category || "Загальні",
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString(),
@@ -354,6 +355,7 @@ class DataManager {
         example1: updatedCard.example1 || "",
         example2: updatedCard.example2 || "",
         imageUrl: updatedCard.imageUrl || "",
+        frontImageUrl: updatedCard.frontImageUrl || "",
         category: updatedCard.category,
         updatedAt: new Date().toISOString(),
 
