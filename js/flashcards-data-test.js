@@ -48,18 +48,18 @@ class DataManager {
         const userAgent = navigator.userAgent.toLowerCase();
 
         if (userAgent.includes("chrome") || userAgent.includes("chromium")) {
-          return 10 * 1024 * 1024; // 10MB для Chrome
+          return 4 * 1024 * 1024; // 4MB для Chrome
         } else if (userAgent.includes("firefox")) {
-          return 10 * 1024 * 1024; // 10MB для Firefox
+          return 4 * 1024 * 1024; // 4MB для Firefox
         } else if (
           userAgent.includes("safari") &&
           !userAgent.includes("chrome")
         ) {
-          return 5 * 1024 * 1024; // 5MB для Safari
+          return 4 * 1024 * 1024; // 4MB для Safari
         } else if (userAgent.includes("edge")) {
-          return 10 * 1024 * 1024; // 10MB для Edge
+          return 4 * 1024 * 1024; // 4MB для Edge
         } else {
-          return 5 * 1024 * 1024; // 5MB за замовчуванням
+          return 4 * 1024 * 1024; // 4MB за замовчуванням
         }
       };
 
