@@ -924,12 +924,34 @@ class WordLearningApp {
   }
 
   startCategoryStudy(category) {
-    this.currentCategory = category;
-    if (this.categorySelect) {
-      this.categorySelect.value = category;
+  // Встановлюємо поточну категорію
+  this.currentCategory = category;
+  
+  // Оновлюємо випадаючий список на головній вкладці
+  if (this.categorySelect) {
+    this.categorySelect.value = category;
+    
+    // Додатково перевіряємо, чи категорія існує в списку
+    const optionExists = Array.from(this.categorySelect.options)
+      .some(option => option.value === category);
+    
+    if (!optionExists && category !== "all") {
+      // Якщо категорії немає в списку - додаємо її
+      const newOption = new Option(category, category);
+      this.categorySelect.add(newOption);
     }
-    this.showSection("study");
   }
+  
+  // Показуємо секцію вивчення
+  this.showSection("study");
+  
+  // Додатково: можна автоматично запустити вивчення
+  setTimeout(() => {
+    if (this.startStudyBtn) {
+      this.startStudyBtn.click(); // Автоматичний запуск
+    }
+  }, 100);
+}
 
   async startStudy() {
     this.studyMode = "normal";
