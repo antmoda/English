@@ -45,14 +45,15 @@ class TTSManager {
     });
   }
 
-  // Додайте цей метод в клас TTSManager після методу speak()
   playExternalAudio(audioUrl) {
     if (!audioUrl) return;
 
     const audio = new Audio(audioUrl);
+    audio.onerror = () => {
+      console.error("Помилка завантаження аудіо");
+    };
     audio.play().catch((error) => {
       console.error("Помилка відтворення аудіо:", error);
-      alert("Не вдалося відтворити аудіо. Перевірте посилання.");
     });
   }
 
@@ -99,12 +100,12 @@ class TTSManager {
     const button = document.getElementById(buttonId);
     if (!button) return;
 
-    // ВИПРАВЛЕННЯ 2: Правильна перевірка на зовнішнє аудіо
     if (
       card &&
       card.audioConfig &&
       card.audioConfig.source === "external" &&
-      card.audioConfig.url
+      card.audioConfig.url &&
+      buttonId === "play-word-audio"
     ) {
       button.disabled = false;
       button.innerHTML = "🔊";
@@ -140,7 +141,7 @@ class TTSManager {
       button.disabled = false;
       button.innerHTML = "▶️";
       button.title = `Прослухати (залишилось спроб: ${remaining})`;
-      button.onclick = null; // Видаляємо попередні обробники
+      button.onclick = null;
     }
   }
 
@@ -165,10 +166,153 @@ class TTSManager {
 
 window.ttsManager = new TTSManager();
 
+// Клас для управління модальними вікнами повідомлень
+class ModalManager {
+  constructor() {
+    this.alertModal = document.getElementById("alert-modal");
+    this.confirmModal = document.getElementById("confirm-modal");
+    this.setupModals();
+  }
+
+  setupModals() {
+    // Alert modal
+    document
+      .getElementById("close-alert-modal")
+      .addEventListener("click", () => {
+        this.hideAlert();
+      });
+
+    document
+      .getElementById("alert-confirm-btn")
+      .addEventListener("click", () => {
+        this.hideAlert();
+      });
+
+    // Confirm modal
+    document
+      .getElementById("close-confirm-modal")
+      .addEventListener("click", () => {
+        this.hideConfirm(false);
+      });
+
+    document
+      .getElementById("confirm-cancel-btn")
+      .addEventListener("click", () => {
+        this.hideConfirm(false);
+      });
+
+    document.getElementById("confirm-ok-btn").addEventListener("click", () => {
+      this.hideConfirm(true);
+    });
+
+    // Закриття по кліку на фон
+    this.alertModal.addEventListener("click", (e) => {
+      if (e.target === this.alertModal) this.hideAlert();
+    });
+
+    this.confirmModal.addEventListener("click", (e) => {
+      if (e.target === this.confirmModal) this.hideConfirm(false);
+    });
+
+    // Закриття по Escape
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        if (!this.alertModal.classList.contains("hidden")) this.hideAlert();
+        if (!this.confirmModal.classList.contains("hidden"))
+          this.hideConfirm(false);
+      }
+    });
+  }
+
+  showAlert(message, title = "Повідомлення", type = "info") {
+    return new Promise((resolve) => {
+      document.getElementById("alert-title").textContent = title;
+      document.getElementById("alert-message").textContent = message;
+
+      // Додаємо клас для типу повідомлення
+      this.alertModal.className = "modal";
+      this.alertModal.classList.add(`alert-${type}`);
+
+      this.alertModal.classList.remove("hidden");
+      document.body.style.overflow = "hidden";
+
+      this.alertResolve = resolve;
+    });
+  }
+
+  hideAlert() {
+    this.alertModal.classList.add("hidden");
+    document.body.style.overflow = "auto";
+    if (this.alertResolve) {
+      this.alertResolve();
+      this.alertResolve = null;
+    }
+  }
+
+  showConfirm(message, title = "Підтвердження") {
+    return new Promise((resolve) => {
+      document.getElementById("confirm-title").textContent = title;
+      document.getElementById("confirm-message").textContent = message;
+
+      this.confirmModal.classList.remove("hidden");
+      document.body.style.overflow = "hidden";
+
+      this.confirmResolve = resolve;
+    });
+  }
+
+  hideConfirm(result) {
+    this.confirmModal.classList.add("hidden");
+    document.body.style.overflow = "auto";
+    if (this.confirmResolve) {
+      this.confirmResolve(result);
+      this.confirmResolve = null;
+    }
+  }
+}
+
+// Глобальний об'єкт для модальних вікон
+let modalManager = null;
+
+// Функції для заміни стандартних alert/confirm
+function showAlert(message, title = "Повідомлення", type = "info") {
+  if (!modalManager) {
+    console.error("ModalManager не ініціалізовано");
+    // Fallback до стандартного alert
+    alert(`${title}: ${message}`);
+    return Promise.resolve();
+  }
+  return modalManager.showAlert(message, title, type);
+}
+
+function showConfirm(message, title = "Підтвердження") {
+  if (!modalManager) {
+    console.error("ModalManager не ініціалізовано");
+    // Fallback до стандартного confirm
+    const result = confirm(`${title}: ${message}`);
+    return Promise.resolve(result);
+  }
+  return modalManager.showConfirm(message, title);
+}
+
 // Головний клас додатка
 class WordLearningApp {
+  constructor() {
+    this.currentCardIndex = 0;
+    this.currentCards = [];
+    this.currentCategory = "all";
+    this.isStudying = false;
+    this.studyMode = "normal";
+
+    this.initializeElements();
+    this.bindEvents();
+    this.loadCategories();
+    this.showSection("study");
+    this.setupTTS();
+    this.setupTabs();
+  }
+
   updateStorageStats(storageStats, recommendations) {
-    // Оновлення основних показників
     if (document.getElementById("storage-usage-percent")) {
       document.getElementById(
         "storage-usage-percent"
@@ -203,7 +347,6 @@ class WordLearningApp {
         storageStats.categoriesCount;
     }
 
-    // Оновлення рекомендацій
     const recommendationElement = document.getElementById(
       "storage-recommendation"
     );
@@ -211,7 +354,6 @@ class WordLearningApp {
       recommendationElement.textContent = recommendations.message;
       recommendationElement.className = "storage-recommendation";
 
-      // Додаємо клас в залежності від типу рекомендації
       if (recommendations.type === "warning") {
         recommendationElement.classList.add("warning");
       } else if (recommendations.type === "error") {
@@ -221,7 +363,6 @@ class WordLearningApp {
       }
     }
 
-    // Зміна кольору картки використання сховища в залежності від заповненості
     const usageCard = document.querySelector(
       "#storage-stats-container .stat-card:first-child"
     );
@@ -234,20 +375,6 @@ class WordLearningApp {
         usageCard.classList.add("stat-card-warning");
       }
     }
-  }
-  constructor() {
-    this.currentCardIndex = 0;
-    this.currentCards = [];
-    this.currentCategory = "all";
-    this.isStudying = false;
-    this.studyMode = "normal";
-
-    this.initializeElements();
-    this.bindEvents();
-    this.loadCategories();
-    this.showSection("study");
-    this.setupTTS();
-    this.setupTabs();
   }
 
   setupTTS() {
@@ -275,11 +402,9 @@ class WordLearningApp {
       btn.addEventListener("click", () => {
         const tabName = btn.getAttribute("data-tab");
 
-        // Видаляємо активний клас з усіх кнопок та контенту
         tabBtns.forEach((b) => b.classList.remove("active"));
         tabContents.forEach((content) => content.classList.remove("active"));
 
-        // Додаємо активний клас до поточної кнопки та контенту
         btn.classList.add("active");
         document.getElementById(`${tabName}-tab`).classList.add("active");
       });
@@ -339,10 +464,11 @@ class WordLearningApp {
     // Кнопки управління
     this.btnPrev = document.getElementById("btn-prev");
     this.btnNext = document.getElementById("btn-next");
-    this.btnRemembered = document.getElementById("btn-remembered");
-    this.btnForgot = document.getElementById("btn-forgot");
     this.btnEdit = document.getElementById("btn-edit");
     this.btnRestart = document.getElementById("btn-restart");
+
+    // Кнопки якості SM-2
+    this.qualityButtons = document.querySelectorAll(".btn-quality");
 
     // Форми
     this.createForm = document.getElementById("create-card-form");
@@ -446,20 +572,26 @@ class WordLearningApp {
       this.startDifficultBtn.addEventListener("click", () =>
         this.startDifficult()
       );
+
+    // Кнопки управління картками
     if (this.btnPrev)
       this.btnPrev.addEventListener("click", () => this.showPreviousCard());
     if (this.btnNext)
       this.btnNext.addEventListener("click", () => this.showNextCard());
-    if (this.btnRemembered)
-      this.btnRemembered.addEventListener("click", () =>
-        this.markAsRemembered()
-      );
-    if (this.btnForgot)
-      this.btnForgot.addEventListener("click", () => this.markAsForgotten());
     if (this.btnEdit)
       this.btnEdit.addEventListener("click", () => this.editCurrentCard());
     if (this.btnRestart)
       this.btnRestart.addEventListener("click", () => this.restartStudy());
+
+    // Кнопки якості SM-2
+    if (this.qualityButtons) {
+      this.qualityButtons.forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          const quality = parseInt(e.target.getAttribute("data-quality"));
+          this.markWithQuality(quality);
+        });
+      });
+    }
 
     // Перевертання картки
     document.querySelectorAll(".btn-flip").forEach((btn) => {
@@ -495,12 +627,23 @@ class WordLearningApp {
   }
 
   bindTTSEvents() {
-    // TTS для вивчення
     if (this.playWordAudioBtn) {
-      this.playWordAudioBtn.addEventListener("click", () => this.playWordTTS());
+      this.playWordAudioBtn.addEventListener("click", () => {
+        const card = this.currentCards[this.currentCardIndex];
+
+        if (
+          card &&
+          card.audioConfig &&
+          card.audioConfig.source === "external" &&
+          card.audioConfig.url
+        ) {
+          ttsManager.playExternalAudio(card.audioConfig.url);
+        } else {
+          this.playWordTTS();
+        }
+      });
     }
 
-    // TTS для прикладів у режимі вивчення
     document.querySelectorAll(".play-example-btn").forEach((btn) => {
       btn.addEventListener("click", (e) => {
         const exampleNumber =
@@ -510,7 +653,6 @@ class WordLearningApp {
       });
     });
 
-    // TTS для створення карток
     if (this.previewWordTtsBtn) {
       this.previewWordTtsBtn.addEventListener("click", () =>
         this.previewWordTTS()
@@ -527,7 +669,6 @@ class WordLearningApp {
       );
     }
 
-    // TTS для редагування карток
     if (this.editPreviewWordTtsBtn) {
       this.editPreviewWordTtsBtn.addEventListener("click", () =>
         this.editPreviewWordTTS()
@@ -559,12 +700,32 @@ class WordLearningApp {
         e.preventDefault();
         document.querySelector(".flashcard").classList.toggle("flipped");
         break;
+      case "0":
+        this.markWithQuality(0);
+        break;
       case "1":
-        this.markAsRemembered();
+        this.markWithQuality(1);
         break;
       case "2":
-        this.markAsForgotten();
+        this.markWithQuality(2);
         break;
+      case "3":
+        this.markWithQuality(3);
+        break;
+      case "4":
+        this.markWithQuality(4);
+        break;
+      case "5":
+        this.markWithQuality(5);
+        break;
+    }
+  }
+
+  markWithQuality(quality) {
+    const card = this.currentCards[this.currentCardIndex];
+    if (card) {
+      DataManager.updateCardProgressWithQuality(card.id, quality);
+      this.showNextCard();
     }
   }
 
@@ -600,9 +761,10 @@ class WordLearningApp {
       this.updateCategoriesList();
     }
   }
+
   updateStatistics() {
     const stats = DataManager.getStatistics();
-    const storageStats = DataManager.getStorageStats();
+    const storageStats = DataManager.getRealStorageStats();
     const recommendations = DataManager.getStorageRecommendations();
 
     const progress = DataManager.getCategoryProgress();
@@ -620,7 +782,16 @@ class WordLearningApp {
       document.getElementById("stat-total-studied").textContent =
         stats.totalStudied;
 
-    // 🔹 Категорії
+    if (document.getElementById("stat-average-difficulty")) {
+      document.getElementById("stat-average-difficulty").textContent =
+        stats.averageDifficulty;
+    }
+    if (document.getElementById("stat-average-interval")) {
+      document.getElementById(
+        "stat-average-interval"
+      ).textContent = `${stats.averageInterval} дн.`;
+    }
+
     const progressContainer = document.getElementById("category-progress");
     if (progressContainer) {
       progressContainer.innerHTML = Object.entries(progress)
@@ -632,49 +803,13 @@ class WordLearningApp {
             <div class="progress-fill" style="width: ${data.percentage}%"></div>
           </div>
           <span class="progress-text">${data.learned}/${data.total} (${data.percentage}%)</span>
+          <small>Складність: ${data.averageDifficulty}</small>
         </div>
       `
         )
         .join("");
     }
 
-    // 🔹 Інформація про сховище - ОНОВЛЕНА ВЕРСІЯ
-    let statusClass = "";
-    let statusIcon = "✅";
-
-    if (storageStats.isCritical) {
-      statusClass = "stat-card-error";
-      statusIcon = "⚡️";
-    } else if (storageStats.isNearLimit) {
-      statusClass = "stat-card-warning";
-      statusIcon = "⚠️";
-    }
-
-    const storageHTML = `
-        <div class="stat-card ${statusClass}">
-            <h3>${statusIcon} ${storageStats.usagePercentage}%</h3>
-            <p>Використано сховища</p>
-            <div class="storage-details">
-                <small>${storageStats.currentSizeMB} MB / ${storageStats.limitMB} MB</small>
-                <small>Залишилось: ${storageStats.remainingMB} MB</small>
-                <small>Карток: ${storageStats.cardsCount}</small>
-            </div>
-        </div>
-    `;
-
-    // Додати до контейнера статистики
-    const statsContainer = document.getElementById("statistics-container");
-    if (statsContainer) {
-      // Знайти існуючу картку сховища або додати нову
-      let storageCard = statsContainer.querySelector(".storage-stat-card");
-      if (!storageCard) {
-        storageCard = document.createElement("div");
-        storageCard.className = "storage-stat-card";
-        statsContainer.appendChild(storageCard);
-      }
-      storageCard.innerHTML = storageHTML;
-    }
-    // 🔹 Інформація про сховище
     this.updateStorageStats(storageStats, recommendations);
   }
 
@@ -693,7 +828,6 @@ class WordLearningApp {
     });
   }
 
-  // Додати в клас WordLearningApp
   updateCategoriesList() {
     const categoriesList = document.getElementById("categories-list");
     const categories = DataManager.getCategories();
@@ -736,45 +870,58 @@ class WordLearningApp {
       .join("");
   }
 
-  // Додати методи для роботи з категоріями
-  deleteCategory(categoryName) {
+  async deleteCategory(categoryName) {
     if (categoryName === "Загальні") {
-      alert("Категорію 'Загальні' не можна видалити");
+      await showAlert(
+        "Категорію 'Загальні' не можна видалити",
+        "Помилка",
+        "error"
+      );
       return;
     }
 
     const cardsInCategory = DataManager.getCardsByCategory(categoryName);
 
     if (cardsInCategory.length > 0) {
-      if (
-        confirm(
-          `У категорії "${categoryName}" є ${cardsInCategory.length} карток. Перемістити їх до категорії "Загальні" перед видаленням?`
-        )
-      ) {
+      const result = await showConfirm(
+        `У категорії "${categoryName}" є ${cardsInCategory.length} карток. Перемістити їх до категорії "Загальні" перед видаленням?`,
+        "Перемістити картки"
+      );
+
+      if (result) {
         const success = DataManager.moveCardsToCategory(
           categoryName,
           "Загальні"
         );
         if (success) {
           const result = DataManager.deleteCategory(categoryName);
-          alert(result.message);
+          await showAlert(
+            result.message,
+            result.success ? "Успіх" : "Помилка",
+            result.success ? "success" : "error"
+          );
           this.updateCategoriesList();
-          this.loadCategories(); // Оновити випадаючі списки
+          this.loadCategories();
         }
       }
     } else {
-      if (
-        confirm(`Ви впевнені, що хочете видалити категорію "${categoryName}"?`)
-      ) {
+      const result = await showConfirm(
+        `Ви впевнені, що хочете видалити категорію "${categoryName}"?`,
+        "Видалити категорію"
+      );
+
+      if (result) {
         const result = DataManager.deleteCategory(categoryName);
-        alert(result.message);
+        await showAlert(
+          result.message,
+          result.success ? "Успіх" : "Помилка",
+          result.success ? "success" : "error"
+        );
         this.updateCategoriesList();
         this.loadCategories();
       }
     }
   }
-
-  // Оновити CSS для кращого вигляду кнопок
 
   startCategoryStudy(category) {
     this.currentCategory = category;
@@ -784,29 +931,33 @@ class WordLearningApp {
     this.showSection("study");
   }
 
-  startStudy() {
+  async startStudy() {
     this.studyMode = "normal";
-    this.beginStudy();
+    await this.beginStudy();
   }
 
-  startReview() {
+  async startReview() {
     this.studyMode = "review";
-    this.beginStudy();
+    await this.beginStudy();
   }
 
-  startDifficult() {
+  async startDifficult() {
     this.studyMode = "difficult";
-    this.beginStudy();
+    await this.beginStudy();
   }
 
-  beginStudy() {
+  async beginStudy() {
     const cards = DataManager.getCardsForStudy(
       this.currentCategory,
       this.studyMode
     );
 
     if (cards.length === 0) {
-      alert("Немає карток для вивчення в цій категорії!");
+      await showAlert(
+        "Немає карток для вивчення в цій категорії!",
+        "Увага",
+        "warning"
+      );
       return;
     }
 
@@ -840,34 +991,58 @@ class WordLearningApp {
     const flashcard = document.querySelector(".flashcard");
     if (flashcard) flashcard.classList.remove("flipped");
 
-    // Оновлення даних картки
     this.cardWord.textContent = card.english;
     this.cardTranscription.textContent = card.transcription || "";
-    this.cardTranslation.textContent = card.ukrainian; // Тепер це h2
+    this.cardTranslation.textContent = card.ukrainian;
     this.cardExample1.textContent = card.example1 || "";
     this.cardExample2.textContent = card.example2 || "";
 
-    // Оновлення зображення на задній стороні
     this.updateCardImage(card);
-
-    // Оновлення зображення на фронтальній стороні
     this.updateFrontCardImage(card);
 
-    // Решта коду залишається без змін...
     ttsManager.resetCounter("current-word");
     ttsManager.resetCounter("current-example1");
     ttsManager.resetCounter("current-example2");
 
     ttsManager.updateButtonState("play-word-audio", "current-word", card);
-    ttsManager.updateButtonState("play-example1", "current-example1", card);
-    ttsManager.updateButtonState("play-example2", "current-example2", card);
+    this.updateExampleButtonState("1");
+    this.updateExampleButtonState("2");
 
     this.updateAudioStatuses();
   }
 
+  updateExampleButtonState(exampleNumber) {
+    const elementId = `current-example${exampleNumber}`;
+    const button = document.querySelector(`[data-example="${exampleNumber}"]`);
+    const card = this.currentCards[this.currentCardIndex];
+
+    if (!button) return;
+
+    if (!ttsManager.browserSupport) {
+      button.disabled = true;
+      button.innerHTML = "❌";
+      button.title = "TTS не підтримується в цьому браузері";
+      return;
+    }
+
+    const remaining = ttsManager.getRemainingPlays(elementId);
+
+    if (remaining <= 0) {
+      button.disabled = true;
+      button.innerHTML = "⏹️";
+      button.title = "Спроби вичерпано";
+    } else {
+      button.disabled = false;
+      button.innerHTML = "▶️";
+      button.title = `Прослухати приклад (залишилось спроб: ${remaining})`;
+    }
+  }
+
   updateCardImage(card) {
     const existingContainer = document.getElementById("card-image-container");
-    if (existingContainer) existingContainer.remove();
+    if (existingContainer) {
+      existingContainer.remove();
+    }
 
     if (card.imageUrl) {
       const imageContainer = document.createElement("div");
@@ -882,13 +1057,10 @@ class WordLearningApp {
 
       imageContainer.appendChild(img);
 
-      // Додаємо зображення на задню сторону
       const backSide = document.querySelector(".flashcard-back");
       if (backSide) {
-        // Знаходимо основний контент
         const mainContent = backSide.querySelector(".flashcard-main-content");
         if (mainContent) {
-          // Додаємо зображення після перекладу (тепер h2)
           const translationElement = mainContent.querySelector("h2");
           if (translationElement) {
             mainContent.insertBefore(
@@ -920,13 +1092,10 @@ class WordLearningApp {
 
       imageContainer.appendChild(img);
 
-      // Додаємо зображення на фронтальну сторону
       const frontSide = document.querySelector(".flashcard-front");
       if (frontSide) {
-        // Знаходимо основний контент
         const mainContent = frontSide.querySelector(".flashcard-main-content");
         if (mainContent) {
-          // Додаємо зображення після транскрипції
           const transcriptionElement = mainContent.querySelector(
             "#card-transcription-text"
           );
@@ -936,7 +1105,6 @@ class WordLearningApp {
               transcriptionElement.nextSibling
             );
           } else {
-            // Якщо немає транскрипції, додаємо після слова
             const wordElement = mainContent.querySelector("h2");
             if (wordElement) {
               mainContent.insertBefore(imageContainer, wordElement.nextSibling);
@@ -974,54 +1142,37 @@ class WordLearningApp {
     }
   }
 
-  completeStudy() {
-    alert("Вивчення завершено! Всі картки пройдено.");
+  async completeStudy() {
+    await showAlert(
+      "Вивчення завершено! Всі картки пройдено.",
+      "Завершено",
+      "success"
+    );
     this.stopStudy();
   }
 
-  markAsRemembered() {
-    const card = this.currentCards[this.currentCardIndex];
-    DataManager.updateCardProgress(card.id, true);
-    this.showNextCard();
-  }
-
-  markAsForgotten() {
-    const card = this.currentCards[this.currentCardIndex];
-    DataManager.updateCardProgress(card.id, false);
-    this.showNextCard();
-  }
-
-  editCurrentCard() {
-    if (this.currentCards.length === 0) {
-      alert("Спочатку почніть навчання, картки відсутні");
-      return;
-    }
-
-    const card = this.currentCards[this.currentCardIndex];
-    if (!card) {
-      alert("Картка не знайдена");
-      return;
-    }
-
-    this.showEditModal(card);
-  }
-
-  editCurrentCard() {
-    // Перевірка наявності карток та коректного індексу
+  async editCurrentCard() {
     if (
       !this.isStudying ||
       this.currentCards.length === 0 ||
       this.currentCardIndex >= this.currentCards.length
     ) {
-      alert("Спочатку почніть навчання, картки відсутні");
+      await showAlert(
+        "Спочатку почніть навчання, картки відсутні",
+        "Помилка",
+        "error"
+      );
       return;
     }
 
     const card = this.currentCards[this.currentCardIndex];
 
-    // Додаткова перевірка наявності картки
     if (!card || !card.id) {
-      alert("Картка не знайдена або не має ідентифікатора");
+      await showAlert(
+        "Картка не знайдена або не має ідентифікатора",
+        "Помилка",
+        "error"
+      );
       return;
     }
 
@@ -1030,11 +1181,10 @@ class WordLearningApp {
 
   showEditModal(card) {
     if (!card || !card.id) {
-      alert("Картка не знайдена");
+      showAlert("Картка не знайдена", "Помилка", "error");
       return;
     }
 
-    // Заповнення форми редагування
     this.editCardId.value = card.id;
     this.editCardEnglish.value = card.english || "";
     this.editCardTranscription.value = card.transcription || "";
@@ -1042,7 +1192,6 @@ class WordLearningApp {
     this.editCardExample1.value = card.example1 || "";
     this.editCardExample2.value = card.example2 || "";
 
-    // ВИПРАВЛЕННЯ: Правильне отримання URL аудіо
     this.editCardAudioUrl.value = card.audioConfig?.url || "";
     this.editCardFrontImageUrl.value = card.frontImageUrl || "";
     this.editCardImageUrl.value = card.imageUrl || "";
@@ -1051,7 +1200,6 @@ class WordLearningApp {
       this.editCardCategory.value = card.category || "Загальні";
     }
 
-    // Оновлення TTS кнопок для редагування
     ttsManager.resetCounter("edit-word");
     ttsManager.resetCounter("edit-example1");
     ttsManager.resetCounter("edit-example2");
@@ -1060,12 +1208,11 @@ class WordLearningApp {
     ttsManager.updateButtonState("edit-preview-example1-tts", "edit-example1");
     ttsManager.updateButtonState("edit-preview-example2-tts", "edit-example2");
 
-    // Показуємо модальне вікно
     this.editModal.classList.remove("hidden");
     document.body.style.overflow = "hidden";
   }
 
-  handleEditCard() {
+  async handleEditCard() {
     const cardData = {
       id: this.editCardId.value,
       english: this.editCardEnglish.value.trim(),
@@ -1079,31 +1226,37 @@ class WordLearningApp {
       category: this.editCardCategory.value || "Загальні",
     };
 
-    // Перевірка обов'язкових полів
     if (!cardData.id || !cardData.english || !cardData.ukrainian) {
-      alert("Будь ласка, заповніть обов'язкові поля");
+      await showAlert(
+        "Будь ласка, заповніть обов'язкові поля",
+        "Помилка",
+        "error"
+      );
       return;
     }
 
-    // Виклик DataManager для оновлення картки
     const success = DataManager.updateCard(cardData);
 
     if (success) {
       this.hideEditModal();
 
-      // Оновлюємо поточний набір карток, якщо ми в режимі вивчення
       if (this.isStudying) {
         this.restartStudy();
       }
 
-      alert("Картку успішно оновлено!");
+      await showAlert("Картку успішно оновлено!", "Успіх", "success");
     } else {
-      alert("Помилка при оновленні картки!");
+      await showAlert("Помилка при оновленні картки!", "Помилка", "error");
     }
   }
 
-  deleteCurrentCard() {
-    if (!confirm("Ви впевнені, що хочете видалити цю картку?")) return;
+  async deleteCurrentCard() {
+    const result = await showConfirm(
+      "Ви впевнені, що хочете видалити цю картку?",
+      "Видалити картку"
+    );
+
+    if (!result) return;
 
     const cardId = this.editCardId.value;
     DataManager.deleteCard(cardId);
@@ -1113,14 +1266,13 @@ class WordLearningApp {
       this.restartStudy();
     }
 
-    alert("Картку успішно видалено!");
+    await showAlert("Картку успішно видалено!", "Успіх", "success");
   }
 
   async handleCreateCard(e) {
     e.preventDefault();
 
     try {
-      // ВИПРАВЛЕННЯ 1: Правильне отримання категорії
       let category = this.cardCategorySelect.value;
       if (!category || category === "" || category === "all") {
         category = this.cardCategoryNew.value.trim();
@@ -1143,16 +1295,18 @@ class WordLearningApp {
       };
 
       if (!cardData.english || !cardData.ukrainian) {
-        alert("Будь ласка, заповніть обов'язкові поля");
+        await showAlert(
+          "Будь ласка, заповніть обов'язкові поля",
+          "Помилка",
+          "error"
+        );
         return;
       }
 
-      // Викликаємо створення картки з обробкою помилок
       DataManager.createCard(cardData);
 
       this.createForm.reset();
 
-      // Скидання до першої вкладки
       document
         .querySelectorAll(".tab-btn")
         .forEach((btn) => btn.classList.remove("active"));
@@ -1162,18 +1316,21 @@ class WordLearningApp {
       document.querySelector('[data-tab="front"]').classList.add("active");
       document.getElementById("front-tab").classList.add("active");
 
-      // Скидання TTS лічильників
       ttsManager.resetCounter("create-word");
       ttsManager.resetCounter("create-example1");
       ttsManager.resetCounter("create-example2");
 
       this.updateTTSStatuses();
 
-      alert("Картку успішно створено!");
+      await showAlert("Картку успішно створено!", "Успіх", "success");
       this.loadCategories();
     } catch (error) {
       console.error("Помилка при створенні картки:", error);
-      alert(`Помилка при створенні картки: ${error.message}`);
+      await showAlert(
+        `Помилка при створенні картки: ${error.message}`,
+        "Помилка",
+        "error"
+      );
     }
   }
 
@@ -1188,19 +1345,13 @@ class WordLearningApp {
   async playExampleTTS(exampleNumber) {
     const card = this.currentCards[this.currentCardIndex];
     const exampleText = exampleNumber === "1" ? card.example1 : card.example2;
-    const elementId = `current-example${exampleNumber}`;
 
+    if (!exampleText) return;
+
+    const elementId = `current-example${exampleNumber}`;
     const result = await ttsManager.playWithLimit(elementId, exampleText);
 
-    const statusElement = document
-      .querySelector(`#card-example${exampleNumber}`)
-      .closest(".example-item")
-      .querySelector(".example-audio-status");
-    if (statusElement) {
-      this.updateAudioStatusElement(statusElement, result);
-    }
-
-    ttsManager.updateButtonState(`play-example${exampleNumber}`, elementId);
+    this.updateExampleButtonState(exampleNumber);
   }
 
   async previewWordTTS() {
@@ -1307,70 +1458,121 @@ class WordLearningApp {
 }
 
 // Глобальні функції для експорту/імпорту
-function exportData() {
-  const data = DataManager.exportData();
-  const blob = new Blob([data], { type: "application/json" });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = `flashcards-backup-${
-    new Date().toISOString().split("T")[0]
-  }.json`;
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  setTimeout(() => URL.revokeObjectURL(url), 100);
+async function exportData() {
+  try {
+    const data = DataManager.exportData();
+    const blob = new Blob([data], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `flashcards-backup-${
+      new Date().toISOString().split("T")[0]
+    }.json`;
+
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+
+    // Не показуємо повідомлення про успіх - браузер сам покаже статус завантаження
+    console.log("Експорт запущено - користувач побачить результат в браузері");
+
+    // Звільняємо пам'ять через час
+    setTimeout(() => {
+      URL.revokeObjectURL(url);
+      console.log("Пам'ять звільнено");
+    }, 60000); // 1 хвилина
+  } catch (error) {
+    console.error("Помилка експорту:", error);
+    await showAlert(
+      "Помилка підготовки даних для експорту",
+      "Помилка",
+      "error"
+    );
+  }
 }
 
-function importData(event) {
+async function importData(event) {
   const file = event.target.files[0];
   if (!file) return;
 
   const reader = new FileReader();
-  reader.onload = function (e) {
+  reader.onload = async function (e) {
     try {
       const importedData = JSON.parse(e.target.result);
-      if (
-        confirm(
-          "Ви впевнені, що хочете імпортувати дані? Поточні дані будуть об'єднані з імпортованими."
-        )
-      ) {
+
+      const result = await showConfirm(
+        "Ви впевнені, що хочете імпортувати дані? Поточні дані будуть об'єднані з імпортованими.",
+        "Імпорт даних"
+      );
+
+      if (result) {
         if (DataManager.importData(JSON.stringify(importedData))) {
-          alert("Дані успішно імпортовано!");
+          await showAlert(
+            "Дані успішно імпортовано!",
+            "Імпорт завершено",
+            "success"
+          );
           location.reload();
         } else {
-          alert("Помилка імпорту даних.");
+          await showAlert("Помилка імпорту даних.", "Помилка", "error");
         }
       }
     } catch (error) {
-      alert("Помилка читання файлу: " + error.message);
+      await showAlert(
+        "Помилка читання файлу: " + error.message,
+        "Помилка",
+        "error"
+      );
     }
     event.target.value = "";
   };
   reader.readAsText(file);
 }
 
-// Глобальні функції для кнопок
-function resetAllProgress() {
-  if (
-    confirm("Ви впевнені, що хочете скинути весь прогрес? Ця дія незворотна.")
-  ) {
+async function resetAllProgress() {
+  const result = await showConfirm(
+    "Ви впевнені, що хочете скинути весь прогрес? Ця дія незворотна.",
+    "Скинути прогрес"
+  );
+
+  if (result) {
     DataManager.resetAllProgress();
-    alert("Прогрес скинуто!");
+    await showAlert(
+      "Прогрес успішно скинуто!",
+      "Скидання завершено",
+      "success"
+    );
     if (window.app) {
       window.app.updateStatistics();
     }
   }
 }
 
-function resetCardIntervals() {
-  if (confirm("Скинути інтервали повторень для всіх карток?")) {
+async function resetCardIntervals() {
+  const result = await showConfirm(
+    "Скинути інтервали повторень для всіх карток?",
+    "Скинути інтервали"
+  );
+
+  if (result) {
     DataManager.resetCardIntervals();
-    alert("Інтервали скинуто!");
+    await showAlert(
+      "Інтервали повторень скинуто!",
+      "Скидання завершено",
+      "success"
+    );
   }
 }
 
 // Ініціалізація додатка
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", async function () {
+  // Спочатку ініціалізуємо DataManager
+  await DataManager.initialize();
+
+  // Потім створюємо додаток
+  modalManager = new ModalManager();
+  window.modalManager = modalManager;
   window.app = new WordLearningApp();
+
+  console.log("Додаток ініціалізовано");
 });

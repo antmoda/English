@@ -561,7 +561,6 @@ header p {
 }
 
 .category-input {
-  display: flex;
   gap: 10px;
   align-items: center;
 }
@@ -785,7 +784,7 @@ small {
   font-size: 0.9rem;
   color: #666;
   min-width: 100px;
-  text-align: right;
+  text-align: center;
 }
 
 .stat-card-error {
@@ -1026,4 +1025,229 @@ small {
 
 .examples::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.5);
+}
+.no-data {
+  text-align: center;
+  color: #666;
+  font-style: italic;
+  padding: 20px;
+}
+/* Додати для кращої доступності */
+.flashcard:focus {
+  outline: 2px solid #667eea;
+  outline-offset: 2px;
+}
+
+/* Виправити можливу проблему з перевертанням на мобільних */
+@media (max-width: 480px) {
+  .flashcard {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+.flashcard img {
+  background: #f0f0f0;
+  transition: opacity 0.3s ease;
+}
+
+/* .flashcard img[src]:not([src=""]) {
+  opacity: 0;
+  animation: fadeIn 0.5s ease forwards;
+} */
+
+/* Додати в кінець CSS файлу */
+.category-progress-item small {
+  font-size: 0.8rem;
+  color: #666;
+  margin-top: 5px;
+  display: block;
+}
+
+.stat-card h3 {
+  font-size: 1.8rem; /* Трохи менше для довгих чисел */
+}
+
+.storage-monitor {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 15px;
+  border-radius: 10px;
+  margin: 15px 0;
+}
+
+.storage-monitor.critical {
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
+}
+
+.storage-monitor.warning {
+  background: linear-gradient(135deg, #ffa726 0%, #f57c00 100%);
+}
+
+.storage-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.storage-info-item {
+  text-align: center;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+}
+
+.storage-info-value {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.storage-info-label {
+  font-size: 0.8rem;
+  opacity: 0.9;
+}
+.quality-controls {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 15px 0;
+}
+
+.btn-quality {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 80px;
+}
+
+.quality-0 {
+  background: #ff4757;
+  color: white;
+}
+.quality-1 {
+  background: #ff6348;
+  color: white;
+}
+.quality-2 {
+  background: #ffa502;
+  color: white;
+}
+.quality-3 {
+  background: #2ed573;
+  color: white;
+}
+.quality-4 {
+  background: #1e90ff;
+  color: white;
+}
+.quality-5 {
+  background: #4834d4;
+  color: white;
+}
+
+.btn-quality:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+  .quality-controls {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .btn-quality {
+    width: 100%;
+    max-width: 200px;
+  }
+}
+
+/* Стилі для модальних вікон повідомлень */
+.alert-modal-content,
+.confirm-modal-content {
+  max-width: 400px;
+  text-align: center;
+}
+
+.alert-modal-content .modal-body,
+.confirm-modal-content .modal-body {
+  padding: 20px 30px;
+}
+
+.alert-modal-content .modal-actions,
+.confirm-modal-content .modal-actions {
+  justify-content: center;
+  gap: 15px;
+}
+
+#alert-title,
+#confirm-title {
+  color: #333;
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+#alert-message,
+#confirm-message {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #555;
+  margin: 0;
+}
+
+/* Анімації для модальних вікон */
+.modal-content {
+  animation: modalSlideIn 0.3s ease;
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8) translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Іконки для різних типів повідомлень */
+.alert-icon {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+.alert-success .alert-icon {
+  color: #28a745;
+}
+.alert-warning .alert-icon {
+  color: #ffc107;
+}
+.alert-error .alert-icon {
+  color: #dc3545;
+}
+.alert-info .alert-icon {
+  color: #17a2b8;
+}
+
+/* Різні кольори для заголовків за типом */
+.alert-success #alert-title {
+  color: #28a745;
+}
+.alert-warning #alert-title {
+  color: #ffc107;
+}
+.alert-error #alert-title {
+  color: #dc3545;
+}
+.alert-info #alert-title {
+  color: #17a2b8;
+}
+
+/* Приховати складність категорій */
+.category-progress-item small {
+  display: none;
 }

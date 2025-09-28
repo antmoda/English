@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Word Learning App - Anki/Quizlet style</title>
+	<title>Word Learning App</title>
 	<link rel="icon" type="image/x-icon" href="../img/united-kingdom.png">
 	<link rel="stylesheet" href="../css/flashcards-test.css">
 </head>
@@ -87,10 +87,17 @@
 				<div class="card-controls">
 					<button id="btn-prev" class="btn-secondary">← Попередня</button>
 					<button id="btn-next" class="btn-secondary">Наступна →</button>
-					<button id="btn-remembered" class="btn-success">Знаю</button>
-					<button id="btn-forgot" class="btn-danger">Не пам'ятаю</button>
 					<button id="btn-edit" class="btn-secondary">Редагувати</button>
 					<button id="btn-restart" class="btn-secondary">Перезапустити</button>
+				</div>
+
+				<div class="quality-controls">
+					<button class="btn-quality quality-0" data-quality="0">Не пам'ятаю</button>
+					<button class="btn-quality quality-1" data-quality="1">Дуже важко</button>
+					<button class="btn-quality quality-2" data-quality="2">Важко</button>
+					<button class="btn-quality quality-3" data-quality="3">Нормально</button>
+					<button class="btn-quality quality-4" data-quality="4">Легко</button>
+					<button class="btn-quality quality-5" data-quality="5">Дуже легко</button>
 				</div>
 
 				<div class="progress">
@@ -214,6 +221,19 @@
 					<h3 id="stat-total-studied">0</h3>
 					<p>Всього вивчено</p>
 				</div>
+				<!-- Додати в секцію статистики після існуючих карток -->
+				<!-- <div class="stat-card">
+					<h3 id="stat-average-difficulty">0</h3>
+					<p>Середня складність</p>
+				</div>
+				<div class="stat-card">
+					<h3 id="stat-average-interval">0 дн.</h3>
+					<p>Середній інтервал</p>
+				</div>
+				<div class="stat-card">
+					<h3>SM-2</h3>
+					<p>Алгоритм повторень</p>
+				</div> -->
 			</div>
 
 			<h3>Прогрес по категоріях</h3>
@@ -221,7 +241,7 @@
 				<!-- Прогрес буде доданий динамічно -->
 			</div>
 
-			<!-- Додати після блоку "Прогрес по категоріям" -->
+			<!-- ЗАМІНИТЬ закоментований блок на: -->
 			<h5>Використання сховища</h5>
 			<!-- <div class="stats-container" id="storage-stats-container">
 				<div class="stat-card">
@@ -242,7 +262,8 @@
 					<p>Категорій</p>
 				</div>
 			</div> -->
-
+			<!-- Додати після блоку з категоріями -->
+			<div id="statistics-container"></div>
 			<div id="storage-recommendation" class="storage-recommendation">
 				<!-- Тут будуть рекомендації -->
 			</div>
@@ -331,6 +352,39 @@
 					<button type="submit" class="btn-primary">Зберегти зміни</button>
 				</div>
 			</form>
+		</div>
+	</div>
+
+	<!-- Модальне вікно для повідомлень -->
+	<div id="alert-modal" class="modal hidden">
+		<div class="modal-content alert-modal-content">
+			<div class="modal-header">
+				<h3 id="alert-title">Повідомлення</h3>
+				<button class="close-btn" id="close-alert-modal">&times;</button>
+			</div>
+			<div class="modal-body">
+				<p id="alert-message">Текст повідомлення...</p>
+			</div>
+			<div class="modal-actions">
+				<button id="alert-confirm-btn" class="btn-primary">OK</button>
+			</div>
+		</div>
+	</div>
+
+	<!-- Модальне вікно для підтвердження -->
+	<div id="confirm-modal" class="modal hidden">
+		<div class="modal-content confirm-modal-content">
+			<div class="modal-header">
+				<h3 id="confirm-title">Підтвердження</h3>
+				<button class="close-btn" id="close-confirm-modal">&times;</button>
+			</div>
+			<div class="modal-body">
+				<p id="confirm-message">Ви впевнені, що хочете продовжити?</p>
+			</div>
+			<div class="modal-actions">
+				<button id="confirm-cancel-btn" class="btn-secondary">Скасувати</button>
+				<button id="confirm-ok-btn" class="btn-primary">Підтвердити</button>
+			</div>
 		</div>
 	</div>
 
