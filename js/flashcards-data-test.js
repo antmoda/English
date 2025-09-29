@@ -386,10 +386,10 @@ class DataManager {
 
         spacedRepetition: {
           algorithm: "sm2",
-          interval: 1,
+          interval: 0, // Змінити з 1 на 0 для нових карток
           easeFactor: 2.5,
           repetition: 0,
-          nextReview: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(),
+          nextReview: new Date().toISOString(), // Негайне повторення для нових карток
           lastInterval: 0,
           stability: 0,
           difficulty: 2.5,
@@ -426,10 +426,9 @@ class DataManager {
   static updateSpacedRepetition(card, quality) {
     const sr = card.spacedRepetition;
 
-    // Якість відповіді: 0-5 (як в Anki)
     quality = Math.max(0, Math.min(5, quality));
 
-    // Стандартний алгоритм SM-2
+    // SM-2 алгоритм
     if (quality >= 3) {
       // Правильна відповідь
       if (sr.repetition === 0) {
@@ -439,45 +438,42 @@ class DataManager {
       } else {
         sr.interval = Math.round(sr.interval * sr.easeFactor);
       }
-
       sr.repetition++;
       sr.consecutiveCorrect++;
-
-      // Оновлення фактору легкості (EF)
-      sr.easeFactor =
-        sr.easeFactor + (0.1 - (5 - quality) * (0.08 + (5 - quality) * 0.02));
-      sr.easeFactor = Math.max(1.3, sr.easeFactor);
     } else {
-      // Неправильна відповідь - почати спочатку
+      // Неправильна відповідь
       sr.repetition = 0;
       sr.consecutiveCorrect = 0;
       sr.interval = 1;
-
-      // Зменшити фактор легкості для складних слів
-      sr.easeFactor = Math.max(1.3, sr.easeFactor - 0.2);
     }
 
-    // Оновлення складності на основі якості
+    // ВИПРАВЛЕНА ФОРМУЛА для EF (Ease Factor)
+    sr.easeFactor =
+      sr.easeFactor + (0.1 - (5 - quality) * (0.08 + (5 - quality) * 0.02));
+
+    // Обмеження EF від 1.3 до 2.5
+    sr.easeFactor = Math.max(1.3, Math.min(sr.easeFactor, 2.5));
+
+    // Оновлення складності (додаткова функціональність)
     sr.difficulty = Math.max(
       1.0,
       Math.min(5.0, sr.difficulty + (quality - 3) * 0.1)
     );
 
-    // Розрахунок наступного повторення
+    // Наступне повторення
     const nextReview = new Date();
     nextReview.setDate(nextReview.getDate() + sr.interval);
     sr.nextReview = nextReview.toISOString();
     sr.lastInterval = sr.interval;
-
-    // Стабільність для аналітики
     sr.stability = sr.interval * sr.easeFactor;
 
+    // Логування для дебагу
     console.log(
-      `SM-2: якість=${quality}, інтервал=${
+      `SM-2 Update: ${
+        card.english
+      }, Quality: ${quality}, EF: ${sr.easeFactor.toFixed(2)}, Interval: ${
         sr.interval
-      }дн, EF=${sr.easeFactor.toFixed(2)}, складність=${sr.difficulty.toFixed(
-        2
-      )}`
+      } days`
     );
   }
 
@@ -489,15 +485,124 @@ class DataManager {
     if (card) {
       const now = new Date();
 
-      // Оновлення прогресу
+      // Оновлення прогресу (тільки статистика)
       card.progress.totalAnswers++;
       if (quality >= 3) {
         card.progress.correctAnswers++;
-        card.progress.level = Math.min(card.progress.level + 1, 5);
-      } else {
-        card.progress.level = Math.max(card.progress.level - 1, 0);
       }
+      card.progress.successRate = Math.round(
+        (card.progress.correctAnswers / card.progress.totalAnswers) * 100
+      );
+      card.progress.lastReviewed = now.toISOString();
 
+      // Оновлення SM-2 з якістю відповіді
+      this.updateSpacedRepetition(card, quality);
+
+      // Оновлення загальної статистики
+      data.statistics.totalStudied++;
+      if (quality >= 3) {
+        data.statistics.totalRemembered++;
+      }
+      data.statistics.totalReviews++;
+      data.statistics.lastStudySession = now.toISOString();
+
+      // Критичне збереження - негайно
+      this.saveDataImmediately(data);
+
+      console.log(
+        `Progress updated: ${card.english}, Quality: ${quality}, Success: ${card.progress.successRate}%`
+      );
+      return true;
+    }
+
+    console.error(`Card not found: ${cardId}`);
+    return false;
+  }
+
+  // Оновлений метод для зворотної сумісності
+  static updateCardProgress(cardId, remembered) {
+    const quality = remembered ? 4 : 1;
+    return this.updateCardProgressWithQuality(cardId, quality);
+  }
+
+  // Додатковий метод для красивих назв якості
+  static getQualityName(quality) {
+    const names = {
+      0: "Не пам'ятаю",
+      1: "Дуже важко",
+      2: "Важко",
+      3: "Нормально",
+      4: "Легко",
+      5: "Дуже легко",
+    };
+    return names[quality] || "Невідомо";
+  }
+
+  // Додатковий метод для відладки SM-2
+  static debugSM2(cardId, quality) {
+    const data = this.loadData();
+    const card = data.cards.find((c) => c.id === cardId);
+
+    if (card) {
+      console.log(`=== SM-2 Debug для: ${card.english} ===`);
+      console.log(
+        `Початкові значення: EF=${card.spacedRepetition.easeFactor}, Interval=${card.spacedRepetition.interval}, Repetition=${card.spacedRepetition.repetition}`
+      );
+      console.log(
+        `Якість відповіді: ${quality} (${this.getQualityName(quality)})`
+      );
+
+      // Тимчасово збережемо початкові значення
+      const originalEF = card.spacedRepetition.easeFactor;
+      const originalInterval = card.spacedRepetition.interval;
+      const originalRepetition = card.spacedRepetition.repetition;
+
+      // Виконаємо оновлення
+      this.updateSpacedRepetition(card, quality);
+
+      console.log(
+        `Кінцеві значення: EF=${card.spacedRepetition.easeFactor.toFixed(
+          2
+        )}, Interval=${card.spacedRepetition.interval}, Repetition=${
+          card.spacedRepetition.repetition
+        }`
+      );
+      console.log(`Next Review: ${card.spacedRepetition.nextReview}`);
+      console.log(`=== Кінець Debug ===`);
+
+      // Відновимо оригінальні значення (щоб не змінювати дані)
+      card.spacedRepetition.easeFactor = originalEF;
+      card.spacedRepetition.interval = originalInterval;
+      card.spacedRepetition.repetition = originalRepetition;
+    }
+  }
+
+  // Додатковий метод для красивих назв якості
+  static getQualityName(quality) {
+    const names = {
+      0: "Не пам'ятаю",
+      1: "Дуже важко",
+      2: "Важко",
+      3: "Нормально",
+      4: "Легко",
+      5: "Дуже легко",
+    };
+    return names[quality] || "Невідомо";
+  }
+
+  // НОВИЙ МЕТОД: Оновлення прогресу з якістю
+  static updateCardProgressWithQuality(cardId, quality) {
+    const data = this.loadData();
+    const card = data.cards.find((c) => c.id === cardId);
+
+    if (card) {
+      const now = new Date();
+
+      // Оновлення прогресу (тільки статистика)
+      card.progress.totalAnswers++;
+      if (quality >= 3) {
+        card.progress.correctAnswers++;
+      }
       card.progress.successRate = Math.round(
         (card.progress.correctAnswers / card.progress.totalAnswers) * 100
       );
@@ -538,9 +643,11 @@ class DataManager {
     const now = new Date();
     switch (mode) {
       case "review":
-        cards = cards.filter(
-          (card) => new Date(card.spacedRepetition.nextReview) <= now
-        );
+        cards = cards.filter((card) => {
+          // Картки з null nextReview вважаються новими і не показуються для повторення
+          if (!card.spacedRepetition.nextReview) return false;
+          return new Date(card.spacedRepetition.nextReview) <= now;
+        });
         break;
       case "difficult":
         cards = cards.filter((card) => {
@@ -716,9 +823,12 @@ class DataManager {
     const cards = data.cards;
 
     const totalCards = cards.length;
-    const dueCards = cards.filter(
-      (card) => new Date(card.spacedRepetition.nextReview) <= new Date()
-    ).length;
+
+    // Виправлений підрахунок прострочених карток
+    const dueCards = cards.filter((card) => {
+      if (!card.spacedRepetition.nextReview) return false; // Пропускаємо картки з null
+      return new Date(card.spacedRepetition.nextReview) <= new Date();
+    }).length;
 
     const totalAnswers = cards.reduce(
       (sum, card) => sum + card.progress.totalAnswers,
@@ -802,11 +912,12 @@ class DataManager {
 
   static resetAllProgress() {
     const data = this.loadData();
+    const now = new Date();
 
     data.cards.forEach((card) => {
       card.progress = {
         level: 0,
-        nextReview: new Date().toISOString(),
+        nextReview: null, // Змінити на null
         lastReviewed: null,
         correctAnswers: 0,
         totalAnswers: 0,
@@ -815,10 +926,10 @@ class DataManager {
 
       card.spacedRepetition = {
         algorithm: "sm2",
-        interval: 1,
+        interval: 0,
         easeFactor: 2.5,
         repetition: 0,
-        nextReview: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(),
+        nextReview: null, // Змінити на null
         lastInterval: 0,
         stability: 0,
         difficulty: 2.5,
@@ -834,6 +945,7 @@ class DataManager {
     };
 
     this.saveDataImmediately(data);
+    console.log("Весь прогрес скинуто");
     return true;
   }
 
@@ -909,7 +1021,11 @@ class DataManager {
     const data = this.loadData();
     const now = new Date();
     return data.cards.filter(
-      (card) => new Date(card.spacedRepetition.nextReview) <= now
+      (card) =>
+        // Тільки картки, які вже мали хоч одну відповідь
+        card.progress.totalAnswers > 0 &&
+        // І які потребують повторення за SM-2
+        new Date(card.spacedRepetition.nextReview) <= now
     ).length;
   }
 
