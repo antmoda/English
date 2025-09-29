@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Транскриптор англійських слів</title>
+	<style>
+		/* Базові стилі */
+		* {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			line-height: 1.6;
+			color: #333;
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			min-height: 100vh;
+			padding: 20px;
+		}
+
+		.container {
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+
+		/* Картка */
+		.card {
+			background: white;
+			border-radius: 20px;
+			box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+			overflow: hidden;
+			margin-bottom: 30px;
+		}
+
+		.header {
+			background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+			color: white;
+			padding: 30px;
+			text-align: center;
+		}
+
+		.header h1 {
+			font-size: 2.5rem;
+			margin-bottom: 10px;
+			font-weight: 300;
+		}
+
+		.header .subtitle {
+			font-size: 1.1rem;
+			opacity: 0.9;
+		}
+
+		/* Форма пошуку */
+		.search-section {
+			padding: 30px;
+			background: #f8f9fa;
+			border-bottom: 1px solid #e9ecef;
+		}
+
+		.search-box {
+			display: flex;
+			gap: 15px;
+			margin-bottom: 20px;
+		}
+
+		.search-input {
+			flex: 1;
+			padding: 15px 20px;
+			border: 2px solid #e9ecef;
+			border-radius: 50px;
+			font-size: 16px;
+			transition: all 0.3s ease;
+		}
+
+		.search-input:focus {
+			outline: none;
+			border-color: #3498db;
+			box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+		}
+
+		.search-btn {
+			padding: 15px 30px;
+			background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+			color: white;
+			border: none;
+			border-radius: 50px;
+			font-size: 16px;
+			cursor: pointer;
+			transition: all 0.3s ease;
+			white-space: nowrap;
+		}
+
+		.search-btn:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 10px 20px rgba(52, 152, 219, 0.3);
+		}
+
+		.search-btn:disabled {
+			background: #bdc3c7;
+			transform: none;
+			box-shadow: none;
+			cursor: not-allowed;
+		}
+
+		/* Основний контент */
+		.main-content {
+			padding: 30px;
+			display: grid;
+			gap: 30px;
+		}
+
+		/* Транскрипції */
+		.transcriptions-section {
+			background: #fff;
+			border-radius: 15px;
+			padding: 25px;
+			box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+		}
+
+		.section-title {
+			font-size: 1.5rem;
+			color: #2c3e50;
+			margin-bottom: 20px;
+			display: flex;
+			align-items: center;
+			gap: 10px;
+		}
+
+		.section-title i {
+			color: #3498db;
+		}
+
+		.transcriptions-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+			gap: 20px;
+		}
+
+		.transcription-card {
+			background: #f8f9fa;
+			border-radius: 12px;
+			padding: 20px;
+			border-left: 4px solid #3498db;
+			position: relative;
+		}
+
+		.transcription-header {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			margin-bottom: 15px;
+		}
+
+		.flag {
+			font-size: 24px;
+		}
+
+		.transcription-type {
+			font-weight: 600;
+			color: #2c3e50;
+		}
+
+		.transcription-text {
+			font-size: 1.4rem;
+			font-weight: bold;
+			color: #e74c3c;
+			margin: 10px 0;
+			font-family: 'Arial', sans-serif;
+		}
+
+		.audio-player {
+			margin-top: 15px;
+		}
+
+		.tts-controls {
+			display: flex;
+			gap: 10px;
+			align-items: center;
+			margin-top: 10px;
+		}
+
+		.tts-btn {
+			padding: 8px 15px;
+			background: #3498db;
+			color: white;
+			border: none;
+			border-radius: 20px;
+			cursor: pointer;
+			font-size: 0.9rem;
+			transition: all 0.3s ease;
+		}
+
+		.tts-btn:hover {
+			background: #2980b9;
+			transform: translateY(-1px);
+		}
+
+		.tts-btn:disabled {
+			background: #bdc3c7;
+			cursor: not-allowed;
+			transform: none;
+		}
+
+		.voice-select {
+			padding: 6px 10px;
+			border: 1px solid #ddd;
+			border-radius: 15px;
+			font-size: 0.8rem;
+		}
+
+		audio {
+			width: 100%;
+			height: 40px;
+			border-radius: 20px;
+		}
+
+		/* Детальна інформація */
+		.word-details {
+			background: #fff;
+			border-radius: 15px;
+			padding: 25px;
+			box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+		}
+
+		.details-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+			gap: 25px;
+		}
+
+		.detail-card {
+			background: #f8f9fa;
+			border-radius: 12px;
+			padding: 20px;
+		}
+
+		.detail-title {
+			font-weight: 600;
+			color: #3498db;
+			margin-bottom: 15px;
+			display: flex;
+			align-items: center;
+			gap: 8px;
+		}
+
+		.part-of-speech {
+			display: inline-block;
+			background: #3498db;
+			color: white;
+			padding: 4px 12px;
+			border-radius: 20px;
+			font-size: 0.9rem;
+			font-weight: 500;
+		}
+
+		.definition-list {
+			list-style: none;
+		}
+
+		.definition-item {
+			padding: 15px 0;
+			border-bottom: 1px solid #e9ecef;
+		}
+
+		.definition-item:last-child {
+			border-bottom: none;
+		}
+
+		.definition-text {
+			margin-bottom: 8px;
+		}
+
+		.example {
+			background: #e8f4f8;
+			padding: 10px 15px;
+			border-radius: 8px;
+			border-left: 3px solid #3498db;
+			margin-top: 8px;
+			font-style: italic;
+			color: #2c3e50;
+		}
+
+		.example::before {
+			content: "💬 ";
+			font-weight: bold;
+		}
+
+		.synonyms,
+		.antonyms {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 8px;
+			margin-top: 10px;
+		}
+
+		.synonym-tag,
+		.antonym-tag {
+			padding: 4px 12px;
+			border-radius: 15px;
+			font-size: 0.9rem;
+			cursor: pointer;
+			transition: all 0.3s ease;
+		}
+
+		.synonym-tag:hover,
+		.antonym-tag:hover {
+			transform: translateY(-2px);
+		}
+
+		.synonym-tag {
+			background: #d5f5e3;
+			color: #27ae60;
+			border: 1px solid #2ecc71;
+		}
+
+		.antonym-tag {
+			background: #fadbd8;
+			color: #c0392b;
+			border: 1px solid #e74c3c;
+		}
+
+		/* Статусні повідомлення */
+		.status-message {
+			padding: 15px;
+			border-radius: 10px;
+			margin: 15px 0;
+			text-align: center;
+			font-weight: 500;
+		}
+
+		.loading {
+			background: #d6eaf8;
+			color: #2874a6;
+		}
+
+		.error {
+			background: #fadbd8;
+			color: #c0392b;
+		}
+
+		.success {
+			background: #d5f5e3;
+			color: #27ae60;
+		}
+
+		/* Адаптивність для мобільних */
+		@media (max-width: 768px) {
+			body {
+				padding: 10px;
+			}
+
+			.header {
+				padding: 20px;
+			}
+
+			.header h1 {
+				font-size: 2rem;
+			}
+
+			.search-section {
+				padding: 20px;
+			}
+
+			.search-box {
+				flex-direction: column;
+			}
+
+			.search-input,
+			.search-btn {
+				width: 100%;
+			}
+
+			.main-content {
+				padding: 20px;
+				gap: 20px;
+			}
+
+			.transcriptions-grid {
+				grid-template-columns: 1fr;
+			}
+
+			.details-grid {
+				grid-template-columns: 1fr;
+			}
+
+			.section-title {
+				font-size: 1.3rem;
+			}
+
+			.transcription-text {
+				font-size: 1.2rem;
+			}
+
+			.tts-controls {
+				flex-direction: column;
+				align-items: stretch;
+			}
+		}
+
+		@media (max-width: 480px) {
+			.header h1 {
+				font-size: 1.7rem;
+			}
+
+			.search-section {
+				padding: 15px;
+			}
+
+			.main-content {
+				padding: 15px;
+			}
+
+			.transcription-card,
+			.detail-card {
+				padding: 15px;
+			}
+
+			.example {
+				padding: 8px 12px;
+				font-size: 0.9rem;
+			}
+		}
+
+		/* Анімації */
+		@keyframes fadeIn {
+			from {
+				opacity: 0;
+				transform: translateY(20px);
+			}
+
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		.fade-in {
+			animation: fadeIn 0.5s ease-out;
+		}
+
+		/* Сховані елементи */
+		.hidden {
+			display: none;
+		}
+
+		/* Іконки (емодзі) */
+		.icon {
+			font-style: normal;
+		}
+
+		/* Кнопка для синонімів/антонімів */
+		.word-tag {
+			cursor: pointer;
+			transition: all 0.3s ease;
+		}
+
+		.word-tag:hover {
+			opacity: 0.8;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<div class="card">
+			<div class="header">
+				<h1>📖 Англійський транскриптор</h1>
+				<div class="subtitle">Транскрипція, вимова, значення, приклади</div>
+			</div>
+
+			<div class="search-section">
+				<div class="search-box">
+					<input type="text" class="search-input" id="wordInput"
+						placeholder="Введіть англійське слово (наприклад: water)" autocomplete="off">
+					<button class="search-btn" id="searchBtn">Пошук</button>
+				</div>
+
+				<div id="statusMessage"></div>
+			</div>
+
+			<div class="main-content">
+				<!-- Секція транскрипцій -->
+				<div class="transcriptions-section hidden" id="transcriptionsSection">
+					<h2 class="section-title"><span class="icon">🎵</span> Транскрипції та вимова</h2>
+					<div class="transcriptions-grid" id="transcriptionsGrid"></div>
+				</div>
+
+				<!-- Секція детальної інформації -->
+				<div class="word-details hidden" id="wordDetailsSection">
+					<h2 class="section-title"><span class="icon">📚</span> Детальна інформація</h2>
+					<div class="details-grid" id="detailsGrid"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		// Елементи DOM
+		const wordInput = document.getElementById('wordInput');
+		const searchBtn = document.getElementById('searchBtn');
+		const statusMessage = document.getElementById('statusMessage');
+		const transcriptionsSection = document.getElementById('transcriptionsSection');
+		const transcriptionsGrid = document.getElementById('transcriptionsGrid');
+		const wordDetailsSection = document.getElementById('wordDetailsSection');
+		const detailsGrid = document.getElementById('detailsGrid');
+
+		// TTS голоси
+		let ttsVoices = [];
+		let ukVoice = null;
+		let usVoice = null;
+
+		// Ініціалізація TTS
+		function initTTS() {
+			if ('speechSynthesis' in window) {
+				// Чекаємо, поки голоси будуть доступні
+				speechSynthesis.onvoiceschanged = () => {
+					ttsVoices = speechSynthesis.getVoices();
+
+					// Знаходимо британський та американський голоси
+					ukVoice = ttsVoices.find(voice =>
+						voice.lang.includes('en-GB') ||
+						voice.name.includes('British') ||
+						voice.name.includes('UK')
+					);
+
+					usVoice = ttsVoices.find(voice =>
+						voice.lang.includes('en-US') ||
+						voice.name.includes('American') ||
+						voice.name.includes('US')
+					);
+
+					// Якщо не знайшли специфічні, беремо будь-які англійські
+					if (!ukVoice) ukVoice = ttsVoices.find(voice => voice.lang.includes('en-GB'));
+					if (!usVoice) usVoice = ttsVoices.find(voice => voice.lang.includes('en-US'));
+
+					console.log('Доступні TTS голоси:', ttsVoices.map(v => `${v.name} (${v.lang})`));
+					console.log('UK голос:', ukVoice?.name);
+					console.log('US голос:', usVoice?.name);
+				};
+
+				// Спроба отримати голоси відразу
+				ttsVoices = speechSynthesis.getVoices();
+				if (ttsVoices.length > 0) {
+					speechSynthesis.onvoiceschanged();
+				}
+			} else {
+				console.warn('Браузер не підтримує TTS');
+			}
+		}
+
+		// Функція для TTS вимови
+		function speakText(text, voiceType = 'uk') {
+			if (!('speechSynthesis' in window)) {
+				showMessage('❌ Ваш браузер не підтримує Text-to-Speech', 'error');
+				return;
+			}
+
+			// Зупиняємо поточне відтворення
+			speechSynthesis.cancel();
+
+			const utterance = new SpeechSynthesisUtterance(text);
+
+			// Вибираємо голос за типом
+			if (voiceType === 'uk' && ukVoice) {
+				utterance.voice = ukVoice;
+				utterance.rate = 0.9; // Трохи повільніше для британської
+			} else if (voiceType === 'us' && usVoice) {
+				utterance.voice = usVoice;
+				utterance.rate = 1.0;
+			} else {
+				// Якщо немає специфічних голосів, використовуємо перший доступний англійський
+				const englishVoice = ttsVoices.find(voice => voice.lang.includes('en'));
+				if (englishVoice) {
+					utterance.voice = englishVoice;
+				}
+			}
+
+			utterance.pitch = 1.0;
+			utterance.volume = 1.0;
+
+			utterance.onstart = () => {
+				console.log(`TTS started: ${text} with ${utterance.voice?.name}`);
+			};
+
+			utterance.onend = () => {
+				console.log('TTS finished');
+			};
+
+			utterance.onerror = (event) => {
+				console.error('TTS error:', event);
+				showMessage('❌ Помилка TTS відтворення', 'error');
+			};
+
+			speechSynthesis.speak(utterance);
+		}
+
+		// Функції для роботи з UI
+		function showMessage(message, type = 'info') {
+			statusMessage.textContent = message;
+			statusMessage.className = `status-message ${type}`;
+
+			if (type !== 'loading') {
+				setTimeout(() => {
+					statusMessage.textContent = '';
+					statusMessage.className = '';
+				}, 4000);
+			}
+		}
+
+		function showSections() {
+			transcriptionsSection.classList.remove('hidden');
+			wordDetailsSection.classList.remove('hidden');
+			transcriptionsSection.classList.add('fade-in');
+			wordDetailsSection.classList.add('fade-in');
+		}
+
+		function hideSections() {
+			transcriptionsSection.classList.add('hidden');
+			wordDetailsSection.classList.add('hidden');
+		}
+
+		// Функція для відображення транскрипцій
+		function displayTranscriptions(phonetics, word) {
+			transcriptionsGrid.innerHTML = '';
+
+			if (!phonetics || phonetics.length === 0) {
+				transcriptionsGrid.innerHTML = '<div style="text-align: center; color: #7f8c8d; padding: 40px;">Транскрипції не знайдено</div>';
+				return;
+			}
+
+			const ukPhonetic = phonetics.find(ph => ph.audio && ph.audio.includes('/uk_'));
+			const usPhonetic = phonetics.find(ph => ph.audio && ph.audio.includes('/us_'));
+			const anyPhonetic = phonetics.find(ph => ph.audio) || phonetics[0];
+
+			// Британська транскрипція
+			if (ukPhonetic) {
+				createTranscriptionCard('🇬🇧', 'Британська вимова (UK)', ukPhonetic, word, 'uk', false);
+			} else if (anyPhonetic) {
+				// Якщо немає британського аудіо, використовуємо TTS
+				createTranscriptionCard('🇬🇧', 'Британська вимова (UK)', anyPhonetic, word, 'uk', true);
+			}
+
+			// Американська транскрипція
+			if (usPhonetic) {
+				createTranscriptionCard('🇺🇸', 'Американська вимова (US)', usPhonetic, word, 'us', false);
+			} else if (anyPhonetic) {
+				// Якщо немає американського аудіо, використовуємо TTS
+				createTranscriptionCard('🇺🇸', 'Американська вимова (US)', anyPhonetic, word, 'us', true);
+			}
+
+			// Додаткові транскрипції
+			phonetics.forEach((phonetic, index) => {
+				if (phonetic !== ukPhonetic && phonetic !== usPhonetic && phonetic.text) {
+					createTranscriptionCard('🔊', `Транскрипція ${index + 1}`, phonetic, word, 'any', false);
+				}
+			});
+		}
+
+		function createTranscriptionCard(flag, title, phonetic, word, voiceType, isTTS) {
+			const card = document.createElement('div');
+			card.className = 'transcription-card fade-in';
+
+			const audioHtml = phonetic.audio && !isTTS ? `
+                <div class="audio-player">
+                    <audio controls preload="none">
+                        <source src="${phonetic.audio.startsWith('http') ? phonetic.audio : 'https:' + phonetic.audio}" type="audio/mpeg">
+                    </audio>
+                </div>
+            ` : '';
+
+			const ttsHtml = isTTS ? `
+                <div class="tts-controls">
+                    <button class="tts-btn" onclick="speakWord('${word}', '${voiceType}')">
+                        🔊 Слухати TTS
+                    </button>
+                </div>
+            ` : '';
+
+			card.innerHTML = `
+                ${isTTS ? '<div class="tts-badge"></div>' : ''}
+                <div class="transcription-header">
+                    <span class="flag">${flag}</span>
+                    <span class="transcription-type">${title}</span>
+                </div>
+                <div class="transcription-text">${phonetic.text}</div>
+                ${audioHtml}
+                ${ttsHtml}
+            `;
+			transcriptionsGrid.appendChild(card);
+		}
+
+		// Функція для відтворення слова через TTS
+		function speakWord(word, voiceType) {
+			speakText(word, voiceType);
+		}
+
+		// Функція для зміни голосу
+		function changeVoice(selectElement, voiceType) {
+			const newVoiceType = selectElement.value;
+			// Оновлюємо тип голосу для майбутніх відтворень
+			// Можна додати логіку для оновлення інтерфейсу
+		}
+
+		// Функція для відображення детальної інформації
+		function displayWordDetails(wordData) {
+			detailsGrid.innerHTML = '';
+
+			if (!wordData || !wordData.meanings || wordData.meanings.length === 0) {
+				detailsGrid.innerHTML = '<div style="text-align: center; color: #7f8c8d; padding: 40px;">Інформація про слово не знайдена</div>';
+				return;
+			}
+
+			// Частини мови
+			const partsOfSpeech = [...new Set(wordData.meanings.map(m => m.partOfSpeech))];
+			if (partsOfSpeech.length > 0) {
+				createDetailCard('📝', 'Частина мови', `
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                        ${partsOfSpeech.map(pos => `<span class="part-of-speech">${pos}</span>`).join('')}
+                    </div>
+                `);
+			}
+
+			// Значення та приклади
+			wordData.meanings.forEach((meaning, index) => {
+				const definitionsHtml = meaning.definitions.slice(0, 3).map((def, defIndex) => {
+					const exampleHtml = def.example ? `
+                        <div class="example">
+                            ${def.example}
+                        </div>
+                    ` : '';
+
+					return `
+                        <li class="definition-item">
+                            <div class="definition-text">
+                                <strong>${defIndex + 1}.</strong> ${def.definition}
+                            </div>
+                            ${exampleHtml}
+                        </li>
+                    `;
+				}).join('');
+
+				createDetailCard('📖', `${meaning.partOfSpeech} - значення`, `
+                    <ul class="definition-list">${definitionsHtml}</ul>
+                `);
+			});
+
+			// Синоніми та антоніми
+			const allSynonyms = [];
+			const allAntonyms = [];
+
+			wordData.meanings.forEach(meaning => {
+				if (meaning.synonyms) allSynonyms.push(...meaning.synonyms);
+				if (meaning.antonyms) allAntonyms.push(...meaning.antonyms);
+			});
+
+			const uniqueSynonyms = [...new Set(allSynonyms)].slice(0, 10);
+			const uniqueAntonyms = [...new Set(allAntonyms)].slice(0, 10);
+
+			if (uniqueSynonyms.length > 0) {
+				createDetailCard('🔄', 'Синоніми', `
+                    <div class="synonyms">
+                        ${uniqueSynonyms.map(syn => `<span class="synonym-tag word-tag" onclick="searchWord('${syn}')">${syn}</span>`).join('')}
+                    </div>
+                `);
+			}
+
+			if (uniqueAntonyms.length > 0) {
+				createDetailCard('⚡', 'Антоніми', `
+                    <div class="antonyms">
+                        ${uniqueAntonyms.map(ant => `<span class="antonym-tag word-tag" onclick="searchWord('${ant}')">${ant}</span>`).join('')}
+                    </div>
+                `);
+			}
+		}
+
+		function createDetailCard(icon, title, content) {
+			const card = document.createElement('div');
+			card.className = 'detail-card fade-in';
+			card.innerHTML = `
+                <div class="detail-title">
+                    <span class="icon">${icon}</span>
+                    <span>${title}</span>
+                </div>
+                <div>${content}</div>
+            `;
+			detailsGrid.appendChild(card);
+		}
+
+		// Основна функція пошуку
+		async function searchWord(word = null) {
+			const searchTerm = word || wordInput.value.trim();
+
+			if (!searchTerm) {
+				showMessage('⚠️ Будь ласка, введіть слово', 'error');
+				return;
+			}
+
+			if (!/^[a-zA-Z\- ]+$/.test(searchTerm)) {
+				showMessage('⚠️ Введіть тільки англійські літери, дефіси або пробіли', 'error');
+				return;
+			}
+
+			try {
+				// Оновлюємо поле введення, якщо пошук з синоніма/антоніма
+				if (word) {
+					wordInput.value = word;
+				}
+
+				searchBtn.disabled = true;
+				searchBtn.textContent = 'Пошук...';
+				showMessage('🔍 Шукаємо інформацію про слово...', 'loading');
+				hideSections();
+
+				const response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${encodeURIComponent(searchTerm.toLowerCase())}`);
+
+				if (!response.ok) {
+					if (response.status === 404) {
+						throw new Error('Слово не знайдено в словнику');
+					}
+					throw new Error('Помилка сервера: ' + response.status);
+				}
+
+				const data = await response.json();
+
+				if (data && data.length > 0) {
+					const wordData = data[0];
+
+					// Відображаємо транскрипції
+					const phonetics = wordData.phonetics?.filter(ph => ph.text) || [];
+					displayTranscriptions(phonetics, searchTerm);
+
+					// Відображаємо детальну інформацію
+					displayWordDetails(wordData);
+
+					// Показуємо секції
+					showSections();
+
+					showMessage(`✅ Знайдено інформацію для слова "${searchTerm}"`, 'success');
+				} else {
+					throw new Error('Дані не знайдені');
+				}
+
+			} catch (error) {
+				hideSections();
+				showMessage(`❌ ${error.message}`, 'error');
+			} finally {
+				searchBtn.disabled = false;
+				searchBtn.textContent = 'Пошук';
+			}
+		}
+
+		// Обробники подій
+		searchBtn.addEventListener('click', () => searchWord());
+
+		wordInput.addEventListener('keypress', (e) => {
+			if (e.key === 'Enter') {
+				searchWord();
+			}
+		});
+
+		// Ініціалізація TTS при завантаженні
+		document.addEventListener('DOMContentLoaded', () => {
+			initTTS();
+			wordInput.focus();
+		});
+
+		// Робимо функції глобальними для кліків
+		window.searchWord = searchWord;
+		window.speakWord = speakWord;
+		window.changeVoice = changeVoice;
+
+		console.log('Словник з TTS готовий до роботи! Спробуйте слова: water, schedule, tomato');
+	</script>
+</body>
+
+</html>

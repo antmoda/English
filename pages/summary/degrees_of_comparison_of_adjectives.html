@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ступені порівняння прикметників англійською мовою</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            margin-top: 10px;
+            opacity: 0.9;
+        }
+        
+        nav {
+            background-color: #2c3e50;
+            display: flex;
+            justify-content: center;
+        }
+        
+        nav a {
+            color: white;
+            padding: 15px 20px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        nav a:hover {
+            background-color: #34495e;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        section {
+            margin-bottom: 40px;
+        }
+        
+        h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        
+        .rule-card {
+            background-color: #f8f9fa;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px 15px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #3498db;
+            color: white;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        .example {
+            background-color: #e8f4fc;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+        
+        .interactive-section {
+            background-color: #f0f7ff;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 30px 0;
+        }
+        
+        .exercise {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #2980b9;
+        }
+        
+        input[type="text"] {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 200px;
+        }
+        
+        .result {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        
+        .correct {
+            color: #27ae60;
+        }
+        
+        .incorrect {
+            color: #e74c3c;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #2c3e50;
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Ступені порівняння прикметників</h1>
+            <div class="subtitle">Вивчаємо правила утворення та вживання англійських прикметників</div>
+        </header>
+        
+        <nav>
+            <a href="#rules">Правила</a>
+            <a href="#examples">Приклади</a>
+            <a href="#exceptions">Винятки</a>
+            <a href="#practice">Практика</a>
+        </nav>
+        
+        <div class="content">
+            <section id="intro">
+                <h2>Що таке ступені порівняння прикметників?</h2>
+                <p>У англійській мові, як і в українській, прикметники мають три ступені порівняння:</p>
+                <ul>
+                    <li><strong>Позитивний ступінь</strong> (Positive Degree) - виражає якість без порівняння</li>
+                    <li><strong>Вищий ступінь</strong> (Comparative Degree) - використовується для порівняння двох об'єктів</li>
+                    <li><strong>Найвищий ступінь</strong> (Superlative Degree) - використовується для порівняння трьох і більше об'єктів</li>
+                </ul>
+            </section>
+            
+            <section id="rules">
+                <h2>Правила утворення ступенів порівняння</h2>
+                
+                <div class="rule-card">
+                    <h3>Односкладові прикметники</h3>
+                    <p>Додаємо закінчення <strong>-er</strong> для вищого ступеня та <strong>-est</strong> для найвищого ступеня.</p>
+                    <table>
+                        <tr>
+                            <th>Позитивний ступінь</th>
+                            <th>Вищий ступінь</th>
+                            <th>Найвищий ступінь</th>
+                        </tr>
+                        <tr>
+                            <td>tall (високий)</td>
+                            <td>tall<strong>er</strong> (вищий)</td>
+                            <td>tall<strong>est</strong> (найвищий)</td>
+                        </tr>
+                        <tr>
+                            <td>fast (швидкий)</td>
+                            <td>fast<strong>er</strong> (швидший)</td>
+                            <td>fast<strong>est</strong> (найшвидший)</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <div class="rule-card">
+                    <h3>Двоскладові прикметники, що закінчуються на -y, -er, -ow, -le</h3>
+                    <p>Додаємо закінчення <strong>-er</strong> та <strong>-est</strong> (при закінченні на -y, y змінюється на i).</p>
+                    <table>
+                        <tr>
+                            <th>Позитивний ступінь</th>
+                            <th>Вищий ступінь</th>
+                            <th>Найвищий ступінь</th>
+                        </tr>
+                        <tr>
+                            <td>happy (щасливий)</td>
+                            <td>happ<strong>ier</strong> (щасливіший)</td>
+                            <td>happ<strong>iest</strong> (найщасливіший)</td>
+                        </tr>
+                        <tr>
+                            <td>clever (розумний)</td>
+                            <td>clever<strong>er</strong> (розумніший)</td>
+                            <td>clever<strong>est</strong> (найрозумніший)</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <div class="rule-card">
+                    <h3>Багатоскладові прикметники (3 і більше складів)</h3>
+                    <p>Використовуємо слова <strong>more</strong> для вищого ступеня та <strong>most</strong> для найвищого ступеня.</p>
+                    <table>
+                        <tr>
+                            <th>Позитивний ступінь</th>
+                            <th>Вищий ступінь</th>
+                            <th>Найвищий ступінь</th>
+                        </tr>
+                        <tr>
+                            <td>beautiful (красивий)</td>
+                            <td><strong>more</strong> beautiful (красивіший)</td>
+                            <td><strong>most</strong> beautiful (найкрасивіший)</td>
+                        </tr>
+                        <tr>
+                            <td>interesting (цікавий)</td>
+                            <td><strong>more</strong> interesting (цікавіший)</td>
+                            <td><strong>most</strong> interesting (найцікавіший)</td>
+                        </tr>
+                    </table>
+                </div>
+            </section>
+            
+            <section id="examples">
+                <h2>Приклади вживання в реченнях</h2>
+                
+                <div class="example">
+                    <h3>Порівняння двох об'єктів (вищий ступінь)</h3>
+                    <p>My brother is <strong>taller than</strong> me. - Мій брат вищий за мене.</p>
+                    <p>This book is <strong>more interesting than</strong> that one. - Ця книга цікавіша за ту.</p>
+                </div>
+                
+                <div class="example">
+                    <h3>Порівняння трьох і більше об'єктів (найвищий ступінь)</h3>
+                    <p>Mount Everest is <strong>the highest</strong> mountain in the world. - Еверест - найвища гора у світі.</p>
+                    <p>She is <strong>the most beautiful</strong> girl in our class. - Вона найкрасивіша дівчина в нашому класі.</p>
+                </div>
+                
+                <div class="example">
+                    <h3>Порівняння з використанням "as...as"</h3>
+                    <p>My car is <strong>as fast as</strong> yours. - Моя машина така ж швидка, як твоя.</p>
+                    <p>This exercise is <strong>not as difficult as</strong> the previous one. - Ця вправа не така важка, як попередня.</p>
+                </div>
+            </section>
+            
+            <section id="exceptions">
+                <h2>Винятки з правил</h2>
+                <p>Деякі прикметники утворюють ступені порівняння не за правилами:</p>
+                <table>
+                    <tr>
+                        <th>Позитивний ступінь</th>
+                        <th>Вищий ступінь</th>
+                        <th>Найвищий ступінь</th>
+                    </tr>
+                    <tr>
+                        <td>good (хороший)</td>
+                        <td>better (кращий)</td>
+                        <td>best (найкращий)</td>
+                    </tr>
+                    <tr>
+                        <td>bad (поганий)</td>
+                        <td>worse (гірший)</td>
+                        <td>worst (найгірший)</td>
+                    </tr>
+                    <tr>
+                        <td>little (маленький)</td>
+                        <td>less (менший)</td>
+                        <td>least (найменший)</td>
+                    </tr>
+                    <tr>
+                        <td>much/many (багато)</td>
+                        <td>more (більше)</td>
+                        <td>most (найбільше)</td>
+                    </tr>
+                    <tr>
+                        <td>far (далекий)</td>
+                        <td>further/farther (дальший)</td>
+                        <td>furthest/farthest (найдальший)</td>
+                    </tr>
+                </table>
+            </section>
+            
+            <section id="practice" class="interactive-section">
+                <h2>Практичні вправи</h2>
+                
+                <div class="exercise">
+                    <h3>Вправа 1: Заповніть пропуски</h3>
+                    <p>Заповніть пропуски правильною формою прикметника в дужках.</p>
+                    
+                    <div id="fill-blanks">
+                        <p>1. My house is ______ than yours. (big)</p>
+                        <input type="text" id="answer1">
+                        
+                        <p>2. This is ______ book I've ever read. (interesting)</p>
+                        <input type="text" id="answer2">
+                        
+                        <p>3. Today is ______ than yesterday. (cold)</p>
+                        <input type="text" id="answer3">
+                        
+                        <p>4. She is ______ person I know. (kind)</p>
+                        <input type="text" id="answer4">
+                        
+                        <p>5. His English is ______ than mine. (good)</p>
+                        <input type="text" id="answer5">
+                        
+                        <button onclick="checkFillBlanks()">Перевірити відповіді</button>
+                        <div id="fill-result" class="result"></div>
+                    </div>
+                </div>
+                
+                <div class="exercise">
+                    <h3>Вправа 2: Вибери правильну форму</h3>
+                    <p>Оберіть правильний варіант ступеня порівняння.</p>
+                    
+                    <div id="multiple-choice">
+                        <p>1. This is the ______ movie I've ever seen.</p>
+                        <input type="radio" id="q1a" name="q1" value="a">
+                        <label for="q1a">a) more exciting</label><br>
+                        <input type="radio" id="q1b" name="q1" value="b">
+                        <label for="q1b">b) most exciting</label><br>
+                        <input type="radio" id="q1c" name="q1" value="c">
+                        <label for="q1c">c) excitingest</label><br>
+                        
+                        <p>2. My sister is ______ than me.</p>
+                        <input type="radio" id="q2a" name="q2" value="a">
+                        <label for="q2a">a) young</label><br>
+                        <input type="radio" id="q2b" name="q2" value="b">
+                        <label for="q2b">b) younger</label><br>
+                        <input type="radio" id="q2c" name="q2" value="c">
+                        <label for="q2c">c) youngest</label><br>
+                        
+                        <p>3. This problem is ______ than I thought.</p>
+                        <input type="radio" id="q3a" name="q3" value="a">
+                        <label for="q3a">a) bad</label><br>
+                        <input type="radio" id="q3b" name="q3" value="b">
+                        <label for="q3b">b) worse</label><br>
+                        <input type="radio" id="q3c" name="q3" value="c">
+                        <label for="q3c">c) worst</label><br>
+                        
+                        <button onclick="checkMultipleChoice()">Перевірити відповіді</button>
+                        <div id="choice-result" class="result"></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <footer>
+            <p>Сторінка для вивчення ступенів порівняння прикметників англійською мовою</p>
+            <p>© 2023 Усі права захищені</p>
+        </footer>
+    </div>
+    
+    <script>
+        function checkFillBlanks() {
+            const answers = {
+                answer1: "bigger",
+                answer2: "the most interesting",
+                answer3: "colder",
+                answer4: "the kindest",
+                answer5: "better"
+            };
+            
+            let correctCount = 0;
+            let resultHTML = "";
+            
+            for (let i = 1; i <= 5; i++) {
+                const userAnswer = document.getElementById(`answer${i}`).value.trim().toLowerCase();
+                const correctAnswer = answers[`answer${i}`].toLowerCase();
+                
+                if (userAnswer === correctAnswer) {
+                    correctCount++;
+                    resultHTML += `<p class="correct">Питання ${i}: Правильно!</p>`;
+                } else {
+                    resultHTML += `<p class="incorrect">Питання ${i}: Неправильно. Правильна відповідь: ${answers[`answer${i}`]}</p>`;
+                }
+            }
+            
+            resultHTML = `<h3>Результат: ${correctCount}/5</h3>` + resultHTML;
+            document.getElementById("fill-result").innerHTML = resultHTML;
+        }
+        
+        function checkMultipleChoice() {
+            const correctAnswers = {
+                q1: "b",
+                q2: "b",
+                q3: "b"
+            };
+            
+            let correctCount = 0;
+            let resultHTML = "";
+            
+            for (let i = 1; i <= 3; i++) {
+                const questionName = `q${i}`;
+                const selectedOption = document.querySelector(`input[name="${questionName}"]:checked`);
+                
+                if (selectedOption) {
+                    if (selectedOption.value === correctAnswers[questionName]) {
+                        correctCount++;
+                        resultHTML += `<p class="correct">Питання ${i}: Правильно!</p>`;
+                    } else {
+                        resultHTML += `<p class="incorrect">Питання ${i}: Неправильно.</p>`;
+                    }
+                } else {
+                    resultHTML += `<p class="incorrect">Питання ${i}: Ви не обрали відповідь.</p>`;
+                }
+            }
+            
+            resultHTML = `<h3>Результат: ${correctCount}/3</h3>` + resultHTML;
+            document.getElementById("choice-result").innerHTML = resultHTML;
+        }
+    </script>
+</body>
+</html>

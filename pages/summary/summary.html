@@ -112,8 +112,10 @@
 		.links-list {
 			list-style: none;
 			padding: 10px 0;
-			max-height: 500px;
-			overflow: hidden;
+			max-height: none;
+			/* ЗМІНА: видаляємо обмеження висоти */
+			overflow: visible;
+			/* ЗМІНА: дозволяємо контенту виходити за межі */
 			transition: max-height 0.3s ease, padding 0.3s ease;
 		}
 
@@ -121,6 +123,8 @@
 		.links-list.collapsed {
 			max-height: 0;
 			padding: 0;
+			overflow: hidden;
+			/* ЗМІНА: ховаємо переповнений контент */
 		}
 
 		.links-list li {
@@ -190,11 +194,9 @@
 					<li><a href="test8.html">Модальні дієслова</a></li>
 					<li><a href="test9.html">Артиклі в англійській мові</a></li>
 					<li><a href="test10.html">Тестова</a></li>
-					<li><a href="articles.html">Вивчення артиклів</a></li>
-					<li><a href="verbs.html">Модальні дієслова</a></li>
-					<li><a href="tenses.html">Часів англійської мови</a></li>
 					<li><a href="prepositions.html">Прийменники</a></li>
-					<li><a href="adjectives.html">Прикметники та прислівники</a></li>
+					<li><a href="degrees_of_comparison_of_adjectives.html">Ступені порівняння прикметників</a></li>
+					<li><a href="english_word_transcriber.html">Транскрипція англійських слів</a></li>
 				</ul>
 			</div>
 

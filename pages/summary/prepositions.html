@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Англійські прийменники: IN ON AT</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f0f8ff;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .in-on-at-system {
+            margin: 30px 0;
+        }
+        
+        .header-row {
+            display: flex;
+            background-color: #2c3e50;
+            color: white;
+            font-weight: bold;
+            border-radius: 8px 8px 0 0;
+        }
+        
+        .header-cell {
+            padding: 15px;
+            text-align: center;
+            flex: 1;
+        }
+        
+        .time-header {
+            flex: 1.5;
+        }
+        
+        .preposition-header {
+            flex: 1;
+        }
+        
+        .place-header {
+            flex: 1;
+        }
+        
+        .preposition-section {
+            display: flex;
+            border: 1px solid #ddd;
+            border-top: none;
+        }
+        
+        .time-column {
+            flex: 1.5;
+            padding: 0;
+        }
+        
+        .preposition-column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .place-column {
+            flex: 1;
+            padding: 0;
+        }
+        
+        .preposition-group {
+            display: flex;
+            min-height: 200px;
+        }
+        
+        .preposition-label {
+            writing-mode: vertical-lr;
+            text-orientation: mixed;
+            transform: rotate(180deg);
+            background-color: #3498db;
+            color: white;
+            font-weight: bold;
+            padding: 15px 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+        
+        .preposition-content {
+            flex: 1;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .preposition-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            color: #2c3e50;
+        }
+        
+        .time-items, .place-items {
+            padding: 15px;
+        }
+        
+        .time-item, .place-item {
+            padding: 8px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .time-item:last-child, .place-item:last-child {
+            border-bottom: none;
+        }
+        
+        .time-category {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-top: 10px;
+        }
+        
+        .time-example {
+            color: #666;
+            font-size: 0.9rem;
+            margin-left: 10px;
+        }
+        
+        .place-category {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-top: 10px;
+        }
+        
+        .place-example {
+            color: #666;
+            font-size: 0.9rem;
+            margin-left: 10px;
+        }
+        
+        .in-group {
+            background-color: #e8f5e9;
+        }
+        
+        .in-group .preposition-label {
+            background-color: #27ae60;
+        }
+        
+        .on-group {
+            background-color: #e3f2fd;
+        }
+        
+        .on-group .preposition-label {
+            background-color: #2980b9;
+        }
+        
+        .at-group {
+            background-color: #fff3e0;
+        }
+        
+        .at-group .preposition-label {
+            background-color: #f39c12;
+        }
+        
+        /* Додаткові стилі для решти сторінки */
+        section {
+            margin-bottom: 40px;
+        }
+        
+        h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .example {
+            background-color: #e8f4fc;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+        
+        .interactive-section {
+            background-color: #f0f7ff;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 30px 0;
+        }
+        
+        .exercise {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        
+        select {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 200px;
+            margin: 5px 0;
+        }
+        
+        .result {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        
+        .correct {
+            color: #27ae60;
+        }
+        
+        .incorrect {
+            color: #e74c3c;
+        }
+        
+        @media (max-width: 768px) {
+            .preposition-group {
+                flex-direction: column;
+            }
+            
+            .preposition-label {
+                writing-mode: horizontal-tb;
+                transform: none;
+                padding: 8px 15px;
+            }
+            
+            .header-row {
+                flex-direction: column;
+            }
+            
+            .preposition-section {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Англійські прийменники IN, ON, AT</h1>
+            <p>Правила вживання прийменників часу та місця</p>
+        </header>
+        
+        <div class="content">
+            <section id="in-on-at-system">
+                <h2>Система IN - ON - AT</h2>
+                
+                <div class="in-on-at-system">
+                    <div class="header-row">
+                        <div class="header-cell time-header">TIME</div>
+                        <div class="header-cell preposition-header">IN - ON - AT</div>
+                        <div class="header-cell place-header">PLACE</div>
+                    </div>
+                    
+                    <div class="preposition-section">
+                        <div class="time-column">
+                            <div class="time-items">
+                                <div class="time-item">
+                                    <span class="time-category">Centuries</span>
+                                    <span class="time-example">The 1900's</span>
+                                </div>
+                                <div class="time-item">
+                                    <span class="time-category">Decades</span>
+                                    <span class="time-example">The 90's</span>
+                                </div>
+                                <div class="time-item">
+                                    <span class="time-category">Years</span>
+                                    <span class="time-example">1990, 2000</span>
+                                </div>
+                                <div class="time-item">
+                                    <span class="time-category">Months</span>
+                                    <span class="time-example">March, June</span>
+                                </div>
+                                <div class="time-item">
+                                    <span class="time-category">Weeks</span>
+                                    <span class="time-example">5 Weeks</span>
+                                </div>
+                                <div class="time-item">
+                                    <span class="time-category">Seasons</span>
+                                    <span class="time-example">Spring</span>
+                                </div>
+                                <div class="time-item">
+                                    <span class="time-category">Periods of Time</span>
+                                    <span class="time-example">The Future</span>
+                                </div>
+                                <div class="time-item">
+                                    <span class="time-category">Holidays</span>
+                                    <span class="time-example">The Easter Holiday</span>
+                                </div>
+                                <div class="time-item">
+                                    <span class="time-category">Parts of the Day</span>
+                                    <span class="time-example">The Morning</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="preposition-column">
+                            <div class="preposition-group in-group">
+                                <div class="preposition-label">IN</div>
+                                <div class="preposition-content">
+                                    <div class="preposition-title">General (Bigger)</div>
+                                </div>
+                            </div>
+                            
+                            <div class="preposition-group on-group">
+                                <div class="preposition-label">ON</div>
+                                <div class="preposition-content">
+                                    <div class="preposition-title">More specific (Smaller)</div>
+                                </div>
+                            </div>
+                            
+                            <div class="preposition-group at-group">
+                                <div class="preposition-label">AT</div>
+                                <div class="preposition-content">
+                                    <div class="preposition-title">Very specific (Smallest)</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="place-column">
+                            <div class="place-items">
+                                <div class="place-item">
+                                    <span class="place-category">General</span>
+                                </div>
+                                <div class="place-item">
+                                    <span class="place-example">France</span>
+                                    <span class="place-category">Countries</span>
+                                </div>
+                                <div class="place-item">
+                                    <span class="place-example">Paris</span>
+                                    <span class="place-category">Cities</span>
+                                </div>
+                                <div class="place-item">
+                                    <span class="place-example">Manhattan</span>
+                                    <span class="place-category">Neighborhood</span>
+                                </div>
+                                <div class="place-item">
+                                    <span class="place-example">A Car</span>
+                                    <span class="place-category">Enclosed Space</span>
+                                </div>
+                                <div class="place-item">
+                                    <span class="place-category">More specific</span>
+                                </div>
+                                <div class="place-item">
+                                    <span class="place-example">Columbus Street</span>
+                                    <span class="place-category">Streets</span>
+                                </div>
+                                <div class="place-item">
+                                    <span class="place-example">Seventh Avenue</span>
+                                    <span class="place-category">Avenues</span>
+                                </div>
+                                <div class="place-item">
+                                    <span class="place-example">The Floor</span>
+                                    <span class="place-category">Surfaces</span>
+                                </div>
+                                <div class="place-item">
+                                    <span class="place-example">A Bus</span>
+                                    <span class="place-category">Means of Transport</span>
+                                </div>
+                                <div class="place-item">
+                                    <span class="place-example">The Radio</span>
+                                    <span class="place-category">Communications</span>
+                                </div>
+                                <div class="place-item">
+                                    <span class="place-category">Very specific</span>
+                                </div>
+                                <div class="place-item">
+                                    <span class="place-example">456 State Street</span>
+                                    <span class="place-category">Addresses</span>
+                                </div>
+                                <div class="place-item">
+                                    <span class="place-example">The Station</span>
+                                    <span class="place-category">Specific Locations</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="example">
+                    <h3>Приклади вживання:</h3>
+                    <p><strong>IN:</strong> in summer, in 2020, in the morning</p>
+                    <p><strong>ON:</strong> on Monday, on April 5th, on my birthday</p>
+                    <p><strong>AT:</strong> at 5 o'clock, at night, at the weekend</p>
+                </div>
+            </section>
+            
+            <section class="interactive-section">
+                <h2>Практика</h2>
+                
+                <div class="exercise">
+                    <h3>Вправа: Оберіть правильний прийменник</h3>
+                    
+                    <p>1. I was born ______ 1990.</p>
+                    <select id="q1">
+                        <option value="">-- Оберіть --</option>
+                        <option value="in">in</option>
+                        <option value="on">on</option>
+                        <option value="at">at</option>
+                    </select>
+                    
+                    <p>2. We'll meet ______ Monday.</p>
+                    <select id="q2">
+                        <option value="">-- Оберіть --</option>
+                        <option value="in">in</option>
+                        <option value="on">on</option>
+                        <option value="at">at</option>
+                    </select>
+                    
+                    <p>3. The concert starts ______ 7 PM.</p>
+                    <select id="q3">
+                        <option value="">-- Оберіть --</option>
+                        <option value="in">in</option>
+                        <option value="on">on</option>
+                        <option value="at">at</option>
+                    </select>
+                    
+                    <p>4. She's coming ______ summer.</p>
+                    <select id="q4">
+                        <option value="">-- Оберіть --</option>
+                        <option value="in">in</option>
+                        <option value="on">on</option>
+                        <option value="at">at</option>
+                    </select>
+                    
+                    <p>5. They got married ______ April 15th.</p>
+                    <select id="q5">
+                        <option value="">-- Оберіть --</option>
+                        <option value="in">in</option>
+                        <option value="on">on</option>
+                        <option value="at">at</option>
+                    </select>
+                    
+                    <button onclick="checkAnswers()">Перевірити відповіді</button>
+                    <div id="result" class="result"></div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        function checkAnswers() {
+            const answers = {
+                q1: "in",
+                q2: "on",
+                q3: "at",
+                q4: "in",
+                q5: "on"
+            };
+            
+            let correctCount = 0;
+            let resultHTML = "<h3>Результат:</h3>";
+            
+            for (let i = 1; i <= 5; i++) {
+                const userAnswer = document.getElementById(`q${i}`).value;
+                const correctAnswer = answers[`q${i}`];
+                
+                if (userAnswer === correctAnswer) {
+                    correctCount++;
+                    resultHTML += `<p class="correct">Питання ${i}: Правильно! ✓</p>`;
+                } else if (userAnswer === "") {
+                    resultHTML += `<p class="incorrect">Питання ${i}: Не обрано відповідь</p>`;
+                } else {
+                    resultHTML += `<p class="incorrect">Питання ${i}: Неправильно. Правильно: ${correctAnswer}</p>`;
+                }
+            }
+            
+            resultHTML += `<p><strong>Загальний результат: ${correctCount}/5</strong></p>`;
+            document.getElementById("result").innerHTML = resultHTML;
+        }
+    </script>
+</body>
+</html>
