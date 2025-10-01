@@ -383,16 +383,16 @@ class WordLearningApp {
     }
   }
 
-  disableTTSButtons() {
-    const ttsButtons = document.querySelectorAll(
-      ".tts-preview-btn, .play-example-btn"
-    );
-    ttsButtons.forEach((btn) => {
-      btn.disabled = true;
-      btn.title = "TTS не підтримується";
-      btn.innerHTML = "❌";
-    });
-  }
+  //   disableTTSButtons() {
+  //     const ttsButtons = document.querySelectorAll(
+  //       ".tts-preview-btn, .play-example-btn"
+  //     );
+  //     ttsButtons.forEach((btn) => {
+  //       btn.disabled = true;
+  //       btn.title = "TTS не підтримується";
+  //       btn.innerHTML = "❌";
+  //     });
+  //   }
 
   setupTabs() {
     const tabBtns = document.querySelectorAll(".tab-btn");
@@ -721,6 +721,7 @@ class WordLearningApp {
     }
   }
 
+  // Додайте цей код в markWithQuality для відладки
   markWithQuality(quality) {
     const card = this.currentCards[this.currentCardIndex];
     if (card) {
@@ -924,34 +925,35 @@ class WordLearningApp {
   }
 
   startCategoryStudy(category) {
-  // Встановлюємо поточну категорію
-  this.currentCategory = category;
-  
-  // Оновлюємо випадаючий список на головній вкладці
-  if (this.categorySelect) {
-    this.categorySelect.value = category;
-    
-    // Додатково перевіряємо, чи категорія існує в списку
-    const optionExists = Array.from(this.categorySelect.options)
-      .some(option => option.value === category);
-    
-    if (!optionExists && category !== "all") {
-      // Якщо категорії немає в списку - додаємо її
-      const newOption = new Option(category, category);
-      this.categorySelect.add(newOption);
+    // Встановлюємо поточну категорію
+    this.currentCategory = category;
+
+    // Оновлюємо випадаючий список на головній вкладці
+    if (this.categorySelect) {
+      this.categorySelect.value = category;
+
+      // Додатково перевіряємо, чи категорія існує в списку
+      const optionExists = Array.from(this.categorySelect.options).some(
+        (option) => option.value === category
+      );
+
+      if (!optionExists && category !== "all") {
+        // Якщо категорії немає в списку - додаємо її
+        const newOption = new Option(category, category);
+        this.categorySelect.add(newOption);
+      }
     }
+
+    // Показуємо секцію вивчення
+    this.showSection("study");
+
+    // Додатково: можна автоматично запустити вивчення
+    setTimeout(() => {
+      if (this.startStudyBtn) {
+        this.startStudyBtn.click(); // Автоматичний запуск
+      }
+    }, 100);
   }
-  
-  // Показуємо секцію вивчення
-  this.showSection("study");
-  
-  // Додатково: можна автоматично запустити вивчення
-  setTimeout(() => {
-    if (this.startStudyBtn) {
-      this.startStudyBtn.click(); // Автоматичний запуск
-    }
-  }, 100);
-}
 
   async startStudy() {
     this.studyMode = "normal";
@@ -1030,7 +1032,7 @@ class WordLearningApp {
     this.updateExampleButtonState("1");
     this.updateExampleButtonState("2");
 
-    this.updateAudioStatuses();
+    // this.updateAudioStatuses();
   }
 
   updateExampleButtonState(exampleNumber) {
@@ -1347,7 +1349,6 @@ class WordLearningApp {
       await showAlert("Картку успішно створено!", "Успіх", "success");
       this.loadCategories();
     } catch (error) {
-      console.error("Помилка при створенні картки:", error);
       await showAlert(
         `Помилка при створенні картки: ${error.message}`,
         "Помилка",
@@ -1459,24 +1460,24 @@ class WordLearningApp {
     });
   }
 
-  updateAudioStatuses() {
-    const wordRemaining = ttsManager.getRemainingPlays("current-word");
-    const example1Remaining = ttsManager.getRemainingPlays("current-example1");
-    const example2Remaining = ttsManager.getRemainingPlays("current-example2");
+  //   updateAudioStatuses() {
+  //     const wordRemaining = ttsManager.getRemainingPlays("current-word");
+  //     const example1Remaining = ttsManager.getRemainingPlays("current-example1");
+  //     const example2Remaining = ttsManager.getRemainingPlays("current-example2");
 
-    if (document.getElementById("word-audio-status")) {
-      document.getElementById(
-        "word-audio-status"
-      ).textContent = `Готово (${wordRemaining} спроб)`;
-    }
+  //     if (document.getElementById("word-audio-status")) {
+  //       document.getElementById(
+  //         "word-audio-status"
+  //       ).textContent = `Готово (${wordRemaining} спроб)`;
+  //     }
 
-    document
-      .querySelectorAll(".example-audio-status")
-      .forEach((element, index) => {
-        const remaining = index === 0 ? example1Remaining : example2Remaining;
-        element.textContent = `(${remaining} спроб)`;
-      });
-  }
+  //     document
+  //       .querySelectorAll(".example-audio-status")
+  //       .forEach((element, index) => {
+  //         const remaining = index === 0 ? example1Remaining : example2Remaining;
+  //         element.textContent = `(${remaining} спроб)`;
+  //       });
+  //   }
 }
 
 // Глобальні функції для експорту/імпорту
@@ -1495,13 +1496,9 @@ async function exportData() {
     a.click();
     document.body.removeChild(a);
 
-    // Не показуємо повідомлення про успіх - браузер сам покаже статус завантаження
-    console.log("Експорт запущено - користувач побачить результат в браузері");
-
     // Звільняємо пам'ять через час
     setTimeout(() => {
       URL.revokeObjectURL(url);
-      console.log("Пам'ять звільнено");
     }, 60000); // 1 хвилина
   } catch (error) {
     console.error("Помилка експорту:", error);
@@ -1595,6 +1592,4 @@ document.addEventListener("DOMContentLoaded", async function () {
   modalManager = new ModalManager();
   window.modalManager = modalManager;
   window.app = new WordLearningApp();
-
-  console.log("Додаток ініціалізовано");
 });

@@ -28,12 +28,9 @@ class DataManager {
   }
 
   static async initialize() {
-    await this.initializeStorage();
-
     if (!localStorage.getItem(this.STORAGE_KEY)) {
       this.saveDataImmediately(this.defaultData);
     }
-
     return this.loadData();
   }
 
@@ -193,8 +190,6 @@ class DataManager {
       if (!savedData) {
         throw new Error("Дані не збереглися після запису");
       }
-
-      console.log("Дані успішно збережено");
       return true;
     } catch (error) {
       console.error("Помилка збереження даних:", error);
@@ -310,9 +305,9 @@ class DataManager {
     }
   }
 
-  static getStorageStats() {
-    return this.getRealStorageStats();
-  }
+  //   static getStorageStats() {
+  //     return this.getRealStorageStats();
+  //   }
 
   static getFallbackStats() {
     const data = this.loadData();
@@ -386,10 +381,10 @@ class DataManager {
 
         spacedRepetition: {
           algorithm: "sm2",
-          interval: 0, // Змінити з 1 на 0 для нових карток
+          interval: 1,
           easeFactor: 2.5,
           repetition: 0,
-          nextReview: new Date().toISOString(), // Негайне повторення для нових карток
+          nextReview: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(),
           lastInterval: 0,
           stability: 0,
           difficulty: 2.5,
@@ -425,31 +420,29 @@ class DataManager {
   // ВИПРАВЛЕНИЙ МЕТОД: Покращений алгоритм SM-2
   static updateSpacedRepetition(card, quality) {
     const sr = card.spacedRepetition;
-
     quality = Math.max(0, Math.min(5, quality));
 
-    // SM-2 алгоритм
+    // Класичний алгоритм SM-2
     if (quality >= 3) {
       // Правильна відповідь
       if (sr.repetition === 0) {
         sr.interval = 1;
       } else if (sr.repetition === 1) {
-        sr.interval = 6;
+        sr.interval = 6; // ✅ ВИПРАВЛЕННЯ: При repetition=1 → interval=6
       } else {
         sr.interval = Math.round(sr.interval * sr.easeFactor);
       }
       sr.repetition++;
       sr.consecutiveCorrect++;
     } else {
-      // Неправильна відповідь
+      // Неправильна відповідь - починаємо знову
       sr.repetition = 0;
       sr.consecutiveCorrect = 0;
       sr.interval = 1;
     }
 
-    // ВИПРАВЛЕНА ФОРМУЛА для EF (Ease Factor)
-    sr.easeFactor =
-      sr.easeFactor + (0.1 - (5 - quality) * (0.08 + (5 - quality) * 0.02));
+    // Оновлення Ease Factor згідно SM-2
+    sr.easeFactor = sr.easeFactor + (0.1 - (5 - quality) * 0.08);
 
     // Обмеження EF від 1.3 до 2.5
     sr.easeFactor = Math.max(1.3, Math.min(sr.easeFactor, 2.5));
@@ -466,115 +459,6 @@ class DataManager {
     sr.nextReview = nextReview.toISOString();
     sr.lastInterval = sr.interval;
     sr.stability = sr.interval * sr.easeFactor;
-
-    // Логування для дебагу
-    console.log(
-      `SM-2 Update: ${
-        card.english
-      }, Quality: ${quality}, EF: ${sr.easeFactor.toFixed(2)}, Interval: ${
-        sr.interval
-      } days`
-    );
-  }
-
-  // НОВИЙ МЕТОД: Оновлення прогресу з якістю
-  static updateCardProgressWithQuality(cardId, quality) {
-    const data = this.loadData();
-    const card = data.cards.find((c) => c.id === cardId);
-
-    if (card) {
-      const now = new Date();
-
-      // Оновлення прогресу (тільки статистика)
-      card.progress.totalAnswers++;
-      if (quality >= 3) {
-        card.progress.correctAnswers++;
-      }
-      card.progress.successRate = Math.round(
-        (card.progress.correctAnswers / card.progress.totalAnswers) * 100
-      );
-      card.progress.lastReviewed = now.toISOString();
-
-      // Оновлення SM-2 з якістю відповіді
-      this.updateSpacedRepetition(card, quality);
-
-      // Оновлення загальної статистики
-      data.statistics.totalStudied++;
-      if (quality >= 3) {
-        data.statistics.totalRemembered++;
-      }
-      data.statistics.totalReviews++;
-      data.statistics.lastStudySession = now.toISOString();
-
-      // Критичне збереження - негайно
-      this.saveDataImmediately(data);
-
-      console.log(
-        `Progress updated: ${card.english}, Quality: ${quality}, Success: ${card.progress.successRate}%`
-      );
-      return true;
-    }
-
-    console.error(`Card not found: ${cardId}`);
-    return false;
-  }
-
-  // Оновлений метод для зворотної сумісності
-  static updateCardProgress(cardId, remembered) {
-    const quality = remembered ? 4 : 1;
-    return this.updateCardProgressWithQuality(cardId, quality);
-  }
-
-  // Додатковий метод для красивих назв якості
-  static getQualityName(quality) {
-    const names = {
-      0: "Не пам'ятаю",
-      1: "Дуже важко",
-      2: "Важко",
-      3: "Нормально",
-      4: "Легко",
-      5: "Дуже легко",
-    };
-    return names[quality] || "Невідомо";
-  }
-
-  // Додатковий метод для відладки SM-2
-  static debugSM2(cardId, quality) {
-    const data = this.loadData();
-    const card = data.cards.find((c) => c.id === cardId);
-
-    if (card) {
-      console.log(`=== SM-2 Debug для: ${card.english} ===`);
-      console.log(
-        `Початкові значення: EF=${card.spacedRepetition.easeFactor}, Interval=${card.spacedRepetition.interval}, Repetition=${card.spacedRepetition.repetition}`
-      );
-      console.log(
-        `Якість відповіді: ${quality} (${this.getQualityName(quality)})`
-      );
-
-      // Тимчасово збережемо початкові значення
-      const originalEF = card.spacedRepetition.easeFactor;
-      const originalInterval = card.spacedRepetition.interval;
-      const originalRepetition = card.spacedRepetition.repetition;
-
-      // Виконаємо оновлення
-      this.updateSpacedRepetition(card, quality);
-
-      console.log(
-        `Кінцеві значення: EF=${card.spacedRepetition.easeFactor.toFixed(
-          2
-        )}, Interval=${card.spacedRepetition.interval}, Repetition=${
-          card.spacedRepetition.repetition
-        }`
-      );
-      console.log(`Next Review: ${card.spacedRepetition.nextReview}`);
-      console.log(`=== Кінець Debug ===`);
-
-      // Відновимо оригінальні значення (щоб не змінювати дані)
-      card.spacedRepetition.easeFactor = originalEF;
-      card.spacedRepetition.interval = originalInterval;
-      card.spacedRepetition.repetition = originalRepetition;
-    }
   }
 
   // Додатковий метод для красивих назв якості
@@ -624,12 +508,6 @@ class DataManager {
       return true;
     }
     return false;
-  }
-
-  // Оновлений метод для зворотної сумісності
-  static updateCardProgress(cardId, remembered) {
-    const quality = remembered ? 4 : 1;
-    return this.updateCardProgressWithQuality(cardId, quality);
   }
 
   static getCardsForStudy(category = "all", mode = "normal") {
@@ -917,7 +795,7 @@ class DataManager {
     data.cards.forEach((card) => {
       card.progress = {
         level: 0,
-        nextReview: null, // Змінити на null
+        nextReview: null,
         lastReviewed: null,
         correctAnswers: 0,
         totalAnswers: 0,
@@ -926,10 +804,10 @@ class DataManager {
 
       card.spacedRepetition = {
         algorithm: "sm2",
-        interval: 0,
+        interval: 1,
         easeFactor: 2.5,
         repetition: 0,
-        nextReview: null, // Змінити на null
+        nextReview: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(),
         lastInterval: 0,
         stability: 0,
         difficulty: 2.5,
@@ -945,7 +823,6 @@ class DataManager {
     };
 
     this.saveDataImmediately(data);
-    console.log("Весь прогрес скинуто");
     return true;
   }
 
@@ -954,7 +831,9 @@ class DataManager {
     const now = new Date();
 
     data.cards.forEach((card) => {
-      card.spacedRepetition.nextReview = now.toISOString();
+      card.spacedRepetition.nextReview = new Date(
+        now.getTime() + 24 * 60 * 60 * 1000
+      ).toISOString(); // +1 день
       card.spacedRepetition.interval = 1;
       card.spacedRepetition.repetition = 0;
       card.spacedRepetition.consecutiveCorrect = 0;
@@ -1017,29 +896,29 @@ class DataManager {
     return data.cards.find((card) => card.id === cardId);
   }
 
-  static getDueCardsCount() {
-    const data = this.loadData();
-    const now = new Date();
-    return data.cards.filter(
-      (card) =>
-        // Тільки картки, які вже мали хоч одну відповідь
-        card.progress.totalAnswers > 0 &&
-        // І які потребують повторення за SM-2
-        new Date(card.spacedRepetition.nextReview) <= now
-    ).length;
-  }
+  //   static getDueCardsCount() {
+  //     const data = this.loadData();
+  //     const now = new Date();
+  //     return data.cards.filter(
+  //       (card) =>
+  //         // Тільки картки, які вже мали хоч одну відповідь
+  //         card.progress.totalAnswers > 0 &&
+  //         // І які потребують повторення за SM-2
+  //         new Date(card.spacedRepetition.nextReview) <= now
+  //     ).length;
+  //   }
 
-  static getDifficultCards(limit = 20) {
-    const data = this.loadData();
-    return data.cards
-      .filter((card) => card.progress.totalAnswers > 0)
-      .sort((a, b) => {
-        const aRate = a.progress.correctAnswers / a.progress.totalAnswers;
-        const bRate = b.progress.correctAnswers / b.progress.totalAnswers;
-        return aRate - bRate;
-      })
-      .slice(0, limit);
-  }
+  //   static getDifficultCards(limit = 20) {
+  //     const data = this.loadData();
+  //     return data.cards
+  //       .filter((card) => card.progress.totalAnswers > 0)
+  //       .sort((a, b) => {
+  //         const aRate = a.progress.correctAnswers / a.progress.totalAnswers;
+  //         const bRate = b.progress.correctAnswers / b.progress.totalAnswers;
+  //         return aRate - bRate;
+  //       })
+  //       .slice(0, limit);
+  //   }
 
   static getStorageRecommendations() {
     const stats = this.getRealStorageStats();
@@ -1070,8 +949,5 @@ class DataManager {
     return Date.now().toString(36) + Math.random().toString(36).substr(2);
   }
 }
-
 // Асинхронна ініціалізація
-DataManager.initialize().then(() => {
-  console.log("DataManager ініціалізовано");
-});
+// DataManager.initialize().then(() => {});
