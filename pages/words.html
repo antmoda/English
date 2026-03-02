@@ -1,59 +1,214 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk">
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Random Word</title>
-	<link rel="icon" type="image/x-icon" href="../img/united-kingdom.png">
-	<link rel="stylesheet" href="../css/words.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Word A2</title>
+    <link rel="icon" type="image/x-icon" href="../img/united-kingdom.png">
+    <link rel="stylesheet" href="../css/words.css">
 </head>
 
 <body>
-	<h1>Random words level A2</h1>
-	<h2>Verbs</h2>
-	<table>
-		<thead></thead>
-		<tbody class="random-words"></tbody>
-	</table>
+    <h1>🎯 Random words level A2</h1>
 
-	<h2>Nouns career</h2>
-	<table>
-		<thead></thead>
-		<tbody class="random-words"></tbody>
-	</table>
+    <!-- Вкладки -->
+    <div class="tab">
+        <button class="tablinks active" onclick="openTab(event, 'verbs')">📚 Дієслова</button>
+        <button class="tablinks" onclick="openTab(event, 'nouns-career')">💼 Кар'єра</button>
+        <button class="tablinks" onclick="openTab(event, 'nouns-entertainment')">🎮 Відпочинок</button>
+        <button class="tablinks" onclick="openTab(event, 'nouns-environment')">🌍 Довкілля</button>
+        <button class="tablinks" onclick="openTab(event, 'adjectives')">✨ Прикметники</button>
+        <button class="tablinks" onclick="openTab(event, 'adverbs')">⚡ Прислівники</button>
+        <button class="tablinks" onclick="openTab(event, 'practice')">📝 Практика слів</button>
+        <button class="tablinks" onclick="openTab(event, 'sentence-practice')">✍️ Складання речень</button>
+    </div>
 
-	<h2>Nouns rest</h2>
-	<table>
-		<thead></thead>
-		<tbody class="random-words"></tbody>
-	</table>
+    <!-- Вкладка Дієслова -->
+    <div id="verbs" class="tabcontent" style="display: block;">
+        <h2>Дієслова <span id="verbs-count" class="word-count"></span></h2>
+        <table id="verbs-table">
+            <thead>
+                <tr>
+                    <th>Слово</th>
+                    <th>Транскрипція</th>
+                    <th>Переклад</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <div class="show-more-container" id="verbs-show-more">
+            <button class="sound-btn" onclick="showMore('verbs')">Показати більше</button>
+        </div>
+    </div>
 
-	<h2>Nouns climate</h2>
-	<table>
-		<thead></thead>
-		<tbody class="random-words"></tbody>
-	</table>
+    <!-- Вкладка Іменники (Кар'єра) -->
+    <div id="nouns-career" class="tabcontent">
+        <h2>Іменники (Кар'єра) <span id="nouns-career-count" class="word-count"></span></h2>
+        <table id="nouns-career-table">
+            <thead>
+                <tr>
+                    <th>Слово</th>
+                    <th>Транскрипція</th>
+                    <th>Переклад</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <div class="show-more-container" id="nouns-career-show-more">
+            <button class="sound-btn" onclick="showMore('nouns-career')">Показати більше</button>
+        </div>
+    </div>
 
-	<h2>Adjective words</h2>
-	<table>
-		<thead></thead>
-		<tbody class="random-words"></tbody>
-	</table>
+    <!-- Вкладка Іменники (Відпочинок) -->
+    <div id="nouns-entertainment" class="tabcontent">
+        <h2>Іменники (Відпочинок) <span id="nouns-entertainment-count" class="word-count"></span></h2>
+        <table id="nouns-entertainment-table">
+            <thead>
+                <tr>
+                    <th>Слово</th>
+                    <th>Транскрипція</th>
+                    <th>Переклад</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <div class="show-more-container" id="nouns-entertainment-show-more">
+            <button class="sound-btn" onclick="showMore('nouns-entertainment')">Показати більше</button>
+        </div>
+    </div>
 
-	<h2>Adverbs words</h2>
-	<table>
-		<thead></thead>
-		<tbody class="random-words"></tbody>
-	</table>
-	<script src="../js/words.js"></script>
+    <!-- Вкладка Іменники (Довкілля) -->
+    <div id="nouns-environment" class="tabcontent">
+        <h2>Іменники (Довкілля) <span id="nouns-environment-count" class="word-count"></span></h2>
+        <table id="nouns-environment-table">
+            <thead>
+                <tr>
+                    <th>Слово</th>
+                    <th>Транскрипція</th>
+                    <th>Переклад</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <div class="show-more-container" id="nouns-environment-show-more">
+            <button class="sound-btn" onclick="showMore('nouns-environment')">Показати більше</button>
+        </div>
+    </div>
 
-	<form id="textForm">
-		<label for="userInput">Enter sentense:</label>
-		<input type="text" id="userInput" name="userInput" required>
-		<button type="submit">Submin</button>
-	</form>
-	<script src="../js/words-form.js"></script>
+    <!-- Вкладка Прикметники -->
+    <div id="adjectives" class="tabcontent">
+        <h2>Прикметники <span id="adjectives-count" class="word-count"></span></h2>
+        <table id="adjectives-table">
+            <thead>
+                <tr>
+                    <th>Слово</th>
+                    <th>Транскрипція</th>
+                    <th>Переклад</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <div class="show-more-container" id="adjectives-show-more">
+            <button class="sound-btn" onclick="showMore('adjectives')">Показати більше</button>
+        </div>
+    </div>
+
+    <!-- Вкладка Прислівники -->
+    <div id="adverbs" class="tabcontent">
+        <h2>Прислівники <span id="adverbs-count" class="word-count"></span></h2>
+        <table id="adverbs-table">
+            <thead>
+                <tr>
+                    <th>Слово</th>
+                    <th>Транскрипція</th>
+                    <th>Переклад</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <div class="show-more-container" id="adverbs-show-more">
+            <button class="sound-btn" onclick="showMore('adverbs')">Показати більше</button>
+        </div>
+    </div>
+
+    <!-- Вкладка Практика слів -->
+    <div id="practice" class="tabcontent">
+        <h2>📝 Практика перекладу</h2>
+        <div class="practice-container">
+            <div class="word-card">
+                <div class="word-display">
+                    <span id="practice-word" class="practice-word"></span>
+                    <span id="practice-phonetic" class="practice-phonetic"></span>
+                </div>
+
+                <div class="input-group">
+                    <input type="text" id="translation-input" placeholder="Введіть переклад...">
+                    <button class="sound-btn" onclick="checkWordAnswer()">✅ Перевірити</button>
+                    <button class="sound-btn" onclick="nextWord()">⏭️ Наступне слово</button>
+                </div>
+
+                <div id="word-feedback" class="feedback"></div>
+
+                <div class="progress-section">
+                    <div class="stats">
+                        <p>✅ Правильних: <span id="word-score">0</span></p>
+                        <p>📊 Всього: <span id="word-total">0</span></p>
+                    </div>
+                    <div class="progress-bar-container">
+                        <div id="word-progress-bar" class="progress-bar" style="width: 0%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Вкладка Складання речень (НОВА) -->
+    <div id="sentence-practice" class="tabcontent">
+        <h2>✍️ Складання речень рівня A2</h2>
+
+        <!-- Випадкові слова для складання речення -->
+        <div class="random-words-panel">
+            <h3>🎲 Слова для речення:</h3>
+            <div id="sentence-words" class="sentence-words">
+                <!-- Тут будуть випадкові слова -->
+            </div>
+            <button class="sound-btn" onclick="generateRandomWords()">🎲 Нові слова</button>
+        </div>
+
+        <!-- Форма для введення речення -->
+        <div class="sentence-form">
+            <h3>📝 Складіть речення з цими словами:</h3>
+            <div class="input-group">
+                <input type="text" id="sentence-input" placeholder="Наприклад: I like to read books..." style="width: 70%;">
+                <button class="sound-btn" onclick="checkSentence()" id="checkSentenceBtn">🔍 Перевірити речення</button>
+            </div>
+
+            <!-- Індикатор завантаження -->
+            <div id="loadingIndicator" style="display: none; text-align: center; margin: 20px;">
+                <div class="loader"></div>
+                <p>🤖 AI аналізує ваше речення...</p>
+            </div>
+
+            <!-- Результат перевірки AI -->
+            <div id="sentence-feedback" class="sentence-feedback"></div>
+
+            <!-- Історія спроб -->
+            <div id="history-section" class="history-section"></div>
+        </div>
+    </div>
+
+    <!-- Стара форма для збереження в файл (залишаємо для сумісності) -->
+    <form id="textForm" style="margin-top: 30px; padding: 20px; background: #f5f5f5; border-radius: 8px;">
+        <label for="userInput">Enter sentence (save to file):</label>
+        <input type="text" id="userInput" name="userInput" required>
+        <button type="submit">💾 Save to file</button>
+    </form>
+
+    <!-- Підключення скриптів -->
+    <script src="../js/words.js"></script>
+    <script src="../js/words-form.js"></script>
+    <script src="../js/sentence-practice.js"></script>
 </body>
 
 </html>
