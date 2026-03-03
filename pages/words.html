@@ -11,6 +11,7 @@
 
 <body>
 	<h1>Random words level A2</h1>
+	
 	<h2>Verbs</h2>
 	<table>
 		<thead></thead>
@@ -46,13 +47,19 @@
 		<thead></thead>
 		<tbody class="random-words"></tbody>
 	</table>
+	
 	<script src="../js/words.js"></script>
 
+	<!-- Form for sentence input -->
 	<form id="textForm">
-		<label for="userInput">Enter sentense:</label>
-		<input type="text" id="userInput" name="userInput" required>
-		<button type="submit">Submin</button>
+		<label for="userInput">Enter sentence:</label>
+		<input type="text" id="userInput" name="userInput" placeholder="Example: I go to school every day" required>
+		<button type="submit" id="submitBtn">Submit</button>
 	</form>
+
+	<!-- Container for AI check result -->
+	<div id="result" class="result-container"></div>
+
 	<script src="../js/words-form.js"></script>
 </body>
 
