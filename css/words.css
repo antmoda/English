@@ -62,3 +62,123 @@ button {
 button:hover {
   background-color: #45a049;
 }
+/* Styles for AI check results - add to the end of your words.css file */
+
+.result-container {
+    margin-top: 30px;
+    font-family: Arial, sans-serif;
+}
+
+.result-card {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.result-card h3 {
+    margin-top: 0;
+    color: #2c3e50;
+    border-bottom: 2px solid #4caf50;
+    padding-bottom: 10px;
+}
+
+.score-container {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin: 15px 0;
+}
+
+.score {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #27ae60;
+    background-color: #e8f8f5;
+    padding: 5px 15px;
+    border-radius: 25px;
+    display: inline-block;
+}
+
+.level {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #2980b9;
+    background-color: #ebf5fb;
+    padding: 5px 15px;
+    border-radius: 25px;
+    display: inline-block;
+}
+
+.mistakes {
+    background-color: #fff3f3;
+    border-left: 4px solid #e74c3c;
+    padding: 10px 15px;
+    margin: 15px 0;
+    border-radius: 4px;
+}
+
+.mistakes ul {
+    margin: 10px 0 0 0;
+    padding-left: 20px;
+}
+
+.mistakes li {
+    color: #c0392b;
+    margin: 5px 0;
+}
+
+.perfect {
+    color: #27ae60;
+    font-weight: bold;
+    background-color: #e8f8f5;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 15px 0;
+}
+
+.corrected {
+    background-color: #e8f8f5;
+    border-left: 4px solid #27ae60;
+    padding: 10px 15px;
+    margin: 15px 0;
+    border-radius: 4px;
+}
+
+.corrected-text {
+    font-weight: bold;
+    color: #2c3e50;
+    font-size: 1.1em;
+}
+
+.explanation {
+    background-color: #ebf5fb;
+    border-left: 4px solid #3498db;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 4px;
+    line-height: 1.6;
+}
+
+.loading {
+    color: #3498db;
+    font-style: italic;
+    text-align: center;
+    padding: 20px;
+}
+
+.error {
+    color: #e74c3c;
+    font-weight: bold;
+    text-align: center;
+    padding: 20px;
+}
+
+@media (max-width: 600px) {
+    .score-container {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+    }
+}
